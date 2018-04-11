@@ -16,6 +16,7 @@ import { EolComponent } from './eol/eol.component';
 import { FaqComponent } from './faq/faq.component';
 import { ContactComponent } from './contact/contact.component';
 import { AlertsPopupComponent } from './alerts-popup/alerts-popup.component';
+import { PaymentHelpPopupComponent } from './payment-help-popup/payment-help-popup.component';
 
 const dashboardRoute: Routes = [
   { path: '', component: DashboardComponent,
@@ -50,7 +51,8 @@ const dashboardRoute: Routes = [
                   EolComponent,
                   FaqComponent,
                   ContactComponent,
-                  AlertsPopupComponent
+                  AlertsPopupComponent,
+                  PaymentHelpPopupComponent
               ]
 })
 export class DashboardModule { }

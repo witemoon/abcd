@@ -217,7 +217,7 @@
                   </div>
 
                   <div class="card-body py-2">
-                      <h6>Your payment is past due! <span class="paymentWrap" data-toggle="modal" data-target="#paymentpop">Click here for next steps</span>
+                      <h6>Your payment is past due! <span class="paymentWrap" data-toggle="modal" data-target="#paymentpop" (click)="showAlerts()">Click here for next steps</span>
                       </h6>
                       <!--<div class="alertWrap  float-right d-inline-block" data-toggle="modal" data-target="#paymentpop">-->
                       <!--<img src="img/alert.svg">-->
@@ -445,3 +445,6 @@
   </div>
 
 </div>
+
+<!-- ------------------ payment-help-popup ------------------- -->
+<payment-help-popup></payment-help-popup>
