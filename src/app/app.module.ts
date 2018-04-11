@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing } from './routing/routing';
 import { FormsModule }   from '@angular/forms';
-
+import { RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
+import {RecaptchaFormsModule} from 'ng-recaptcha/forms';
 
 import { AppComponent } from './app.component';
 import { LandHeadComponent } from './landing-page/land-head/land-head.component';
@@ -23,6 +24,7 @@ import { SigninComponent } from './auth-temp/signin/signin.component';
 import { ChangeTempPassComponent } from './auth-temp/change-temp-pass/change-temp-pass.component';
 import { ResetComponent } from './forgot-password/reset/reset.component';
 import { EqualValidator } from './equal-validator.directive';
+import { AuthService } from './shared/auth.service';
 
 
 
@@ -59,9 +61,17 @@ import { EqualValidator } from './equal-validator.directive';
   imports: [
     BrowserModule,
     routing,
-    FormsModule
+    FormsModule,
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule,
   ],
-  providers: [],
+providers: [AuthService,{
+  provide: RECAPTCHA_SETTINGS,
+  useValue: { 
+    siteKey: '6LeAyiAUAAAAAFBfMpYA4iGyFQssmt99CpCLr8Ru',
+  } as RecaptchaSettings,
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

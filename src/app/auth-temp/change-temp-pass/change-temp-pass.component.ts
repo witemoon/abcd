@@ -7,14 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./change-temp-pass.component.css']
 })
 export class ChangeTempPassComponent implements OnInit {
- 
+  public captchaValue: string;
 
   constructor(private router:Router) { }
 
   ngOnInit() {
   }
-  signIn(){
-    this.router.navigate(['/login']);
+  landPage(){
+    this.router.navigate(['/']);
   }
+  
 
 }

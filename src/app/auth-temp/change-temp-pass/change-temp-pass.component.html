@@ -18,30 +18,27 @@
 
 
 
-              <form #f="ngForm">
+              <form  #changePassword="ngForm">
                 <div class="form-group">
-                  <input type="password" class="form-control"  placeholder="Re-enter temp password" ngModel  name="temp_password" required  #tempPassword="ngModel"  >
+                  <input type="password" class="form-control"  placeholder="temp password" name="tempPass" ngModel required >
                   
                  
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control " placeholder="Enter New Password" ngModel  name="password" required  #password="ngModel" minlength="8" pattern="Abc@123456">
-                  <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
-                      <p *ngIf="password.errors.required">password Key is required</p>
-                    <p   *ngIf="password.errors.minlength">Password has minimum lenghth 8 char</p>                   
-                    <p *ngIf="password.errors.pattern">Please enter the valid Password pattern</p>
-            </div>
+                  <input type="password" class="form-control " placeholder="Enter New Password" name="newPass" ngModel required>
+                  
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Re-confirm your password" ngModel  name="reConf_password" required  #reCnfPass="ngModel" validateEqual="password" >
-                  <div class="alert alert-danger" *ngIf="reCnfPass.touched && !reCnfPass.valid">Please Re-Confirm the same Password</div>
-                </div>
-                <div class="form-group">
-                  <div class="card">
-                    <div class="card-body p-0 bg-light">
-                      <img class="img-fluid " src="./assets/img/captcha.png">
-                    </div>
+                    <input type="password" class="form-control " placeholder="Re-confirm Password" name="reCnfPass" ngModel required>
+                    
                   </div>
+               
+                <div class="form-group">
+                    <re-captcha
+                                [(ngModel)]="captchaValue"
+                                name="captcha"
+                                required
+                              ></re-captcha>
                 </div>
 
                 
@@ -51,7 +48,7 @@
                 <br>
 
 
-                <button type="submit" (click)="signIn()" class="btnSubmit btn btn-primary btn-lg btn-block">Submit
+                <button type="submit" (click)="landPage()" class="btnSubmit btn btn-primary btn-lg btn-block" [disabled]="!changePassword.valid">Submit
                 </button>
                 <br>
                 <br>

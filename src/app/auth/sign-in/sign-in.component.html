@@ -13,27 +13,23 @@
                              aria-labelledby="signup-tab">
                             <p class="loginDesc">Please fill all fields below</p>
 
-                            <form novalidate #f="ngForm" (ngSubmit)="submit(f.value)">
+
+                            <!-- sign in page -->
+
+                            <form>
                                 <div class="form-group emailWrap">
-                                    <input type="" class="form-control" placeholder="Email" value="Email"  ngModel required  name="email"  pattern="demo2@test.com" #email="ngModel">
-                                    <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
-                                        <p *ngIf="email.errors.required">Reference Key is required</p>
-                                        <p *ngIf="email.errors.pattern">Please enter the valid Refrence Key</p>
-                                </div>
+                                    <input type="email" class="form-control" placeholder="Email" name="email" ngModel  >
+                                  
 
                                 </div>
                                 <div class="form-group passwordWrap">
-                                    <input type="" class="form-control" placeholder="Enter Lease Number"  ngModel  required name="password"  pattern="Demo2@123" #password="ngModel" >
-                                    <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
-                                        <p *ngIf="email.errors.required">Reference Key is required</p>
-                                        <p *ngIf="email.errors.pattern">Please enter the valid Refrence Key</p>
-                                </div>
+                                    <input type="password" class="form-control" placeholder="Password" name="password" ngModel >
                                 </div>
                                 <br><br>
 
                                 <button type="button"
                                         (click)="dashborad()"
-                                        class="btnSubmit btn btn-primary btn-lg btn-block" [disabled]="!f.valid">Sign In
+                                        class="btnSubmit btn btn-primary btn-lg btn-block" >Sign In
                                 </button>
 
 
@@ -42,6 +38,7 @@
 
 
                             </form>
+                            <!-- end of sign In form -->
 
                         </div>
                     </div>

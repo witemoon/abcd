@@ -12,25 +12,18 @@
                       <div class="tab-pane fade show active" id="signup" role="tabpanel"
                            aria-labelledby="signup-tab">
                           <p class="loginDesc">Please fill all fields below</p>
+
+                          <!-- Sign In form -->
                           <form>
 
                                 <div class="form-group emailWrap">
-                                        <input type="" class="form-control" placeholder="Email" value="Email"  ngModel  name="email" required pattern="demo2@test.com" #email="ngModel">
-                                        <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
-                                            <p *ngIf="email.errors.required">Reference Key is required</p>
-                                            <p *ngIf="email.errors.pattern">Please enter the valid Refrence Key</p>
+                                        <input type="" class="form-control" placeholder="Email" value="Email"   >
+                                       
                                     </div>
-                                    </div>
-
-
-
                              
                                     <div class="form-group passwordWrap">
-                                            <input type="password" class="form-control" placeholder="Temp Password"  ngModel  name="temp_password" required pattern="Photon123" #temp_password="ngModel" >
-                                            <div class="alert alert-danger" *ngIf="temp_password.errors && (temp_password.dirty || temp_password.touched)">
-                                                <p *ngIf="temp_password.errors.required">Reference Key is required</p>
-                                                <p *ngIf="temp_password.errors.pattern">Please enter the valid Refrence Key</p>
-                                        </div>
+                                            <input type="password" class="form-control" placeholder="Temp Password"  >
+                                           
                                         </div>
                               <br><br>
 
@@ -45,6 +38,7 @@
 
 
                           </form>
+                          <!-- end of form -->
 
                       </div>
                   </div>

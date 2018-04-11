@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent implements OnInit {
-
-  
+  public captchaValue: string;
+  loading=false;
  
   constructor(private router:Router) { }
 
@@ -19,12 +19,9 @@ export class SignupFormComponent implements OnInit {
   submit(){
     this.router.navigate(['/thankyou']);
   }
-  resetPage(){
-    this.router.navigate(['/resetPassword']);
-  }
-
-  signIn(){
-    this.router.navigate(['**']);
-  }
  
+
+  
+  
+
 }
