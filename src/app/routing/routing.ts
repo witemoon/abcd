@@ -47,9 +47,9 @@ const appRoutes: Routes = [
         path:'changeTempPass',
         component:ChangeTempPassComponent
     },
-    { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule'  },  
-    
-    
+    {   path: 'dashboard', 
+        loadChildren: 'app/dashboard/dashboard.module#DashboardModule'  
+    },  
     {
         path:'**',
         component:NotFoundComponent
