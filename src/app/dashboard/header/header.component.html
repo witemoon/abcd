@@ -33,7 +33,7 @@
               </span>
 
 
-                  <div class="alertWrap  float-right d-inline-block" data-toggle="modal" data-target="#alertspop">
+                  <div class="alertWrap  float-right d-inline-block" data-toggle="modal" data-target="#alertspop" (click)="showAlerts()">
                       <span class="fd-badge">6</span>
                       <img src="assets/img/alert.svg">
                       <br>
@@ -50,3 +50,7 @@
 
   </div>
 </div>
+
+
+<!-- -------------alerts popup------------------- -->
+<alerts-popup [(showPopup)]="openPopup"></alerts-popup>

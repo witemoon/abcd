@@ -1,0 +1,31 @@
+<div class="modal fade" [ngClass]="{'show':showPopup}" id="alertspop" [style.display]="showPopup?'block':'none'">
+  <div class="modal-dialog">
+      <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+              <h4 class="modal-title"></h4>
+              <button type="button" class="close" data-dismiss="modal" (click)="closeButtonClicked()"><img src="assets/img/close-icon.svg"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body ">
+
+              <div class="cntWrap  p-3">
+                  <img src="assets/img/epp_m.svg"><span>Equipment Protection Program (3) </span>
+              </div>
+
+              <div class="cntWrap  p-3 mt-2">
+                  <img src="assets/img/default-icon.svg"><span>Default Lease(3) </span>
+              </div>
+
+
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer ">
+          </div>
+
+      </div>
+  </div>
+</div>

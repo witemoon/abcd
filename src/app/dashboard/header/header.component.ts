@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  openPopup = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showAlerts(){
+    this.openPopup = true;
   }
 
 }
