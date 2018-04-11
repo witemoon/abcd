@@ -34,6 +34,21 @@ const dashboardRoute: Routes = [
     CommonModule,
     RouterModule.forChild(dashboardRoute),
   ],
-  declarations: [DashboardComponent, LeftSideBarComponent, RightSideBarComponent, HeaderComponent, BreadcrumbComponent, HomeComponent, LeaseBlockComponent, LeaseDetailComponent, LeaseTabsComponent, EppComponent, ClaimsComponent, EolComponent, FaqComponent, ContactComponent]
+  declarations: [
+                  DashboardComponent, 
+                  LeftSideBarComponent,
+                  RightSideBarComponent,
+                  HeaderComponent,
+                  BreadcrumbComponent,
+                  HomeComponent,
+                  LeaseBlockComponent,
+                  LeaseDetailComponent,
+                  LeaseTabsComponent,
+                  EppComponent,
+                  ClaimsComponent,
+                  EolComponent,
+                  FaqComponent,
+                  ContactComponent
+              ]
 })
 export class DashboardModule { }
