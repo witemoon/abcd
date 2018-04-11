@@ -1,0 +1,100 @@
+/*Extra small devices (portrait phones, less than 576px)*/
+/*No media query since this is the default in Bootstrap*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 575px) {
+
+    .aLeft {
+        text-align: center
+    }
+
+    .aRight {
+        text-align: center;
+    }
+
+    .mTop {
+        margin-top: 20px;
+    }
+    .land-hero-cnt {
+        width: 100%;
+        float: right;
+        padding: 30px;
+    }
+
+}
+
+@media (min-width: 576px) {
+    .aLeft {
+        text-align: center
+    }
+
+    .aRight {
+        text-align: center;
+    }
+
+    .mTop {
+        margin-top: 20px;
+    }
+    .land-hero-cnt {
+        width: 100%;
+        float: right;
+        padding: 30px;
+    }
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .aLeft {
+        text-align: left
+    }
+
+    .aRight {
+        text-align: right
+    }
+
+    .mTop {
+        margin-top: 2px;
+    }
+    .land-hero-cnt {
+        width: 50%;
+        float: right;
+        padding: 30px;
+    }
+
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .aLeft {
+        text-align: left
+    }
+
+    .aRight {
+        text-align: right
+    }
+
+    .mTop {
+        margin-top: 2px;
+    }
+
+
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .aLeft {
+        text-align: left
+    }
+
+    .aRight {
+        text-align: right
+    }
+
+    .mTop {
+        margin-top: 2px;
+    }
+
+}
