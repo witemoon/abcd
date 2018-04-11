@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="60px" viewBox="0 0 58 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>BUtons</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="58" height="60"></rect>
+        <rect id="path-2" x="1" y="5" width="14" height="2" rx="1"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BUtons">
+            <g id="BUT">
+                <use fill="#43B02A" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#43B02A" stroke-width="2" x="1" y="1" width="56" height="58"></rect>
+            </g>
+        </g>
+        <g id="back-button" transform="translate(21.680664, 23.990234)">
+            <path d="M8.11215361,3.19610128 C7.97009325,3.05404092 7.73924516,3.05404092 7.5971848,3.19610128 L3.06901082,7.73315403 L-1.46804193,3.19610128 C-1.61010229,3.05404092 -1.84095038,3.05404092 -1.98301074,3.19610128 C-2.1250711,3.33816164 -2.1250711,3.56900972 -1.98301074,3.71107008 L2.80264765,8.49672846 C2.87367783,8.56775864 2.96246555,8.60327373 3.06013205,8.60327373 C3.14891977,8.60327373 3.24658627,8.56775864 3.31761645,8.49672846 L8.10327483,3.71107008 C8.25421397,3.56900972 8.25421397,3.33816164 8.11215361,3.19610128 Z" id="Shape" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero" transform="translate(3.064029, 5.846415) rotate(-270.000000) translate(-3.064029, -5.846415) "></path>
+            <g id="Rectangle-2">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <rect stroke="#FFFFFF" stroke-width="1" x="1.5" y="5.5" width="13" height="1" rx="0.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

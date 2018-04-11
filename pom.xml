@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.coresecure.static</groupId>
+  <artifactId>urlease_firstdata_com-web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>urlease.firstdata.com - Static Site</name>
+  <description>Compiles dynamic templates into static HTML.</description>
+
+  <!-- ====================================================================== -->
+  <!--                     P R O P E R T I E S                                -->
+  <!-- ====================================================================== -->
+  <properties>
+    <buildDir>build</buildDir>
+    <buildSiteDir>${buildDir}/_site</buildSiteDir>
+    <configDir>site-config</configDir>
+    <nodeVersion>v6.9.1</nodeVersion>
+    <npmRegistry>https://dub.coresecure.com/nexus/repository/npm-all/</npmRegistry>
+  </properties>
+
+  <!-- ====================================================================== -->
+  <!--                            B U I L D                                   -->
+  <!-- ====================================================================== -->
+  <build>
+
+    <!-- //TODO: understand why the output is not created inside of `target/build/`
+    <directory>${project.basedir}/target</directory>
+    <outputDirectory>${project.basedir.directory}/build</outputDirectory>
+     -->
+
+    <!-- ====================================================================== -->
+    <!-- R E S O U R C E S -->
+    <!-- ====================================================================== -->
+    <resources/>
+
+    <!-- ====================================================================== -->
+    <!--                         P L U G I N S                                  -->
+    <!-- ====================================================================== -->
+    <plugins>
+
+      <!-- https://github.com/eirslett/frontend-maven-plugin -->
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <!-- Use the latest released version: https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
+        <version>1.6</version>
+
+        <configuration>
+          <environmentVariables/>
+          <!--  // TODO: understand why node_module don't get installed beneath target!
+          <installDirectory>target</installDirectory>
+          -->
+        </configuration>
+
+        <executions>
+
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <phase>generate-resources<!--optional: default phase is "generate-resources" --></phase>
+            <configuration>
+              <nodeVersion>${nodeVersion}</nodeVersion>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <arguments>install --color=false</arguments>
+              <!--<arguments>install &#45;&#45;registry=${npmRegistry} &#45;&#45;color=false</arguments>-->
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>ng build</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <!-- Necessary because we cannot call `ng` binary without installing CLI globally -->
+              <arguments>run-script build</arguments>
+            </configuration>
+          </execution>
+
+        </executions>
+      </plugin>
+
+      <!-- https://github.com/eirslett/frontend-maven-plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.3.2</version>
+        <executions>
+
+          <execution>
+            <!-- copy configuration files to build root
+                //TODO: should we use maven-resources-plugin to enable filtering
+            -->
+            <id>copy-config</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <executable>cp</executable>
+              <arguments>
+                <argument>-r</argument>
+                <argument>${configDir}/.</argument>
+                <argument>${buildDir}/</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <execution>
+            <!-- clean out former artfacts -->
+            <id>clean-generated</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>pre-clean</phase>
+            <configuration>
+              <executable>rm</executable>
+              <arguments>
+                <argument>-rf</argument>
+                <argument>${buildDir}/</argument>
+                <argument>node_modules/</argument>
+                <argument>node/</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+        </executions>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+  <!-- ====================================================================== -->
+  <!--                D E P E N D E N C I E S                                 -->
+  <!-- ====================================================================== -->
+  <dependencies/>
+
+  <!-- ====================================================================== -->
+  <!--                      P R O F I L E S                                   -->
+  <!-- ====================================================================== -->
+  <profiles/>
+
+  <!-- ====================================================================== -->
+  <!--                  R E P O S I T O R I E S                               -->
+  <!-- ====================================================================== -->
+  <repositories/>
+  <pluginRepositories/>
+
+  <!-- ====================================================================== -->
+  <!--                  D I S T R I B U T I O N                               -->
+  <!-- ====================================================================== -->
+  <distributionManagement>
+    <snapshotRepository>
+      <id>Default_artifactory_1</id>
+      <name>Default_artifactory_1-snapshots</name>
+      <url>https://dub.coresecure.com/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>

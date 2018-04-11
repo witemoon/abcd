@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="60px" viewBox="0 0 58 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>BUtons</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="58" height="60"></rect>
+        <path d="M10.5,9.33333333 C9.53350169,9.33333333 8.75,8.73637967 8.75,8 C8.75,7.26362033 9.53350169,6.66666667 10.5,6.66666667 L33.25,6.66666667 C34.2164983,6.66666667 35,7.26362033 35,8 C35,8.73637967 34.2164983,9.33333333 33.25,9.33333333 L10.5,9.33333333 Z M10.5,17.3333333 C9.53350169,17.3333333 8.75,16.7363797 8.75,16 C8.75,15.2636203 9.53350169,14.6666667 10.5,14.6666667 L33.25,14.6666667 C34.2164983,14.6666667 35,15.2636203 35,16 C35,16.7363797 34.2164983,17.3333333 33.25,17.3333333 L10.5,17.3333333 Z M10.5,25.3333333 C9.53350169,25.3333333 8.75,24.7363797 8.75,24 C8.75,23.2636203 9.53350169,22.6666667 10.5,22.6666667 L33.25,22.6666667 C34.2164983,22.6666667 35,23.2636203 35,24 C35,24.7363797 34.2164983,25.3333333 33.25,25.3333333 L10.5,25.3333333 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BUtons">
+            <g id="BUT">
+                <use fill="#43B02A" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#43B02A" stroke-width="2" x="1" y="1" width="56" height="58"></rect>
+            </g>
+            <g id="burger" transform="translate(8.180664, 13.490234)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-2"></use>
+            </g>
+        </g>
+    </g>
+</svg>
