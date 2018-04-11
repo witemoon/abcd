@@ -1,0 +1,71 @@
+<div id="signWrap" class=" h-100 container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 id="brandLogo" class="text-center">
+        <a>
+          <img src="./assets/img/firstdata_logo.svg">
+        </a>
+      </h1>
+      <div class="formWrap ">
+        <div class="formWrapInner">
+          <br>
+
+          <h1 class="headingWrap">Change Your Password</h1>
+          <div class="tab-content" id="signin-tab-content">
+
+            <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+              <p class="loginDesc">Please complete all fields below</p>
+
+
+
+              <form #f="ngForm">
+                <div class="form-group">
+                  <input type="password" class="form-control"  placeholder="Re-enter temp password" ngModel  name="temp_password" required  #tempPassword="ngModel"  >
+                  
+                 
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control " placeholder="Enter New Password" ngModel  name="password" required  #password="ngModel" minlength="8" pattern="Abc@123456">
+                  <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
+                      <p *ngIf="password.errors.required">password Key is required</p>
+                    <p   *ngIf="password.errors.minlength">Password has minimum lenghth 8 char</p>                   
+                    <p *ngIf="password.errors.pattern">Please enter the valid Password pattern</p>
+            </div>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Re-confirm your password" ngModel  name="reConf_password" required  #reCnfPass="ngModel" validateEqual="password" >
+                  <div class="alert alert-danger" *ngIf="reCnfPass.touched && !reCnfPass.valid">Please Re-Confirm the same Password</div>
+                </div>
+                <div class="form-group">
+                  <div class="card">
+                    <div class="card-body p-0 bg-light">
+                      <img class="img-fluid " src="./assets/img/captcha.png">
+                    </div>
+                  </div>
+                </div>
+
+                
+
+
+                <br>
+                <br>
+
+
+                <button type="submit" (click)="signIn()" class="btnSubmit btn btn-primary btn-lg btn-block">Submit
+                </button>
+                <br>
+                <br>
+
+
+              </form>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
