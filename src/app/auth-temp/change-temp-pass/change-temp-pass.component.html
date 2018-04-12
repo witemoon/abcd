@@ -1,4 +1,4 @@
-<div id="signWrap" class=" h-100 container-fluid">
+<div id="signWrap" class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
       <h1 id="brandLogo" class="text-center">
@@ -8,7 +8,6 @@
       </h1>
       <div class="formWrap ">
         <div class="formWrapInner">
-          <br>
 
           <h1 class="headingWrap">Change Your Password</h1>
           <div class="tab-content" id="signin-tab-content">
@@ -18,40 +17,57 @@
 
 
 
-              <form  #changePassword="ngForm">
+              <form #changePass="ngForm" (submit)="changePassword(changePass)">
                 <div class="form-group">
-                  <input type="password" class="form-control"  placeholder="temp password" name="tempPass" ngModel required >
-                  
-                 
+                  <input
+                   type="password"
+                    class="form-control"
+                      placeholder="temp password"
+                      name="tempPass"
+                      ngModel
+
+                       >
+
+
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control " placeholder="Enter New Password" name="newPass" ngModel required>
-                  
+                  <input
+                  type="password"
+                   class="form-control "
+                    placeholder="Enter New Password"
+                    name="newPass"
+                    ngModel
+
+                    >
+
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control " placeholder="Re-confirm Password" name="reCnfPass" ngModel required>
-                    
+                    <input
+                     type="password"
+                      class="form-control "
+                      placeholder="Re-confirm Password"
+                      name="confPassword"
+                      ngModel
+
+                      >
+
                   </div>
-               
                 <div class="form-group">
-                    <re-captcha
-                                [(ngModel)]="captchaValue"
-                                name="captcha"
-                                required
-                              ></re-captcha>
+                  <re-captcha
+
+                  name="captcha"
+                  required
+                ></re-captcha>
                 </div>
 
-                
 
 
-                <br>
-                <br>
 
 
-                <button type="submit" (click)="landPage()" class="btnSubmit btn btn-primary btn-lg btn-block" [disabled]="!changePassword.valid">Submit
+
+
+                <button type="submit"  class="btnSubmit btn btn-primary btn-lg btn-block">Submit
                 </button>
-                <br>
-                <br>
 
 
               </form>

@@ -1,133 +1,160 @@
+<h1 id="brandLogo" class="text-center">
+  <a><img src="./assets/img/firstdata_logo.svg"></a>
+</h1>
+<div class="formWrap ">
+  <div class="formWrapInner exSpacer">
+    <ul class="nav nav-tabs" id="signin-tab" role="tablist">
+      <li class="nav-item w-50 text-right">
+        <a class="nav-link " id="home-tab" data-toggle="tab" href="#signin" role="tab"
+           aria-controls="home" aria-selected="true">Sign In</a>
+      </li>
+      <li class="nav-item w-50">
+        <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#signup" role="tab"
+           aria-controls="profile" aria-selected="false">Sign Up</a>
+      </li>
 
-    <h1  id="brandLogo" class="text-center">
-        <a><img src="./assets/img/firstdata_logo.svg"></a>
-    </h1>
-    <div class="formWrap ">
-        <div class="formWrapInner">
-            <ul class="nav nav-tabs" id="signin-tab" role="tablist">
-                <li class="nav-item w-50 text-right">
-                    <a class="nav-link " id="home-tab" data-toggle="tab" href="#signin" role="tab"
-                       aria-controls="home" aria-selected="true">Sign In</a>
-                </li>
-                <li class="nav-item w-50">
-                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#signup" role="tab"
-                       aria-controls="profile" aria-selected="false">Sign Up</a>
-                </li>
-
-            </ul>
-
-
+    </ul>
+    <div class="tab-content" id="signin-tab-content">
 
 
-            <div class="tab-content" id="signin-tab-content">
+      <!--Sign in Tab Starts-->
+      <div class="tab-pane fade  " id="signin" role="tabpanel" aria-labelledby="signin-tab">
 
 
-
-                <!--Sign in Tab Starts-->
-                <div class="tab-pane fade  " id="signin" role="tabpanel" aria-labelledby="signin-tab">
-                    <p class="loginDesc">Please complete all fields below</p>
-
-                    <!-- signin Page  form -->
-                    <!-- use reactive form for signin-->
-
-
-
-
-                    <!-- Start if signin form -->
-                    <form>
-                        <div class="form-group emailWrap">
-                            <input type="text" class="form-control"  placeholder="Enter Email" >
-                           
-
-                        </div>
-                        <div class="form-group passwordWrap">
-                            <input type="password" class="form-control" placeholder="Enter Password"   >
-                           
-                        </div>
-
-                        <br>
-                        <br>
-                        <br>
-                        <button type="submit"   class="btnSubmit btn btn-primary btn-lg btn-block">
-                            Submit
-                        </button>
-                        <br>
-                        <br>
-                        
-
-                    </form>
-                    <p class="text-center footerTxt ">Forgot Password? <a  class=""><b>Reset </b></a></p>
-
-                    <!-- end of sign IN form-->
-                </div>
-
-                <!-- Start of signUP form -->
+        <!-- Start if signin form -->
+        <form #signInReg="ngForm" (ngSubmit)="signInRegular(signInReg)">
+          <div>
+            <p class="loginDesc ">Please complete all fields below</p>
+            <p *ngIf="signInReg.submitted" class="loginDesc err-text">Your email or password is incorrect!</p>
+          </div>
+          <div class="form-group emailWrap">
+            <input
+              type="text"
+              class="form-control "
+              placeholder="Email"
+              name="email"
+              ngModel
+              #email="ngModel"
+            >
 
 
+          </div>
+          <div class="form-group passwordWrap">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Enter Password"
+              name="password"
+              ngModel
+              #password="ngModel"
+            >
+
+          </div>
 
 
-
-                <!--Sign UP Tab Starts-->
-
-                <div class="tab-pane fade show active" id="signup" role="tabpanel"
-                     aria-labelledby="signup-tab">
-                    <p class="loginDesc">Please complete all fields below</p>
-
-                <!-- start of sign UP form -->
-
- 
-                    <form  #register="ngForm">
+          <button type="submit"
+                  class="btnSubmit btn btn-primary btn-lg btn-block">
+            Submit
+          </button>
 
 
-                        <div class="form-group">
-                            <input   type="text" class=" form-control" placeholder="Reference Key" name="referenceKey" ngModel required > 
-                        </div>
+        </form>
+        <p class="text-center footerTxt ">Forgot Password? <a (click)="resetRegPassword()" class=""><b>Reset </b></a>
+        </p>
+
+        <!-- end of sign IN form-->
+      </div>
+
+      <!-- Start of signUP form -->
 
 
-                        <div class="form-group">
-                            <input type="text" class="form-control " placeholder="Lease Number" name="leaseNumber" ngModel  required >                           
-                        </div>
-                       
-                        <div class="form-group">
-                            <input type="text" class="form-control " placeholder="Merchant DBA"  name="merchantDBA" ngModel required>                            
-                        </div>
+      <!--Sign UP Tab Starts-->
+
+      <div class="tab-pane fade show active" id="signup" role="tabpanel"
+           aria-labelledby="signup-tab">
+        <p class="loginDesc">Please complete all fields below</p>
+
+        <!-- start of sign UP form -->
 
 
-                        <div class="form-group">
-                                <re-captcha
-                                [(ngModel)]="captchaValue"
-                                name="captcha"
-                                required
-                              ></re-captcha>
-                        </div>
+        <form #signUpForm="ngForm" (ngSubmit)="signUpUser(signUpForm)">
 
 
-                        <button type="button" 
-                                class="btnSubmit btn btn-primary btn-lg btn-block" (click)="submit()" [disabled]="!register.valid" >Submit
-                        </button>
-                        <br>
-                        <br>
-                        
-                       
-                           
-
-                    </form>  
-                    
-                    <p class="text-center footerTxt ">Already have an account? <a   class=""><b>Sign In</b></a></p>
-
-
-                    <!-- end of signUp form -->
+          <div class="form-group">
+            <input
+              type="text"
+              class=" form-control"
+              placeholder="Reference Key"
+              name="referenceKey"
+              ngModel
+              required
+              #refrenceNumber="ngModel"
+            >
+          </div>
+          <div class="alert alert-danger" *ngIf="signUpForm.submitted">Incorrect Reference Key!</div>
 
 
-                </div>
-            
-               
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control "
+              placeholder="Lease Number"
+              name="leaseNumber"
+              ngModel
+              required
+              #leaseNumber="ngModel"
+            >
+          </div>
+          <div class="alert alert-danger" *ngIf="signUpForm.submitted">Incorrect Lease Key!</div>
 
-        </div>
-       
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control "
+              placeholder="Merchant DBA"
+              name="merchantDBA"
+              ngModel
+              required
+              #merchantDBA="ngModel"
+            >
+          </div>
+          <div class="alert alert-danger" *ngIf="signUpForm.submitted" >Incorrect MerchnatDBA Key!</div>
+          <!-- Recaptch -->
+          <div class="form-group">
+            <re-captcha
+
+              name="captcha"
+              required
+            ></re-captcha>
+          </div>
+
+
+          <button type="submit"
+                  class="btnSubmit btn btn-primary btn-lg btn-block"
+                  [disabled]="!signUpForm.valid">
+            Submit
+          </button>
+
+
+        </form>
+
+        <p class="text-center footerTxt ">Already have an account? <a (click)="signInPageReg()" class=""><b>Sign In</b></a>
+        </p>
+
+
+        <!-- end of signUp form -->
+
+
+      </div>
+
+
     </div>
-    
+
+  </div>
+
 </div>
+
+
 
 
 

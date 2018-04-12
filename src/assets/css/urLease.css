@@ -1,5 +1,5 @@
 /*********************
-VARIABLES
+VARIABLES Starts Here.
 *********************/
 /*importing fonts*/
 @font-face {
@@ -15,6 +15,9 @@ VARIABLES
   font-family: SimpleSans-Regular;
   src: url(../fonts/simplesans-regular-webfont.ttf); }
 /*********************************** variables  ENDS here *********************************/
+/*********************
+Mixings Starts Here.
+*********************/
 /*********************************** bootstrap-overrides  STARTS here *********************************/
 a {
   color: #0072ce; }
@@ -57,7 +60,7 @@ a {
 /*********************************** layout STARTS here *********************************/
 body, html {
   height: 100%;
-  font: 12px SimpleSans-Medium, Helvetica, sans-serif;
+  font: 12px SimpleSans-Regular, Helvetica, sans-serif;
   font-weight: normal; }
 
 #land-wrap {
@@ -71,14 +74,24 @@ body, html {
   #land-wrap ul li {
     color: #4f4f4f;
     font-size: 1rem;
-    line-height: 2.33; }
+    line-height: 2.33;
+    font-family: SimpleSans-Bold, Helvetica, sans-serif; }
 
 .land-head {
+  padding: 30px;
   background: #fff;
-  padding: 38px 30px;
-  z-index: 1;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
-  border: 1px dashed red; }
+  z-index: 1; }
+  .land-head h1 {
+    padding: 0px;
+    margin: 0px;
+    line-height: 0px; }
+  .land-head .butSpacer {
+    display: inline-block;
+    width: 14px; }
+
+.land-head {
+  width: 100%; }
 
 .fd-Heading {
   font-family: SimpleSans-Black;
@@ -101,25 +114,26 @@ body, html {
 .land-hero-cnt {
   position: absolute;
   right: 0px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center; }
+  width: 50%;
+  display: table; }
+  .land-hero-cnt .land-hero-cnt-inner {
+    display: table-cell;
+    vertical-align: middle; }
 
 .fd-but-sign {
-  width: 130px;
-  border-radius: 30px;
+  width: 125px;
+  border-radius: 16px;
   border: solid 0.5px #17405f;
-  color: #0072ce;
-  margin-left: 10px;
-  font-family: SimpleSans-Medium, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
-  line-height: 23px;
   letter-spacing: normal;
-  color: #17405f; }
+  color: #0072ce;
+  font-family: SimpleSans-Medium, Helvetica, sans-serif;
+  color: #17405f;
+  padding: 0px;
+  height: 30px; }
   .fd-but-sign .norTxt {
     font-size: inherit;
     font-family: SimpleSans-Regular, Helvetica, sans-serif;
@@ -138,13 +152,25 @@ body, html {
   height: 130px;
   background-color: green; }
 
+.form-group {
+  background: red;
+  padding: 10px;
+  position: relative; }
+  .form-group .fd-error {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: SimpleSans-Bold, Helvetica, sans-serif;
+    color: red;
+    background: white; }
+
 #signWrap {
   background-color: #edf7fe;
   background-image: url("../img/mainBg.png");
-  background-position: 100% 100%;
+  background-position: bottom center;
   background-repeat: no-repeat;
   min-height: 100%;
-  background-size: 100% auto; }
+  background-size: cover; }
 
 .nav-tabs {
   border: none; }
@@ -175,16 +201,20 @@ body, html {
     left: 0px;
     border-bottom: 3px solid #0072ce; }
 
-.loginDesc {
-  padding-top: 35px;
-  font-size: 1.16rem; }
-
 .loginDescSec {
-  font-size: 1.16rem; }
+  font-size: 1.16rem;
+  color: black; }
 
 #brandLogo {
   padding-top: 50px;
-  padding-bottom: 30px; }
+  padding-bottom: 40px;
+  line-height: 0px;
+  margin-bottom: 0px; }
+
+.formWrapInner.exSpacer {
+  padding: 2.5rem 3.66rem 5.83rem 3.66rem; }
+  .formWrapInner.exSpacer .nav-tabs {
+    margin-bottom: 37px; }
 
 .formWrapInner {
   background-color: #ffffff;
@@ -192,15 +222,35 @@ body, html {
   margin: 0 auto;
   width: 100%;
   max-width: 410px;
-  padding: 3.66rem;
+  padding: 2.5rem 3.66rem 5.83rem 3.66rem;
   opacity: 0.75;
   border-radius: 6px;
   backdrop-filter: blur(10px);
   box-shadow: 0 3px 8px 0 rgba(0, 65, 101, 0.15); }
+  .formWrapInner #signup, .formWrapInner #signin {
+    position: relative; }
+    .formWrapInner #signup .footerTxt, .formWrapInner #signin .footerTxt {
+      margin-bottom: 0px;
+      position: absolute;
+      width: 100%;
+      bottom: -45px; }
+  .formWrapInner p {
+    padding-top: 0px;
+    font-size: 1.16rem; }
+  .formWrapInner .loginDesc {
+    margin-bottom: 10px;
+    padding-top: 0px;
+    font-size: 1.16rem; }
   .formWrapInner .form-control {
     font-size: 1.16rem;
     font-weight: bold;
     line-height: 2.5rem; }
+  .formWrapInner .form-group {
+    margin-bottom: 0px;
+    margin-bottom: 15px; }
+    .formWrapInner .form-group .form-control {
+      border: 1px solid #616365;
+      padding: 0.541rem .75rem; }
   .formWrapInner .errorMsg {
     border: 1px solid #C01324; }
   .formWrapInner .txtError {
@@ -215,7 +265,12 @@ body, html {
     font-size: 1.83rem;
     font-weight: bold; }
   .txtInnerWrap p {
-    font-size: 1rem; }
+    font-size: 1rem;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal; }
 
 .btnSubmit {
   line-height: 2.5rem;
@@ -229,7 +284,8 @@ body, html {
   font-size: 2rem;
   font-weight: bold;
   color: #0072ce;
-  line-height: 21px; }
+  line-height: 21px;
+  margin-bottom: 50px; }
 
 .success-wrap {
   max-width: 600px;
@@ -238,7 +294,7 @@ body, html {
 .emailWrap, .passwordWrap {
   position: relative; }
   .emailWrap input, .passwordWrap input {
-    padding-left: 40px; }
+    padding-left: 40px !important; }
 
 .passwordWrap:after {
   content: url(../img/passIcon.svg);
@@ -251,6 +307,61 @@ body, html {
   position: absolute;
   left: 10px;
   top: 12px; }
+
+.toolWrap {
+  margin-right: 10px;
+  margin-left: 10px; }
+  .toolWrap .toolInnerWrap {
+    padding: 15px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+    background-color: #0072ce;
+    border: solid 1px #0072ce;
+    opacity: 1;
+    border-radius: 6px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 3px 8px 0 rgba(0, 65, 101, 0.15);
+    color: #fff;
+    font-family: SimpleSans-Bold, Helvetica, sans-serif;
+    font-size: 10px; }
+    .toolWrap .toolInnerWrap .toolArrow {
+      position: absolute;
+      left: 40px;
+      top: -10px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #0072ce; }
+    .toolWrap .toolInnerWrap ul {
+      padding-left: 0px;
+      margin-bottom: 0px; }
+    .toolWrap .toolInnerWrap ul li {
+      font-family: SimpleSans-Regular, Helvetica, sans-serif;
+      font-size: 10px;
+      color: #fff;
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+      padding-bottom: 10px; }
+      .toolWrap .toolInnerWrap ul li:last-child {
+        padding-bottom: 0px; }
+      .toolWrap .toolInnerWrap ul li .tool-icon {
+        display: inline-block;
+        background-image: url("../img/check.svg");
+        background-repeat: no-repeat;
+        background-position: 0px 2px;
+        width: 10px;
+        height: 10px; }
+      .toolWrap .toolInnerWrap ul li .tool-icon.yes-icon {
+        display: inline-block;
+        background-image: url("../img/cross.svg");
+        background-repeat: no-repeat;
+        width: 10px;
+        height: 10px; }
 
 /*********************************** login ENDS here *********************************/
 /*********************************** dashboard  STARTS here *********************************/
@@ -789,7 +900,7 @@ body, html {
 
 .lft-but-wrap {
   position: absolute;
-  background: #43b02a;
+  background: green;
   width: 100%;
   top: 0px;
   height: 60px;
@@ -979,7 +1090,7 @@ ul.lft-icon-wrap li.active {
   background-image: url("../img/open.svg");
   background-repeat: no-repeat;
   background-position: right top;
-  background-color: #43b02a;
+  background-color: green;
   width: 60px;
   cursor: pointer; }
 
@@ -1048,10 +1159,10 @@ ul.lft-icon-wrap li.active {
   transition: .4s; }
 
 input:checked + .slider {
-  background-color: #43b02a; }
+  background-color: green; }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #43b02a; }
+  box-shadow: 0 0 1px green; }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(22px);
@@ -1067,7 +1178,48 @@ input:checked + .slider:before {
 
 /*********************************** sidebar ENDS here *********************************/
 /*********************************** sidebar  STARTS here *********************************/
-@media (min-width: 0px) and (max-width: 769px) {
+/*Extra small devices (portrait phones, less than 576px)*/
+/*No media query since this is the default in Bootstrap*/
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 768px) {
+  .land-hero-cnt {
+    width: 50%;
+    padding: 0px 10px 0px 0px; }
+
+  .fd-Heading {
+    font-size: 14px; }
+
+  #land-wrap p, #land-wrap ul li {
+    font-size: 10px; }
+
+  .fd-SubHeading {
+    font-size: 16px; }
+
+  .land-head > div:nth-child(2) {
+    margin-top: 30px; }
+
+  .formWrapInner {
+    padding: 2.5rem 1.66rem 5.83rem 1.66rem; }
+
+  .formWrapInner.exSpacer {
+    padding: 2.5rem 1.66rem 5.83rem 1.66rem; }
+
+  #brandLogo {
+    padding-top: 50px;
+    padding-bottom: 25px; }
+
+  .txtInnerWrap {
+    padding-top: 30px; } }
+@media (max-width: 575px) {
+  .aLeft {
+    text-align: center; }
+
+  .aRight {
+    text-align: center; }
+
+  .mTop {
+    margin-top: 20px; }
+
   .prodisplay {
     right: -240px;
     top: 90px; }
@@ -1098,6 +1250,139 @@ input:checked + .slider:before {
   .md-logo > div {
     background: yellow;
     min-height: 60px; } }
+@media (min-width: 576px) {
+  .aLeft {
+    text-align: center; }
+
+  .aRight {
+    text-align: center; }
+
+  .prodisplay {
+    right: -240px;
+    top: 90px; }
+
+  .ctrlWidthRyt {
+    right: 0px; }
+
+  #SidenavRytBut {
+    right: 0px;
+    top: 60px;
+    width: 40px; }
+
+  .db-bread-wrap {
+    padding-top: 0px !important; }
+
+  .sidenav {
+    width: 0px; }
+
+  .ctrlWidthLft {
+    width: 220px; }
+
+  .db-inner-wrap {
+    padding: 0px 35px; }
+
+  .md-logo img {
+    max-width: 135px; }
+
+  .md-logo > div {
+    background: yellow;
+    min-height: 60px; } }
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .aLeft {
+    text-align: left; }
+
+  .aRight {
+    text-align: right; }
+
+  .land-hero-cnt {
+    width: 50%;
+    float: right;
+    padding: 30px; } }
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .aLeft {
+    text-align: left; }
+
+  .aRight {
+    text-align: right; } }
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .aLeft {
+    text-align: left; }
+
+  .aRight {
+    text-align: right; } }
 /*********************************** sidebar ENDS here *********************************/
+/*********************************** captcha  STARTS here *********************************/
+/*********************************** captcha ENDS here *********************************/
+a:hover {
+  color: red; }
+
+span p {
+  color: blue; }
+
+p.testone {
+  color: yellow; }
+
+.ls-home {
+  background-image: url("../img/ls-home.svg");
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  height: 25px;
+  width: 25px; }
+
+.ls-home > span {
+  background-color: #0072ce; }
+
+.ls-epp {
+  background-image: url("../img/ls-epp.svg");
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  height: 25px;
+  width: 25px; }
+
+.ls-epp > span {
+  background-color: #0072ce; }
+
+.ls-claims {
+  background-image: url("../img/ls-claims.svg");
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  height: 25px;
+  width: 25px; }
+
+.ls-claims > span {
+  background-color: #0072ce; }
+
+.ls-eol {
+  background-image: url("../img/ls-eol.svg");
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  height: 25px;
+  width: 25px; }
+
+.ls-eol > span {
+  background-color: #0072ce; }
+
+.ls-faq {
+  background-image: url("../img/ls-faq.svg");
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  height: 25px;
+  width: 25px; }
+
+.ls-faq > span {
+  background-color: #0072ce; }
+
+.ls-phone {
+  background-image: url("../img/ls-phone.svg");
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  height: 25px;
+  width: 25px; }
+
+.ls-phone > span {
+  background-color: #0072ce; }
 
 /*# sourceMappingURL=urLease.css.map */

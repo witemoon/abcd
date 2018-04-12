@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup ,FormControl } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-sign-in',
@@ -9,11 +12,23 @@ import { Router } from '@angular/router';
 export class SignInComponent implements OnInit {
 
   constructor(private router:Router) { }
-
+    
   ngOnInit() {
-  }
-  dashborad(){
-    this.router.navigate(['**']);
+    
+   
   }
 
+  regularSignIn(regSignIn){
+   var email=regSignIn.value.email;
+   var password=regSignIn.value.password;
+   if(email=='demo2@test.com' && password=='Demo2@123'){
+     this.router.navigate(['/dashboard/home']);
+   }
+   else{
+     console.log('failed');
+   }
+
+  
+
+  }
 }

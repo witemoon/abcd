@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup ,FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-reset',
@@ -11,10 +13,16 @@ export class ResetComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
+    
   }
-  thankyou(){
-    console.log("yesg");
-    this.router.navigate(['/thankyou']);
+  forgotPass(resetPass){
+    var email=resetPass.value.email;
+    if(email=='demo2@test.com'){
+      this.router.navigate(['/thankyou']);
+    }
+    else{
+      console.log('change password fail');
+    }
   }
-
+  
 }
