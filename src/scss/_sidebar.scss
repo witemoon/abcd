@@ -1,0 +1,293 @@
+
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 60px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 4; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #ffc63f; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: $slateGray;
+  box-shadow: 4px 0 8px 0 rgba(0, 0, 0, 0.25);
+
+}
+
+.lft-but-wrap {
+  position: absolute;
+  background: $bgGreen;
+  width: 100%;
+  top: 0px;
+  height: 60px;
+  opacity: 1;
+
+}
+
+.sidenav.ctrlWidthLft ul.lft-icon-wrap {
+  margin-top: 70px;
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+
+.sidenav.ctrlWidthLft .extitle {
+  margin-top: 6px;
+
+}
+
+ul.lft-icon-wrap {
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+
+.extitle {
+  display: none;
+  float: left;
+  font-size: 1rem;
+}
+
+.icnWrap {
+  width: 60px;
+  text-align: center;
+  display: inline-block;
+  float: left;
+}
+
+.sidenav.ctrlWidthLft .extitle {
+  display: inline-block;
+  width: 145px;
+}
+
+.sidenav.ctrlWidthLft .nrtitle {
+  display: none;
+}
+
+.sidenav.ctrlWidthLft ul.lft-icon-wrap li {
+  padding-top: 20px;
+
+}
+
+ul.lft-icon-wrap li {
+  width: 100%;
+  text-align: left;
+  font-size: 0.66rem;
+  font-family: $font-stack-reg;
+  cursor: pointer;
+  color: $white;
+  height: 60px;
+  padding-top: 12px;
+  //background: $bgGreen;
+  border-bottom: 1px solid $bdrGray;
+  &:hover {
+    background: $primary;
+  }
+  &:active {
+    background: $primary;
+  }
+
+}
+
+ul.lft-icon-wrap li.active {
+  font-family: $font-stack-bld;
+  text-transform: uppercase;
+  background: $primary;
+
+}
+
+.sidenav.ctrlWidthLft .lft-but-wrap {
+  height: 130px;
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.loginname {
+  opacity: 0;
+  font-family: $font-stack-bld;
+  font-size: 1.166rem;
+
+  color: $white;
+  padding: 15px 0px 0px 15px;
+
+}
+
+.signout-Wrap {
+  opacity: 0;
+  font-family: $font-stack-reg;
+  font-size: 0.83rem;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: $white;
+  cursor: pointer;
+
+}
+
+.sidenav.ctrlWidthLft .lft-but-wrap .loginname, .sidenav.ctrlWidthLft .lft-but-wrap .signout-Wrap {
+  opacity: 1;
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sidenavB {
+  height: 60px; /* 100% Full-height */
+  //width: 220px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  //background: $bgGreen;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+  text-align: right;
+
+}
+
+.sidenavR {
+  height: 30px; /* 100% Full-height */
+  //width: 220px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background: $slateGray;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+  text-align: right;
+
+}
+
+.prodisplay {
+  height: 100%; /* 100% Full-height */
+  width: 240px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 60px; /* Stay at the top */
+  right: -120px;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 30px; /* Place content 60px from the top */
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+  background-color: $white;
+  background: #fafafa;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pro-img-pad {
+  margin: 10px;
+  text-align: right !important;
+}
+
+.prodisplay {
+
+  .oddBg {
+    background: $bgGrayPro;
+    border-bottom: 2px solid #eeeeee;
+
+  }
+  .evenBg {
+    border-bottom: 2px solid #eeeeee;
+  }
+}
+
+.pro-cnt-wrap {
+  padding-left: 10px;
+
+  h3 {
+    font-family: $font-stack-bla;
+    font-size: 1.16rem;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: $txtGray;
+    padding-top: 14px;
+  }
+  p {
+
+    font-family: $font-stack-reg;
+    font-size: .83rem;
+
+  }
+}
+
+.ctrlWidthRyt {
+  right: 0px;
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+
+.ctrlWidthLft {
+  width: 220px; /* 0 width - change this with JavaScript */
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+
+.ctrlWidthLftB {
+  left: 160px; /* 0 width - change this with JavaScript */
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+
+//.ctrlWidthRytR {
+//  right: 160px; /* 0 width - change this with JavaScript */
+//  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+//
+//}
+
+#SidenavLftBut {
+  background-image: url("../img/open.svg");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-color: $bgGreen;
+  width: 60px;
+  cursor: pointer;
+
+}
+
+#SidenavRytBut {
+  background-image: url("../img/arrowNormal.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  width: 120px;
+  cursor: pointer;
+
+}
+
+#SidenavLftBut.tbut {
+  background-image: url("../img/close.svg");
+  background-repeat: no-repeat;
+  width: 60px;
+  cursor: pointer;
+
+}
+
+#SidenavRytBut.tbut {
+  background-image: url("../img/closeArrow.svg");
+  background-repeat: no-repeat;
+  width: 240px;
+  cursor: pointer;
+  background-position: center top;
+
+}
+
+#SidenavLftBut {
+  //position: absolute;
+  //left: 0px;
+  //top: 20px;
+  //z-index: 1002;
+}
+
+#SidenavRytBut {
+  right: 0px;
+  top: 60px;
+  z-index: 2;
+}
+
+.pro-img-cnt {
+  padding: 10px;
+}
+
+
+

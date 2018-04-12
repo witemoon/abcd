@@ -1,0 +1,185 @@
+/*Extra small devices (portrait phones, less than 576px)*/
+/*No media query since this is the default in Bootstrap*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 768px) {
+
+  .land-hero-cnt {
+    width: 50%;
+    padding: 0px 10px 0px 0px;
+
+  }
+  .fd-Heading {
+    font-size: 14px
+  }
+  #land-wrap p, #land-wrap ul li {
+    font-size: 10px
+  }
+  .fd-SubHeading {
+    font-size: 16px;
+  }
+
+  .land-head {
+    > div:nth-child(2) {
+      margin-top: 30px;
+    }
+  }
+  .formWrapInner {
+    padding: 2.5rem 1.66rem 5.83rem 1.66rem;
+  }
+  .formWrapInner.exSpacer {
+    padding: 2.5rem 1.66rem 5.83rem 1.66rem;
+
+  }
+  #brandLogo {
+    padding-top: 50px;
+    padding-bottom: 25px;
+
+  }
+  .txtInnerWrap {
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+
+  .aLeft {
+    text-align: center
+  }
+
+  .aRight {
+    text-align: center;
+  }
+
+  .mTop {
+    margin-top: 20px;
+  }
+
+  .prodisplay {
+    right: -240px;
+    top: 90px
+  }
+  .ctrlWidthRyt {
+    right: 0px;
+  }
+  #SidenavRytBut {
+    right: 0px;
+    top: 60px;
+    width: 40px;
+
+  }
+  .db-bread-wrap {
+    padding-top: 0px !important;
+  }
+  .sidenav {
+    width: 0px
+  }
+  .ctrlWidthLft {
+    width: 220px;
+  }
+  .db-inner-wrap {
+    padding: 0px 35px;
+  }
+  .md-logo img {
+    max-width: 135px;
+  }
+  .md-logo > div {
+    background: yellow;
+    min-height: 60px;
+  }
+
+}
+
+@media (min-width: 576px) {
+  .aLeft {
+    text-align: center
+  }
+
+  .aRight {
+    text-align: center;
+  }
+
+  .mTop {
+  }
+
+  .prodisplay {
+    right: -240px;
+    top: 90px
+  }
+  .ctrlWidthRyt {
+    right: 0px;
+  }
+  #SidenavRytBut {
+    right: 0px;
+    top: 60px;
+    width: 40px;
+
+  }
+  .db-bread-wrap {
+    padding-top: 0px !important;
+  }
+  .sidenav {
+    width: 0px
+  }
+  .ctrlWidthLft {
+    width: 220px;
+  }
+  .db-inner-wrap {
+    padding: 0px 35px;
+  }
+  .md-logo img {
+    max-width: 135px;
+  }
+  .md-logo > div {
+    background: yellow;
+    min-height: 60px;
+  }
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .aLeft {
+    text-align: left
+  }
+
+  .aRight {
+    text-align: right
+  }
+
+  .mTop {
+  }
+
+  .land-hero-cnt {
+    width: 50%;
+    float: right;
+    padding: 30px;
+  }
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .aLeft {
+    text-align: left
+  }
+
+  .aRight {
+    text-align: right
+  }
+
+  .mTop {
+  }
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .aLeft {
+    text-align: left
+  }
+
+  .aRight {
+    text-align: right
+  }
+}

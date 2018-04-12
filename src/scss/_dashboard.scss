@@ -1,0 +1,730 @@
+
+#db-wrap {
+  background: $bgGray;
+}
+
+.db-inner-wrap {
+  padding: 70px 155px 0px 95px;
+  background: #f5f7fa;
+  .breadcrumb {
+    background-color: $bgGray;
+    font-family: $font-stack-reg;
+    font-size: .88rem;
+    .breadcrumb-item.active {
+      color: $primary;
+      font-family: $font-stack-bld;
+    }
+    a {
+      color: $slateGray;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.db-header {
+  background: $white;
+  height: 60px;
+  box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.12);
+
+  .but-wrap {
+    padding-top: 12px;
+    float: right;
+    padding-right: 120px;
+
+    button {
+      margin-right: 8px;
+    }
+  }
+  .icon-wrap {
+    padding-right: 12px;
+
+    .alertWrap, .chatWrap {
+      padding: 8px 10px;
+      font-family: $font-stack-reg;
+      font-size: 10px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #0072ce;
+      cursor: pointer;
+
+    }
+
+  }
+  .logoWrap {
+    padding-left: 90px;
+    padding-top: 18px;
+  }
+  .logoWrap img {
+    max-width: 250px;
+  }
+  .btn-outline-primary {
+    border-radius: 5px;
+    border: solid 0.5px #0072ce;
+    box-shadow: none;
+    font-family: $font-stack-reg;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #0072ce;
+    padding: 9px 17px;
+
+    &:hover {
+      background-color: $primary;
+      color: $white;
+
+    }
+    &:active, &:focus {
+      background-color: $primary;
+      color: $white;
+      outline: none;
+
+    }
+
+  }
+}
+
+.db-lease-tab {
+
+  a.nav-link {
+    line-height: 2rem;
+    border-radius: 100px;
+    background-color: $white;
+    text-align: center;
+    font-size: 1rem;
+    font-family: $font-stack-med;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.12);
+    color: $primary;
+    &.active {
+      background-color: $primary;
+      font-weight: 900;
+    }
+
+  }
+
+}
+
+.db-lease-tab-cnt {
+  margin: 10px 0px;
+  .card {
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.12);
+    border: solid 1px $primary;
+    font-weight: normal;
+    .card-header {
+      background: $primary;
+      font-family: $font-stack-reg;
+      color: $white;
+      font-size: 1.3rem;
+
+    }
+    .statusWrap {
+      font-weight: 900;
+    }
+    .styletwo {
+      font-size: 0.83rem
+    }
+  }
+
+}
+
+.btmTabCtrl {
+  margin-top: -10px
+}
+
+.icon-wrap {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.db-inner-box {
+
+  border-radius: 5px;
+  background-color: $white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.db-lease-tab-cnt {
+  ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+  }
+  ul li {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    font-family: $font-stack-reg;
+    font-size: .83rem;
+    line-height: 1.25rem;
+    span {
+      font-family: $font-stack-bld;
+    }
+  }
+}
+
+#Coverage {
+  ul li {
+    line-height: 23px;
+    label {
+      font-family: $font-stack-bld;
+      font-size: 1.16rem;
+      color: $slateGray;
+      font-weight: normal;
+      letter-spacing: normal;
+      font-stretch: normal;
+
+    }
+    span {
+      font-family: $font-stack-reg;
+      font-size: 1.16rem;
+      color: $primary;
+    }
+  }
+  .card-body {
+    h6 {
+      font-family: $font-stack-reg;
+      font-size: 1.16rem;
+      line-height: normal;
+      padding: 10px 0px 0px 0px;
+
+      a {
+        font-family: $font-stack-bld;
+      }
+
+    }
+  }
+}
+
+#Contract {
+  h6 {
+    font-family: $font-stack-reg;
+    font-size: 1rem;
+    line-height: normal;
+    padding: 30px 0px 0px 0px;
+    text-align: center;
+    color: red;
+    margin-bottom: -5px;
+
+    span {
+      color: $slateGray;
+      display: block;
+      padding-top: 5px;
+
+    }
+
+  }
+  ul li {
+    padding-bottom: 15px;
+    label {
+      font-family: $font-stack-bld;
+      font-size: 1rem;
+      color: $slateGray;
+      font-weight: normal;
+      letter-spacing: normal;
+      font-stretch: normal;
+      display: block;
+      line-height: normal;
+      margin-bottom: 5px;
+
+    }
+    span {
+      font-family: $font-stack-reg;
+      font-size: 1rem;
+      color: $primary;
+      font-weight: normal;
+      letter-spacing: normal;
+      font-stretch: normal;
+      display: block;
+    }
+
+  }
+
+}
+
+#Payment {
+  table {
+    tr {
+      td {
+        padding-right: 20px;
+        padding-left: 20px;
+
+      }
+
+      td:last-child {
+        text-align: right;
+      }
+    }
+    tr:last-child {
+      font-size: 1.16rem;
+      color: $txtRed;
+      font-family: $font-stack-bla;
+
+    }
+
+  }
+
+  h6 {
+    font-family: $font-stack-reg;
+    font-size: 1.33rem;
+    line-height: normal;
+    text-align: center;
+    color: red;
+    padding: 15px 0px;
+    span {
+      font-size: 1rem;
+      color: $primary;
+
+    }
+  }
+
+}
+
+#Equipment {
+
+  .carousel-control-prev-icon {
+    background-image: url("../img/lftarrow.svg");
+
+    width: 30px;
+    height: 30px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .carousel-control-next-icon {
+    background-image: url("../img/rytarrow.svg");
+
+    width: 30px;
+    height: 30px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .cus-card {
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    background: $white;
+    label {
+
+      font-family: $font-stack-bld;
+      font-size: 1rem;
+      color: $slateGray;
+      margin-bottom: 2px;
+
+    }
+    span {
+      font-family: $font-stack-reg;
+      font-size: 1rem;
+      color: $primary;
+    }
+
+  }
+
+}
+
+.carousel-control-next, .carousel-control-prev {
+  opacity: 0;
+}
+
+#carouselExampleControls1:hover .carousel-control-next,
+#carouselExampleControls1:hover .carousel-control-prev {
+  opacity: 1;
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+
+.db-lease-wrap {
+
+  .carousel-control-prev-icon {
+    background-image: url("../img/lftarrow.svg");
+
+    width: 30px;
+    height: 30px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+  }
+
+  .carousel-control-next-icon {
+    background-image: url("../img/rytarrow.svg");
+
+    width: 30px;
+    height: 30px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .cus-card.active {
+    background-color: $primary;
+    cursor: pointer;
+    label, span {
+
+      color: $white;
+
+    }
+  }
+  .cus-card {
+
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.12);
+    padding: 50px 0px;
+    &:hover {
+      background-color: $primary;
+      cursor: pointer;
+      label, span {
+
+        color: $white;
+
+      }
+    }
+    ul {
+      padding: 0px;
+      margin: 0px;
+      list-style-type: none
+    }
+    ul li {
+      margin-bottom: 10px;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    label {
+
+      font-family: $font-stack-reg;
+      font-size: 1.16rem;
+      color: $primary;
+      display: block;
+      padding-top: 20px;
+      margin-bottom: -10px;
+
+    }
+    span {
+      font-family: $font-stack-bld;
+      font-size: 1.16rem;
+      color: $primary;
+      display: block;
+      padding-bottom: 20px;
+    }
+
+  }
+
+}
+
+.faq {
+  h3 {
+
+    font-family: $font-stack-bld;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3e3e3e;
+    padding-top: 20px;
+  }
+  p {
+    font-size: 10px;
+    font-family: $font-stack-reg;
+
+  }
+
+}
+
+.eol {
+  .card-header {
+    background: $primary;
+  }
+  #accordion {
+    width: 100%
+  }
+  .btn {
+    border: none;
+    box-shadow: none;
+    color: white;
+    width: 100%;
+    text-align: left;
+
+  }
+  .btn:after {
+    content: "";
+    background: url("../img/ic-up.svg");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 19px;
+    right: 13px;
+  }
+  .btn.collapsed:after {
+
+    content: "";
+    background: url("../img/ic-down.svg");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 19px;
+    right: 13px;
+
+  }
+
+  .collapse.show {
+
+  }
+
+}
+
+.db-inner-box {
+  min-height: 100%;
+}
+
+.epp {
+  font-family: $font-stack-reg;
+  p {
+    font-size: .83rem;
+  }
+  .details {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    li {
+
+    }
+    label {
+      width: 130px;
+      font-family: $font-stack-reg;
+      font-size: 1rem;
+    }
+    span {
+      font-family: $font-stack-bla;
+      font-size: 1rem;
+
+    }
+    .activeBg {
+      color: $primary;
+
+    }
+  }
+  .listWrap {
+    ul li {
+      padding: 0px;
+      margin: 0px;
+      list-style-type: none;
+      line-height: 1.6rem;
+    }
+    background: rgba(97, 99, 101, 0.1);
+    font-family: $font-stack-bld;
+
+  }
+}
+
+.txtone {
+  font-family: $font-stack-bld;
+  font-size: 1rem;
+  color: $primary;
+}
+
+.txttwo {
+  font-family: $font-stack-reg;
+  font-size: 1rem;
+  color: $primary;
+}
+
+.txtthree {
+  font-family: $font-stack-bld;
+  font-size: 1rem;
+  margin-top: 2px;
+  display: inline-block;
+  position: absolute;
+  padding-left: 10px;
+}
+
+.clrPrime {
+  color: $primary;
+}
+
+.ctrlPad {
+  overflow: hidden;
+  margin-right: 5px;
+  padding-left: 5px;
+  padding-top: 3px;
+}
+
+//modals
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-footer {
+  border-top: none !important;
+  border-bottom: none !important;
+
+}
+
+.paymentWrap {
+  cursor: pointer
+}
+
+#alertspop, #paymentspop {
+  .modal-dialog {
+    border-radius: 6px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    min-height: 300px;
+  }
+
+  .cntWrap {
+    margin-left: -13px;
+    margin-right: -13px;
+    background-color: rgba(97, 99, 101, 0.1);
+    padding-left: 30px !important;
+
+    span {
+      font-family: $font-stack-reg;
+      font-size: 16px;
+      display: inline-block;
+      margin-left: 20px;
+    }
+  }
+}
+
+#paymentpop, #epppop {
+  .mod-heading, p {
+    font-family: $font-stack-bld;
+    font-size: 1.16rem;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: center;
+    color: $deepDark;
+  }
+  p {
+
+    font-family: $font-stack-reg;
+
+  }
+
+}
+
+.modbutgreen {
+
+  width: 200px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: #43b02a;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
+
+  font-family: $font-stack-bla;
+  font-size: 1.16rem;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: $white;
+
+}
+
+.fd-badge {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #ff1b1b;
+  -moz-border-radius: 70px;
+  -webkit-border-radius: 70px;
+  border-radius: 70px;
+  font-family: $font-stack-reg !important;
+  font-size: 10px !important;
+  color: $white !important;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-weight: normal !important;
+  line-height: 18px;
+  text-align: center;
+}
+
+.alertWrap {
+  position: relative;
+  .fd-badge {
+    top: 8px;
+    left: 7px;
+  }
+}
+
+.db-header {
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+}
+
+#SidenavRytBut {
+  position: fixed;
+  top: 60px;
+  z-index: 1003;
+}
+
+.faqWrap {
+  font-family: $font-stack-bld;
+  padding: 20px 0px;
+
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #0072ce;
+}
+
+.butAdj {
+  margin-left: -80px;
+}
+
+
+
+
+
+
+
+
+
+
+

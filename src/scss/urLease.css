@@ -74,8 +74,7 @@ body, html {
   #land-wrap ul li {
     color: #4f4f4f;
     font-size: 1rem;
-    line-height: 2.33;
-    font-family: SimpleSans-Bold, Helvetica, sans-serif; }
+    line-height: 2.33; }
 
 .land-head {
   padding: 30px;
@@ -151,28 +150,6 @@ body, html {
 .testWrap {
   height: 130px;
   background-color: green; }
-
-.form-group {
-  position: relative; }
-
-.fd-error {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  font-family: SimpleSans-Bold, Helvetica, sans-serif;
-  font-weight: 900;
-  color: red;
-  background: white;
-  border: 1px solid #616365;
-  padding: 0.541rem .75rem;
-  width: 100%;
-  line-height: 30px;
-  border: 1px solid red;
-  border-radius: .25rem; }
-
-.fd-bld {
-  color: red;
-  font-weight: 900; }
 
 #signWrap {
   background-color: #edf7fe;
@@ -1325,6 +1302,13 @@ input:checked + .slider:before {
     text-align: right; } }
 /*********************************** sidebar ENDS here *********************************/
 /*********************************** captcha  STARTS here *********************************/
+#ngrecaptcha-0 {
+  overflow: hidden; }
+  #ngrecaptcha-0 > div, #ngrecaptcha-0 iframe {
+    width: 100% !important; }
+    #ngrecaptcha-0 > div .rc-anchor.rc-anchor-normal.rc-anchor-light, #ngrecaptcha-0 iframe .rc-anchor.rc-anchor-normal.rc-anchor-light {
+      width: 100% !important; }
+
 /*********************************** captcha ENDS here *********************************/
 a:hover {
   color: red; }

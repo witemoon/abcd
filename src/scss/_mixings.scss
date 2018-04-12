@@ -1,0 +1,16 @@
+@mixin but-land() {
+  width: 125px;
+  border-radius: 16px;
+  border: solid 0.5px #17405f;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  color: $primary;
+  font-family: $font-stack-med;
+  color: $headColor;
+  padding: 0px;
+  height: 30px;
+
+}

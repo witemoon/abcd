@@ -1,0 +1,65 @@
+// Restated Bootstrap Variables
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+//Custom Colors
+$primary: #0072ce;
+$borderPrime: #616365;
+$errorPrime: #C01324;
+$bgPrime: #edf7fe;
+$bgGray: #f5f7fa;
+$bgGreen: #43b02a;
+$slateGray: #616365;
+$bdrGray: #404243;
+
+$headColor: #17405f;
+$txtColor: #4f4f4f;
+$txtGray: #9f9f9f;
+$bgGreen: green;
+$bgGrayPro: #f4f4f4;
+$txtRed: #ff0000;
+$deepDark: #3e3e3e;
+
+$secondary: #ec000a !default;
+$primeBorder: 1px solid #495057 (10%) !default;
+
+//fonts
+$font-stack-med: SimpleSans-Medium, Helvetica, sans-serif;
+$font-stack-bld: SimpleSans-Bold, Helvetica, sans-serif;
+$font-stack-reg: SimpleSans-Regular, Helvetica, sans-serif;
+$font-stack-bla: SimpleSans-Black, Helvetica, sans-serif;
+
+$MarLft-10: 10px;
+$MarLft-20: 20px;
+
+/*importing fonts*/
+@font-face {
+  font-family: SimpleSans-Medium;
+  src: url(../fonts/simplesans-medium-webfont.ttf);
+}
+
+@font-face {
+  font-family: SimpleSans-Bold;
+  src: url(../fonts/simplesans-bold-webfont.ttf);
+}
+
+@font-face {
+  font-family: SimpleSans-Black;
+  src: url(../fonts/simeplesans-black-webfont.ttf);
+}
+
+@font-face {
+  font-family: SimpleSans-Regular;
+  src: url(../fonts/simplesans-regular-webfont.ttf);
+}
+
+

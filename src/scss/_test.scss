@@ -1,0 +1,61 @@
+a {
+  &:hover {
+    color: red;
+  }
+}
+
+p {
+  span & {
+    color: blue;
+
+  }
+}
+
+$alertClass: "one";
+$alertClasstwo: "two";
+
+p.test#{$alertClass} {
+  color: yellow;
+}
+
+$breakpointsm: 768px;
+$breakpointmd: 1200px;
+$breakpointlg: 1500px;
+@media (max-width: #{$breakpointsm}) {
+  body {
+    //background-color: red;
+  }
+}
+
+@media (max-width: #{$breakpointmd}) {
+  body {
+    //background-color: blue;
+  }
+}
+
+@media (max-width: #{$breakpointlg}) {
+  body {
+    //background-color: orange;
+  }
+}
+
+@mixin ls-style() {
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  height: 25px;
+  width: 25px;
+
+}
+
+@each $ls-name in 'ls-home' 'ls-epp' 'ls-claims' 'ls-eol' 'ls-faq' 'ls-phone' {
+  .#{$ls-name} {
+    background-image: url('../img/#{$ls-name}.svg');
+    @include ls-style();
+
+  }
+  .#{$ls-name} > span {
+    background-color: $primary;
+  }
+}
+
+

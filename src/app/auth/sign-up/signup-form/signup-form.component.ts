@@ -10,7 +10,7 @@ import {NgForm} from "@angular/forms";
 })
 export class SignupFormComponent implements OnInit {
 
-
+/*TEst*/
 
 
   constructor(private router:Router) { }
@@ -19,6 +19,7 @@ export class SignupFormComponent implements OnInit {
 
   }
   signUpUser(signUpForm){
+
     var refKey=signUpForm.value.referenceKey;
     var leaseNo=signUpForm.value.leaseNumber;
     var merchantDBA=signUpForm.value.merchantDBA;
@@ -52,6 +53,8 @@ export class SignupFormComponent implements OnInit {
   resetRegPassword(){
     this.router.navigate(['/resetPassword'])
   }
+
+
 
 
 

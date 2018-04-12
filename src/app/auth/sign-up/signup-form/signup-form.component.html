@@ -25,7 +25,7 @@
         <form #signInReg="ngForm" (ngSubmit)="signInRegular(signInReg)">
           <div>
             <p class="loginDesc ">Please complete all fields below</p>
-            <p *ngIf="signInReg.submitted" class="loginDesc err-text">Your email or password is incorrect!</p>
+            <p *ngIf="signInReg.submitted" class="loginDesc .fd-bld">Your email or password is incorrect!</p>
           </div>
           <div class="form-group emailWrap">
             <input
@@ -90,8 +90,9 @@
               required
               #refrenceNumber="ngModel"
             >
+            <div class="fd-error" (click)="signUpForm.submitted = false" *ngIf="signUpForm.submitted">Incorrect Reference Key!</div>
           </div>
-          <div class="alert alert-danger" *ngIf="signUpForm.submitted">Incorrect Reference Key!</div>
+
 
 
           <div class="form-group">
@@ -104,8 +105,9 @@
               required
               #leaseNumber="ngModel"
             >
+            <div class="fd-error"  (click)="signUpForm.submitted = false" *ngIf="signUpForm.submitted">Incorrect Lease Key!</div>
           </div>
-          <div class="alert alert-danger" *ngIf="signUpForm.submitted">Incorrect Lease Key!</div>
+
 
           <div class="form-group">
             <input
@@ -117,8 +119,9 @@
               required
               #merchantDBA="ngModel"
             >
+            <div class="fd-error"  (click)="signUpForm.submitted = false" *ngIf="signUpForm.submitted" >Incorrect MerchnatDBA Key!</div>
+
           </div>
-          <div class="alert alert-danger" *ngIf="signUpForm.submitted" >Incorrect MerchnatDBA Key!</div>
           <!-- Recaptch -->
           <div class="form-group">
             <re-captcha
