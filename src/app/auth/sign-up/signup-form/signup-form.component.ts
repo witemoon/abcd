@@ -22,25 +22,25 @@ export class SignupFormComponent implements OnInit {
 
     var refKey=signUpForm.value.referenceKey;
     var leaseNo=signUpForm.value.leaseNumber;
-    var merchantDBA=signUpForm.value.merchantDBA;
-    if(refKey=='123456789' && leaseNo=='052-5234567-098' && merchantDBA=='ABC BBQ and Burgers'){
+    var merchantDBA=signUpForm.value.merchantDBA.toLowerCase();
+    if(refKey=="123456789" && leaseNo=="052-5234567-098" && merchantDBA=="abc bbq and burgers"){
 
       this.router.navigate(['/thankyou']);
       //console.log('valid');
     }
     else{
+      console.log(merchantDBA);
 
       console.log('Not Valid')
     }
 
   }
   signInRegular(signInReg){
-   var email=signInReg.value.email;
+   var email=signInReg.value.email.toLowerCase();
    var passwordReg=signInReg.value.password;
-   if(email=='demo2@test.com' && passwordReg=='Demo2@123'){
+   if(email=="demo2@test.com" && passwordReg=="Demo2@123"){
      this.router.navigate(['/dashboard/home']);
-     //console.log('test pass');
-     //this.form.reset();
+    
    }
    else{
      console.log('test faild');
@@ -53,6 +53,10 @@ export class SignupFormComponent implements OnInit {
   resetRegPassword(){
     this.router.navigate(['/resetPassword'])
   }
+  backToLandingPage(){
+    this.router.navigate(['/']);
+  }
+ 
 
 
 

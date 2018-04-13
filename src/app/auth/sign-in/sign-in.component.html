@@ -10,7 +10,13 @@
 
             <div class="tab-pane fade show active" id="signup" role="tabpanel"
                  aria-labelledby="signup-tab">
-              <p class="loginDesc">Please complete all fields below</p>
+                 <div *ngIf="regSignIn.submitted; else show">
+                    <p  class="loginDesc fd-bld">Your email or password is incorrect!</p>
+                 </div>
+
+                 <ng-template #show>
+                  <p class="loginDesc ">  Please complete all fields below</p>
+                 </ng-template>
 
 
               <!-- sign in page -->
@@ -23,6 +29,7 @@
                     class="form-control"
                     placeholder="Email"
                     name="email"
+                    required
                     ngModel
 
                   >
@@ -33,6 +40,7 @@
                     type="password"
                     class="form-control"
                     placeholder="Password"
+                    required
                     name="password"
                     ngModel
 
@@ -42,11 +50,12 @@
 
                 <button type="submit"
 
-                        class="btnSubmit btn btn-primary btn-lg btn-block">Sign In
+                        class="btnSubmit spe-sign btn btn-primary btn-lg btn-block" >Sign In
                 </button>
 
 
               </form>
+
 
               <!-- end of sign In form -->
 

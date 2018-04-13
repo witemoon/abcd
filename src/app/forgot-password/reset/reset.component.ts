@@ -17,7 +17,7 @@ export class ResetComponent implements OnInit {
   }
   forgotPass(resetPass){
     var email=resetPass.value.email;
-    if(email=='demo2@test.com'){
+    if(email=="demo2@test.com"){
       this.router.navigate(['/thankyou']);
     }
     else{

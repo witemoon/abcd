@@ -21,8 +21,8 @@ export class SignInComponent implements OnInit {
   regularSignIn(regSignIn){
    var email=regSignIn.value.email;
    var password=regSignIn.value.password;
-   if(email=='demo2@test.com' && password=='Demo2@123'){
-     this.router.navigate(['/dashboard/home']);
+   if(email=="demo2@test.com" && password=="Photon123"){
+     this.router.navigate(['/changeTempPass']);
    }
    else{
      console.log('failed');
@@ -31,4 +31,8 @@ export class SignInComponent implements OnInit {
   
 
   }
+  resetRegPassword(){
+    this.router.navigate(['/resetPassword'])
+  }
+
 }

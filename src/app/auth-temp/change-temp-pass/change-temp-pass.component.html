@@ -15,19 +15,23 @@
             <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
               <p class="loginDesc">Please complete all fields below</p>
 
-
+<!--ee-->
 
               <form #changePass="ngForm" (submit)="changePassword(changePass)">
                 <div class="form-group">
                   <input
                    type="password"
                     class="form-control"
-                      placeholder="temp password"
+                      placeholder="Re-Enter Temporary Password"
                       name="tempPass"
                       ngModel
-
+                     required
+                      #tempPass="ngModel"
+                      pattern="Photon123"
                        >
-
+                  <div *ngIf="!tempPass.valid">
+                       <div class="fd-error" (click)="changePass.submitted = false" *ngIf="changePass.submitted">Incorrect temporary password</div>
+                    </div>
 
                 </div>
                 <div class="form-group">
@@ -35,21 +39,77 @@
                   type="password"
                    class="form-control "
                     placeholder="Enter New Password"
-                    name="newPass"
+                    name="passwordNew"
                     ngModel
+                    required
+                    #passwordNew="ngModel"
+                    maxlength="25"
+                    minlength="8"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
+                    (blur)="showError = false" (focus)="validate($event)">
 
-                    >
 
-                </div>
+                    <div class="toolWrap " *ngIf="showError">
+                        <div class="toolInnerWrap">
+                          <div class="toolArrow"></div>
+
+                          <p>Password must meet the following requirements:</p>
+                          <ul>
+                            <li>
+
+                              Contains upper and lower case
+                            </li>
+                            <li>
+
+                              At least one number
+                            </li>
+                            <li>
+
+                              At least one special character
+                            </li>
+                            <li>
+
+                              Be at least 8 characters
+                            </li>
+                          </ul>
+
+                        </div>
+                      </div>
+
+
+                    <div *ngIf="!passwordNew.valid">
+                    <div class="fd-error" (click)="changePass.submitted = false" *ngIf="changePass.submitted">Incorrect password format</div>
+                  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
                 <div class="form-group">
                     <input
                      type="password"
                       class="form-control "
-                      placeholder="Re-confirm Password"
+                      placeholder="Confirm Your Password"
                       name="confPassword"
                       ngModel
+                      required
+                      validateEqual="newPass"
+                      #confPassword="ngModel"
 
                       >
+                      <div *ngIf="!confPassword.valid">
+
+                      <div class="fd-error"  (click)="changePass.submitted = false" *ngIf="changePass.submitted ">Passwords do not match</div>
+                    </div>
+
 
                   </div>
                 <div class="form-group">
@@ -57,6 +117,7 @@
 
                   name="captcha"
                   required
+                  ngModel
                 ></re-captcha>
                 </div>
 
@@ -66,7 +127,9 @@
 
 
 
-                <button type="submit"  class="btnSubmit btn btn-primary btn-lg btn-block">Submit
+                <button type="submit"
+                        class="btnSubmit btn btn-primary btn-lg btn-block"
+                        >Submit
                 </button>
 
 
