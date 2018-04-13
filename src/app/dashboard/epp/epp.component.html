@@ -23,7 +23,7 @@
                     </li>
                     <li>
                         <label>Total Monthly EPP:</label>
-                        <span class="activeBg"> $0.00</span>
+                        <span class="activeBg"> ${{totalAmt}}.00</span>
                     </li>
     
                 </ul>
@@ -41,30 +41,28 @@
                     <div class="row">
                         <div class="col-12 col-md-6  ">
                             <div class="row ">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-6" *ngFor="let item of leaseData['Leases']" style="padding: 20px;">
                                     <div class="w-50 float-left">
                                         <label class="">Lease #</label>
                                         <br>
-                                        <span class="">052-5234567-000</span></div>
+                                        <span class="">{{item.leaseId}}</span></div>
                                     <div class="w-50 float-right">
                                         <!-- Rectangular switch -->
                                         <label class="switch">
-                                            <input type="checkbox" class="togBtn" id="togBtn">
-                                            <span class="slider round en-first-checkbox" data-toggle="modal"
-                                                  data-target="#myModal"></span>
+                                            <input type="checkbox" class="togBtn" id="togBtn" [formControl]="leaseFormGroup.controls[item.leaseId]">
+                                            <span class="slider round en-first-checkbox" ></span>
                                         </label>
-                                        <span class="txtthree ">$0.00</span>
+                                        <span class="txtthree ">${{leaseFormGroup.controls[item.leaseId].value?'10':'0'}}.00</span>
                                     </div>
     
     
                                 </div>
-                                <div class="col-12 col-md-6">
+                                <!-- <div class="col-12 col-md-6">
                                     <div class="w-50 float-left">
                                         <label class="">Lease #</label>
                                         <br>
                                         <span class="">052-5234567-000</span></div>
                                     <div class="w-50 float-right">
-                                        <!-- Rectangular switch -->
                                         <label class="switch">
                                             <input type="checkbox" class="togBtn" id="togBtn2">
                                             <span class="slider round en-second-checkbox" data-toggle="modal"
@@ -72,7 +70,7 @@
                                         </label>
                                         <span class="txtthree">$0.00</span>
                                     </div>
-                                </div>
+                                </div> -->
     
                             </div>
                         </div>
@@ -85,7 +83,6 @@
             <div class="row">
                 <div class="col-12">
                     <br>
-                    <form>
     
     
                         <div class="form-group">
@@ -104,7 +101,6 @@
                                     insurance certificate is included with this response </label>
                             </div>
                         </div>
-                    </form>
                     <p>Enrollment in the First Data Equipment Protection Program relieves you of the requirement
                         to maintain insurance on your leased equipment</p>
                     <p><b>By checking YES above, the Lessee(s) is/are relived of their obligation to provide
@@ -170,7 +166,6 @@
             <hr>
             <div class="row">
                 <div class="col-12">
-                    <form>
     
     
                         <div class="form-group">
@@ -198,7 +193,6 @@
                             </div>
     
                         </div>
-                    </form>
     
     
                 </div>
@@ -209,77 +203,5 @@
     
         </div>
     </div>
-    <div class="modal fade" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-        
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title"></h4>
-                        <button type="button" class="close add" data-dismiss="modal"><img src="assets/img/close-icon.svg"></button>
-                    </div>
-        
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <br>
-                        <p class="px-5 pb-5">There are more leases in your account that do not have any coverage. Would you like
-                            to add those to EPP Coverage?</p>
-                        <br>
-                        <br>
-        
-                        <div class=" text-center">
-                            <button type="button" class="btn modbutgreen addnow" data-dismiss="modal">Add Now</button>
-        
-        
-                        </div>
-        
-        
-                    </div>
-        
-                    <!-- Modal footer -->
-                    <div class="modal-footer text-center ">
-                        <br><br>
-        
-        
-                    </div>
-        
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="myModal2">
-            <div class="modal-dialog">
-                <div class="modal-content">
-        
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title"></h4>
-                        <button type="button" class="close add" data-dismiss="modal"><img src="assets/img/close-icon.svg"></button>
-                    </div>
-        
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <br>
-                        <p class="px-5 pb-5">There are more leases in your account that do not have any coverage. Would you like
-                            to add those to EPP Coverage?</p>
-                        <br>
-                        <br>
-        
-                        <div class=" text-center">
-                            <button type="button" class="btn modbutgreen addnow" data-dismiss="modal">Add Now</button>
-        
-        
-                        </div>
-        
-        
-                    </div>
-        
-                    <!-- Modal footer -->
-                    <div class="modal-footer text-center ">
-                        <br><br>
-        
-        
-                    </div>
-        
-                </div>
-            </div>
-        </div>
+
+<epp-popup [(showPopup)]="showPopup"></epp-popup>

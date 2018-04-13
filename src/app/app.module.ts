@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { TempSigninComponent } from './auth-temp/temp-signin/temp-signin.component';
 
 
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -74,7 +74,8 @@ import { TempSigninComponent } from './auth-temp/temp-signin/temp-signin.compone
     routing,
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   
    
  

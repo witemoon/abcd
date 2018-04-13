@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardServiceService } from '../dashboard-service.service';
 
 @Component({
   selector: 'header',
@@ -8,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   openPopup = false;
-
-  constructor() { }
+  leaseData = {};
+  constructor(private dashboardService:DashboardServiceService) { }
 
   ngOnInit() {
+    this.dashboardService.leaseData.subscribe(data=>{
+      this.leaseData = data;
+      this.leaseData['Leases'].forEach(item=>{
+        
+      })
+    })
   }
 
   showAlerts(){
