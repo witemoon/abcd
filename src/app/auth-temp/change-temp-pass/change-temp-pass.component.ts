@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
@@ -13,8 +13,10 @@ export class ChangeTempPassComponent implements OnInit {
   showError: boolean = false;
   passwordNew: string = "";
 
-  passwordFC = new FormControl();
+  @ViewChild("tmpPass") tmpPass: ElementRef;
 
+  passwordFC = new FormControl();
+  
   upperAndLowerCase = false;
   number = false;
   splChar = false;
@@ -61,8 +63,14 @@ export class ChangeTempPassComponent implements OnInit {
 
    }
    else{
-     console.log('Failed');
-
+     console.log('Failed',this.tmpPass);
+    if(!this.tmpPass.nativeElement.validity.valid){
+      console.log(changePass);
+      this.tmpPass.nativeElement.value = "";
+    }
+    if(!this.passwordFC.valid){
+      this.passwordFC.setValue("");
+    }
    }
   }
 
