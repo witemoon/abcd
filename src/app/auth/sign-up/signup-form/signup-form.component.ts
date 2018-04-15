@@ -103,14 +103,18 @@ export class SignupFormComponent implements OnInit {
     }
 
   }
+  signInError = false;
+  singInSuccess = true;
   signInRegular(signInReg){
    var email=signInReg.value.email.toLowerCase();
    var passwordReg=signInReg.value.password;
    if(email=="demo2@test.com" && passwordReg=="Demo2@123"){
      this.router.navigate(['/dashboard/home']);
-    
+     this.signInError = false;
+     this.singInSuccess = false;
    }
    else{
+     this.signInError = true;
      console.log('test faild');
    }
   }

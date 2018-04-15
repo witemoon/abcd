@@ -24,14 +24,13 @@
         <!-- Start if signin form -->
         <form #signInReg="ngForm" (ngSubmit)="signInRegular(signInReg)">
 
-
-          <div *ngIf="signInReg.submitted; else show">
+          <div *ngIf="signInError">
              <p  class="loginDesc fd-bld">Your email or password is incorrect!</p>
           </div>
 
-          <ng-template #show>
+          <div *ngIf="!signInError && singInSuccess">
            <p class="loginDesc ">  Please complete all fields below</p>
-          </ng-template>
+          </div>
 
           <div class="form-group emailWrap">
             <input
