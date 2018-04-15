@@ -28,12 +28,12 @@ import { ChangeTempPassComponent } from './auth-temp/change-temp-pass/change-tem
 import { ResetComponent } from './forgot-password/reset/reset.component';
 import { EqualValidator } from './equal-validator.directive';
 import { AuthService } from './shared/auth.service';
-import { FormsModule } from '@angular/forms';
 import { TempSigninComponent } from './auth-temp/temp-signin/temp-signin.component';
 
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add the imports!
 
 
 
@@ -75,6 +75,7 @@ import { HttpClientModule } from '@angular/common/http';
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   
    
