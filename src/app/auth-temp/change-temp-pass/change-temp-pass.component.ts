@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 
 
@@ -11,10 +12,41 @@ import { Router } from '@angular/router';
 export class ChangeTempPassComponent implements OnInit {
   showError: boolean = false;
   passwordNew: string = "";
+
+  passwordFC = new FormControl();
+
+  upperAndLowerCase = false;
+  number = false;
+  splChar = false;
+  eightChar = false;
+
   constructor(private router:Router) { }
 
   ngOnInit() {
-
+    this.passwordFC.valueChanges.subscribe(value=>{
+      if(this.hasLowerCase(value) && this.hasUpperCase(value)){
+        this.upperAndLowerCase = true;
+      }else{
+        this.upperAndLowerCase = false;
+      }
+      if(this.hasNumber(value)){
+        this.number = true;
+      }
+      else{
+        this.number = false;
+      }
+      if(this.hasSpecialChar(value)){
+        this.splChar = true;
+      }
+      else{
+        this.splChar = false;
+      }
+      if(value.length>8){
+        this.eightChar = true;
+      }else{
+        this.eightChar = false;
+      }
+    });
   }
 
   changePassword(changePass){
@@ -43,4 +75,19 @@ export class ChangeTempPassComponent implements OnInit {
     return true
   }
 
+  hasLowerCase(str) {
+    return (/[a-z]/.test(str));
+  }
+
+  hasUpperCase(str){
+    return (/[A-Z]/.test(str));
+  }
+
+  hasNumber(str){
+    return (/[0-9]/.test(str));
+  }
+
+  hasSpecialChar(str){
+    return (/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/).test(str);
+  }
 }

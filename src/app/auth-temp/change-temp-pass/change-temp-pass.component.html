@@ -42,11 +42,12 @@
                     name="passwordNew"
                     ngModel
                     required
-                    #passwordNew="ngModel"
                     maxlength="25"
                     minlength="8"
                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                    (blur)="showError = false" (focus)="validate($event)">
+                    (blur)="showError = false" (focus)="validate($event)"
+                    [formControl]="passwordFC"
+                    >
 
 
                     <div class="toolWrap " *ngIf="showError">
@@ -56,19 +57,23 @@
                           <p>Password must meet the following requirements:</p>
                           <ul>
                             <li>
-
+                              <span *ngIf="!upperAndLowerCase">&#10007;</span>
+                              <span *ngIf="upperAndLowerCase">&#10003;</span> 
                               Contains upper and lower case
                             </li>
                             <li>
-
+                              <span *ngIf="!number">&#10007;</span>
+                              <span *ngIf="number">&#10003;</span> 
                               At least one number
                             </li>
                             <li>
-
+                              <span *ngIf="!splChar">&#10007;</span>
+                              <span *ngIf="splChar">&#10003;</span> 
                               At least one special character
                             </li>
                             <li>
-
+                              <span *ngIf="!eightChar">&#10007;</span>
+                              <span *ngIf="eightChar">&#10003;</span> 
                               Be at least 8 characters
                             </li>
                           </ul>
