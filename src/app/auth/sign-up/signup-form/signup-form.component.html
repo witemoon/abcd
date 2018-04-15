@@ -93,7 +93,7 @@
               name="referenceKey"
               ngModel
               required
-              [formControl]="referenceKeyFC"
+              #refrenceNumber="ngModel"
             >
             <div class="fd-error" (click)="signUpForm.submitted = false" *ngIf="signUpForm.submitted">Incorrect Reference Key!</div>
           </div>
@@ -120,7 +120,7 @@
               name="merchantDBA"
               ngModel
               required
-              [formControl]="merchantDbaFC"
+              #merchantDBA="ngModel"
             >
             <div class="fd-error"  (click)="signUpForm.submitted = false" *ngIf="signUpForm.submitted" >Incorrect Merchnat DBA!</div>
 

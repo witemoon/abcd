@@ -91,13 +91,13 @@ export class SignupFormComponent implements OnInit {
     var refKey=signUpForm.value.referenceKey;
     var leaseNo=signUpForm.value.leaseNumber;
     var merchantDBA=signUpForm.value.merchantDBA.toLowerCase();
-    if(refKey=="123456789" && leaseNo=="052-5234567-098" && merchantDBA=="abc bbq and burgers"){
+    if(refKey=="123456789" && this.leaseNumberFC.value=="052-5234567-098" && merchantDBA=="abc bbq and burgers"){
 
       this.router.navigate(['/thankyou']);
       //console.log('valid');
     }
     else{
-      console.log(merchantDBA);
+      console.log(refKey, refKey=="123456789",this.leaseNumberFC.value,this.leaseNumberFC.value=="052-5234567-098", merchantDBA, merchantDBA=="abc bbq and burgers");
 
       console.log('Not Valid')
     }
