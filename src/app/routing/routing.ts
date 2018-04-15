@@ -24,9 +24,18 @@ const appRoutes: Routes = [
     component: LandingComponent
   },
   {
-    path: 'register',
+    path: 'user',
     component: SignupMainComponent
   },
+  {
+    path: 'user/signup',
+    component: SignupMainComponent
+  },
+  {
+    path: 'user/signin',
+    component: SignupMainComponent
+  },
+  
   {
     path: 'temp',
     component: TempSigninComponent

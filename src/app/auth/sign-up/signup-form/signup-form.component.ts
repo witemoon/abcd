@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import {NgForm} from "@angular/forms";
+import 'rxjs/add/operator/filter';
 
 
 @Component({
@@ -12,11 +13,23 @@ export class SignupFormComponent implements OnInit {
 
 /*TEst*/
 
+  currentTab = 'signup';
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) { 
+    this.router.events
+    .filter(event => event instanceof NavigationEnd)
+    .subscribe((event:NavigationEnd) => {
+      console.log('-------router event----------',event)
+      if(event.url=='/user/signin'){
+        this.currentTab = 'signin';
+      }else{
+        this.currentTab = 'signup';
+      }
+    });
+  }
 
   ngOnInit() {
-
+    
   }
   signUpUser(signUpForm){
 
@@ -48,7 +61,7 @@ export class SignupFormComponent implements OnInit {
   }
 
   signInPageReg(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['/user/signin']);
   }
   resetRegPassword(){
     this.router.navigate(['/resetPassword'])

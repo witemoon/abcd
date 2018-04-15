@@ -15,11 +15,11 @@ export class LandHeadComponent implements OnInit {
 
   signUp(){
     console.log('signUp');
-    this.router.navigate(['/register']);
+    this.router.navigate(['/user/signup']);
   }
   signIn(){
     console.log('signIN');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/user/signin']);
   }
 
 }
