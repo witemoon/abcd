@@ -14,6 +14,7 @@ export class ChangeTempPassComponent implements OnInit {
   passwordNew: string = "";
 
   @ViewChild("tmpPass") tmpPass: ElementRef;
+  @ViewChild("cPass") cPass: ElementRef;
 
   passwordFC = new FormControl();
   
@@ -70,6 +71,7 @@ export class ChangeTempPassComponent implements OnInit {
     }
     if(!this.passwordFC.valid){
       this.passwordFC.setValue("");
+      this.cPass.nativeElement.value = "";
     }
    }
   }
