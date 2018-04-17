@@ -16,6 +16,8 @@ import {ThankComponent} from '../thank/thank.component';
 import {ChangeTempPassComponent} from '../auth-temp/change-temp-pass/change-temp-pass.component';
 import {ResetComponent} from '../forgot-password/reset/reset.component';
 import {TempSigninComponent} from '../auth-temp/temp-signin/temp-signin.component';
+import { SignchangepassComponent } from '../auth/new/signchangepass/signchangepass.component';
+import { SignthankComponent } from '../auth/new/signthank/signthank.component';
 
 const appRoutes: Routes = [
 
@@ -44,6 +46,14 @@ const appRoutes: Routes = [
     path: 'login',
     component: SignInComponent
 
+  },
+  {
+    path: 'signchangepass',
+    component: SignchangepassComponent
+  },
+  {
+    path: 'signthank',
+    component: SignthankComponent
   },
   {
     path: 'resetPassword',

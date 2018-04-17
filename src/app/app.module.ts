@@ -34,6 +34,9 @@ import { TempSigninComponent } from './auth-temp/temp-signin/temp-signin.compone
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add the imports!
+import { SigninComponent } from './auth-temp/signin/signin.component';
+import { SignthankComponent } from './auth/new/signthank/signthank.component';
+import { SignchangepassComponent } from './auth/new/signchangepass/signchangepass.component';
 
 
 
@@ -63,7 +66,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add th
     EqualValidator,
 
 
+    SigninComponent,
+
     TempSigninComponent,
+
+    SignthankComponent,
+
+    SignchangepassComponent
+
+
 
 
   

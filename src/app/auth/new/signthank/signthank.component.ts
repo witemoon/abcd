@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-thank',
-  templateUrl: './thank.component.html',
-  styleUrls: ['./thank.component.css']
+  selector: 'app-signthank',
+  templateUrl: './signthank.component.html',
+  styleUrls: ['./signthank.component.css']
 })
-export class ThankComponent implements OnInit {
+export class SignthankComponent implements OnInit {
 
   constructor(private router:Router) { }
 
@@ -14,7 +14,8 @@ export class ThankComponent implements OnInit {
   }
   temp(){
     console.log('signUp');
-    this.router.navigate(['/changeTempPass']);
+    this.router.navigate(['/temp']);
   }
+
 
 }

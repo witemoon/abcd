@@ -93,7 +93,7 @@ export class SignupFormComponent implements OnInit {
     var merchantDBA=signUpForm.value.merchantDBA.toLowerCase();
     if(refKey=="123456789" && this.leaseNumberFC.value=="052-5234567-098" && merchantDBA=="abc bbq and burgers"){
 
-      this.router.navigate(['/thankyou']);
+      this.router.navigate(['/signthank']);
       //console.log('valid');
     }
     else{

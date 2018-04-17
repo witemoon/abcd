@@ -1,15 +1,14 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
-
-
 @Component({
-  selector: 'app-change-temp-pass',
-  templateUrl: './change-temp-pass.component.html',
-  styleUrls: ['./change-temp-pass.component.css']
+  selector: 'app-signchangepass',
+  templateUrl: './signchangepass.component.html',
+  styleUrls: ['./signchangepass.component.css']
 })
-export class ChangeTempPassComponent implements OnInit {
+export class SignchangepassComponent implements OnInit {
+
   showError: boolean = false;
   passwordNew: string = "";
 
@@ -60,7 +59,7 @@ export class ChangeTempPassComponent implements OnInit {
 
    if(newPass==cnfPass && newPass!=="" && cnfPass!==""){
     if(tempPass=="Photon123" ){
-      this.router.navigate(['/user/signin'])
+      this.router.navigate(['/dashboard/home'])
    }
 
    }

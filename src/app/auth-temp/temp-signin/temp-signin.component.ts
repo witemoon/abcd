@@ -16,7 +16,7 @@ export class TempSigninComponent implements OnInit {
     var email=tempSignIn.value.email;
     var tempPass=tempSignIn.value.tempPass;
     if(email=="demo2@test.com" && tempPass=="Photon123"){
-      this.router.navigate(['/changeTempPass'])
+      this.router.navigate(['/signchangepass'])
     }
     else{
       console.log('failded!')
