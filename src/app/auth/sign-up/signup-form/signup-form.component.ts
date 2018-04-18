@@ -121,7 +121,7 @@ export class SignupFormComponent implements OnInit {
     "password": "" + passwordReg
     }
    this.authService.signIn(payLoad).subscribe(res=>{
-    if(res['status']==''){
+    if(res['status']!='Failure'){
       this.signInError = false;
       this.singInSuccess = false;
       this.router.navigate(['/dashboard/home']);
