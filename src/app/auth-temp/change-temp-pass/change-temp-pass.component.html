@@ -31,7 +31,7 @@
                       pattern="Photon123"
                        >
                   <div *ngIf="!tempPass.valid">
-                       <div class="fd-error" (click)="changePass.submitted = false" *ngIf="changePass.submitted">Incorrect temporary password</div>
+                       <div class="fd-error" (click)="validationError.tempPasswordError = false" *ngIf="validationError.tempPasswordError">Incorrect temporary password</div>
                     </div>
 
                 </div>
@@ -82,13 +82,10 @@
                       </div>
 
 
-                    <div *ngIf="passwordFC.valid">
-                    <div class="fd-error" (click)="changePass.submitted = false" *ngIf="changePass.submitted">Incorrect password format</div>
+                    <div *ngIf="validationError.newPasswordError">
+                    <div class="fd-error" (click)="validationError.newPasswordError = false" *ngIf="validationError.newPasswordError">Incorrect password format</div>
                   </div>
-
-
-
-</div>
+                </div>
 
                 <div class="form-group">
                     <input
@@ -102,28 +99,20 @@
                       #confPassword="ngModel"
                       #cPass
                       >
-                      <div *ngIf="!confPassword.valid">
-
-                      <div class="fd-error"  (click)="changePass.submitted = false" *ngIf="changePass.submitted ">Passwords do not match</div>
+                    
+                    <div *ngIf="validationError.confirmPasswordError">
+                      <div class="fd-error"  (click)="validationError.confirmPasswordError = false" *ngIf="validationError.confirmPasswordError">Passwords do not match</div>
                     </div>
 
 
                   </div>
                 <div class="form-group">
                   <re-captcha
-
+                  #captchaRef
                   name="captcha"
                   required
-                  ngModel
-                ></re-captcha>
+                  ngModel></re-captcha>
                 </div>
-
-
-
-
-
-
-
                 <button type="submit"
                         class="btnSubmit btn btn-primary btn-lg btn-block"
                         >Submit

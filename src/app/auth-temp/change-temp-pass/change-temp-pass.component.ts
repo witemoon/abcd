@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
-
-
 @Component({
   selector: 'app-change-temp-pass',
   templateUrl: './change-temp-pass.component.html',
@@ -15,6 +13,7 @@ export class ChangeTempPassComponent implements OnInit {
 
   @ViewChild("tmpPass") tmpPass: ElementRef;
   @ViewChild("cPass") cPass: ElementRef;
+  @ViewChild("captchaRef") captcha;
 
   passwordFC = new FormControl();
 
@@ -22,6 +21,11 @@ export class ChangeTempPassComponent implements OnInit {
   number = false;
   splChar = false;
   eightChar = false;
+  validationError: any = {
+    "tempPasswordError": false,
+    "newPasswordError": false,
+    "confirmPasswordError": false
+  };
 
   constructor(private router:Router) { }
 
@@ -54,28 +58,26 @@ export class ChangeTempPassComponent implements OnInit {
 
   changePassword(changePass){
 
-   var tempPass=changePass.value.tempPass;
-   var newPass=this.passwordFC.value;
-   var cnfPass=changePass.value.confPassword;
+   var tempPass = changePass.value.tempPass;
+   var newPass = this.passwordFC.value;
+   var cnfPass = changePass.value.confPassword;
 
-   if(newPass==cnfPass && newPass!=="" && cnfPass!==""){
-    if(tempPass=="Photon123" ){
-      this.router.navigate(['/user/signin'])
-   }
-
-   }
-   else{
-     console.log('Failed',this.tmpPass);
-    if(!this.tmpPass.nativeElement.validity.valid){
-      console.log(changePass);
-      this.tmpPass.nativeElement.value = "";
-    }
-    if(!this.passwordFC.valid){
-      this.passwordFC.setValue("");
+   if (tempPass == ""){
+      this.validationError.tempPasswordError = true;
+   } else if (!newPass && !cnfPass && !tempPass) {
+     this.validationError.tempPasswordError = true;
+     this.validationError.confirmPasswordError = true;
+     this.validationError.newPasswordError = true;
+     this.captcha.reset();
+   } else if(newPass && cnfPass && (newPass == cnfPass)){
+      this.router.navigate(['/user/signin']);
+   } else{
+      this.captcha.reset();
       this.cPass.nativeElement.value = "";
+      this.validationError.confirmPasswordError = true;
     }
    }
-  }
+  
 
   validate(event){
     if(this.passwordNew.length > 8){
