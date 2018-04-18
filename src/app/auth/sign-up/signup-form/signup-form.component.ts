@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {NgForm, FormControl} from "@angular/forms";
 import 'rxjs/add/operator/filter';
+import { AuthService } from '../../../shared/auth.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class SignupFormComponent implements OnInit {
   leaseNumberFC = new FormControl();
   merchantDbaFC = new FormControl();
 
-  constructor(private router:Router) { 
+  constructor(private router:Router, private authService:AuthService) { 
     this.router.events
     .filter(event => event instanceof NavigationEnd)
     .subscribe((event:NavigationEnd) => {
@@ -92,8 +93,15 @@ export class SignupFormComponent implements OnInit {
     var leaseNo=signUpForm.value.leaseNumber;
     var merchantDBA=signUpForm.value.merchantDBA.toLowerCase();
     if(refKey=="123456789" && this.leaseNumberFC.value=="052-5234567-098" && merchantDBA=="abc bbq and burgers"){
-
-      this.router.navigate(['/signthank']);
+      let payLoad = {
+        "leaseNumber": '' + this.leaseNumberFC.value,
+        "merchantDBA": '' + merchantDBA,
+        "referenceKey": '' + refKey
+      };
+      this.authService.register(payLoad).subscribe(res=>{
+        console.log('register Response:',res);
+        this.router.navigate(['/signthank']);
+      })
       //console.log('valid');
     }
     else{
@@ -108,15 +116,30 @@ export class SignupFormComponent implements OnInit {
   signInRegular(signInReg){
    var email=signInReg.value.email.toLowerCase();
    var passwordReg=signInReg.value.password;
-   if(email=="demo2@test.com" && passwordReg=="Demo2@123"){
-     this.router.navigate(['/dashboard/home']);
-     this.signInError = false;
-     this.singInSuccess = false;
-   }
-   else{
-     this.signInError = true;
-     console.log('test faild');
-   }
+   let payLoad = {
+    "emailId": "" + email,
+    "password": "" + passwordReg
+    }
+   this.authService.signIn(payLoad).subscribe(res=>{
+    if(res['status']==''){
+      this.signInError = false;
+      this.singInSuccess = false;
+      this.router.navigate(['/dashboard/home']);
+    }
+    else{
+      this.signInError = true;
+      console.log('test faild');
+    }
+   })
+  //  if(email=="demo2@test.com" && passwordReg=="Demo2@123"){
+  //    this.signInError = false;
+  //    this.singInSuccess = false;
+  //    this.router.navigate(['/dashboard/home']);
+  //  }
+  //  else{
+  //    this.signInError = true;
+  //    console.log('test faild');
+  //  }
   }
 
   signInPageReg(){

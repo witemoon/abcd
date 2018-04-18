@@ -37,6 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add th
 import { SigninComponent } from './auth-temp/signin/signin.component';
 import { SignthankComponent } from './auth/new/signthank/signthank.component';
 import { SignchangepassComponent } from './auth/new/signchangepass/signchangepass.component';
+import { BackEndInterceptorService } from './shared/back-end-interceptor.service';
 
 
 
@@ -97,7 +98,9 @@ providers: [AuthService,{
   useValue: { 
     siteKey: '6LeAyiAUAAAAAFBfMpYA4iGyFQssmt99CpCLr8Ru',
   } as RecaptchaSettings,
-}],
+},
+BackEndInterceptorService
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
