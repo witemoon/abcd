@@ -6,7 +6,14 @@ import { API } from '../api';
 @Injectable()
 export class AuthService {
 
-  constructor(private backEndInterceptorService: BackEndInterceptorService) { }
+  
+  constructor(private backEndInterceptorService: BackEndInterceptorService) {
+   
+   }
+
+  setToken(token){
+    this.backEndInterceptorService.setToken(token);
+  }
 
   signIn(payLoad:any){
     let url = API.login;
