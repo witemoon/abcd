@@ -30,6 +30,8 @@ logout(){
   this.authService.logOut().subscribe(res=>{ 
     console.log('logout Response:',res);
     this.router.navigate(['/user/signin']);
+  },error=>{
+    console.log('logout error-----',error);
   });
 }
 

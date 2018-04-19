@@ -101,6 +101,8 @@ export class SignupFormComponent implements OnInit {
       this.authService.register(payLoad).subscribe(res=>{
         console.log('register Response:',res);
         this.router.navigate(['/signthank']);
+      },error=>{
+        
       })
       //console.log('valid');
     }
@@ -121,16 +123,20 @@ export class SignupFormComponent implements OnInit {
     "password": "" + passwordReg
     }
    this.authService.signIn(payLoad).subscribe(res=>{
-    if(res['status']!='Failure'){
+    if(res['status']=='Success'){
       this.signInError = false;
       this.singInSuccess = false;
+      this.authService.setToken(res['responseData'].token);
       this.router.navigate(['/dashboard/home']);
     }
     else{
       this.signInError = true;
       console.log('test faild');
     }
-   })
+   },error=>{
+    this.signInError = true;
+    console.log('test faild');
+   });
   //  if(email=="demo2@test.com" && passwordReg=="Demo2@123"){
   //    this.signInError = false;
   //    this.singInSuccess = false;
