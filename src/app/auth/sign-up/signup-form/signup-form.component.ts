@@ -102,7 +102,7 @@ export class SignupFormComponent implements OnInit {
         console.log('register Response:',res);
         this.router.navigate(['/signthank']);
       },error=>{
-        
+        console.log('signup error',error);
       })
       //console.log('valid');
     }
@@ -131,11 +131,11 @@ export class SignupFormComponent implements OnInit {
     }
     else{
       this.signInError = true;
-      console.log('test faild');
+      console.log('regular signin faild',res);
     }
    },error=>{
     this.signInError = true;
-    console.log('test faild');
+    console.log('regular signin faild',error);
    });
   //  if(email=="demo2@test.com" && passwordReg=="Demo2@123"){
   //    this.signInError = false;

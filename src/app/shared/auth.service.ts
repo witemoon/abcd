@@ -6,6 +6,7 @@ import { API } from '../api';
 @Injectable()
 export class AuthService {
 
+  currentEmail = "";
   
   constructor(private backEndInterceptorService: BackEndInterceptorService) {
    

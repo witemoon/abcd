@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { AuthService } from '../../../shared/auth.service';
 
 @Component({
   selector: 'signchangepass',
@@ -27,7 +28,7 @@ export class SignchangepassComponent implements OnInit {
     "confirmPasswordError": false
   };
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private authservice:AuthService) { }
 
   ngOnInit() {
     this.passwordFC.valueChanges.subscribe(value=>{
@@ -55,29 +56,43 @@ export class SignchangepassComponent implements OnInit {
       }
     });
   }
-
+    
   changePassword(changePass){
 
    var tempPass = changePass.value.tempPass;
    var newPass = this.passwordFC.value;
    var cnfPass = changePass.value.confPassword;
-
-   if (tempPass == ""){
+   
+  if (tempPass == ""){
+    this.validationError.tempPasswordError = true;
+ } else if (!newPass && !cnfPass && !tempPass) {
+   this.validationError.tempPasswordError = true;
+   this.validationError.confirmPasswordError = true;
+   this.validationError.newPasswordError = true;
+   this.captcha.reset();
+ } else if(newPass && cnfPass && (newPass == cnfPass)){
+    let payLoad = {
+      "emailId": "" + this.authservice.currentEmail,
+      "confirmPassword": "" + cnfPass,
+      "currentPassword": "" + tempPass,
+      "newPassword": "" + newPass
+      }
+    this.authservice.changePassword(payLoad).subscribe(res=>{
+      if(res['status']=='Success'){
+        this.router.navigate(['/dashboard/home']);
+      }
+    },error=>{
       this.validationError.tempPasswordError = true;
-   } else if (!newPass && !cnfPass && !tempPass) {
-     this.validationError.tempPasswordError = true;
-     this.validationError.confirmPasswordError = true;
-     this.validationError.newPasswordError = true;
-     this.captcha.reset();
-   } else if(newPass && cnfPass && (newPass == cnfPass)){
-      this.router.navigate(['/dashboard/home']);
-   } else{
-      this.captcha.reset();
-      this.cPass.nativeElement.value = "";
-      this.validationError.confirmPasswordError = true;
-    }
-   }
+    });
+ } else{
+    this.captcha.reset();
+    this.cPass.nativeElement.value = "";
+    this.validationError.confirmPasswordError = true;
+  }
+
   
+
+  }
 
   validate(event){
     if(this.passwordNew.length > 8){

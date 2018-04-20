@@ -11,7 +11,7 @@
 
             <div class="tab-pane fade show active" id="signup" role="tabpanel"
                  aria-labelledby="signup-tab">
-                 <div *ngIf="tempSignIn.submitted; else show">
+                 <div *ngIf="showError">
                     <p  class="loginDesc fd-bld">Your email or password is incorrect!</p>
                  </div>
 
