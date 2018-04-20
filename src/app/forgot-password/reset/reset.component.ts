@@ -11,18 +11,22 @@ import { AuthService } from '../../shared/auth.service';
 })
 export class ResetComponent implements OnInit {
 
+  showError = false;
+
   constructor(private router:Router, private authService:AuthService) { }
 
   ngOnInit() {
     
   }
   forgotPass(resetPass){
+    this.showError = false;
     var email=resetPass.value.email;
     this.authService.forgetPassword({}).subscribe(res=>{
       if(res['status']=='Success'){
         this.router.navigate(['/thankyou']);
       }
     },error=>{
+      this.showError = true;
       console.log('change password fail',error);
     });
 

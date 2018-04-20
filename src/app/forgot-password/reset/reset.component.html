@@ -15,7 +15,7 @@
               <p class="loginDesc">Enter your email and we’ll send a link to reset your password to the address we have
                 on file.
               </p>
-              <p *ngIf="resetPass.submitted" class="loginDesc fd-bld">Email not registered. Please try again!</p>
+              <p *ngIf="showError" class="loginDesc fd-bld">Email not registered. Please try again!</p>
             </div>
               <form #resetPass="ngForm" (submit)="forgotPass(resetPass)">
                 <div class="form-group emailWrap">
