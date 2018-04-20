@@ -127,6 +127,7 @@ export class SignupFormComponent implements OnInit {
       this.signInError = false;
       this.singInSuccess = false;
       this.authService.setToken(res['responseData'].token);
+      this.authService.currentMerchantId = res['merchantId']; //change the key name properly from success message
       this.router.navigate(['/dashboard/home']);
     }
     else{

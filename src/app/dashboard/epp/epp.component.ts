@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardServiceService } from '../dashboard-service.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-epp',
@@ -16,7 +17,7 @@ export class EppComponent implements OnInit {
   showPopup = false;
   popupFirstTime = true;
 
-  constructor(private dashboardService:DashboardServiceService) { }
+  constructor(private dashboardService:DashboardServiceService, private authService:AuthService) { }
 
   ngOnInit() {
     this.dashboardService.leaseData.subscribe(data=>{
@@ -25,6 +26,39 @@ export class EppComponent implements OnInit {
         this.leaseFormGroup.addControl(item.leaseId, new FormControl(false));
       });
       this.listenFormGroup();
+    })
+
+    this.getEppData();
+    let arr = [
+      {
+        "insCode": "string",
+        "leaseNumber": 0,
+        "name": "string"
+      }
+    ];
+    let merchantid = "merchant-id-3143-344-42";
+    this.postEpp(merchantid,arr);
+  }
+
+  getEppData(){
+    var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    let d = new Date();
+    let startDate = d.getDate() + '-' + mS[d.getMonth()] + '-' + d.getFullYear(); //"20-Apr-2018"
+    let endDate = "30-Apr-2018";
+    this.dashboardService.getEppData(startDate,endDate).subscribe(res=>{
+      console.log('-----epp data received--------',res)
+    },err=>{
+      console.log('-------epp data not received-----------',err);
+    });
+  }
+
+  postEpp(merchantId,payLoadArray){
+    let payLoad = payLoadArray;
+    this.dashboardService.postEppData(merchantId,payLoad).subscribe(res=>{
+      console.log('------post epp data success-----',res)
+    },err=>{
+      console.log('---------post epp data failure--------',err)
     })
   }
 

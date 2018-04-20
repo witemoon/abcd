@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardServiceService } from './dashboard-service.service';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,12 +9,15 @@ import { DashboardServiceService } from './dashboard-service.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private dashboardService:DashboardServiceService) { }
+  constructor(private dashboardService:DashboardServiceService, private authService:AuthService) { }
 
   ngOnInit() {
-    this.dashboardService.getLeaseData().subscribe(data=>{
+    let merchantid = this.authService.currentMerchantId;
+    this.dashboardService.getLeaseData(merchantid).subscribe(data=>{
       console.log('-----lease data received-------',data);
       this.dashboardService.leaseData.next(data);
+    },err=>{
+      console.log('----- get lease data error-------',err);
     });
   }
 

@@ -1,0 +1,23 @@
+
+
+if temporary password (which is received in email) is logged in after long time 
+-------------------------------------------------------------------------------
+{
+  "statusCode": "401",
+  "message": "Temprory Password has been expired",
+  "status": "Failure"
+}
+
+
+login with temporary password success message
+---------------------------------------------
+
+
+invalid username or password response
+-------------------------------------
+{
+  "statusCode": "401",
+  "message": "Invalid username or password provided.Please try again.",
+  "status": "Failure"
+}
+

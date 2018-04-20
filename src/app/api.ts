@@ -12,7 +12,7 @@ export var API = {
     merchant_leases: api_Base + '/merchants/{merchantId}/leases',
     forget_password: api_Base + '/merchants/password',
     change_password: api_Base + '/password',
-    get_epp: api_Base + '/epps',
+    get_epp: api_Base + '/epps?startDate={startDate}endDate={endDate}',
     save_epp: api_Base + '/merchants/{merchantId}/epp'
 };
 

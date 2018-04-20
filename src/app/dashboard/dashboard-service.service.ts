@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../api';
 import { Subject } from 'rxjs/Subject';
+import { BackEndInterceptorService } from '../shared/back-end-interceptor.service';
 
 
 @Injectable()
@@ -9,13 +10,32 @@ export class DashboardServiceService {
 
   public leaseData = new Subject();
 
-  constructor(private http:HttpClient) { 
+  constructor(private backEndInterceptorService: BackEndInterceptorService) { 
 
   }
 
-  getLeaseData(){
-    let observable = this.http.get(API.getLease);
-    return observable;
+  // getLeaseData(){
+  //   let observable = this.http.get(API.getLease);
+  //   return observable;
+  // }
+  
+  //.replace(/{(groupID)}/,id)
+
+  getLeaseData(merchantId){
+    let url = API.merchant_leases.replace(/{(merchantId)}/,merchantId);
+    return this.backEndInterceptorService.getUrl(url);
   }
+
+  getEppData(startDate,endDate){
+    let url = API.get_epp.replace(/{(startDate)}/,startDate).replace(/{(endDate)}/,endDate);
+    return this.backEndInterceptorService.getUrl(url);
+  }
+
+  postEppData(merchantId,payLoad){
+    let url = API.save_epp.replace(/{(merchantId)}/,merchantId);
+    return this.backEndInterceptorService.postUrl(url,payLoad);
+  }
+
+
 
 }
