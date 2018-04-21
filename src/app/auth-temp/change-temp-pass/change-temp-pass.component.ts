@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-change-temp-pass',
@@ -27,7 +28,7 @@ export class ChangeTempPassComponent implements OnInit {
     "confirmPasswordError": false
   };
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private authService:AuthService) { }
 
   ngOnInit() {
     this.passwordFC.valueChanges.subscribe(value=>{
@@ -61,24 +62,37 @@ export class ChangeTempPassComponent implements OnInit {
    var tempPass = changePass.value.tempPass;
    var newPass = this.passwordFC.value;
    var cnfPass = changePass.value.confPassword;
-
+   
    if (tempPass == ""){
       this.validationError.tempPasswordError = true;
    } else if (!newPass && !cnfPass && !tempPass) {
+    
      this.validationError.tempPasswordError = true;
      this.validationError.confirmPasswordError = true;
      this.validationError.newPasswordError = true;
      this.captcha.reset();
    } else if(newPass && cnfPass && (newPass == cnfPass)){
-      this.router.navigate(['/user/signin']);
-   } else{
+    let payLoad = {
+      "tempPass": '' + changePass.value.tempPass,
+      "newPass": '' + this.passwordFC.value,
+      "cnfPass": '' + changePass.value.confPassword
+    };
+    this.authService.register(payLoad).subscribe(res=>{
+      if(res['status']=='Success'){
+        this.router.navigate(['/user/signin']);
+      }
+    },err=>{
       this.captcha.reset();
       this.cPass.nativeElement.value = "";
       this.validationError.confirmPasswordError = true;
+      console.log('change paswword service failed',err);
+    })
+     
+   } else{
+      
     }
    }
   
-
   validate(event){
     if(this.passwordNew.length > 8){
       this.showError = false;

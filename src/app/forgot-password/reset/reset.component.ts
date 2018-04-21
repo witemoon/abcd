@@ -19,9 +19,10 @@ export class ResetComponent implements OnInit {
     
   }
   forgotPass(resetPass){
+    
     this.showError = false;
-    var email=resetPass.value.email;
-    this.authService.forgetPassword({email:email}).subscribe(res=>{
+    var email=resetPass.value.email.toLowerCase();;
+    this.authService.forgetPassword({emailId:email}).subscribe(res=>{
       if(res['status']=='Success'){
         this.router.navigate(['/thankyou']);
       }
