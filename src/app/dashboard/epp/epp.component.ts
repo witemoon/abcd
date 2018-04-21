@@ -36,7 +36,7 @@ export class EppComponent implements OnInit {
         "name": "string"
       }
     ];
-    let merchantid = "32021880018";
+    let merchantid = "903532646994";
     this.postEpp(merchantid,arr);
   }
 
