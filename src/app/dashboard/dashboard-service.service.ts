@@ -10,21 +10,21 @@ export class DashboardServiceService {
 
   public leaseData = new Subject();
 
-  constructor(private backEndInterceptorService: BackEndInterceptorService) { 
+  constructor(private backEndInterceptorService: BackEndInterceptorService, private http: HttpClient) { 
 
   }
 
-  // getLeaseData(){
-  //   let observable = this.http.get(API.getLease);
-  //   return observable;
-  // }
+  getLeaseData(merchantId){
+    let observable = this.http.get('https://api.myjson.com/bins/1cfb6b');
+    return observable;
+  }
   
   //.replace(/{(groupID)}/,id)
 
-  getLeaseData(merchantId){
-    let url = API.merchant_leases.replace(/{(merchantId)}/,merchantId);
-    return this.backEndInterceptorService.getUrl(url);
-  }
+  // getLeaseData(merchantId){
+  //   let url = API.merchant_leases.replace(/{(merchantId)}/,merchantId);
+  //   return this.backEndInterceptorService.getUrl(url);
+  // }
 
   getEppData(startDate,endDate){
     let url = API.get_epp.replace(/{(startDate)}/,startDate).replace(/{(endDate)}/,endDate);

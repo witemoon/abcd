@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
     let merchantid = this.authService.currentMerchantId;
     this.dashboardService.getLeaseData(merchantid).subscribe(data=>{
       console.log('-----lease data received-------',data);
-      this.dashboardService.leaseData.next(data);
+      this.dashboardService.leaseData.next(data['responseData']);
     },err=>{
       console.log('----- get lease data error-------',err);
     });

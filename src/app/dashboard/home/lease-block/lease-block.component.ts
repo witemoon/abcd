@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardServiceService } from '../../dashboard-service.service';
 
 @Component({
   selector: 'lease-block',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaseBlockComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dashboardService:DashboardServiceService) { }
 
+  leaseArray = [] ;
   ngOnInit() {
+    this.dashboardService.leaseData.subscribe(data=>{
+      this.leaseArray = data['lease'];
+    })
   }
 
 }

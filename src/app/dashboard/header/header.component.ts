@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.leaseData.subscribe(data=>{
       this.leaseData = data;
-      this.leaseData['Leases'].forEach(item=>{
+      this.leaseData['lease'].forEach(item=>{
         
       })
     })
