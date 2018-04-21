@@ -22,7 +22,7 @@ export class EppComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.leaseData.subscribe(data=>{
       this.leaseData = data;
-      this.leaseData['Leases'].forEach(item => {
+      this.leaseData['lease'].forEach(item => {
         this.leaseFormGroup.addControl(item.leaseId, new FormControl(false));
       });
       this.listenFormGroup();
@@ -36,7 +36,7 @@ export class EppComponent implements OnInit {
         "name": "string"
       }
     ];
-    let merchantid = "merchant-id-3143-344-42";
+    let merchantid = "32021880018";
     this.postEpp(merchantid,arr);
   }
 
