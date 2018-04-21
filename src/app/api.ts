@@ -2,7 +2,9 @@
 
 var api_Base = '/api'
 
-export var API_DEV_HOST = 'dev-urlease.firstdata.com';
+// export var API_DEV_HOST = 'dev-urlease.firstdata.com';
+export var API_DEV_HOST = 'localhost:8080';
+
 
 export var API = {
     getLease: 'https://api.myjson.com/bins/18wefb',

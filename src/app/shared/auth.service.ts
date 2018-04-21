@@ -7,7 +7,7 @@ import { API } from '../api';
 export class AuthService {
 
   currentEmail = "";
-  currentMerchantId = "";
+  currentMerchantId = "32021880018";
 
   constructor(private backEndInterceptorService: BackEndInterceptorService) {
    
@@ -29,12 +29,12 @@ export class AuthService {
 
   forgetPassword(payLoad:any){
     let url = API.forget_password;
-    return this.backEndInterceptorService.putUrl(url,payLoad);
+    return this.backEndInterceptorService.postUrl(url,payLoad);
   }
 
   changePassword(payLoad:any){
     let url = API.change_password;
-    return this.backEndInterceptorService.putUrl(url,payLoad);
+    return this.backEndInterceptorService.postUrl(url,payLoad);
   }
 
   logOut(){

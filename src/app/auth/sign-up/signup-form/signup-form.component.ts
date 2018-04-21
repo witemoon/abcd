@@ -92,7 +92,7 @@ export class SignupFormComponent implements OnInit {
     var refKey=signUpForm.value.referenceKey;
     var leaseNo=signUpForm.value.leaseNumber;
     var merchantDBA=signUpForm.value.merchantDBA.toLowerCase();
-    if(refKey=="123456789" && this.leaseNumberFC.value=="052-5234567-098" && merchantDBA=="abc bbq and burgers"){
+    // if(refKey && this.leaseNumberFC.value && merchantDBA){
       let payLoad = {
         "leaseNumber": '' + this.leaseNumberFC.value,
         "merchantDBA": '' + merchantDBA,
@@ -104,13 +104,12 @@ export class SignupFormComponent implements OnInit {
       },error=>{
         console.log('signup error',error);
       })
-      //console.log('valid');
-    }
-    else{
-      console.log(refKey, refKey=="123456789",this.leaseNumberFC.value,this.leaseNumberFC.value=="052-5234567-098", merchantDBA, merchantDBA=="abc bbq and burgers");
+    // }
+    // else{
+    //   console.log(refKey, refKey=="123456789",this.leaseNumberFC.value,this.leaseNumberFC.value=="052-5234567-098", merchantDBA, merchantDBA=="abc bbq and burgers");
 
-      console.log('Not Valid')
-    }
+    //   console.log('Not Valid')
+    // }
 
   }
   signInError = false;
@@ -127,7 +126,7 @@ export class SignupFormComponent implements OnInit {
       this.signInError = false;
       this.singInSuccess = false;
       this.authService.setToken(res['responseData'].token);
-      this.authService.currentMerchantId = res['merchantId']; //change the key name properly from success message
+      this.authService.currentMerchantId = res['merchantId']; // 32021880018 change the key name properly from success message
       this.router.navigate(['/dashboard/home']);
     }
     else{
