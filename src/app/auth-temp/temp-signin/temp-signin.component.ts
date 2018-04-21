@@ -30,10 +30,20 @@ export class TempSigninComponent implements OnInit {
       }
     this.authService.signIn(payLoad).subscribe(res=>{
       if(res['status']=='Success'){
-        if(res['message']=""){ // write the proper message while login in with temp password...
-          this.authService.currentEmail = email;
-          this.router.navigate(['/signchangepass']);
+        try{
+          this.authService.currentMerchantId = res['responseData'].merchantId;
+          this.authService.setToken(res['responseData'].token);
+        }catch(e){
+          console.log('---error happened----',e);
         }
+        if(res['responseData'].firstTimeUser){
+            this.authService.currentEmail = email;
+            this.router.navigate(['/signchangepass']);
+        }
+        // if(res['message']=""){ // write the proper message while login in with temp password...
+        //   this.authService.currentEmail = email;
+        //   this.router.navigate(['/signchangepass']);
+        // }
       }
       else{
         this.showError = true;
