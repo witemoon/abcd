@@ -7,7 +7,7 @@ import { API } from '../api';
 export class AuthService {
 
   currentEmail = "";
-  currentMerchantId = "903532646994";
+  currentMerchantId = "";
 
   constructor(private backEndInterceptorService: BackEndInterceptorService) {
    

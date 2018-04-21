@@ -65,35 +65,64 @@ body, html {
   font: 12px SimpleSans-Regular, Helvetica, sans-serif;
   font-weight: normal; }
 
+/*** Styles added to fix the issue with zoom in on iphone ***/
+/* iPhone < 5: */
+@media screen and (device-aspect-ratio: 2 / 3) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"] {
+    font-size: 16px; } }
+/* iPhone 5, 5C, 5S, iPod Touch 5g */
+@media screen and (device-aspect-ratio: 40 / 71) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"] {
+    font-size: 16px; } }
+/* iPhone 6, iPhone 6s, iPhone 7 portrait/landscape */
+@media screen and (device-aspect-ratio: 375 / 667) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"] {
+    font-size: 16px; } }
+/* iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus portrait/landscape */
+@media screen and (device-aspect-ratio: 9 / 16) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"] {
+    font-size: 16px; } }
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px; }
+
+input[type="text"]:focus,
+textarea:focus {
+  -webkit-text-size-adjust: 100%; }
+
 input[type=text], input[type=password] {
   font-family: SimpleSans-Bold, Helvetica, sans-serif !important;
   color: #616365 !important; }
-
-::-webkit-input-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #616365 !important;
-  opacity: 1;
-  /* Firefox */ }
-
-:-ms-input-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #616365 !important;
-  opacity: 1;
-  /* Firefox */ }
-
-
-
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #616365 !important;
-  opacity: 1;
-  /* Firefox */ }
-
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #616365 !important; }
-
-
 
 .img-ctrl {
   max-width: 100%; }
@@ -314,7 +343,7 @@ input[type=text], input[type=password] {
   margin-bottom: 0px; }
 
 .formWrapInner.exSpacer {
-  padding: 2.5rem 3.66rem 5.83rem 3.66rem; }
+  padding: 2.5rem 3.66rem 7.08rem 3.66rem; }
   .formWrapInner.exSpacer .nav-tabs {
     margin-bottom: 37px; }
 
@@ -337,7 +366,7 @@ input[type=text], input[type=password] {
       margin-bottom: 0px;
       position: absolute;
       width: 100%;
-      bottom: -42px; }
+      bottom: -47px; }
   .formWrapInner p {
     padding-top: 0px;
     font-size: 1.16rem; }
@@ -483,6 +512,11 @@ input[type=text], input[type=password] {
 /*********************************** dashboard  STARTS here *********************************/
 #db-wrap {
   background: #f5f7fa; }
+
+.fd-lease-blocks {
+  padding-right: 10px;
+  padding-left: 10px;
+  border: 1px dashed orange; }
 
 .db-inner-wrap {
   padding: 70px 155px 0px 95px;
@@ -802,8 +836,26 @@ input[type=text], input[type=password] {
   font-size: 10px;
   font-family: SimpleSans-Regular, Helvetica, sans-serif; }
 
+.eol .card {
+  border: none;
+  border-bottom: 1px solid white; }
+.eol .txtCtrl {
+  background: yellow;
+  width: 100%;
+  word-wrap: break-word !important; }
+.eol .card {
+  max-width: 100%; }
+.eol .card-text {
+  word-wrap: break-word !important; }
 .eol .card-header {
-  background: #0072ce; }
+  background: #0072ce;
+  border-radius: 0; }
+  .eol .card-header a.btn {
+    background: red !important;
+    display: block;
+    word-wrap: break-word; }
+.eol .card-body {
+  border: none; }
 .eol #accordion {
   width: 100%; }
 .eol .btn {
@@ -995,6 +1047,26 @@ input[type=text], input[type=password] {
 
 /*********************************** dashboard ENDS here *********************************/
 /*********************************** sidebar  STARTS here *********************************/
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0px !important;
+  -webkit-appearance: none; }
+
+.form-control:focus, ul.lft-icon-wrap li.active {
+  border-color: #cccccc;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
 .sidenav {
   height: 100%;
   /* 100% Full-height */
@@ -1022,9 +1094,12 @@ input[type=text], input[type=password] {
   -webkit-box-shadow: 4px 0 8px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 4px 0 8px 0 rgba(0, 0, 0, 0.25); }
 
+.img-ctrl {
+  border: 1px solid red; }
+
 .lft-but-wrap {
   position: absolute;
-  background: green;
+  background: #43b02a;
   width: 100%;
   top: 0px;
   height: 60px;
@@ -1082,7 +1157,7 @@ ul.lft-icon-wrap li {
 
 ul.lft-icon-wrap li.active {
   font-family: SimpleSans-Bold, Helvetica, sans-serif;
-  text-transform: uppercase;
+  text-transform: none;
   background: #0072ce; }
 
 .sidenav.ctrlWidthLft .lft-but-wrap {
@@ -1225,7 +1300,7 @@ ul.lft-icon-wrap li.active {
   background-image: url("../img/open.svg");
   background-repeat: no-repeat;
   background-position: right top;
-  background-color: green;
+  background-color: #43b02a;
   width: 60px;
   cursor: pointer; }
 
@@ -1294,11 +1369,11 @@ ul.lft-icon-wrap li.active {
   transition: .4s; }
 
 input:checked + .slider {
-  background-color: green; }
+  background-color: #43b02a; }
 
 input:focus + .slider {
-  -webkit-box-shadow: 0 0 1px green;
-          box-shadow: 0 0 1px green; }
+  -webkit-box-shadow: 0 0 1px #43b02a;
+          box-shadow: 0 0 1px #43b02a; }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(22px);
@@ -1317,6 +1392,9 @@ input:checked + .slider:before {
 /*No media query since this is the default in Bootstrap*/
 /*Small devices (landscape phones, 576px and up)*/
 @media (max-width: 768px) {
+  .fd-dd-mob {
+    border: 2px dashed red !important; }
+
   .land-cnt-01-inner, .land-cnt-02-inner {
     padding: 20px !important; }
 
@@ -1526,5 +1604,4 @@ p.testone {
 
 .ls-phone > span {
   background-color: #0072ce; }
-
 /*# sourceMappingURL=urLease.css.map */
