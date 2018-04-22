@@ -3,7 +3,7 @@
       <ul>
           <li>
               <label>Merchant Name:</label>
-              <span class="">{{leaseData["merchantName"]}}</span>
+              <span class="">{{leaseData["merchnatName"]}}</span>
           </li>
           <li>
               <label>
@@ -12,7 +12,7 @@
           </li>
           <li>
               <label>Lease # : </label>
-              <span class="">052-5234567-000</span>
+              <span class="">{{selectedLease['leaseNo']}}</span>
           </li>
       </ul>
 
@@ -21,16 +21,16 @@
       <ul>
           <li>
               <label>Business Address: </label>
-              <span class="">4000 Coral Springs Dr, Coral Springs, FL 33065</span>
+              <span class="">{{selectedLease['businessAddress']}}</span>
           </li>
           <li>
               <label>
                   Business Contact:</label>
-              <span class=""> John Duo</span>
+              <span class=""> {{selectedLease['businessContact']}}</span>
           </li>
           <li>
               <label>Email:</label>
-              <span class=""> tesemail@uslease.com</span>
+              <span class="">{{selectedLease['emailId']}}</span>
           </li>
       </ul>
   </div>

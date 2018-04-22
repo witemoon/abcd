@@ -9,12 +9,19 @@ import { DashboardServiceService } from '../../dashboard-service.service';
 export class LeaseBlockComponent implements OnInit {
 
   constructor(private dashboardService:DashboardServiceService) { }
-
+  selectedLease = 0;
   leaseArray = [] ;
+  selectLeaseObject = {};
   ngOnInit() {
     this.dashboardService.leaseData.subscribe(data=>{
       this.leaseArray = data['lease'];
+      this.selectLeaseObject = this.leaseArray[0];
+      this.emitSelectedLeaseObj(this.selectLeaseObject);
     })
+  }
+
+  emitSelectedLeaseObj(obj){
+    this.dashboardService.selectedLeaseObj.next(obj);
   }
 
 }

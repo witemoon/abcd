@@ -9,13 +9,14 @@ import { BackEndInterceptorService } from '../shared/back-end-interceptor.servic
 export class DashboardServiceService {
 
   public leaseData = new Subject();
+  public selectedLeaseObj = new Subject();
 
   constructor(private backEndInterceptorService: BackEndInterceptorService, private http: HttpClient) { 
 
   }
 
   // getLeaseData(merchantId){
-  //   let observable = this.http.get('https://api.myjson.com/bins/1cfb6b');
+  //   let observable = this.http.get('https://api.myjson.com/bins/rpnt7');
   //   return observable;
   // }
   

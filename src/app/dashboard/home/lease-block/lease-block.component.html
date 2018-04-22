@@ -5,11 +5,36 @@
     <div id="fd-lease-blocks-wrap" class="carousel slide" data-interval="false" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
 
-        <div class="carousel-item  py-3 active">
+          <div class="carousel-item  py-3 active">
+              <div class="row">
+                <div class="col-12  ">
+                  <div class="row">
+                      <div class=" fd-lease-blocks col-12 col-sm-6  col-md-3  " 
+                      *ngFor="let item of leaseArray; let i=index;"
+                      [ngClass]="{'leaseCardSelected':selectedLease==i}"
+                      (click)="selectedLease=i;emitSelectedLeaseObj(item)"
+                      >
+                          <div class="cus-card  p-5 col-12  " [ngClass]="{'leaseCardSelected':selectedLease==i}">
+                            <ul>
+                              <li>
+                                <label  [ngClass]="{'leaseCardSelected':selectedLease==i}" >Lease</label>
+                                <br>
+                                <span class=""  [ngClass]="{'leaseCardSelected':selectedLease==i}" >{{item.leaseNo}}</span>
+                              </li>
+        
+                            </ul>
+        
+                          </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+        <!-- <div class="carousel-item  py-3 active">
           <div class="row">
             <div class="col-12  ">
               <div class="row">
-                <!--one- card one-->
                 <div class="fd-lease-blocks col-12 col-sm-6  col-md-3  ">
                   <div class="cus-card active  p-5 col-12  ">
                     <span class="fd-badge">2</span>
@@ -24,7 +49,6 @@
 
                   </div>
                 </div>
-                <!--one- card two-->
                 <div class=" fd-lease-blocks col-12 col-sm-6 col-md-3 d-none d-sm-block">
                   <div class="cus-card p-5 col-12  ">
                     <span class="fd-badge">2</span>
@@ -40,7 +64,6 @@
 
                   </div>
                 </div>
-                <!--one- card three-->
                 <div class=" fd-lease-blocks col-12 col-sm-6 col-md-3 d-none d-md-block">
                   <div class="cus-card p-5 col-12  ">
                     <span class="fd-badge">2</span>
@@ -56,7 +79,6 @@
 
                   </div>
                 </div>
-                <!--one- card four-->
                 <div class=" fd-lease-blocks col-12 col-sm-6 col-md-3 d-none d-md-block">
                   <div class="cus-card p-5 col-12  ">
                     <ul>
@@ -75,13 +97,13 @@
             </div>
 
           </div>
-        </div>
-        <div class="carousel-item  py-3">
+        </div> -->
+        <!-- <div class="carousel-item  py-3 active">
           <div class="row">
             <div class="col-12  ">
-              <div class="row">
+              <div class="row"> -->
                 <!--one- card one-->
-                <div class=" fd-lease-blocks col-12 col-sm-6  col-md-3  ">
+                <!-- <div class=" fd-lease-blocks col-12 col-sm-6  col-md-3  ">
                   <div class="cus-card  p-5 col-12  ">
                     <ul>
                       <li>
@@ -93,9 +115,9 @@
                     </ul>
 
                   </div>
-                </div>
+                </div> -->
                 <!--one- card two-->
-                <div class=" fd-lease-blockscol-12 col-sm-6 col-md-3 d-none d-sm-block   ">
+                <!-- <div class=" fd-lease-blockscol-12 col-sm-6 col-md-3 d-none d-sm-block   ">
                   <div class="cus-card p-5 col-12  ">
                     <ul>
                       <li>
@@ -107,9 +129,9 @@
                     </ul>
 
                   </div>
-                </div>
+                </div> -->
                 <!--one- card three-->
-                <div class="fd-lease-blocks col-12 col-sm-6 col-md-3 d-none d-md-block ">
+                <!-- <div class="fd-lease-blocks col-12 col-sm-6 col-md-3 d-none d-md-block ">
                   <div class="cus-card p-5 col-12  ">
                     <ul>
                       <li>
@@ -121,9 +143,9 @@
                     </ul>
 
                   </div>
-                </div>
+                </div> -->
                 <!--one- card four-->
-                <div class="fd-lease-blocks col-12 col-sm-6 col-md-3 d-none d-md-block     ">
+                <!-- <div class="fd-lease-blocks col-12 col-sm-6 col-md-3 d-none d-md-block     ">
                   <div class="cus-card p-5 col-12  ">
                     <ul>
                       <li>
@@ -135,14 +157,14 @@
                     </ul>
 
                   </div>
-                </div>
-              </div>
+                </div> -->
+              <!-- </div>
 
 
             </div>
 
           </div>
-        </div>
+        </div> -->
       </div>
       <a href="#fd-lease-blocks-wrap" class="carousel-control-prev" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

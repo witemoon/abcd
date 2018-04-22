@@ -1,5 +1,5 @@
 <!--Lease tabs Starts Here-->
-<div class="row ">
+<div class="row " *ngIf="showTabs">
   <div class="db-lease-tab col-12 ">
 
       <!-- Nav pills -->
@@ -60,8 +60,37 @@
                                   <div class="row">
                                       <div class="col-10 offset-1">
                                           <div class="row">
-                                              <div class="col-12 col-md-6 ">
+                                              <div class="col-12 col-md-6 "
+                                              *ngFor="let item of selectedLease['equipments'];  "
+                                              >
 
+                                                  <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
+                                                      <ul>
+                                                          <li>
+                                                              <label>Equipment:</label>
+                                                              <br>
+                                                              <span class="">Clover Station</span>
+                                                          </li>
+                                                          <li>
+                                                              <label>Make and Model:</label>
+                                                              <br>
+                                                              <span class="">{{item['makeAndModel']}}</span>
+                                                          </li>
+                                                          <li>
+                                                              <label>Serial number:</label>
+                                                              <br>
+                                                              <span class="">{{item['leaseNo']}}</span>
+                                                          </li>
+                                                          <li>
+                                                              <label>Equipment Status:</label>
+                                                              <br>
+                                                              <span class="">Returned</span>
+                                                          </li>
+                                                      </ul>
+
+                                                  </div>
+                                              </div>
+                                              <!-- <div class="col-12 col-md-6 d-none d-sm-none d-md-block ">
                                                   <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
                                                       <ul>
                                                           <li>
@@ -87,41 +116,14 @@
                                                       </ul>
 
                                                   </div>
-                                              </div>
-                                              <div class="col-12 col-md-6 d-none d-sm-none d-md-block ">
-                                                  <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
-                                                      <ul>
-                                                          <li>
-                                                              <label>Equipment:</label>
-                                                              <br>
-                                                              <span class="">Clover Station</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Make and Model:</label>
-                                                              <br>
-                                                              <span class="">12313313 | 2010</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Serial number:</label>
-                                                              <br>
-                                                              <span class="">XXX-XXXXXXXXX-XXX</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Equipment Status:</label>
-                                                              <br>
-                                                              <span class="">Returned</span>
-                                                          </li>
-                                                      </ul>
-
-                                                  </div>
-                                              </div>
+                                              </div> -->
                                           </div>
 
                                       </div>
 
                                   </div>
                               </div>
-                              <div class="carousel-item">
+                              <!-- <div class="carousel-item">
                                   <div class="row">
                                       <div class="col-10 offset-1">
                                           <div class="row">
@@ -184,7 +186,7 @@
                                       </div>
 
                                   </div>
-                              </div>
+                              </div> -->
                           </div>
                           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -230,11 +232,11 @@
                               <tbody>
                               <tr>
                                   <td>Lease Status</td>
-                                  <td>Default</td>
+                                  <td>{{selectedLease['payment']['leaseStatus']}}</td>
                               </tr>
                               <tr>
                                   <td>Current Balance</td>
-                                  <td>$3,000.00</td>
+                                  <td>{{selectedLease['payment']['currentBalance']}}</td>
                               </tr>
                               <tr>
                                   <td>Last Payment</td>
@@ -242,19 +244,19 @@
                               </tr>
                               <tr>
                                   <td>Total Mimimum Due</td>
-                                  <td>$250.00</td>
+                                  <td>{{selectedLease['payment']['totalDue']}}</td>
                               </tr>
                               <tr>
                                   <td>Payment Due Date</td>
-                                  <td>02/03/2018</td>
+                                  <td>{{selectedLease['payment']['paymentDueDate']}}</td>
                               </tr>
                               <tr>
                                   <td>Days Past Due</td>
-                                  <td>20 Days</td>
+                                  <td>{{selectedLease['payment']['daysPastDue']}}</td>
                               </tr>
                               <tr>
                                   <td>Past Payment Due</td>
-                                  <td>$125.00</td>
+                                  <td>{{selectedLease['payment']['pastPaymentDue']}}</td>
                               </tr>
                               </tbody>
                           </table>
@@ -295,16 +297,16 @@
                                   <li>
                                       <label>
                                           Lease Term:</label>
-                                      <span class="">36 Months</span>
+                                      <span class="">{{selectedLease['contractStatus']['leaseTerm']}}</span>
                                   </li>
                                   <li>
                                       <label>Start Date:</label>
-                                      <span class=""> 03/20/2018 </span>
+                                      <span class=""> {{selectedLease['contractStatus']['startDate']}} </span>
                                   </li>
 
                                   <li>
                                       <label>End date:</label>
-                                      <span class="">  02/19/2021 </span>
+                                      <span class="">{{selectedLease['contractStatus']['endDate']}}</span>
                                   </li>
                               </ul>
 
@@ -314,21 +316,21 @@
                               <ul>
                                   <li>
                                       <label>Payments Made:</label>
-                                      <span class="">2</span>
+                                      <span class="">{{selectedLease['contractStatus']['paymentsMade']}}</span>
                                   </li>
                                   <li>
                                       <label>
                                           Payment Amount:</label>
-                                      <span class="">$55.60</span>
+                                      <span class="">{{selectedLease['contractStatus']['paymentAmount']}}</span>
                                   </li>
                                   <li>
                                       <label>Past Due Amount:</label>
-                                      <span class=""> $75.60 </span>
+                                      <span class="">{{selectedLease['contractStatus']['pastDueAmount']}} </span>
                                   </li>
 
                                   <li>
                                       <label>Days Past Due:</label>
-                                      <span class=""> 31</span>
+                                      <span class="">{{selectedLease['contractStatus']['daysPastDue']}}</span>
                                   </li>
                               </ul>
 
@@ -338,12 +340,12 @@
                               <ul>
                                   <li>
                                       <label>Personal Guarantor:</label>
-                                      <span class="">Yes</span>
+                                      <span class="">{{selectedLease['contractStatus']['personalGurantor']}}</span>
                                   </li>
                                   <li>
                                       <label>
                                           Buyout Quote:</label>
-                                      <span class="">$1500</span>
+                                      <span class="">{{selectedLease['contractStatus']['buyoutQuote']}}</span>
                                   </li>
                                   <li>
                                       <label>Bank Routing Number:</label>
@@ -362,16 +364,16 @@
                               <ul>
                                   <li>
                                       <label>EPP Enrolled:</label>
-                                      <span class="">Yes</span>
+                                      <span class="">{{selectedLease['contractStatus']['eppInrolled']}}</span>
                                   </li>
                                   <li>
                                       <label>
                                           EPP Amount:</label>
-                                      <span class="">$10</span>
+                                      <span class="">{{selectedLease['contractStatus']['eppAmount']}}</span>
                                   </li>
                                   <li>
                                       <label>Property Tax Handling Fee:</label>
-                                      <span class=""> $15.60 </span>
+                                      <span class="">{{selectedLease['contractStatus']['eppAmount']}}</span>
                                   </li>
 
 
@@ -409,12 +411,12 @@
                       <ul>
                           <li>
                               <label>Equipment Coverage:</label>
-                              <span class="">Yes</span>
+                              <span class="">{{selectedLease['contractStatus']['equipmentCoverage']}}</span>
                           </li>
                           <li>
                               <label>
                                   Equipment Coverage Company:</label>
-                              <span class=""> Allstate</span>
+                              <span class=""> {{selectedLease['contractStatus']['equipmentCoverageCompaney']}}</span>
                           </li>
                           <li>
                               <label>Policy Number:</label>
@@ -422,11 +424,11 @@
                           </li>
                           <li>
                               <label>Start Date:</label>
-                              <span class="">  02/20/2016 </span>
+                              <span class=""> {{selectedLease['contractStatus']['startDate']}}</span>
                           </li>
                           <li>
                               <label>End date:</label>
-                              <span class="">  02/19/2021 </span>
+                              <span class="">  {{selectedLease['contractStatus']['endDate']}} </span>
                           </li>
                       </ul>
                       <h6> On information regarding how to raise a claim

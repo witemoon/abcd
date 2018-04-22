@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardServiceService } from '../../dashboard-service.service';
 
 @Component({
   selector: 'lease-tabs',
@@ -8,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class LeaseTabsComponent implements OnInit {
   
   openPopup = false;
-
-  constructor() { }
+  showTabs = false;
+  selectedLease={ };
+  constructor(private dashboardService:DashboardServiceService) { }
 
   ngOnInit() {
+    this.dashboardService.selectedLeaseObj.subscribe(data=>{
+      this.selectedLease = data;
+      this.showTabs = true;
+    })
   }
 
   showAlerts(){
