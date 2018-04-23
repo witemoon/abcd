@@ -73,11 +73,12 @@ export class ChangeTempPassComponent implements OnInit {
      this.captcha.reset();
    } else if(newPass && cnfPass && (newPass == cnfPass)){
     let payLoad = {
-      "tempPass": '' + changePass.value.tempPass,
-      "newPass": '' + this.passwordFC.value,
-      "cnfPass": '' + changePass.value.confPassword
+      "currentPassword": '' + changePass.value.tempPass,
+      "newPassword": '' + this.passwordFC.value,
+      "confirmPassword": '' + changePass.value.confPassword,
+      "emailId": '' + this.authService.currentEmail
     };
-    this.authService.register(payLoad).subscribe(res=>{
+    this.authService.changePassword(payLoad).subscribe(res=>{
       if(res['status']=='Success'){
         this.router.navigate(['/user/signin']);
       }
