@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'alerts-popup',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AlertsPopupComponent implements OnInit {
 
   @Input() showPopup = false;
-  constructor() { }
+  constructor( private route:Router) { }
 
   ngOnInit() {
   }

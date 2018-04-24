@@ -241,7 +241,7 @@
                               </tr>
                               <tr>
                                   <td>Last Payment</td>
-                                  <td>$125.00</td>
+                                  <td></td>
                               </tr>
                               <tr>
                                   <td>Total Mimimum Due</td>
@@ -350,12 +350,12 @@
                                   </li>
                                   <li>
                                       <label>Bank Routing Number:</label>
-                                      <span class="">XXXXXX4563 </span>
+                                      <span class=""> </span>
                                   </li>
 
                                   <li>
                                       <label>Bank Account Number:</label>
-                                      <span class="">  XXXXXXXXXX3124 </span>
+                                      <span class=""></span>
                                   </li>
                               </ul>
 
@@ -374,7 +374,7 @@
                                   </li>
                                   <li>
                                       <label>Property Tax Handling Fee:</label>
-                                      <span class="">{{selectedLease['contractStatus']['eppAmount']}}</span>
+                                      <span class=""></span>
                                   </li>
 
 
@@ -412,24 +412,24 @@
                       <ul>
                           <li>
                               <label>Equipment Coverage:</label>
-                              <span class="">{{selectedLease['contractStatus']['equipmentCoverage']}}</span>
+                              <span class="">{{selectedLease['equipmentCoverage']['equipmentCoverage']}}</span>
                           </li>
                           <li>
                               <label>
                                   Equipment Coverage Company:</label>
-                              <span class=""> {{selectedLease['contractStatus']['equipmentCoverageCompaney']}}</span>
+                              <span class=""> {{selectedLease['equipmentCoverage']['equipmentCoverageCompaney']}}</span>
                           </li>
                           <li>
                               <label>Policy Number:</label>
-                              <span class=""> 9129-121212-12321 </span>
+                              <span class="">{{selectedLease['equipmentCoverage']['insurancePolicyNumber']}}</span>
                           </li>
                           <li>
                               <label>Start Date:</label>
-                              <span class=""> {{selectedLease['contractStatus']['startDate']}}</span>
+                              <span class="">{{selectedLease['equipmentCoverage']['startDate']}} </span>
                           </li>
                           <li>
                               <label>End date:</label>
-                              <span class="">  {{selectedLease['contractStatus']['endDate']}} </span>
+                              <span class=""> {{selectedLease['equipmentCoverage']['endDate']}} </span>
                           </li>
                       </ul>
                       <h6> On information regarding how to raise a claim

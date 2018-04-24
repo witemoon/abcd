@@ -27,6 +27,7 @@ export class LeftSideBarComponent implements OnInit {
 }
 
 logout(){
+  console.log('This is not happening');
   this.authService.logOut().subscribe(res=>{ 
     console.log('logout Response:',res);
     this.router.navigate(['/user/signin']);

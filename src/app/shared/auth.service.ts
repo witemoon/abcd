@@ -39,7 +39,9 @@ export class AuthService {
 
   logOut(){
     let url = API.merchant_logout;
+    
     return this.backEndInterceptorService.getUrl(url);
+    
   }
 
 }
