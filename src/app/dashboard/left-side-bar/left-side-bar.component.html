@@ -1,85 +1,84 @@
-
-<div id="SidenavLftBut" class="sidenavB" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft()">
+<div id="SidenavLftBut" class="sidenavB " [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft()">
 
 </div>
 
 <div id="SidenavLft" [ngClass]="{'ctrlWidthLft':lftSide}" class="sidenav">
 
   <div class="lft-but-wrap">
-      <div class="loginname">
-          Mattie Garcia
-      </div>
-      <div class="signout-Wrap" (click)="logout()" >
-          Sign out
-      </div>
+    <div class="loginname">
+      Mattie Garcia
+    </div>
+    <div class="signout-Wrap" (click)="logout()">
+      Sign out
+    </div>
 
 
   </div>
   <ul class="lft-icon-wrap p-0">
-      <li [routerLinkActive]="['active']" [routerLink]="['home']">
-          <div class="icnWrap ">
-              <img class="icn" src="assets/img/ls-home.svg">
-              <br>
-              <span class="nrtitle">Home</span>
-          </div>
-          <div class="extitle">Home</div>
+    <li [routerLinkActive]="['active']" [routerLink]="['home']">
+      <div class="icnWrap ">
+        <img class="icn" src="assets/img/ls-home.svg">
+        <br>
+        <span class="nrtitle">Home</span>
+      </div>
+      <div class="extitle">Home</div>
 
 
-      </li>
-      <li [routerLinkActive]="['active']" [routerLink]="['epp']">
-          <div class="icnWrap">
-              <img class="icn" src="assets/img/ls-epp.svg">
-              <br>
-              <span class="nrtitle">EPP</span>
-          </div>
-          <div class="extitle">EPP
-              <small>(Equipment Protection
-                  Program)
-              </small>
-          </div>
+    </li>
+    <li [routerLinkActive]="['active']" [routerLink]="['epp']">
+      <div class="icnWrap">
+        <img class="icn" src="assets/img/ls-epp.svg">
+        <br>
+        <span class="nrtitle">EPP</span>
+      </div>
+      <div class="extitle">EPP
+        <small>(Equipment Protection
+          Program)
+        </small>
+      </div>
 
 
-      </li>
-      <li [routerLinkActive]="['active']" [routerLink]="['claims']">
-          <div class="icnWrap">
-              <img class="icn" src="assets/img/ls-claims.svg">
-              <br>
-              <span class="nrtitle">Claims</span>
-          </div>
-          <div class="extitle">Claims</div>
+    </li>
+    <li [routerLinkActive]="['active']" [routerLink]="['claims']">
+      <div class="icnWrap">
+        <img class="icn" src="assets/img/ls-claims.svg">
+        <br>
+        <span class="nrtitle">Claims</span>
+      </div>
+      <div class="extitle">Claims</div>
 
 
-      </li>
-      <li [routerLinkActive]="['active']" [routerLink]="['eol']">
-          <div class="icnWrap">
-              <img class="icn" src="assets/img/ls-eol.svg">
-              <br>
-              <span class="nrtitle">EOL</span>
-          </div>
-          <div class="extitle">End of Lease Options</div>
+    </li>
+    <li [routerLinkActive]="['active']" [routerLink]="['eol']">
+      <div class="icnWrap">
+        <img class="icn" src="assets/img/ls-eol.svg">
+        <br>
+        <span class="nrtitle">EOL</span>
+      </div>
+      <div class="extitle">End of Lease Options</div>
 
 
-      </li>
-      <li [routerLinkActive]="['active']" [routerLink]="['faq']">
-          <div class="icnWrap ">
-              <img class="icn" src="assets/img/ls-faq.svg">
-              <br>
-              <span class="nrtitle">FAQ</span>
-          </div>
-          <div class="extitle">FAQ</div>
+    </li>
+    <li [routerLinkActive]="['active']" [routerLink]="['faq']">
+      <div class="icnWrap ">
+        <img class="icn" src="assets/img/ls-faq.svg">
+        <br>
+        <span class="nrtitle">FAQ</span>
+      </div>
+      <div class="extitle">FAQ</div>
 
 
-      </li>
-      <li [routerLinkActive]="['active']" [routerLink]="['contact']">
-          <div class="icnWrap">
-              <img class="icn" src="assets/img/ls-phone.svg">
-              <br>
-              <span class="nrtitle">Contact</span>
-          </div>
-          <div class="extitle">Contact</div>
+    </li>
+    <li [routerLinkActive]="['active']" [routerLink]="['contact']">
+      <div class="icnWrap">
+        <img class="icn" src="assets/img/ls-phone.svg">
+        <br>
+        <span class="nrtitle">Contact</span>
+      </div>
+      <div class="extitle">Contact Us</div>
 
 
-      </li>
+    </li>
 
 
   </ul>

@@ -28,7 +28,7 @@ export class EppComponent implements OnInit {
       this.listenFormGroup();
     })
 
-    this.getEppData();
+    // this.getEppData();
     let arr = [
       {
         "insCode": "string",
@@ -40,18 +40,18 @@ export class EppComponent implements OnInit {
     this.postEpp(merchantid,arr);
   }
 
-  getEppData(){
-    var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-    let d = new Date();
-    let startDate = d.getDate() + '-' + mS[d.getMonth()] + '-' + d.getFullYear(); //"20-Apr-2018"
-    let endDate = "30-Apr-2018";
-    this.dashboardService.getEppData(startDate,endDate).subscribe(res=>{
-      console.log('-----epp data received--------',res)
-    },err=>{
-      console.log('-------epp data not received-----------',err);
-    });
-  }
+  // getEppData(){
+  //   var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  //   var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+  //   let d = new Date();
+  //   let startDate = d.getDate() + '-' + mS[d.getMonth()] + '-' + d.getFullYear(); //"20-Apr-2018"
+  //   let endDate = "30-Apr-2018";
+  //   this.dashboardService.getEppData(startDate,endDate).subscribe(res=>{
+  //     console.log('-----epp data received--------',res)
+  //   },err=>{
+  //     console.log('-------epp data not received-----------',err);
+  //   });
+  // }
 
   postEpp(merchantId,payLoadArray){
     let payLoad = payLoadArray;
