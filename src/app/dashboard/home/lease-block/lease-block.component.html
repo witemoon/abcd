@@ -14,7 +14,9 @@
                       [ngClass]="{'leaseCardSelected':selectedLease==i}"
                       (click)="selectedLease=i;emitSelectedLeaseObj(item)"
                       >
+
                           <div class="cus-card  p-5 col-12  " [ngClass]="{'leaseCardSelected':selectedLease==i}">
+                            <span class="fd-badge">{{item['cardAlert']}}</span>
                             <ul>
                               <li>
                                 <label  [ngClass]="{'leaseCardSelected':selectedLease==i}" >Lease</label>

@@ -17,6 +17,9 @@ export class LeaseBlockComponent implements OnInit {
       this.leaseArray = data['lease'];
       this.selectLeaseObject = this.leaseArray[0];
       this.emitSelectedLeaseObj(this.selectLeaseObject);
+      this.leaseArray.forEach(item=>{
+        item['cardAlert'] = item['equipmentCoverage']['equipmentCoverage']!=null ? 1 : null;
+      });
     })
   }
 

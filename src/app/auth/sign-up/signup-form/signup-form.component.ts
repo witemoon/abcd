@@ -96,7 +96,7 @@ export class SignupFormComponent implements OnInit {
       let payLoad = {
         "leaseNumber": '' + this.leaseNumberFC.value,
         "merchantDBA": '' + merchantDBA,
-        "referenceKey": '' + refKey
+        "referenceKey": refKey
       };
       this.authService.register(payLoad).subscribe(res=>{
         console.log('register Response:',res);

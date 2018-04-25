@@ -28,7 +28,9 @@ export class ChangeTempPassComponent implements OnInit {
     "confirmPasswordError": false
   };
 
-  constructor(private router:Router, private authService:AuthService) { }
+  constructor(private router:Router, private authService:AuthService) { 
+    this.authService.setToken("");
+  }
 
   ngOnInit() {
     this.passwordFC.valueChanges.subscribe(value=>{
