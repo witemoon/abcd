@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardServiceService } from '../dashboard-service.service';
+// import { dashboardData } from './dashboard-model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  equipmentBadgeCount = 0;
+  defaultLeaseBadgeCount = 0;
+
+  constructor(private dashboardService: DashboardServiceService) { }
 
   ngOnInit() {
-  }
+    let leaseArray = [];
+    this.dashboardService.getLeaseData("").subscribe(data=>{
+      if (data && data['responseData']) {
+        // let data = dashboardData;
+        let totalBadgeCount = 0;
+        let totalEquipmentBadgeCount = 0;
+        let totalDefaultLeaseBadgeCount = 0;
 
+        leaseArray = data['responseData']['lease'];
+        // this.selectLeaseObject = this.leaseArray[0];
+        // this.emitSelectedLeaseObj(this.selectLeaseObject);
+
+        leaseArray.forEach(item=>{
+          this.equipmentBadgeCount = 0;
+          this.defaultLeaseBadgeCount = 0;
+
+          if (item['equipmentCoverage']['equipmentCoverage'] == "No") {
+            this.equipmentBadgeCount = 1;
+            totalEquipmentBadgeCount++;
+          }
+
+          if (item['legalStatus'] == "Default") {
+            this.defaultLeaseBadgeCount = 1;
+            totalDefaultLeaseBadgeCount++;
+          }
+
+          item['cardAlert'] = this.equipmentBadgeCount + this.defaultLeaseBadgeCount;
+          totalBadgeCount += item['cardAlert'];
+        });
+
+        // this.dashboardService.selectedLeaseObj.emit()
+        this.dashboardService.changeObj({"totalBadgeCount": totalBadgeCount, "totalEquipmentBadgeCount": totalEquipmentBadgeCount, "totalDefaultLeaseBadgeCount": totalDefaultLeaseBadgeCount, "leaseArray": leaseArray });
+        this.dashboardService.leaseData.next(data['responseData']);
+      }
+    },err=>{
+      console.log('----- get lease data error-------',err);
+    });
+  }
 }

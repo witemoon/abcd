@@ -1,453 +1,454 @@
 <div *ngIf="showTabs">
-<!--Lease tabs Starts Here-->
-<div class="row " >
-  <div class="db-lease-tab col-12 ">
+  <!--Lease tabs Starts Here-->
+  <div class="row ">
+    <div class="db-lease-tab col-12 ">
 
       <!-- Nav pills -->
       <ul class="nav nav-pills">
-          <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
-              <a class="nav-link active show" data-toggle="pill" href="#Equipment">Equipment</a>
-          </li>
-          <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
-              <a class="nav-link" data-toggle="pill" href="#Payment">Payment</a>
-          </li>
-          <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
-              <a class="nav-link " data-toggle="pill" href="#Contract">Contract Status</a>
-          </li>
-          <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
-              <a class="nav-link" data-toggle="pill" href="#Coverage">Equipment Coverage</a>
-          </li>
+        <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
+          <a class="nav-link active show" data-toggle="pill" href="#Equipment">Equipment</a>
+        </li>
+        <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
+          <a class="nav-link" data-toggle="pill" href="#Payment">Payment</a>
+        </li>
+        <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
+          <a class="nav-link " data-toggle="pill" href="#Contract">Contract Status</a>
+        </li>
+        <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
+          <a class="nav-link" data-toggle="pill" href="#Coverage">Equipment Coverage</a>
+        </li>
       </ul>
 
       <!-- Tab panes -->
 
 
+    </div>
+
+
   </div>
 
 
-</div>
-
-
-<!--Lease tabs Cnts Starts Here-->
-<div class="row btmTabCtrl ">
-  <div class="db-lease-tab-cnt p-0 col-12 ">
+  <!--Lease tabs Cnts Starts Here-->
+  <div class="row btmTabCtrl ">
+    <div class="db-lease-tab-cnt p-0 col-12 ">
 
 
       <!--Tab  Cnt Wrapper Starts-->
 
-      <div class="tab-content">
-          <!--Equipment Tab Cnt starts-->
-          <div class="tab-pane container active show" id="Equipment">
+      <div class="tab-content" *ngIf="selectedLease">
+        <!--Equipment Tab Cnt starts-->
+        <div class="tab-pane container active show" id="Equipment">
 
-              <div class="card">
-                  <div class="card-header text-center">
-                      <label>Lease Status:</label>
-                      <span class="statusWrap">Current</span>
-                      <br>
+          <div class="card">
+            <div class="card-header text-center">
+              <label>Lease Status:</label>
+              <span class="statusWrap">{{selectedLease['legalStatus']}}</span>
+              <br>
 
-                      <div class="styletwo">
-                          <span class="">NON-CANCELLABLE</span>
-                          <span class="">Lease</span>
+              <div class="styletwo">
+                <span class="">NON-CANCELLABLE</span>
+                <span class="">Lease</span>
+              </div>
+
+
+            </div>
+
+            <div class="card-body">
+              <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+
+                  <div class="carousel-item active">
+                    <div class="row">
+                      <div class="col-10 offset-1">
+                        <div class="row">
+                          <div class="col-12 col-md-6 "
+                               *ngFor="let item of selectedLease['equipments'];  "
+                          >
+
+                            <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
+                              <ul>
+                                <li>
+                                  <label>Equipment:</label>
+                                  <br>
+                                  <span class="">{{item['equipment']}}</span>
+                                </li>
+                                <li>
+                                  <label>Make and Model:</label>
+                                  <br>
+                                  <span class="">{{item['makeAndModel']}}</span>
+                                </li>
+                                <li>
+                                  <label>Serial number:</label>
+                                  <br>
+                                  <span class="">{{item['serialNumber']}}</span>
+                                </li>
+                                <li>
+                                  <label>Equipment Status:</label>
+                                  <br>
+                                  <span class="">{{item['equipmentStatus']}}</span>
+                                </li>
+                              </ul>
+
+                            </div>
+                          </div>
+                          <!-- <div class="col-12 col-md-6 d-none d-sm-none d-md-block ">
+                              <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
+                                  <ul>
+                                      <li>
+                                          <label>Equipment:</label>
+                                          <br>
+                                          <span class="">Clover Station</span>
+                                      </li>
+                                      <li>
+                                          <label>Make and Model:</label>
+                                          <br>
+                                          <span class="">12313313 | 2010</span>
+                                      </li>
+                                      <li>
+                                          <label>Serial number:</label>
+                                          <br>
+                                          <span class="">XXX-XXXXXXXXX-XXX</span>
+                                      </li>
+                                      <li>
+                                          <label>Equipment Status:</label>
+                                          <br>
+                                          <span class="">Returned</span>
+                                      </li>
+                                  </ul>
+
+                              </div>
+                          </div> -->
+                        </div>
+
                       </div>
 
-
+                    </div>
                   </div>
-
-                  <div class="card-body">
-                      <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
-                          <div class="carousel-inner" role="listbox">
-
-                              <div class="carousel-item active">
-                                  <div class="row">
-                                      <div class="col-10 offset-1">
-                                          <div class="row">
-                                              <div class="col-12 col-md-6 "
-                                              *ngFor="let item of selectedLease['equipments'];  "
-                                              >
-
-                                                  <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
-                                                      <ul>
-                                                          <li>
-                                                              <label>Equipment:</label>
-                                                              <br>
-                                                              <span class="">{{item['equipment']}}</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Make and Model:</label>
-                                                              <br>
-                                                              <span class="">{{item['makeAndModel']}}</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Serial number:</label>
-                                                              <br>
-                                                              <span class="">{{item['serialNumber']}}</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Equipment Status:</label>
-                                                              <br>
-                                                              <span class="">{{item['equipmentStatus']}}</span>
-                                                          </li>
-                                                      </ul>
-
-                                                  </div>
-                                              </div>
-                                              <!-- <div class="col-12 col-md-6 d-none d-sm-none d-md-block ">
-                                                  <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
-                                                      <ul>
-                                                          <li>
-                                                              <label>Equipment:</label>
-                                                              <br>
-                                                              <span class="">Clover Station</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Make and Model:</label>
-                                                              <br>
-                                                              <span class="">12313313 | 2010</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Serial number:</label>
-                                                              <br>
-                                                              <span class="">XXX-XXXXXXXXX-XXX</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Equipment Status:</label>
-                                                              <br>
-                                                              <span class="">Returned</span>
-                                                          </li>
-                                                      </ul>
-
-                                                  </div>
-                                              </div> -->
-                                          </div>
+                  <!-- <div class="carousel-item">
+                      <div class="row">
+                          <div class="col-10 offset-1">
+                              <div class="row">
+                                  <div class="col-12 col-md-6 d-none d-sm-none d-md-block ">
+                                      <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
+                                          <ul>
+                                              <li>
+                                                  <label>Equipment:</label>
+                                                  <br>
+                                                  <span class="">Clover Station</span>
+                                              </li>
+                                              <li>
+                                                  <label>Make and Model:</label>
+                                                  <br>
+                                                  <span class="">12313313 | 2010</span>
+                                              </li>
+                                              <li>
+                                                  <label>Serial number:</label>
+                                                  <br>
+                                                  <span class="">XXX-XXXXXXXXX-XXX</span>
+                                              </li>
+                                              <li>
+                                                  <label>Equipment Status:</label>
+                                                  <br>
+                                                  <span class="">Returned</span>
+                                              </li>
+                                          </ul>
 
                                       </div>
+                                  </div>
+                                  <div class="col-12 col-md-6  ">
+                                      <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
+                                          <ul>
+                                              <li>
+                                                  <label>Equipment:</label>
+                                                  <br>
+                                                  <span class="">Clover Station</span>
+                                              </li>
+                                              <li>
+                                                  <label>Make and Model:</label>
+                                                  <br>
+                                                  <span class="">12313313 | 2010</span>
+                                              </li>
+                                              <li>
+                                                  <label>Serial number:</label>
+                                                  <br>
+                                                  <span class="">XXX-XXXXXXXXX-XXX</span>
+                                              </li>
+                                              <li>
+                                                  <label>Equipment Status:</label>
+                                                  <br>
+                                                  <span class="">Returned</span>
+                                              </li>
+                                          </ul>
 
+                                      </div>
                                   </div>
                               </div>
-                              <!-- <div class="carousel-item">
-                                  <div class="row">
-                                      <div class="col-10 offset-1">
-                                          <div class="row">
-                                              <div class="col-12 col-md-6 d-none d-sm-none d-md-block ">
-                                                  <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
-                                                      <ul>
-                                                          <li>
-                                                              <label>Equipment:</label>
-                                                              <br>
-                                                              <span class="">Clover Station</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Make and Model:</label>
-                                                              <br>
-                                                              <span class="">12313313 | 2010</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Serial number:</label>
-                                                              <br>
-                                                              <span class="">XXX-XXXXXXXXX-XXX</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Equipment Status:</label>
-                                                              <br>
-                                                              <span class="">Returned</span>
-                                                          </li>
-                                                      </ul>
 
-                                                  </div>
-                                              </div>
-                                              <div class="col-12 col-md-6  ">
-                                                  <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
-                                                      <ul>
-                                                          <li>
-                                                              <label>Equipment:</label>
-                                                              <br>
-                                                              <span class="">Clover Station</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Make and Model:</label>
-                                                              <br>
-                                                              <span class="">12313313 | 2010</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Serial number:</label>
-                                                              <br>
-                                                              <span class="">XXX-XXXXXXXXX-XXX</span>
-                                                          </li>
-                                                          <li>
-                                                              <label>Equipment Status:</label>
-                                                              <br>
-                                                              <span class="">Returned</span>
-                                                          </li>
-                                                      </ul>
-
-                                                  </div>
-                                              </div>
-                                          </div>
-
-                                      </div>
-
-                                  </div>
-                              </div> -->
                           </div>
-                          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="sr-only">Previous</span>
-                          </a>
-                          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="sr-only">Next</span>
-                          </a>
+
                       </div>
-                  </div>
+                  </div> -->
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <!--Payment Tab Cnt starts-->
+        <div class="tab-pane container" id="Payment">
+          <div class="card">
+            <div class="card-header text-center">
+              <label>Lease Status:</label>
+              <span class="statusWrap">{{selectedLease['legalStatus']}}</span>
+              <br>
+
+              <div class="styletwo">
+                <span class="">NON-CANCELLABLE</span>
+                <span class="">Lease</span>
               </div>
 
 
+            </div>
+
+            <div class="card-body py-2">
+              <h6>Your payment is past due! <span class="paymentWrap" data-toggle="modal" data-target="#paymentpop"
+                                                  (click)="showAlerts()">Click here for next steps</span>
+              </h6>
+              <!--<div class="alertWrap  float-right d-inline-block" data-toggle="modal" data-target="#paymentpop">-->
+              <!--<img src="img/alert.svg">-->
+              <!--<br>-->
+              <!--<span class="clearfix">Alert</span>-->
+              <!--</div>-->
+              <div class="row">
+                <table class="table ">
+
+                  <tbody>
+                  <tr>
+                    <td>Lease Status</td>
+                    <td>{{selectedLease['legalStatus']}}</td>
+                  </tr>
+                  <tr>
+                    <td>Current Balance</td>
+                    <td>{{selectedLease['payment']['currentBalance']}}</td>
+                  </tr>
+                  <tr class="d-none">
+                    <td>Last Payment</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Total Mimimum Due</td>
+                    <td>{{selectedLease['payment']['totalDue']}}</td>
+                  </tr>
+                  <tr>
+                    <td>Payment Due Date</td>
+                    <td>{{selectedLease['payment']['paymentDueDate']}}</td>
+                  </tr>
+                  <tr>
+                    <td>Days Past Due</td>
+                    <td>{{selectedLease['payment']['daysPastDue']}}</td>
+                  </tr>
+                  <tr>
+                    <td>Past Payment Due</td>
+                    <td>{{selectedLease['payment']['pastPaymentDue']}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+            </div>
           </div>
-          <!--Payment Tab Cnt starts-->
-          <div class="tab-pane container" id="Payment">
-              <div class="card">
-                  <div class="card-header text-center">
+
+        </div>
+        <!--Contract Status Tab Cnt starts-->
+
+        <div class="tab-pane container " id="Contract">
+          <div class="card">
+            <div class="card-header text-center">
+              <label>Lease Status:</label>
+              <span class="statusWrap">{{selectedLease['legalStatus']}}</span>
+              <br>
+
+              <div class="styletwo">
+                <span class="">NON-CANCELLABLE</span>
+                <span class="">Lease</span>
+              </div>
+
+
+            </div>
+
+            <div class="card-body py-5">
+              <div class="row">
+
+                <!--col one-->
+                <div class=" col-sm-6 col-12 col-md-3">
+                  <ul>
+                    <li>
                       <label>Lease Status:</label>
-                      <span class="statusWrap">Default</span>
-                      <br>
+                      <span class="">{{selectedLease['legalStatus']}}</span>
+                    </li>
+                    <li>
+                      <label>
+                        Lease Term:</label>
+                      <span class="">{{selectedLease['contractStatus']['leaseTerm']}}</span>
+                    </li>
+                    <li>
+                      <label>Start Date:</label>
+                      <span class=""> {{selectedLease['contractStatus']['startDate']}} </span>
+                    </li>
 
-                      <div class="styletwo">
-                          <span class="">NON-CANCELLABLE</span>
-                          <span class="">Lease</span>
-                      </div>
+                    <li>
+                      <label>End date:</label>
+                      <span class="">{{selectedLease['contractStatus']['endDate']}}</span>
+                    </li>
+                  </ul>
+
+                </div>
+                <!--col two-->
+                <div class="col-sm-6 col-12 col-md-3">
+                  <ul>
+                    <li>
+                      <label>Payments Made:</label>
+                      <span class="">{{selectedLease['contractStatus']['paymentsMade']}}</span>
+                    </li>
+                    <li>
+                      <label>
+                        Payment Amount:</label>
+                      <span class="">{{selectedLease['contractStatus']['paymentAmount']}}</span>
+                    </li>
+                    <li>
+                      <label>Past Due Amount:</label>
+                      <span class="">{{selectedLease['contractStatus']['pastDueAmount']}} </span>
+                    </li>
+
+                    <li>
+                      <label>Days Past Due:</label>
+                      <span class="">{{selectedLease['contractStatus']['daysPastDue']}}</span>
+                    </li>
+                  </ul>
+
+                </div>
+                <!--col three-->
+                <div class="col-sm-6 col-12 col-md-3">
+                  <ul>
+                    <li>
+                      <label>Personal Guarantor:</label>
+                      <span class="">{{selectedLease['contractStatus']['personalGurantor']}}</span>
+                    </li>
+                    <li>
+                      <label>
+                        Buyout Quote:</label>
+                      <span class="">{{selectedLease['contractStatus']['buyoutQuote']}}</span>
+                    </li>
+                    <li class="d-none">
+                      <label>Bank Routing Number:</label>
+                      <span class=""> </span>
+                    </li>
+
+                    <li class="d-none">
+                      <label>Bank Account Number:</label>
+                      <span class=""></span>
+                    </li>
+                  </ul>
+
+                </div>
+                <!--col four-->
+                <div class="col-sm-6 col-12 col-md-3">
+                  <ul>
+                    <li>
+                      <label>EPP Enrolled:</label>
+                      <span class="">{{selectedLease['contractStatus']['eppInrolled']}}</span>
+                    </li>
+                    <li>
+                      <label>
+                        EPP Amount:</label>
+                      <span class="">{{selectedLease['contractStatus']['eppAmount']}}</span>
+                    </li>
+                    <li class="d-none">
+                      <label>Property Tax Handling Fee:</label>
+                      <span class=""></span>
+                    </li>
 
 
-                  </div>
+                  </ul>
 
-                  <div class="card-body py-2">
-                      <h6>Your payment is past due! <span class="paymentWrap" data-toggle="modal" data-target="#paymentpop" (click)="showAlerts()">Click here for next steps</span>
-                      </h6>
-                      <!--<div class="alertWrap  float-right d-inline-block" data-toggle="modal" data-target="#paymentpop">-->
-                      <!--<img src="img/alert.svg">-->
-                      <!--<br>-->
-                      <!--<span class="clearfix">Alert</span>-->
-                      <!--</div>-->
-                      <div class="row">
-                          <table class="table ">
+                </div>
 
-                              <tbody>
-                              <tr>
-                                  <td>Lease Status</td>
-                                  <td>{{selectedLease['payment']['leaseStatus']}}</td>
-                              </tr>
-                              <tr>
-                                  <td>Current Balance</td>
-                                  <td>{{selectedLease['payment']['currentBalance']}}</td>
-                              </tr>
-                              <tr>
-                                  <td>Last Payment</td>
-                                  <td></td>
-                              </tr>
-                              <tr>
-                                  <td>Total Mimimum Due</td>
-                                  <td>{{selectedLease['payment']['totalDue']}}</td>
-                              </tr>
-                              <tr>
-                                  <td>Payment Due Date</td>
-                                  <td>{{selectedLease['payment']['paymentDueDate']}}</td>
-                              </tr>
-                              <tr>
-                                  <td>Days Past Due</td>
-                                  <td>{{selectedLease['payment']['daysPastDue']}}</td>
-                              </tr>
-                              <tr>
-                                  <td>Past Payment Due</td>
-                                  <td>{{selectedLease['payment']['pastPaymentDue']}}</td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div>
-
-
-                  </div>
               </div>
+              <h6 class="d-none">Your account has beed handed over to the following collection agency:
+                <br>
+                <span>{{selectedLease['contractStatus']['AgencyInformation']}}</span></h6>
 
+
+            </div>
           </div>
-          <!--Contract Status Tab Cnt starts-->
+        </div>
 
-          <div class="tab-pane container " id="Contract">
-              <div class="card">
-                  <div class="card-header text-center">
-                      <label>Lease Status:</label>
-                      <span class="statusWrap">Write Off </span>
-                      <br>
+        <!--Equipment Coverage Tab Cnt starts-->
 
-                      <div class="styletwo">
-                          <span class="">NON-CANCELLABLE</span>
-                          <span class="">Lease</span>
-                      </div>
+        <div class="tab-pane container" id="Coverage">
 
+          <div class="card">
+            <div class="card-header text-center">
+              <label>Lease Status:</label>
+              <span class="statusWrap">{{selectedLease['legalStatus']}}</span>
+              <br>
 
-                  </div>
-
-                  <div class="card-body py-5">
-                      <div class="row">
-
-                          <!--col one-->
-                          <div class=" col-sm-6 col-12 col-md-3">
-                              <ul>
-                                  <li>
-                                      <label>Lease Status:</label>
-                                      <span class="">Write Off</span>
-                                  </li>
-                                  <li>
-                                      <label>
-                                          Lease Term:</label>
-                                      <span class="">{{selectedLease['contractStatus']['leaseTerm']}}</span>
-                                  </li>
-                                  <li>
-                                      <label>Start Date:</label>
-                                      <span class=""> {{selectedLease['contractStatus']['startDate']}} </span>
-                                  </li>
-
-                                  <li>
-                                      <label>End date:</label>
-                                      <span class="">{{selectedLease['contractStatus']['endDate']}}</span>
-                                  </li>
-                              </ul>
-
-                          </div>
-                          <!--col two-->
-                          <div class="col-sm-6 col-12 col-md-3">
-                              <ul>
-                                  <li>
-                                      <label>Payments Made:</label>
-                                      <span class="">{{selectedLease['contractStatus']['paymentsMade']}}</span>
-                                  </li>
-                                  <li>
-                                      <label>
-                                          Payment Amount:</label>
-                                      <span class="">{{selectedLease['contractStatus']['paymentAmount']}}</span>
-                                  </li>
-                                  <li>
-                                      <label>Past Due Amount:</label>
-                                      <span class="">{{selectedLease['contractStatus']['pastDueAmount']}} </span>
-                                  </li>
-
-                                  <li>
-                                      <label>Days Past Due:</label>
-                                      <span class="">{{selectedLease['contractStatus']['daysPastDue']}}</span>
-                                  </li>
-                              </ul>
-
-                          </div>
-                          <!--col three-->
-                          <div class="col-sm-6 col-12 col-md-3">
-                              <ul>
-                                  <li>
-                                      <label>Personal Guarantor:</label>
-                                      <span class="">{{selectedLease['contractStatus']['personalGurantor']}}</span>
-                                  </li>
-                                  <li>
-                                      <label>
-                                          Buyout Quote:</label>
-                                      <span class="">{{selectedLease['contractStatus']['buyoutQuote']}}</span>
-                                  </li>
-                                  <li>
-                                      <label>Bank Routing Number:</label>
-                                      <span class=""> </span>
-                                  </li>
-
-                                  <li>
-                                      <label>Bank Account Number:</label>
-                                      <span class=""></span>
-                                  </li>
-                              </ul>
-
-                          </div>
-                          <!--col four-->
-                          <div class="col-sm-6 col-12 col-md-3">
-                              <ul>
-                                  <li>
-                                      <label>EPP Enrolled:</label>
-                                      <span class="">{{selectedLease['contractStatus']['eppInrolled']}}</span>
-                                  </li>
-                                  <li>
-                                      <label>
-                                          EPP Amount:</label>
-                                      <span class="">{{selectedLease['contractStatus']['eppAmount']}}</span>
-                                  </li>
-                                  <li>
-                                      <label>Property Tax Handling Fee:</label>
-                                      <span class=""></span>
-                                  </li>
-
-
-                              </ul>
-
-                          </div>
-
-                      </div>
-                      <h6>Your account has beed handed over to the following collection agency:
-                          <br>
-                          <span>ABC Collections | 800-203-5634</span></h6>
-
-
-                  </div>
+              <div class="styletwo">
+                <span class="">NON-CANCELLABLE</span>
+                <span class="">Lease</span>
               </div>
+            </div>
+
+            <div class="card-body py-5">
+              <ul>
+                <li>
+                  <label>Equipment Coverage:</label>
+                  <span class="">{{selectedLease['equipmentCoverage']['equipmentCoverage']}}</span>
+                </li>
+                <li>
+                  <label>
+                    Equipment Coverage Company:</label>
+                  <span class=""> {{selectedLease['equipmentCoverage']['equipmentCoverageCompaney']}}</span>
+                </li>
+                <li>
+                  <label>Policy Number:</label>
+                  <span class="">{{selectedLease['equipmentCoverage']['insurancePolicyNumber']}}</span>
+                </li>
+                <li>
+                  <label>Start Date:</label>
+                  <span class="">{{selectedLease['equipmentCoverage']['startDate']}} </span>
+                </li>
+                <li>
+                  <label>End date:</label>
+                  <span class=""> {{selectedLease['equipmentCoverage']['endDate']}} </span>
+                </li>
+              </ul>
+              <h6> On information regarding how to raise a claim
+                <a [routerLink]="['/dashboard/claims']">Click
+                  Here
+                </a>
+              </h6>
+            </div>
           </div>
 
-          <!--Equipment Coverage Tab Cnt starts-->
 
-          <div class="tab-pane container" id="Coverage">
-
-              <div class="card">
-                  <div class="card-header text-center">
-                      <label>Lease Status:</label>
-                      <span class="statusWrap">Current</span>
-                      <br>
-
-                      <div class="styletwo">
-                          <span class="">NON-CANCELLABLE</span>
-                          <span class="">Lease</span>
-                      </div>
-                  </div>
-
-                  <div class="card-body py-5">
-                      <ul>
-                          <li>
-                              <label>Equipment Coverage:</label>
-                              <span class="">{{selectedLease['equipmentCoverage']['equipmentCoverage']}}</span>
-                          </li>
-                          <li>
-                              <label>
-                                  Equipment Coverage Company:</label>
-                              <span class=""> {{selectedLease['equipmentCoverage']['equipmentCoverageCompaney']}}</span>
-                          </li>
-                          <li>
-                              <label>Policy Number:</label>
-                              <span class="">{{selectedLease['equipmentCoverage']['insurancePolicyNumber']}}</span>
-                          </li>
-                          <li>
-                              <label>Start Date:</label>
-                              <span class="">{{selectedLease['equipmentCoverage']['startDate']}} </span>
-                          </li>
-                          <li>
-                              <label>End date:</label>
-                              <span class=""> {{selectedLease['equipmentCoverage']['endDate']}} </span>
-                          </li>
-                      </ul>
-                      <h6> On information regarding how to raise a claim
-                          <a [routerLink]="['/dashboard/claims']" >Click
-                              Here
-                          </a>
-                      </h6>
-                  </div>
-              </div>
-
-
-          </div>
+        </div>
 
       </div>
 
-  </div>
+    </div>
 
-</div>
+  </div>
 </div>
 <!-- ------------------ payment-help-popup ------------------- -->
 <payment-help-popup></payment-help-popup>

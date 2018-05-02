@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing } from './routing/routing';
 
-
 import { RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
 import {RecaptchaFormsModule} from 'ng-recaptcha/forms';
 
@@ -57,10 +56,10 @@ import { BackEndInterceptorService } from './shared/back-end-interceptor.service
     SignupStatComponent,
     SignupMainComponent,
     ThankComponent,
- 
-  
+
+
     ChangeTempPassComponent,
-  
+
     ResetComponent,
 
 
@@ -78,7 +77,7 @@ import { BackEndInterceptorService } from './shared/back-end-interceptor.service
 
 
 
-  
+
 
   ],
   imports: [
@@ -89,13 +88,10 @@ import { BackEndInterceptorService } from './shared/back-end-interceptor.service
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
-  
-   
- 
   ],
 providers: [AuthService,{
   provide: RECAPTCHA_SETTINGS,
-  useValue: { 
+  useValue: {
     siteKey: '6LeAyiAUAAAAAFBfMpYA4iGyFQssmt99CpCLr8Ru',
   } as RecaptchaSettings,
 },
@@ -104,4 +100,3 @@ BackEndInterceptorService
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

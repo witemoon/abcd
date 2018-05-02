@@ -7,10 +7,10 @@ import { API } from '../api';
 export class AuthService {
 
   currentEmail = "";
-  currentMerchantId = "";
+  currentReferenceKey = "";
 
   constructor(private backEndInterceptorService: BackEndInterceptorService) {
-   
+
    }
 
   setToken(token){
@@ -39,9 +39,7 @@ export class AuthService {
 
   logOut(){
     let url = API.merchant_logout;
-    
     return this.backEndInterceptorService.getUrl(url);
-    
   }
 
 }

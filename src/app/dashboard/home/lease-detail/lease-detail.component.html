@@ -12,7 +12,7 @@
           </li>
           <li>
               <label>Lease # : </label>
-              <span class="">{{selectedLease['leaseNo']}}</span>
+              <span class="" *ngIf="selectedLease">{{selectedLease['leaseNo']}}</span>
           </li>
       </ul>
 

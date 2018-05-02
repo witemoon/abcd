@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'epp-popup',
@@ -6,15 +6,24 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./epp-popup.component.css']
 })
 export class EppPopupComponent implements OnInit {
-  
+
   @Input() showPopup = false;
-  constructor() { }
+  @Input() noButtonPopup = false;
+
+  @Output() addClicked = new EventEmitter();
+  @Output() closeClicked = new EventEmitter();
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  closeButtonClicked(){
-    this.showPopup = false;
+  addButtonClicked() {
+    this.addClicked.emit();
   }
 
+  closeButtonClicked() {
+    this.closeClicked.emit();
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
+import { DashboardServiceService } from '../dashboard-service.service';
 
 @Component({
   selector: 'left-side-bar',
@@ -9,11 +10,15 @@ import { Router } from '@angular/router';
 })
 export class LeftSideBarComponent implements OnInit {
 
-  constructor(private router:Router,private authService:AuthService) { }
+  leaseData = {};
+
+  constructor(private router:Router,private authService:AuthService,private dashboardService:DashboardServiceService) { }
 
   ngOnInit() {
+    this.dashboardService.leaseData.subscribe(data=>{
+      this.leaseData = data;
+  })
   }
-
   lftSide = false;
   lftSideBut = false;
  sidebarLft() {
@@ -28,7 +33,7 @@ export class LeftSideBarComponent implements OnInit {
 
 logout(){
   console.log('This is not happening');
-  this.authService.logOut().subscribe(res=>{ 
+  this.authService.logOut().subscribe(res=>{
     console.log('logout Response:',res);
     this.router.navigate(['/user/signin']);
   },error=>{

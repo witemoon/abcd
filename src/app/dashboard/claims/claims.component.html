@@ -1,29 +1,56 @@
-<div class="col-12 db-inner-wrap  ">
+<div class="col-12 db-inner-wrap   ">
   <!--breadcrums Starts Here-->
   <div class="row db-bread-wrap">
     <ol class="breadcrumb  w-100">
-      <li class="breadcrumb-item"><a href="#">urLease</a></li>
-      <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-      <li class="breadcruqustionsmb-item active">Claims</li>
+      <li class="breadcrumb-item">urLease</li>
+      <li class="breadcrumb-item">Dashboard</li>
+      <li class="breadcrumb-item active">Claims</li>
     </ol>
 
   </div>
   <!--wraper for FAQ-->
-  <div class="db-inner-box col-12 faq ">
+  <div class="db-inner-box col-12 faq claims ">
 
     <div class="faqWrap">How to Raise a Claim</div>
     <div class="btmBorder"></div>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-      the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-      of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-      but also the leap into electronic typesetting, remaining essentially unchanged. It was
-      popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-      and more recently with desktop publishing software like Aldus PageMaker including versions of
-      Lorem Ipsum .</p>
+    <br><br>
+    <h5>If you have experienced a loss due to one of the following reasons:</h5>
+    <br>
+
+    <div class="row">
+      <div class="col-6">
+        <ul>
+          <li>Accidental Damage</li>
+          <li>Collapse</li>
+          <li>Falling Objects</li>
+          <li>Hail Flood and Water</li>
+          <li> Transit</li>
+          <li> Wind, Hurricane and Tornado</li>
+        </ul>
+      </div>
+      <div class="col-6 ">
 
 
-    <div class=" text-center py-5">
-      <button type="button" [routerLink]="['/dashboard/home']" class="btn btn-outline-secondary flo">Done
+        <ul>
+          <li>Burglary theft and Robbery</li>
+          <li>Employee theft</li>
+          <li>Fire and Smoke</li>
+          <li>Lightning and Power Surge</li>
+          <li>Vandalism</li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <h5>Please follow these steps:</h5>
+    <br>
+    <p><span>1.</span> Email <a
+      href="mailto:FDGLClientServices@firstdata.com" target="_new">FDGLClientServices@firstdata.com</a> (Include the
+      reason for the loss)</p>
+    <p><span>2.</span> First Data will review your claim</p>
+    <p><span>3.</span> First Data will request a device to be mailed to you</p>
+    <p><span>4.</span> Equipment will reach you within 24-48 hours once the claim is raised</p>
+    <div class=" text-center d-none">
+      <button type="button" [routerLink]="['/dashboard/home']" class="btn butSec  ">Done
       </button>
     </div>
   </div>

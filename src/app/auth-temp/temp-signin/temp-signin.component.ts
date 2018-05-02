@@ -31,8 +31,10 @@ export class TempSigninComponent implements OnInit {
     this.authService.signIn(payLoad).subscribe(res=>{
       if(res['status']=='Success'){
         try{
-          this.authService.currentMerchantId = res['responseData'].merchantId;
-          this.authService.setToken(res['responseData'].token);
+          // this.authService.currentMerchantId = res['responseData'].merchantId;
+          // this.authService.setToken(res['responseData'].token);
+          localStorage.setItem("referenceKey", res['responseData'].referenceKey);
+          localStorage.setItem("token", res['responseData'].token);
         }catch(e){
           console.log('---error happened----',e);
         }
@@ -53,9 +55,9 @@ export class TempSigninComponent implements OnInit {
       this.showError = true;
       console.log('temp login faild',error);
      });
-    
+
   }
 
-  
+
 
 }

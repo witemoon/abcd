@@ -20,6 +20,7 @@ export class BackEndInterceptorService {
   }
 
   private getHeaders(){
+    this.token = localStorage.getItem("token") ? localStorage.getItem("token") : "";
     let headers = new HttpHeaders();
     headers = headers
               .set('X-App-Client', api_header.X_App_Client)

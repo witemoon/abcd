@@ -10,15 +10,22 @@ export class HeaderComponent implements OnInit {
 
   openPopup = false;
   leaseData = {};
+  alertCount: any = {
+    "totalBadgeCount": 0,
+    "totalEquipmentCount": 0,
+    "totalDefaultBadgeCount": 0
+  };
+
   constructor(private dashboardService:DashboardServiceService) { }
 
   ngOnInit() {
-    this.dashboardService.leaseData.subscribe(data=>{
-      this.leaseData = data;
-      this.leaseData['lease'].forEach(item=>{
-        
-      })
-    })
+    this.dashboardService.changeObject.subscribe(data=>{
+      if (data && data['totalBadgeCount']) {
+        this.alertCount.totalBadgeCount = data['totalBadgeCount'];
+        this.alertCount.totalEquipmentCount  = data['totalEquipmentBadgeCount'];
+        this.alertCount.totalDefaultBadgeCount = data['totalDefaultLeaseBadgeCount'];
+      }
+    });
   }
 
   showAlerts(){

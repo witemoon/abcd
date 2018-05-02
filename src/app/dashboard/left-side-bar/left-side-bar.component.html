@@ -5,8 +5,7 @@
 <div id="SidenavLft" [ngClass]="{'ctrlWidthLft':lftSide}" class="sidenav">
 
   <div class="lft-but-wrap">
-    <div class="loginname">
-      Mattie Garcia
+    <div class="loginname">{{leaseData["merchantName"]}}
     </div>
     <div class="signout-Wrap" (click)="logout()">
       Sign out

@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 export class AlertsPopupComponent implements OnInit {
 
   @Input() showPopup = false;
-  constructor( private route:Router) { }
+  @Input() defaultLeaseCount: number = 0;
+  @Input() equipmentLeaseCount: number = 0;
+
+  constructor(private routes:Router) { }
 
   ngOnInit() {
   }
@@ -17,5 +20,4 @@ export class AlertsPopupComponent implements OnInit {
   closeButtonClicked(){
     this.showPopup = false;
   }
-
 }

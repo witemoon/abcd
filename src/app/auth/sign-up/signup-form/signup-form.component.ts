@@ -19,12 +19,13 @@ export class SignupFormComponent implements OnInit {
   leaseNumberFC = new FormControl();
   merchantDbaFC = new FormControl();
 
-  constructor(private router:Router, private authService:AuthService) { 
+  constructor(private router:Router, private authService:AuthService) {
     this.router.events
     .filter(event => event instanceof NavigationEnd)
     .subscribe((event:NavigationEnd) => {
       console.log('-------router event----------',event)
       if(event.url=='/user/signin'){
+        localStorage.clear();
         this.currentTab = 'signin';
       }else{
         this.currentTab = 'signup';
@@ -115,19 +116,23 @@ export class SignupFormComponent implements OnInit {
   signInError = false;
   singInSuccess = true;
   signInRegular(signInReg){
+
    var email=signInReg.value.email.toLowerCase();
    var passwordReg=signInReg.value.password;
    let payLoad = {
     "emailId": "" + email,
     "password": "" + passwordReg
     }
+
    this.authService.signIn(payLoad).subscribe(res=>{
     if(res['status']=='Success'){
       this.signInError = false;
       this.singInSuccess = false;
-      this.authService.setToken(res['responseData'].token);
-      this.authService.currentMerchantId = res['responseData'].merchantId; // 32021880018 change the key name properly from success message
+      // this.authService.setToken(res['responseData'].token);
+      // this.authService.currentMerchantId = res['responseData'].merchantId; // 32021880018 change the key name properly from success message
      // this.authService.currentMerchantId ="903532646994"; // 903532646994 change the key name properly from success message
+       localStorage.setItem("referenceKey", res['responseData'].referenceKey);
+       localStorage.setItem("token", res['responseData'].token);
       this.router.navigate(['/dashboard/home']);
     }
     else{
@@ -158,7 +163,7 @@ export class SignupFormComponent implements OnInit {
   backToLandingPage(){
     this.router.navigate(['/']);
   }
- 
+
 
 
 

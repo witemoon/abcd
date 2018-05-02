@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardServiceService } from '../dashboard-service.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
+import { eppMock } from './epp-model';
 
 @Component({
   selector: 'app-epp',
@@ -10,34 +11,54 @@ import { AuthService } from '../../shared/auth.service';
 })
 export class EppComponent implements OnInit {
 
-  leaseData = {};
+  leaseData = [];
   leaseFormGroup  = new FormGroup({});
+  checkboxGroup: FormGroup;
   coverageRate = 10;
   totalAmt = 0;
   showPopup = false;
-  popupFirstTime = true;
+  allLeaseSelected = false;
+  noButtonPopup = false;
+  checkbox: any = {
+    "yes": true,
+    "no": true,
+    "agree": true,
+    "submit": true
+  };
+
+  closeButtonClicked = false;
+  yesModel = false;
+  noModel = false;
+  agreeModel = false;
 
   constructor(private dashboardService:DashboardServiceService, private authService:AuthService) { }
 
   ngOnInit() {
-    this.dashboardService.leaseData.subscribe(data=>{
-      this.leaseData = data;
-      this.leaseData['lease'].forEach(item => {
-        this.leaseFormGroup.addControl(item.leaseId, new FormControl(false));
-      });
-      this.listenFormGroup();
-    })
+     // this.leaseData = eppMock.responseData.lease;
+     // this.leaseData.forEach(item => {
+     //   this.leaseFormGroup.addControl(item.leaseNo, new FormControl(false));
+     // });
+     // this.listenFormGroup();
 
-    // this.getEppData();
-    let arr = [
-      {
-        "insCode": "string",
-        "leaseNumber": 0,
-        "name": "string"
+    this.dashboardService.getLeaseData("").subscribe(data=>{
+      if (data) {
+        // this.leaseData = data['responseData']['lease'];
+        let leases = data['responseData']['lease'];
+
+        leases.forEach(item => {
+          if (item.equipmentCoverage.equipmentCoverage == "No") {
+            this.leaseFormGroup.addControl(item.leaseNo, new FormControl(false));
+            this.leaseData.push(item);
+          }
+        });
+
+        this.listenFormGroup();
       }
-    ];
-    let merchantid = "";
-    this.postEpp(merchantid,arr);
+    },err=>{
+      console.log('----- get lease data error-------',err);
+    });
+
+    // this.postEpp(merchantid,arr);
   }
 
   // getEppData(){
@@ -54,6 +75,14 @@ export class EppComponent implements OnInit {
   // }
 
   postEpp(merchantId,payLoadArray){
+    let arr = [
+      {
+        "insCode": "string",
+        "leaseNumber": 0,
+        "name": "string"
+      }
+    ];
+
     let payLoad = payLoadArray;
     this.dashboardService.postEppData(merchantId,payLoad).subscribe(res=>{
       console.log('------post epp data success-----',res)
@@ -61,26 +90,107 @@ export class EppComponent implements OnInit {
       console.log('---------post epp data failure--------',err)
     })
   }
+  onYesNoClicked(event) {
+    debugger
+    if(event.target.value == "yes" && event.target.checked) {
+      this.yesModel = true;
+      this.noModel = false;
+      if (this.agreeModel) {
+        this.checkbox.submit = false;
+      }
+    } else if (event.target.value == "yes" && !event.target.checked) {
+      this.yesModel = false;
+    }
+
+
+    if (event.target.value == "no" && event.target.checked) {
+      this.showPopup = true;
+      this.noButtonPopup = true;
+      this.yesModel = false;
+      this.noModel = true;
+      if (this.agreeModel) {
+        this.checkbox.submit = false;
+      }
+    } else if (event.target.value == "no" && !event.target.checked) {
+      this.noButtonPopup = false;
+      this.noModel = false;
+    }
+
+    if (event.target.value == "agree") {
+      this.agreeModel = event.target.checked ? true : false;
+
+      if (this.yesModel || this.noModel) {
+        this.checkbox.submit = false;
+      }
+    }
+  }
+
+  onSubmit() {
+    console.log("submit Clicked");
+  }
 
   listenFormGroup(){
-    this.leaseFormGroup.valueChanges.subscribe(checkbox=>{
+    this.leaseFormGroup.valueChanges.subscribe(checkbox => {
       console.log(checkbox);
       //-------rate total count----
       this.totalAmt = 0;
-      for(let key in checkbox){
+
+      let selectedCount = 0;
+      let unSelectedCount = 0;
+      for(let key in checkbox) {
         if(checkbox[key]){
           this.totalAmt = this.totalAmt + this.coverageRate;
+          selectedCount++;
+        } else {
+          unSelectedCount++;
         }
       }
-      //---------------------------
 
-      //------------------------
-      if(this.popupFirstTime){
-        this.showPopup = true;
+      if(selectedCount === Object.keys(checkbox).length) {
+        this.allLeaseSelected = true;
+        this.checkbox = {
+          "yes": false,
+          "no": false,
+          "agree": false,
+          "submit": true
+        };
+      } else if (unSelectedCount === Object.keys(checkbox).length) {
+        this.checkbox = {
+          "yes": true,
+          "no": true,
+          "agree": true,
+          "submit": true
+        };
+      } else {
+        this.allLeaseSelected = false;
       }
-      this.popupFirstTime = false;
-      //-------------------------
-    })
+    });
   }
 
+  onToggleChange(event) {
+    if (event.target.checked && !this.allLeaseSelected) {
+      this.showPopup = true;
+    }
+  }
+
+  addButtonClicked() {
+    this.closeButtonClicked = false;
+    this.showPopup = false;
+    this.noButtonPopup = false;
+  }
+
+  closePopup() {
+    this.closeButtonClicked = true;
+    this.showPopup = false;
+    this.checkbox = {
+      "yes": false,
+      "no": false,
+      "agree": false,
+      "submit": true
+    };
+
+    if ((this.yesModel || this.noModel) && this.agreeModel) {
+      this.checkbox.submit = false;
+    }
+  }
 }

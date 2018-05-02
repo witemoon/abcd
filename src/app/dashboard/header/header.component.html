@@ -44,7 +44,7 @@
 
           <div class="alertWrap   d-inline-block" data-toggle="modal" data-target="#alertspop"
                (click)="showAlerts()">
-            <span class="fd-badge">6</span>
+            <span class="fd-badge" *ngIf="alertCount.totalBadgeCount">{{alertCount.totalBadgeCount}}</span>
             <img src="assets/img/alert.svg">
             <br>
             <span class="clearfix">Alert</span>
@@ -63,4 +63,8 @@
 
 
 <!-- -------------alerts popup------------------- -->
-<alerts-popup [(showPopup)]="openPopup"></alerts-popup>
+<alerts-popup
+[(showPopup)]="openPopup"
+[equipmentLeaseCount] = "alertCount.totalEquipmentCount"
+[defaultLeaseCount] = "alertCount.totalDefaultBadgeCount"
+></alerts-popup>

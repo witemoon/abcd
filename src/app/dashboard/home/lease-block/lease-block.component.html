@@ -1,7 +1,7 @@
 <div class="row ">
   <div class="db-lease-wrap col-12 ">
 
-    <!--carouselExampleControls1-->
+    <!--carousel ExampleControls1-->
     <div id="fd-lease-blocks-wrap" class="carousel slide" data-interval="false" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
 
@@ -9,23 +9,21 @@
               <div class="row">
                 <div class="col-12  ">
                   <div class="row">
-                      <div class=" fd-lease-blocks col-12 col-sm-6  col-md-3  " 
+                      <div class=" fd-lease-blocks col-12 col-sm-6  col-md-3  "
                       *ngFor="let item of leaseArray; let i=index;"
                       [ngClass]="{'leaseCardSelected':selectedLease==i}"
                       (click)="selectedLease=i;emitSelectedLeaseObj(item)"
                       >
-
                           <div class="cus-card  p-5 col-12  " [ngClass]="{'leaseCardSelected':selectedLease==i}">
-                            <span class="fd-badge">{{item['cardAlert']}}</span>
+                            <span class="fd-badge" *ngIf="item['cardAlert']">{{item['cardAlert']}}</span>
                             <ul>
+                              <!--oo-->
                               <li>
                                 <label  [ngClass]="{'leaseCardSelected':selectedLease==i}" >Lease</label>
                                 <br>
-                                <span class=""  [ngClass]="{'leaseCardSelected':selectedLease==i}" >{{item.leaseNo}}</span>
+                                <span class=""  [ngClass]="{'leaseCardSelected':selectedLease==i}" >{{item['leaseNo']}}</span>
                               </li>
-        
                             </ul>
-        
                           </div>
                         </div>
                         </div>

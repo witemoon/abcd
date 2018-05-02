@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardServiceService } from '../../dashboard-service.service';
+// import { dashboardData } from '../dashboard-model';
 
 @Component({
   selector: 'lease-block',
@@ -7,24 +8,55 @@ import { DashboardServiceService } from '../../dashboard-service.service';
   styleUrls: ['./lease-block.component.css']
 })
 export class LeaseBlockComponent implements OnInit {
-
-  constructor(private dashboardService:DashboardServiceService) { }
   selectedLease = 0;
-  leaseArray = [] ;
-  selectLeaseObject = {};
+  leaseArray = [];
+
+  constructor(private dashboardService:DashboardServiceService) {
+  }
+
   ngOnInit() {
-    this.dashboardService.leaseData.subscribe(data=>{
-      this.leaseArray = data['lease'];
-      this.selectLeaseObject = this.leaseArray[0];
-      this.emitSelectedLeaseObj(this.selectLeaseObject);
-      this.leaseArray.forEach(item=>{
-        item['cardAlert'] = item['equipmentCoverage']['equipmentCoverage']!=null ? 1 : null;
-      });
-    })
+    this.dashboardService.changeObject.subscribe(data=>{
+      if (data && data['leaseArray']) {
+        let arrayOne = [];
+        let arrayTwo = [];
+        let arrayThree = [];
+        let arrayFour = [];
+
+        // this.leaseArray = data['leaseArray'];
+        data['leaseArray'].forEach(item => {
+          if(item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] == "Default") {
+            arrayOne.push(item);
+          } else if (item.equipmentCoverage.equipmentCoverage != "No" && item['legalStatus'] == "Default") {
+            arrayTwo.push(item);
+          } else if (item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] != "Default") {
+            arrayThree.push(item);
+          } else {
+            arrayFour.push(item);
+          }
+        });
+
+        arrayOne = this.sortByleaseNo(arrayOne);
+        arrayTwo = this.sortByleaseNo(arrayTwo);
+        arrayThree = this.sortByleaseNo(arrayThree);
+        arrayFour = this.sortByleaseNo(arrayFour);
+
+        this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour);
+        this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
+      }
+    });
   }
 
-  emitSelectedLeaseObj(obj){
-    this.dashboardService.selectedLeaseObj.next(obj);
+  sortByleaseNo(array) {
+
+    array.sort((a, b)=> {
+      return a.leaseNo.split("-")[1] > b.leaseNo.split("-")[1]
+    });
+
+    return array;
   }
 
+  emitSelectedLeaseObj(selectedLease) {
+    console.log(selectedLease);
+    this.dashboardService.selectedLeaseObj.next(selectedLease);
+  }
 }

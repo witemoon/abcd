@@ -12,13 +12,13 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService:DashboardServiceService, private authService:AuthService) { }
 
   ngOnInit() {
-    let merchantid = this.authService.currentMerchantId;
-    this.dashboardService.getLeaseData(merchantid).subscribe(data=>{
-      console.log('-----lease data received-------',data);
-      this.dashboardService.leaseData.next(data['responseData']);
-    },err=>{
-      console.log('----- get lease data error-------',err);
-    });
+    let referenceKey = this.authService.currentReferenceKey;
+    // this.dashboardService.getLeaseData(merchantid).subscribe(data=>{
+    //   console.log('-----lease data received-------',data);
+    //   this.dashboardService.leaseData.next(data['responseData']);
+    // },err=>{
+    //   console.log('----- get lease data error-------',err);
+    // });
   }
 
 }

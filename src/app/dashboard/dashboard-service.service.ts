@@ -10,8 +10,9 @@ export class DashboardServiceService {
 
   public leaseData = new Subject();
   public selectedLeaseObj = new Subject();
+  public changeObject = new Subject();
 
-  constructor(private backEndInterceptorService: BackEndInterceptorService, private http: HttpClient) { 
+  constructor(private backEndInterceptorService: BackEndInterceptorService, private http: HttpClient) {
 
   }
 
@@ -19,11 +20,12 @@ export class DashboardServiceService {
   //   let observable = this.http.get('https://api.myjson.com/bins/rpnt7');
   //   return observable;
   // }
-  
+
   //.replace(/{(groupID)}/,id)
 
-  getLeaseData(merchantId){
-    let url = API.merchant_leases.replace(/{(merchantId)}/,merchantId);
+  getLeaseData(referenceKey){
+    referenceKey = localStorage.getItem("referenceKey");
+    let url = API.merchant_leases.replace(/{(referenceKey)}/,referenceKey);
     return this.backEndInterceptorService.getUrl(url);
   }
 
@@ -32,11 +34,13 @@ export class DashboardServiceService {
     return this.backEndInterceptorService.getUrl(url);
   }
 
-  postEppData(merchantId,payLoad){
+  postEppData(merchantId, payLoad){
+    merchantId = localStorage.getItem("merchantId");
     let url = API.save_epp.replace(/{(merchantId)}/,merchantId);
     return this.backEndInterceptorService.postUrl(url,payLoad);
   }
 
-
-
+  changeObj(obj) {
+    this.changeObject.next(obj);
+  }
 }

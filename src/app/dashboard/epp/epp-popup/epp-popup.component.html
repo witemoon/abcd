@@ -1,31 +1,91 @@
-<div class="modal fade" [ngClass]="{'show':showPopup}" id="alertspop" [style.display]="showPopup?'block':'none'">
+<div class="modal fade show" id="myModal" style="padding-right: 17px; display: block;" *ngIf="!noButtonPopup">
   <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-content">
 
-          <!-- Modal Header -->
-          <div class="modal-header">
-              <h4 class="modal-title"></h4>
-              <button type="button" class="close" data-dismiss="modal" (click)="closeButtonClicked()"><img src="assets/img/close-icon.svg"></button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body ">
-
-              <div class="cntWrap  p-3">
-                  <img src="assets/img/epp_m.svg"><span>Equipment Protection Program (3) </span>
-              </div>
-
-              <div class="cntWrap  p-3 mt-2">
-                  <img src="assets/img/default-icon.svg"><span>Default Lease(3) </span>
-              </div>
-
-
-          </div>
-
-          <!-- Modal footer -->
-          <div class="modal-footer ">
-          </div>
-
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close add" data-dismiss="modal" (click)="closeButtonClicked();"><img
+          src="assets/img/close-icon.svg"></button>
       </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <br>
+        <br>
+        <br>
+
+
+        <p class="">There are more leases in your account that do not have any coverage. Would you like
+          to add those to EPP Coverage?</p>
+
+        <br>
+        <br>
+        <br>
+
+
+        <div class=" text-center">
+          <button type="button" class="btn modbutgreen addnow" data-dismiss="modal" (click)="addButtonClicked()">Add
+            Now
+          </button>
+        </div>
+        <br>
+        <br>
+        <br>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer text-center ">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade show" id="myModal1" style="padding-right: 17px; display: block;" *ngIf="noButtonPopup">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close add" data-dismiss="modal" (click)="addButtonClicked();"><img
+          src="assets/img/close-icon.svg"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <br>
+        <br>
+        <br>
+        <p class="">No, I am providing a Certificate of Insurance that names First Data Global Leasing
+          as the loss payee to meet the insurance requirement of my lease agreement. The insurance certificate
+          can be sent to:</p>
+
+        <br>
+
+        <h5>Email: Fdgl.Protection@firstdata.com</h5>
+        <h5> Fax: 402-916-6860</h5>
+        <h5>Mail: 4000 Coral Ridge Drive, Coral Springs, FL 33065 Attn: C-230</h5>
+        <br>
+        <p class="">Please include your lease number for faster processing.</p>
+
+        <br>
+        <br>
+        <br>
+
+        <div class=" text-center">
+          <button type="button" class="btn modbutgreen addnow" data-dismiss="modal" (click)="addButtonClicked();">Done
+          </button>
+        </div>
+        <br>
+        <br>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer text-center ">
+      </div>
+    </div>
   </div>
 </div>
