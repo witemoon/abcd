@@ -15,7 +15,7 @@ export class BackEndInterceptorService {
   private getEnvironmentUrl(){
     let protocol = window.location.protocol;
     let host = window.location.host;
-    host = host.indexOf('localhost')>-1? API_DEV_HOST : host;
+    //host = host.indexOf('localhost')>-1? API_DEV_HOST : host;
     return protocol + '//' + host;
   }
 

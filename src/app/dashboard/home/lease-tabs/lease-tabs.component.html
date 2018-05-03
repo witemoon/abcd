@@ -238,7 +238,7 @@
                   </tr>
                   <tr>
                     <td>Current Balance</td>
-                    <td>{{selectedLease['payment']['currentBalance']}}</td>
+                    <td>{{ selectedLease['payment']['currentBalance'] | add_comma_pipe }}</td>
                   </tr>
                   <tr class="d-none">
                     <td>Last Payment</td>
@@ -246,7 +246,7 @@
                   </tr>
                   <tr>
                     <td>Total Mimimum Due</td>
-                    <td>{{selectedLease['payment']['totalDue']}}</td>
+                    <td>{{selectedLease['payment']['totalDue'] | add_comma_pipe}}</td>
                   </tr>
                   <tr>
                     <td>Payment Due Date</td>
@@ -258,7 +258,7 @@
                   </tr>
                   <tr>
                     <td>Past Payment Due</td>
-                    <td>{{selectedLease['payment']['pastPaymentDue']}}</td>
+                    <td>{{selectedLease['payment']['pastPaymentDue'] | add_comma_pipe}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -323,11 +323,11 @@
                     <li>
                       <label>
                         Payment Amount:</label>
-                      <span class="">{{selectedLease['contractStatus']['paymentAmount']}}</span>
+                      <span class="">{{selectedLease['contractStatus']['paymentAmount'] | add_comma_pipe}}</span>
                     </li>
                     <li>
                       <label>Past Due Amount:</label>
-                      <span class="">{{selectedLease['contractStatus']['pastDueAmount']}} </span>
+                      <span class="">{{selectedLease['contractStatus']['pastDueAmount'] | add_comma_pipe}} </span>
                     </li>
 
                     <li>
@@ -344,10 +344,13 @@
                       <label>Personal Guarantor:</label>
                       <span class="">{{selectedLease['contractStatus']['personalGurantor']}}</span>
                     </li>
-                    <li>
-                      <label>
-                        Buyout Quote:</label>
-                      <span class="">{{selectedLease['contractStatus']['buyoutQuote']}}</span>
+                    <li class="toopwrap" (mouseout)="showBuyOutMsg(false)">
+                      <label>Buyout Quote:<a (click)="showBuyOutMsg(true)"></a></label>
+                      <span class="">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
+                      <div class="popwrap" [ngClass]="{'d-none':!openBuyOutInfo }" >
+                          Current balance represents the outstanding amount on your lease.
+                          This is not the amount required to pay the lease in full.
+                      </div>
                     </li>
                     <li class="d-none">
                       <label>Bank Routing Number:</label>
@@ -371,7 +374,7 @@
                     <li>
                       <label>
                         EPP Amount:</label>
-                      <span class="">{{selectedLease['contractStatus']['eppAmount']}}</span>
+                      <span class="">{{selectedLease['contractStatus']['eppAmount'] | add_comma_pipe}}</span>
                     </li>
                     <li class="d-none">
                       <label>Property Tax Handling Fee:</label>

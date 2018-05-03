@@ -129,17 +129,77 @@ input[type=text], input[type=password] {
 
 #land-wrap {
   background: #fff; }
+  #land-wrap .land-cnt-01 li span {
+    font-family: SimpleSans-Bold, Helvetica, sans-serif;
+    color: #0072ce;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal; }
+  #land-wrap .order-md-last .landbgclr {
+    background: red; }
+  #land-wrap .order-md-last ul li {
+    font-family: SimpleSans-Regular, Helvetica, sans-serif;
+    color: #4f4f4f;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 22px;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal; }
+    #land-wrap .order-md-last ul li span {
+      font-family: SimpleSans-Bold, Helvetica, sans-serif;
+      color: #0072ce;
+      font-size: 11px;
+      font-weight: normal;
+      line-height: normal;
+      font-style: normal;
+      font-stretch: normal;
+      letter-spacing: normal; }
+      #land-wrap .order-md-last ul li span.stBld {
+        font-family: SimpleSans-Bold, Helvetica, sans-serif;
+        color: #4f4f4f;
+        font-size: 11px;
+        font-weight: normal;
+        line-height: normal;
+        font-style: normal;
+        font-stretch: normal;
+        letter-spacing: normal;
+        margin-right: 2px; }
   #land-wrap p {
     color: #4f4f4f;
     font-size: 1.16rem;
     line-height: 1.58; }
   #land-wrap ul {
-    padding: 14px; }
-  #land-wrap ul li {
-    color: #4f4f4f;
-    font-size: 1rem;
-    line-height: 2.33;
-    font-family: SimpleSans-Bold, Helvetica, sans-serif; }
+    padding: 14px;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none; }
+    #land-wrap ul li {
+      margin-bottom: 15px;
+      font-family: SimpleSans-Bold, Helvetica, sans-serif;
+      color: #4f4f4f;
+      font-size: 12px;
+      font-weight: normal;
+      line-height: normal;
+      font-style: normal;
+      font-stretch: normal;
+      letter-spacing: normal; }
+      #land-wrap ul li span {
+        color: #0072ce;
+        font-family: SimpleSans-Bold, Helvetica, sans-serif;
+        color: #0072ce;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: normal;
+        font-style: normal;
+        font-stretch: normal;
+        letter-spacing: normal;
+        display: inline-block;
+        margin-right: 10px; }
 
 .land-head {
   padding: 30px;
@@ -266,6 +326,9 @@ input[type=text], input[type=password] {
 
 .land-cnt-01-inner, .land-cnt-02-inner {
   padding: 30px; }
+
+.land-cnt-01-inner .land-cnt-wrap {
+  margin-top: 40px !important; }
 
 .land-cnt-01 p {
   text-align: justify;
@@ -979,7 +1042,7 @@ input[type=text], input[type=password] {
 .eol .card-text {
   word-wrap: break-word !important; }
 .eol .card-header {
-  background: #0072ce;
+  background-color: #d3e9f4;
   border-radius: 0;
   padding: 11px 0px; }
   .eol .card-header a {
@@ -988,7 +1051,7 @@ input[type=text], input[type=password] {
     display: block;
     padding-left: 10px;
     padding-right: 40px;
-    color: white;
+    color: #3e3e3e;
     font-family: SimpleSans-Regular, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -998,7 +1061,7 @@ input[type=text], input[type=password] {
     letter-spacing: normal;
     cursor: pointer; }
     .eol .card-header a:hover {
-      color: white; }
+      color: #3e3e3e; }
 .eol .card-body {
   border: none; }
 .eol #accordion {
@@ -1368,7 +1431,7 @@ input[type=text], input[type=password] {
   font-family: SimpleSans-Bold, Helvetica, sans-serif;
   color: #3e3e3e;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: normal;
   line-height: normal;
   font-style: normal;
   font-stretch: normal;
@@ -1393,6 +1456,109 @@ input[type=text], input[type=password] {
   font-stretch: normal;
   letter-spacing: normal;
   padding-left: 25px; }
+
+.contactWrap p {
+  font-family: SimpleSans-Bold, Helvetica, sans-serif;
+  color: #3e3e3e;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.08;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  padding-top: 20px; }
+
+.eol.diff .card-header {
+  background: #0072ce; }
+  .eol.diff .card-header h5 a {
+    color: white; }
+.eol.diff .card-body ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  margin-top: 30px; }
+  .eol.diff .card-body ul li {
+    margin-bottom: 5px; }
+.eol.diff .card-body p {
+  font-family: SimpleSans-Regular, Helvetica, sans-serif;
+  color: #3e3e3e;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal; }
+  .eol.diff .card-body p span {
+    font-family: SimpleSans-Bold, Helvetica, sans-serif;
+    color: #0072ce;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal; }
+
+.claim-inner {
+  margin-bottom: 30px; }
+  .claim-inner img {
+    max-width: 100%; }
+
+.claim-arrow ul {
+  list-style-type: none;
+  margin: 0px;
+  margin-left: 20px;
+  padding: 0px; }
+  .claim-arrow ul li {
+    position: relative;
+    padding-left: 25px; }
+    .claim-arrow ul li:before {
+      content: "";
+      background-image: url(../img/rarrow.svg);
+      background-repeat: no-repeat;
+      border: none !important;
+      left: 0px;
+      top: 4px;
+      width: 20px;
+      height: 20px;
+      position: absolute; }
+
+.toopwrap li {
+  position: relative;
+  padding-left: 25px; }
+  .toopwrap li:before {
+    content: "";
+    background-image: url(../img/rarrow.svg);
+    background-repeat: no-repeat;
+    border: none !important;
+    left: 0px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    position: absolute; }
+
+#paymentpop p {
+  padding-left: 15px;
+  padding-right: 15px; }
+  #paymentpop p span {
+    color: #0072ce; }
+#paymentpop .mod-heading {
+  font-family: SimpleSans-Regular, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #0072ce; }
+#paymentpop .popbld {
+  font-weight: bold;
+  font-family: SimpleSans-Bold, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: left !important;
+  margin-left: 35px;
+  margin-top: -9px; }
 
 /*********************************** dashboard ENDS here *********************************/
 /*********************************** sidebar  STARTS here *********************************/

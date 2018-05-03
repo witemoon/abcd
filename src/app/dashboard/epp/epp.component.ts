@@ -12,6 +12,8 @@ import { eppMock } from './epp-model';
 export class EppComponent implements OnInit {
 
   leaseData = [];
+  merchanName='';
+  contactName='';
   leaseFormGroup  = new FormGroup({});
   checkboxGroup: FormGroup;
   coverageRate = 10;
@@ -43,6 +45,8 @@ export class EppComponent implements OnInit {
     this.dashboardService.getLeaseData("").subscribe(data=>{
       if (data) {
         // this.leaseData = data['responseData']['lease'];
+        this.contactName= data['responseData']['contactName'];
+        this.merchanName= data['responseData']['merchantName'];
         let leases = data['responseData']['lease'];
 
         leases.forEach(item => {

@@ -20,6 +20,7 @@ import { PaymentHelpPopupComponent } from './payment-help-popup/payment-help-pop
 import { DashboardServiceService } from './dashboard-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EppPopupComponent } from './epp/epp-popup/epp-popup.component';
+import { AddCommaPipe } from './dashboard-pipe';
 
 const dashboardRoute: Routes = [
   { path: '', component: DashboardComponent,
@@ -57,7 +58,8 @@ const dashboardRoute: Routes = [
                   ContactComponent,
                   AlertsPopupComponent,
                   PaymentHelpPopupComponent,
-                  EppPopupComponent
+                  EppPopupComponent,
+                  AddCommaPipe
               ],
   providers: [
     DashboardServiceService
