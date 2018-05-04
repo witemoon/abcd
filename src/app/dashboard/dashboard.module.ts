@@ -21,6 +21,7 @@ import { DashboardServiceService } from './dashboard-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EppPopupComponent } from './epp/epp-popup/epp-popup.component';
 import { AddCommaPipe } from './dashboard-pipe';
+import { EppthankComponent } from './eppthank/eppthank.component';
 
 const dashboardRoute: Routes = [
   { path: '', component: DashboardComponent,
@@ -31,6 +32,7 @@ const dashboardRoute: Routes = [
       { path:'eol', component: EolComponent },
       { path:'faq', component: FaqComponent },
       { path:'contact', component: ContactComponent },
+      { path:'eppthank', component: EppthankComponent},
     ]
  },
 ];
@@ -59,7 +61,8 @@ const dashboardRoute: Routes = [
                   AlertsPopupComponent,
                   PaymentHelpPopupComponent,
                   EppPopupComponent,
-                  AddCommaPipe
+                  AddCommaPipe,
+                  EppthankComponent
               ],
   providers: [
     DashboardServiceService

@@ -1468,36 +1468,34 @@ input[type=text], input[type=password] {
   letter-spacing: normal;
   padding-top: 20px; }
 
-.eol.diff .card-header {
-  background: #0072ce; }
-  .eol.diff .card-header h5 a {
-    color: white; }
-.eol.diff .card-body ul {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-  text-align: center;
-  margin-top: 30px; }
-  .eol.diff .card-body ul li {
-    margin-bottom: 5px; }
-.eol.diff .card-body p {
-  font-family: SimpleSans-Regular, Helvetica, sans-serif;
-  color: #3e3e3e;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal; }
-  .eol.diff .card-body p span {
-    font-family: SimpleSans-Bold, Helvetica, sans-serif;
-    color: #0072ce;
+.eol.diff .card-body {
+  padding: 30px; }
+  .eol.diff .card-body ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    margin-top: 30px; }
+    .eol.diff .card-body ul li {
+      margin-bottom: 5px; }
+  .eol.diff .card-body p {
+    font-family: SimpleSans-Regular, Helvetica, sans-serif;
+    color: #3e3e3e;
     font-size: 12px;
     font-weight: normal;
     line-height: normal;
     font-style: normal;
     font-stretch: normal;
     letter-spacing: normal; }
+    .eol.diff .card-body p span {
+      font-family: SimpleSans-Bold, Helvetica, sans-serif;
+      color: #0072ce;
+      font-size: 12px;
+      font-weight: normal;
+      line-height: normal;
+      font-style: normal;
+      font-stretch: normal;
+      letter-spacing: normal; }
 
 .claim-inner {
   margin-bottom: 30px; }
