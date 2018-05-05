@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {NgForm, FormControl} from "@angular/forms";
 import 'rxjs/add/operator/filter';
@@ -18,7 +18,7 @@ export class SignupFormComponent implements OnInit {
   referenceKeyFC = new FormControl();
   leaseNumberFC = new FormControl();
   merchantDbaFC = new FormControl();
-
+  @Output() ctab = new EventEmitter();
   constructor(private router:Router, private authService:AuthService) {
     this.router.events
     .filter(event => event instanceof NavigationEnd)
@@ -27,8 +27,11 @@ export class SignupFormComponent implements OnInit {
       if(event.url=='/user/signin'){
         localStorage.clear();
         this.currentTab = 'signin';
+        this.ctab.emit(this.currentTab);
+        console.log("inside form----",this.currentTab)
       }else{
         this.currentTab = 'signup';
+        this.ctab.emit(this.currentTab);
       }
     });
   }

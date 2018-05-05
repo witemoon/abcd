@@ -37,7 +37,7 @@ import { SigninComponent } from './auth-temp/signin/signin.component';
 import { SignthankComponent } from './auth/new/signthank/signthank.component';
 import { SignchangepassComponent } from './auth/new/signchangepass/signchangepass.component';
 import { BackEndInterceptorService } from './shared/back-end-interceptor.service';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -87,7 +87,8 @@ import { BackEndInterceptorService } from './shared/back-end-interceptor.service
     RecaptchaFormsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
 providers: [AuthService,{
   provide: RECAPTCHA_SETTINGS,

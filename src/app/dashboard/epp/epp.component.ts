@@ -33,6 +33,8 @@ export class EppComponent implements OnInit {
   noModel = false;
   agreeModel = false;
 
+  showeppstatic=false;
+ dataReady = false;
   constructor(private dashboardService:DashboardServiceService, private authService:AuthService) { }
 
   ngOnInit() {
@@ -48,16 +50,21 @@ export class EppComponent implements OnInit {
         this.contactName= data['responseData']['contactName'];
         this.merchanName= data['responseData']['merchantName'];
         let leases = data['responseData']['lease'];
-
+        let alltrue = true;
         leases.forEach(item => {
           if (item.equipmentCoverage.equipmentCoverage == "No") {
             this.leaseFormGroup.addControl(item.leaseNo, new FormControl(false));
             this.leaseData.push(item);
+            alltrue = false;
           }
         });
-
+        if(alltrue){
+          this.showeppstatic = true;
+        }
+        
         this.listenFormGroup();
       }
+      this.dataReady = true;
     },err=>{
       console.log('----- get lease data error-------',err);
     });

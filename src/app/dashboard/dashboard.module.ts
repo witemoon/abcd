@@ -21,7 +21,9 @@ import { DashboardServiceService } from './dashboard-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EppPopupComponent } from './epp/epp-popup/epp-popup.component';
 import { AddCommaPipe } from './dashboard-pipe';
-import { EppthankComponent } from './eppthank/eppthank.component';
+import { EppthankComponent } from './epp/eppthank/eppthank.component';
+import { EppstaticComponent } from './epp/eppstatic/eppstatic.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const dashboardRoute: Routes = [
   { path: '', component: DashboardComponent,
@@ -41,7 +43,8 @@ const dashboardRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardRoute),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot()
   ],
   declarations: [
                   DashboardComponent, 
@@ -62,7 +65,8 @@ const dashboardRoute: Routes = [
                   PaymentHelpPopupComponent,
                   EppPopupComponent,
                   AddCommaPipe,
-                  EppthankComponent
+                  EppthankComponent,
+                  EppstaticComponent
               ],
   providers: [
     DashboardServiceService

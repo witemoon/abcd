@@ -1,3 +1,6 @@
+<div  *ngIf="dataReady">
+<eppstatic [hidden]="!showeppstatic"></eppstatic>
+<div [hidden]="showeppstatic">
 <div class="col-12 db-inner-wrap  ">
   <!--breadcrums Starts Here-->
   <div class="row db-bread-wrap">
@@ -195,7 +198,7 @@
       </div>
 
       <div class="col-sm-12 col-md-3 ftrBtnWrap  text-md-right text-center">
-        <button type="button" [disabled]="checkbox.submit" [routerLink]="['eppthank']" class="btn butSec   ">
+        <button type="button" [disabled]="checkbox.submit" [routerLink]="['/dashboard/eppthank']" class="btn butSec">
           Submit
 
         </button>
@@ -209,3 +212,5 @@
 
 <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" (addClicked)="addButtonClicked();"
            (closeClicked)="closePopup();"></epp-popup>
+</div>
+</div>

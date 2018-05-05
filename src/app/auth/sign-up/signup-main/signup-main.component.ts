@@ -11,6 +11,10 @@ export class SignupMainComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+  showstat = false;
+  ctab(s){
+    this.showstat = s=='signin'?true:false;
+    console.log("inside main----",this.showstat)
+  }
 
 }

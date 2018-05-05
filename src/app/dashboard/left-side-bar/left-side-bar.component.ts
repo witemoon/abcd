@@ -13,10 +13,22 @@ export class LeftSideBarComponent implements OnInit {
   leaseData = {};
 
   constructor(private router:Router,private authService:AuthService,private dashboardService:DashboardServiceService) { }
-
+ showeol = false;
   ngOnInit() {
     this.dashboardService.leaseData.subscribe(data=>{
       this.leaseData = data;
+      let leases = data['responseData']['lease'];
+        let alleol = true;
+        leases.forEach(item => {
+          let leaseterm = parseInt( (""+item.contractStatus.leaseTerm).replace(" Months","") )
+          let paymentsMade = parseInt( item.contractStatus.paymentsMade);
+          if ( leaseterm-paymentsMade>=3) {
+            alleol = false;
+          }
+        });
+        if(alleol){
+          this.showeol=true;
+        }
   })
   }
   lftSide = false;

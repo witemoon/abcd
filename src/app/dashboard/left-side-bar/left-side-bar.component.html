@@ -48,7 +48,7 @@
 
 
     </li>
-    <li [routerLinkActive]="['active']" [routerLink]="['eol']">
+    <li [hidden]="!showeol" [routerLinkActive]="['active']" [routerLink]="['eol']">
       <div class="icnWrap">
         <img class="icn" src="assets/img/ls-eol.svg">
         <br>
