@@ -85,7 +85,7 @@
                                 <li>
                                   <label>Equipment Status:</label>
                                   <br>
-                                  <span class="">{{item['equipmentStatus']}}</span>
+                                  <span class="">{{item['leaseStatus']}}</span>
                                 </li>
                               </ul>
 
@@ -237,8 +237,8 @@
                     <td>{{selectedLease['legalStatus']}}</td>
                   </tr>
                   <tr>
-                    <td>Current Balance <button type="button" class="btn btn-outline-secondary" ngbTooltip="You see, I show up on click!" triggers="click:blur">
-                      Click me!
+                    <td>Current Balance <button type="button" class="btn roundit" ngbTooltip="Current balance represents the outstanding amount on your lease. This is not the amount required to pay the lease in full." triggers="click:blur">i
+                        
                     </button></td>
                     <td>{{ selectedLease['payment']['currentBalance'] | add_comma_pipe }}</td>
                   </tr>
@@ -366,13 +366,14 @@
 
                     <!--Buyout Quote:-->
                     <li class="toopwrap">
-                      <label>Buyout Quote:<button type="button" class="btn btn-outline-secondary" ngbTooltip="You see, I show up on click!" triggers="click:blur">
-                        Click me!
+                        
+                      <label>Buyout Quote:<button type="button" class="btn roundit" ngbTooltip="Current balance represents the outstanding amount on your lease.
+                        This is not the amount required to pay the lease in full." triggers="click:blur">i
+                          
                       </button></label>
                       <span class="">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
                       <div class="popwrap" [ngClass]="{'d-none':!openBuyOutInfo }">
-                        Current balance represents the outstanding amount on your lease.
-                        This is not the amount required to pay the lease in full.
+                        
                       </div>
                     </li>
                     <!--EPP Enrolled:-->

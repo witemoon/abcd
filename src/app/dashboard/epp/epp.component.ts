@@ -102,7 +102,7 @@ export class EppComponent implements OnInit {
     })
   }
   onYesNoClicked(event) {
-    debugger
+   
     if(event.target.value == "yes" && event.target.checked) {
       this.yesModel = true;
       this.noModel = false;
