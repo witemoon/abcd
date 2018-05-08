@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DashboardServiceService} from '../../dashboard-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class LeaseTabsComponent implements OnInit {
   showTabs = false;
   selectedLease = {};
 
-  constructor(private dashboardService: DashboardServiceService) {
+  constructor(private router:Router,private dashboardService: DashboardServiceService) {
   }
 
   ngOnInit() {
@@ -30,6 +31,13 @@ export class LeaseTabsComponent implements OnInit {
   showAlerts() {
     this.openPopup = true;
   }
+
+  ec(){
+    if(this.selectedLease['equipmentCoverage']['equipmentCoverage']=='No'){
+      this.router.navigate(['/dashboard/epp']);
+    }
+  }
+
 }
 
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { api_header, API_DEV_HOST } from '../api';
-import 'rxjs/add/operator/do';
+import 'rxjs';
 import { Router } from '@angular/router';
 
 
@@ -35,10 +35,11 @@ export class BackEndInterceptorService {
   getUrl(url:String){
     //concatinating actual url by window url + parameter
     let finalUrl = this.getEnvironmentUrl() + url;
-    return this.http.get(finalUrl,{ headers: this.getHeaders() }).do(res=>{
+    return this.http.get(finalUrl,{ headers: this.getHeaders() }).map(res=>{
       if(res && res['status']!='Success'){
         this.router.navigate(['/user/signin']);
       }
+      return res;
     });;
   }
 

@@ -15,7 +15,7 @@
           <a class="nav-link " data-toggle="pill" href="#Contract">Contract Status</a>
         </li>
         <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
-          <a class="nav-link" data-toggle="pill" href="#Coverage">Equipment Coverage</a>
+          <a class="nav-link" data-toggle="pill" href="#Coverage" (click)="ec()">Equipment Coverage</a>
         </li>
       </ul>
 
@@ -414,7 +414,7 @@
                 </div>
 
               </div>
-              <h6 class="d-none">Your account has beed handed over to the following collection agency:
+              <h6 [ngClass]="{'d-none':selectedLease['equipmentCoverage']['equipmentCoverageType']!='Third-Party Insurance'}">Your account has beed handed over to the following collection agency:
                 <br>
                 <span>{{selectedLease['contractStatus']['AgencyInformation']}}</span></h6>
 
