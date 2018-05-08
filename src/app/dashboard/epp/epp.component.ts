@@ -32,9 +32,8 @@ export class EppComponent implements OnInit {
   yesModel = false;
   noModel = false;
   agreeModel = false;
-
   showeppstatic=false;
- dataReady = false;
+  dataReady = false;
   constructor(private dashboardService:DashboardServiceService, private authService:AuthService) { }
 
   ngOnInit() {
@@ -51,6 +50,7 @@ export class EppComponent implements OnInit {
         this.merchanName= data['responseData']['merchantName'];
         let leases = data['responseData']['lease'];
         let alltrue = true;
+
         leases.forEach(item => {
           if (item.equipmentCoverage.equipmentCoverage == "No") {
             this.leaseFormGroup.addControl(item.leaseNo, new FormControl(false));
@@ -61,7 +61,7 @@ export class EppComponent implements OnInit {
         if(alltrue){
           this.showeppstatic = true;
         }
-        
+
         this.listenFormGroup();
       }
       this.dataReady = true;
@@ -102,39 +102,63 @@ export class EppComponent implements OnInit {
     })
   }
   onYesNoClicked(event) {
-   
+    
     if(event.target.value == "yes" && event.target.checked) {
-      this.yesModel = true;
-      this.noModel = false;
-      if (this.agreeModel) {
-        this.checkbox.submit = false;
-      }
+    this.yesModel = true;
+    this.noModel = false;
+    
+    this.checkbox.agree = false;
+    this.checkbox.submit = true;
+    // if (this.agreeModel) {
+    // this.checkbox.submit = false;
+    // }
     } else if (event.target.value == "yes" && !event.target.checked) {
-      this.yesModel = false;
+    this.yesModel = false;
+    this.checkbox.agree = true;
+    this.checkbox.submit = true;
+    
     }
-
-
+    
+    
     if (event.target.value == "no" && event.target.checked) {
-      this.showPopup = true;
-      this.noButtonPopup = true;
-      this.yesModel = false;
-      this.noModel = true;
-      if (this.agreeModel) {
-        this.checkbox.submit = false;
-      }
+    this.checkbox.agree = true;
+    this.checkbox.submit = true;
+    this.yesModel = false;
+    this.noModel = true;
+    if( this.noModel = true){
+    this.agreeModel = false;
+    }
+    
+    this.showPopup = true;
+    this.noButtonPopup = true;
+    
+    if (this.agreeModel) {
+    this.checkbox.submit = true;
+    }
     } else if (event.target.value == "no" && !event.target.checked) {
-      this.noButtonPopup = false;
-      this.noModel = false;
+    this.noButtonPopup = false;
+    this.noModel = false;
+    }
+    
+    if (event.target.value == "agree" && event.target.checked) {
+    this.agreeModel = event.target.checked ? true : false; 
+    // if(event.target.value == "agree" && !event.target.checked){
+    // this.checkbox.submit = false;
+    
+    // }
+    
+    // if(this.agreeModel){
+    this.checkbox.submit = false;
+    // }
+    
+    // if (this.yesModel ) {
+    // this.checkbox.submit = false;
+    // }
+    } else if (event.target.value == "agree" && !event.target.checked) {
+    this.checkbox.submit = true;
+    }
     }
 
-    if (event.target.value == "agree") {
-      this.agreeModel = event.target.checked ? true : false;
-
-      if (this.yesModel || this.noModel) {
-        this.checkbox.submit = false;
-      }
-    }
-  }
 
   onSubmit() {
     console.log("submit Clicked");
@@ -162,7 +186,7 @@ export class EppComponent implements OnInit {
         this.checkbox = {
           "yes": false,
           "no": false,
-          "agree": false,
+          "agree": true,
           "submit": true
         };
       } else if (unSelectedCount === Object.keys(checkbox).length) {
@@ -179,6 +203,7 @@ export class EppComponent implements OnInit {
   }
 
   onToggleChange(event) {
+    
     if (event.target.checked && !this.allLeaseSelected) {
       this.showPopup = true;
     }
@@ -205,3 +230,4 @@ export class EppComponent implements OnInit {
     }
   }
 }
+
