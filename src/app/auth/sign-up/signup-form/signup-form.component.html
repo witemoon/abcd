@@ -87,15 +87,17 @@
 
           <div class="form-group">
             <input
-              type="text"
+              type="number"
               class=" form-control"
               placeholder="Reference Key"
               name="referenceKey"
               ngModel
               required
               #refrenceNumber="ngModel"
+              (keypress)="onInputKeyUp($event)"
+              (paste)="onInputKeyUp($event)"
             >
-            <div class="fd-error" (click)="signUpForm.submitted = false" *ngIf="signUpForm.submitted">Incorrect Reference Key!</div>
+            <div class="fd-error" (click)="errorResponse.incorrectRefKey = false" *ngIf="errorResponse.incorrectRefKey">Incorrect Reference Key!</div>
           </div>
 
 
@@ -105,11 +107,12 @@
               class="form-control "
               placeholder="Lease Number"
               name="leaseNumber"
+              #leaseNumber="ngModel"
               ngModel
               required
-              [formControl]="leaseNumberFC"
+              (keyup)="onInputKeyUp($event)"
             >
-            <div class="fd-error"  (click)="signUpForm.submitted = false" *ngIf="signUpForm.submitted">Incorrect Lease Number!</div>
+            <div class="fd-error"  (click)="errorResponse.incorrectLeaseNo = false" *ngIf="errorResponse.incorrectLeaseNo">Incorrect Lease Number!</div>
           </div>
 
           <div class="form-group">
@@ -122,16 +125,17 @@
               required
               #merchantDBA="ngModel"
             >
-            <div class="fd-error"  (click)="signUpForm.submitted = false" *ngIf="signUpForm.submitted" >Incorrect Merchant DBA!</div>
+            <div class="fd-error"  (click)="errorResponse.incorrectMerchant = false" *ngIf="errorResponse.incorrectMerchant" >Incorrect Merchant DBA!</div>
 
           </div>
           <!-- Recaptch -->
           <div class="form-group">
             <re-captcha
-
+              #captchaRef
               name="captcha"
               required
               ngModel
+              (resolved)="captchaResolved($event)"
             ></re-captcha>
           </div>
 
@@ -160,8 +164,3 @@
   </div>
 
 </div>
-
-
-
-
-

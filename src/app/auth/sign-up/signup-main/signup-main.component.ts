@@ -6,15 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup-main.component.css']
 })
 export class SignupMainComponent implements OnInit {
+  showstat = false;
+  heading: String = "";
+  description: String = "";
 
   constructor() { }
 
   ngOnInit() {
   }
-  showstat = false;
+
   ctab(s){
-    this.showstat = s=='signin'?true:false;
+    this.showstat = s == 'signin' ? true : false;
     console.log("inside main----",this.showstat)
   }
 
+  updateStatDescription(obj) {
+    // this.description = obj;
+  }
 }

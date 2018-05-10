@@ -237,9 +237,13 @@
                     <td>{{selectedLease['legalStatus']}}</td>
                   </tr>
                   <tr>
-                    <td>Current Balance <button type="button" class="btn roundit" ngbTooltip="Current balance represents the outstanding amount on your lease. This is not the amount required to pay the lease in full." triggers="click:blur">i
-                        
-                    </button></td>
+                    <td>Current Balance
+                      <button type="button" class="btn roundit"
+                              ngbTooltip="Current balance represents the outstanding amount on your lease. This is not the amount required to pay the lease in full."
+                              triggers="click:blur">i
+
+                      </button>
+                    </td>
                     <td>{{ selectedLease['payment']['currentBalance'] | add_comma_pipe }}</td>
                   </tr>
                   <tr class="d-none">
@@ -366,19 +370,22 @@
 
                     <!--Buyout Quote:-->
                     <li class="toopwrap">
-                        
-                      <label>Buyout Quote:<button type="button" class="btn roundit" ngbTooltip="Current balance represents the outstanding amount on your lease.
+
+                      <label>Buyout Quote:
+                        <button type="button" class="btn roundit" ngbTooltip="Current balance represents the outstanding amount on your lease.
                         This is not the amount required to pay the lease in full." triggers="click:blur">i
-                          
-                      </button></label>
+
+                        </button>
+                      </label>
                       <span class="">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
                       <div class="popwrap" [ngClass]="{'d-none':!openBuyOutInfo }">
-                        
+
                       </div>
                     </li>
                     <!--EPP Enrolled:-->
                     <li>
-                      <label>EPP Enrolled:</label>
+                      <label>Equipment Coverage:
+                      </label>
                       <span class="">{{selectedLease['contractStatus']['eppInrolled']}}</span>
                     </li>
 
@@ -396,7 +403,7 @@
                     </li>
 
                     <!--Cost of EPP:-->
-                    <li>
+                    <li *ngIf = "selectedLease['contractStatus']['eppInrolled'] != 'Yes'">
                       <label>
                         Cost of EPP:</label>
                       <span class="">{{selectedLease['contractStatus']['eppAmount'] | add_comma_pipe}}</span>
@@ -414,7 +421,7 @@
                 </div>
 
               </div>
-              <h6 [ngClass]="{'d-none':selectedLease['equipmentCoverage']['equipmentCoverageType']!='Third-Party Insurance'}">Your account has beed handed over to the following collection agency:
+              <h6 class="d-none">Your account has beed handed over to the following collection agency:
                 <br>
                 <span>{{selectedLease['contractStatus']['AgencyInformation']}}</span></h6>
 

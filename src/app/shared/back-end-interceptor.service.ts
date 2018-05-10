@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { api_header, API_DEV_HOST } from '../api';
-import 'rxjs';
+import 'rxjs/add/operator/do';
 import { Router } from '@angular/router';
 
 
@@ -16,6 +16,7 @@ export class BackEndInterceptorService {
     let protocol = window.location.protocol;
     let host = window.location.host;
     //host = host.indexOf('localhost')>-1? API_DEV_HOST : host;
+    host = host.indexOf('localhost') >-1 ? "localhost:8080" : API_DEV_HOST;
     return protocol + '//' + host;
   }
 
@@ -35,11 +36,10 @@ export class BackEndInterceptorService {
   getUrl(url:String){
     //concatinating actual url by window url + parameter
     let finalUrl = this.getEnvironmentUrl() + url;
-    return this.http.get(finalUrl,{ headers: this.getHeaders() }).map(res=>{
+    return this.http.get(finalUrl,{ headers: this.getHeaders() }).do(res=>{
       if(res && res['status']!='Success'){
         this.router.navigate(['/user/signin']);
       }
-      return res;
     });;
   }
 

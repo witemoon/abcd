@@ -12,6 +12,7 @@ import { AuthService } from '../../shared/auth.service';
 export class ResetComponent implements OnInit {
 
   showError = false;
+  validEmail: boolean = false;
 
   constructor(private router:Router, private authService:AuthService) { }
 
@@ -38,6 +39,15 @@ export class ResetComponent implements OnInit {
     // else{
     //   console.log('change password fail');
     // }
+  }
+
+  onEmailEnter(event) {
+    let reg = /^[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2})?$/;
+    let email = event.target.value;
+
+    if (reg.test(email)) {
+      this.validEmail = true;
+    }
   }
   
 }

@@ -12,9 +12,10 @@
 
             <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
               <div>
-              <p class="loginDesc">Enter your email and we’ll send a link to reset your password to the address we have
+              <p class="loginDesc resettxtfix">Enter your email and we’ll send a link to reset your password to the address we have
                 on file.
               </p>
+
               <p *ngIf="showError" class="loginDesc fd-bld">Email not registered. Please try again!</p>
             </div>
               <form #resetPass="ngForm" (submit)="forgotPass(resetPass)">
@@ -27,13 +28,13 @@
                     name="email"
                     ngModel
                     required
-
+                    (keyup)="onEmailEnter($event)"
                   >
 
                 </div>
 
 
-                <button type="submit" class="btnSubmit spe-sign btn btn-primary btn-lg btn-block" [disabled]="!resetPass.valid">Submit</button>
+                <button type="submit" class="btnSubmit spe-sign btn btn-primary btn-lg btn-block" [disabled]="!validEmail">Submit</button>
 
 
               </form>

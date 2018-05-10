@@ -11,9 +11,13 @@ import { AuthService } from '../../shared/auth.service';
 export class ChangeTempPassComponent implements OnInit {
   showError: boolean = false;
   passwordNew: string = "";
+  passwordValid: boolean = false;
+  captchaSelected: boolean = false;
+  submitted: boolean = false;
 
   @ViewChild("tmpPass") tmpPass: ElementRef;
   @ViewChild("cPass") cPass: ElementRef;
+  @ViewChild("pass") pass: ElementRef;
   @ViewChild("captchaRef") captcha;
 
   passwordFC = new FormControl();
@@ -59,21 +63,67 @@ export class ChangeTempPassComponent implements OnInit {
     });
   }
 
+  onInputBlur(event) {
+    this.showError = false;
+    // if ((this.upperAndLowerCase && this.number && this.splChar && this.eightChar) &&
+    //     (this.passwordFC.value == this.cPass.nativeElement.value) && this.tmpPass.nativeElement.value.length > 7) {
+    //       this.passwordValid = true;
+    //     } else {
+    //       this.passwordValid = false;
+    //     }
+    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value && this.captchaSelected) {
+      this.passwordValid = true;
+    } else {
+      this.passwordValid = false;
+    }
+        
+        // if (this.tmpPass.nativeElement.value.length < 8) {
+        //   this.validationError.tempPasswordError = true;
+        // }
+
+        if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
+              event && event.target.name == "passwordNew") {
+            this.validationError.newPasswordError = true;
+            this.submitted = false;
+        } else if (event && event.target.name == "passwordNew"){
+          this.validationError.newPasswordError = false;
+        }
+
+        if ((this.passwordFC.value != this.cPass.nativeElement.value) && 
+            (event && event.target.name == "confPassword")) {
+          this.validationError.confirmPasswordError = true;
+          this.submitted = false;
+        } else if (event && event.target.name == "confPassword") {
+          this.validationError.confirmPasswordError = false;
+        }
+
+        // if (!this.validationError.newPasswordError &&
+        //       (event && event.target.name == "confPassword") &&
+        //       event.target.value != this.passwordFC.value) {
+        //     this.validationError.confirmPasswordError = true;
+        // }
+  }
+
+  captchaResolved() {
+    this.captchaSelected = true;
+    this.onInputBlur("");
+  }
+
   changePassword(changePass){
 
-   var tempPass = changePass.value.tempPass;
-   var newPass = this.passwordFC.value;
-   var cnfPass = changePass.value.confPassword;
+  //  var tempPass = changePass.value.tempPass;
+  //  var newPass = this.passwordFC.value;
+  //  var cnfPass = changePass.value.confPassword;
    
-   if (tempPass == ""){
-      this.validationError.tempPasswordError = true;
-   } else if (!newPass && !cnfPass && !tempPass) {
+  //  if (tempPass == ""){
+  //     this.validationError.tempPasswordError = true;
+  //  } else if (!newPass && !cnfPass && !tempPass) {
     
-     this.validationError.tempPasswordError = true;
-     this.validationError.confirmPasswordError = true;
-     this.validationError.newPasswordError = true;
-     this.captcha.reset();
-   } else if(newPass && cnfPass && (newPass == cnfPass)){
+  //    this.validationError.tempPasswordError = true;
+  //    this.validationError.confirmPasswordError = true;
+  //    this.validationError.newPasswordError = true;
+  //    this.captcha.reset();
+  //  } else if(newPass && cnfPass && (newPass == cnfPass)){
     let payLoad = {
       "currentPassword": '' + changePass.value.tempPass,
       "newPassword": '' + this.passwordFC.value,
@@ -86,14 +136,16 @@ export class ChangeTempPassComponent implements OnInit {
       }
     },err=>{
       this.captcha.reset();
-      this.cPass.nativeElement.value = "";
-      this.validationError.confirmPasswordError = true;
+      this.tmpPass.nativeElement.value = "";
+      this.validationError.tempPasswordError = true;
+      this.submitted = true;
+      this.pass.nativeElement.value = this.validationError.newPasswordError ? "" : this.passwordFC.value;
+      this.cPass.nativeElement.value =  this.validationError.confirmPasswordError ? "" : this.cPass.nativeElement.value;
       console.log('change paswword service failed',err);
     })
-     
-   } else{
+  //  } else{
       
-    }
+  //   }
    }
   
   validate(event){

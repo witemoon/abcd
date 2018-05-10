@@ -15,107 +15,123 @@
             <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
               <p class="loginDesc">Please complete all fields below</p>
 
-<!--ee-->
+              <!--ee-->
 
-              <form #changePass="ngForm" (submit)="changePassword(changePass)">
+              <form autocomplete="off" #changePass="ngForm" (submit)="changePassword(changePass)">
                 <div class="form-group">
                   <input
-                   type="password"
+                    type="password"
                     class="form-control"
-                      placeholder="Enter Temporary Password"
-                      name="tempPass"
-                      ngModel
-                     required
-                      #tempPass="ngModel"
-                      #tmpPass
-                      pattern="Photon123"
-                       >
+                    placeholder="Enter Temporary Password"
+                    name="tempPass"
+                    ngModel
+                    required
+                    #tempPass="ngModel"
+                    #tmpPass
+                    pattern="Photon123"
+                    (blur)="onInputBlur($event);"
+                  >
                   <div *ngIf="!tempPass.valid">
-                       <div class="fd-error" (click)="validationError.tempPasswordError = false" *ngIf="validationError.tempPasswordError">Incorrect temporary password</div>
+                    <div class="fd-error" (click)="validationError.tempPasswordError = false"
+                         *ngIf="validationError.tempPasswordError && submitted">Incorrect temporary password
                     </div>
+                  </div>
 
                 </div>
                 <div class="form-group">
                   <input
-                  type="password"
-                   class="form-control "
+                    type="password"
+                    class="form-control "
                     placeholder="Enter New Password"
                     name="passwordNew"
                     ngModel
                     required
                     maxlength="25"
                     minlength="8"
-                    (blur)="showError = false" (focus)="validate($event)"
+                    #pass
+                    (blur)="onInputBlur($event);" (focus)="validate($event)"
                     [formControl]="passwordFC"
-                    >
+                  >
 
 
-                    <div class="toolWrap " *ngIf="showError">
-                        <div class="toolInnerWrap">
-                          <div class="toolArrow"></div>
+                  <div class="toolWrap " *ngIf="showError">
+                    <div class="toolInnerWrap">
+                      <div class="toolArrow"></div>
 
-                          <p>Password must meet the following requirements:</p>
-                          <ul>
-                            <li>
-                              <span *ngIf="!upperAndLowerCase"><img src="./assets/img/ic_close.png"></span>
-                              <span *ngIf="upperAndLowerCase"><img src="./assets/img/ic_tick.png"></span>
-                              Contains upper and lower case
-                            </li>
-                            <li>
-                              <span *ngIf="!number"><img src="./assets/img/ic_close.png"></span>
-                              <span *ngIf="number"><img src="./assets/img/ic_tick.png"></span>
-                              At least one number
-                            </li>
-                            <li>
-                              <span *ngIf="!splChar"><img src="./assets/img/ic_close.png"></span>
-                              <span *ngIf="splChar"><img src="./assets/img/ic_tick.png"></span>
-                              At least one special character
-                            </li>
-                            <li>
-                              <span *ngIf="!eightChar"><img src="./assets/img/ic_close.png"></span>
-                              <span *ngIf="eightChar"><img src="./assets/img/ic_tick.png"></span>
-                              Be at least 8 characters
-                            </li>
-                          </ul>
+                      <p>Password must be a minimum of 8. Include in the password upper and lower case, a number and a
+                        special character (i.e. @,#,$, %, & !):
+                      </p>
+                      <ul>
+                        <li>
+                          <span *ngIf="!upperAndLowerCase"><img src="./assets/img/ic_close.png"></span>
+                          <span *ngIf="upperAndLowerCase"><img src="./assets/img/ic_tick.png"></span>
+                          Contains upper and lower case
 
-                        </div>
-                      </div>
+                        </li>
+                        <li>
+                          <span *ngIf="!number"><img src="./assets/img/ic_close.png"></span>
+                          <span *ngIf="number"><img src="./assets/img/ic_tick.png"></span>
+                          At least one number
+                        </li>
+                        <li>
+                          <span *ngIf="!splChar"><img src="./assets/img/ic_close.png"></span>
+                          <span *ngIf="splChar"><img src="./assets/img/ic_tick.png"></span>
+                          At least one special character
+                        </li>
+                        <li>
+                          <span *ngIf="!eightChar"><img src="./assets/img/ic_close.png"></span>
+                          <span *ngIf="eightChar"><img src="./assets/img/ic_tick.png"></span>
+                          Be at least 8 characters
+                        </li>
+                      </ul>
+
+                    </div>
+                  </div>
 
 
-                    <div *ngIf="validationError.newPasswordError">
-                    <div class="fd-error" (click)="validationError.newPasswordError = false" *ngIf="validationError.newPasswordError">Incorrect password format</div>
+                  <div *ngIf="validationError.newPasswordError">
+                    <div class="fd-error" (click)="validationError.newPasswordError = false"
+                         *ngIf="validationError.newPasswordError && submitted">Incorrect password format
+                    </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                    <input
-                     type="password"
-                      class="form-control "
-                      placeholder="Confirm Your Password"
-                      name="confPassword"
-                      ngModel
-                      required
-                      validateEqual="passwordNew"
-                      #confPassword="ngModel"
-                      #cPass
-                      >
+                  <input
+                    type="password"
+                    class="form-control "
+                    placeholder="Confirm Your Password"
+                    name="confPassword"
+                    ngModel
+                    required
+                    validateEqual="passwordNew"
+                    #confPassword="ngModel"
+                    #cPass
+                    (blur)="onInputBlur($event);"
+                  >
 
-                    <div *ngIf="validationError.confirmPasswordError">
-                      <div class="fd-error"  (click)="validationError.confirmPasswordError = false" *ngIf="validationError.confirmPasswordError">Passwords do not match</div>
+                  <div *ngIf="validationError.confirmPasswordError">
+                    <div class="fd-error" (click)="validationError.confirmPasswordError = false"
+                         *ngIf="validationError.confirmPasswordError  && submitted">Passwords do not match
                     </div>
-
-
                   </div>
+
+
+
+
+                  
+                </div>
                 <div class="form-group">
                   <re-captcha
-                  #captchaRef
-                  name="captcha"
-                  required
-                  ngModel></re-captcha>
+                    #captchaRef
+                    name="captcha"
+                    required
+                    (resolved)="captchaResolved()"
+                    ngModel></re-captcha>
                 </div>
-                <button type="submit"
+                <button type="submit" [disabled]="!passwordValid"
                         class="btnSubmit btn btn-primary btn-lg btn-block"
-                        >Submit
+                >Submit
                 </button>
 
 

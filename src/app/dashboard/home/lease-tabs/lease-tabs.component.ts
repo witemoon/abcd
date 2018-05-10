@@ -31,13 +31,11 @@ export class LeaseTabsComponent implements OnInit {
   showAlerts() {
     this.openPopup = true;
   }
-
   ec(){
     if(this.selectedLease['equipmentCoverage']['equipmentCoverage']=='No'){
       this.router.navigate(['/dashboard/epp']);
     }
   }
-
 }
 
 

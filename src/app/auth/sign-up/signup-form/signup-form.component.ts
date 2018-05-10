@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {NgForm, FormControl} from "@angular/forms";
 import 'rxjs/add/operator/filter';
@@ -14,11 +14,21 @@ export class SignupFormComponent implements OnInit {
 
 /*TEst*/
 
+  captchaSelected: boolean = false;
+  errorResponse: any = {
+    "incorrectRefKey": false,
+    "incorrectLeaseNo": false,
+    "incorrectMerchant": false
+  };
   currentTab = 'signup';
   referenceKeyFC = new FormControl();
   leaseNumberFC = new FormControl();
   merchantDbaFC = new FormControl();
   @Output() ctab = new EventEmitter();
+  @Output() errorToStat = new EventEmitter();
+
+  @ViewChild("captchaRef") captcha;
+
   constructor(private router:Router, private authService:AuthService) {
     this.router.events
     .filter(event => event instanceof NavigationEnd)
@@ -38,37 +48,6 @@ export class SignupFormComponent implements OnInit {
 
   leaseNumberFirstTime = true;
   ngOnInit() {
-    // 052-5234567-098
-    this.leaseNumberFC.valueChanges.subscribe(value=>{
-      let isnumber = this.isNumeric(value)
-      console.log(value , isnumber)
-      if(this.leaseNumberFirstTime){
-        this.leaseNumberFirstTime = false;
-      }else{
-            let finalStr = value;
-            finalStr =  this.removeChar(value);
-            if(value.length==4 && value.charAt(3)!='-'){
-              let st = value.substr(0,3)+'-'+value.substr(3,1);
-              console.log('setting formcontrol by -',st);
-              finalStr = st;
-            }
-            if(value.length==12 && value.charAt(11)!='-'){
-              let st = value.substr(0,11)+'-'+value.substr(11,1);
-              console.log('setting formcontrol by -',st)
-              finalStr = st;
-            }
-            if(finalStr!=value){
-              this.leaseNumberFC.setValue(finalStr);
-            }
-      }
-      //---------for removing alphabets starts-------
-      // for(let i=0;i<value.length;i++){
-      //   if(i==3 || i==11){continue}
-      //   if( !this.isNumeric(value.charAt(i)) ){this.leaseNumberFC.setValue(value.substr(0,value.length-1))}
-      // }
-       //---------for removing alphabets ends-------
-
-    })
   }
 
   isNumeric(n) {
@@ -93,31 +72,74 @@ export class SignupFormComponent implements OnInit {
 
   signUpUser(signUpForm){
 
-    var refKey=signUpForm.value.referenceKey;
-    var leaseNo=signUpForm.value.leaseNumber;
-    var merchantDBA=signUpForm.value.merchantDBA.toLowerCase();
-    // if(refKey && this.leaseNumberFC.value && merchantDBA){
-      let payLoad = {
-        "leaseNumber": '' + this.leaseNumberFC.value,
-        "merchantDBA": '' + merchantDBA,
-        "referenceKey": refKey
-      };
-      this.authService.register(payLoad).subscribe(res=>{
-        console.log('register Response:',res);
-        this.router.navigate(['/signthank']);
-      },error=>{
-        console.log('signup error',error);
-      })
-    // }
-    // else{
-    //   console.log(refKey, refKey=="123456789",this.leaseNumberFC.value,this.leaseNumberFC.value=="052-5234567-098", merchantDBA, merchantDBA=="abc bbq and burgers");
+    let valid = this.validateForm(signUpForm);
 
-    //   console.log('Not Valid')
-    // }
+    if (valid) {
+      var refKey=signUpForm.value.referenceKey;
+      var leaseNo=signUpForm.value.leaseNumber;
+      var merchantDBA=signUpForm.value.merchantDBA.toLowerCase();
 
+        let payLoad = {
+          "leaseNumber": '' + leaseNo,
+          "merchantDBA": '' + merchantDBA,
+          "referenceKey": refKey
+        };
+
+        this.authService.register(payLoad).subscribe(res=>{
+          console.log('register Response:',res);
+          this.router.navigate(['/signthank']);
+        },error=>{
+          console.log('signup error',error);
+          this.captcha.reset();
+          this.captchaSelected = false;
+          
+          if (error.error && error.error.message) {
+            let errMessage = error.error.message;
+            
+            this.errorResponse.incorrectRefKey = errMessage.includes("reference key") ? true : false;
+            this.errorResponse.incorrectLeaseNo = errMessage.includes("lease number") ? true : false;
+            this.errorResponse.incorrectMerchant = errMessage.includes("merchant dba") ? true : false;
+
+            this.errorToStat.emit(error.error.message);
+          }
+        });
+    }
   }
+
+  validateForm(signUpForm): boolean {
+    if (!signUpForm.value.referenceKey || !signUpForm.value.leaseNumber || !signUpForm.value.merchantDBA || !this.captchaSelected) {
+      this.captcha.reset();
+      this.captchaSelected = false;
+      return false;
+    }
+    
+    return true;
+  }
+
+  onInputKeyUp(event) {
+    if (event) {
+      if (event.target.name == "referenceKey") {
+        // if(!(/^[-+]?\d+$/g).test(event.target.value)) {
+        if(event.target.value.length > 8) {
+          event.target.value = event.target.value.substr(0, 8);
+        } else {
+          this.errorResponse.incorrectRefKey = false;
+        }
+      } else if (event.target.name == "leaseNumber") {
+        let value = event.target.value;
+
+        if(value.length == 3 || value.length == 11) {
+          value += "-";
+        }
+
+        event.target.value = value;
+      }
+    }
+  }
+
   signInError = false;
   singInSuccess = true;
+
   signInRegular(signInReg){
 
    var email=signInReg.value.email.toLowerCase();
@@ -146,15 +168,6 @@ export class SignupFormComponent implements OnInit {
     this.signInError = true;
     console.log('regular signin faild',error);
    });
-  //  if(email=="demo2@test.com" && passwordReg=="Demo2@123"){
-  //    this.signInError = false;
-  //    this.singInSuccess = false;
-  //    this.router.navigate(['/dashboard/home']);
-  //  }
-  //  else{
-  //    this.signInError = true;
-  //    console.log('test faild');
-  //  }
   }
 
   signInPageReg(){
@@ -163,15 +176,12 @@ export class SignupFormComponent implements OnInit {
   resetRegPassword(){
     this.router.navigate(['/resetPassword'])
   }
+
   backToLandingPage(){
     this.router.navigate(['/']);
   }
 
-
-
-
-
-
-
-
+  captchaResolved(event) {
+    this.captchaSelected = true;
+  }
 }

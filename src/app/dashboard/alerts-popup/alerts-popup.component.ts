@@ -12,12 +12,13 @@ export class AlertsPopupComponent implements OnInit {
   @Input() defaultLeaseCount: number = 0;
   @Input() equipmentLeaseCount: number = 0;
 
-  constructor(private routes:Router) { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
   closeButtonClicked(){
     this.showPopup = false;
+    this.router.navigate(['/dashboard/home']);
   }
 }

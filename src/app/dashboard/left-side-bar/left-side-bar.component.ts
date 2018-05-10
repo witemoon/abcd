@@ -17,7 +17,8 @@ export class LeftSideBarComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.leaseData.subscribe(data=>{
       this.leaseData = data;
-      let leases = data['responseData']['lease'];
+      let leases = data['lease'];
+      
         let alleol = true;
         leases.forEach(item => {
           let leaseterm = parseInt( (""+item.contractStatus.leaseTerm).replace(" Months","") )

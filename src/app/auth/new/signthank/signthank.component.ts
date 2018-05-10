@@ -12,10 +12,9 @@ export class SignthankComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   temp(){
     console.log('signUp');
     this.router.navigate(['/temp']);
   }
-
-
 }

@@ -39,6 +39,7 @@ export class TempSigninComponent implements OnInit {
           console.log('---error happened----',e);
         }
         if(res['responseData'].firstTimeUser){
+          
             this.authService.currentEmail = email;
             this.router.navigate(['/signchangepass']);
         }
