@@ -346,7 +346,7 @@
                   <ul>
 
                     <!--Past Due Amount:-->
-                    <li>
+                    <li *ngIf= " selectedLease['legalStatus']!='current'">
                       <label>Past Due Amount:</label>
                       <span class="">{{selectedLease['contractStatus']['pastDueAmount'] | add_comma_pipe}} </span>
                     </li>
@@ -377,7 +377,7 @@
 
                         </button>
                       </label>
-                      <span class="">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
+                      <span class="" *ngIf="selectedLease['contractStatus']['buyoutQuote']">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
                       <div class="popwrap" [ngClass]="{'d-none':!openBuyOutInfo }">
 
                       </div>

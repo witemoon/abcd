@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
           this.equipmentBadgeCount = 0;
           this.defaultLeaseBadgeCount = 0;
 
-          if (item['equipmentCoverage']['equipmentCoverage'] == "No") {
+          if ( item['equipmentCoverage'] && item['equipmentCoverage']['equipmentCoverage'] && item['equipmentCoverage']['equipmentCoverage'] == "No") {
             this.equipmentBadgeCount = 1;
             totalEquipmentBadgeCount++;
           }
