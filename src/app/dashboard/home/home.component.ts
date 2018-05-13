@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardServiceService } from '../dashboard-service.service';
+import { Router } from '@angular/router';
 // import { dashboardData } from './dashboard-model';
 
 @Component({
@@ -12,11 +13,20 @@ export class HomeComponent implements OnInit {
   equipmentBadgeCount = 0;
   defaultLeaseBadgeCount = 0;
 
-  constructor(private dashboardService: DashboardServiceService) { }
+  constructor(private dashboardService: DashboardServiceService, private router:Router) { }
 
   ngOnInit() {
     let leaseArray = [];
     this.dashboardService.getLeaseData("").subscribe(data=>{
+      if(data['statusCode']=='401'){
+        console.log('-------error code 401--------redirect here----')
+        this.router.navigate(['/error401']);
+      }
+      if(data['statusCode']=='500' || data['statusCode']=='501' || data['statusCode']=='503'){
+        console.log('-------error code 500,501,503--------redirect here----')
+        this.router.navigate(['/serviceerrors']);
+      }
+      
       if (data && data['responseData']) {
         // let data = dashboardData;
         let totalBadgeCount = 0;
