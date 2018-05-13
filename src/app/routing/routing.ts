@@ -48,6 +48,11 @@ const appRoutes: Routes = [
 
   },
   {
+    path: 'login/:email',
+    component: SignInComponent
+
+  },
+  {
     path: 'signchangepass',
     component: SignchangepassComponent
   },
@@ -64,7 +69,6 @@ const appRoutes: Routes = [
     path: 'thankyou',
     component: ThankComponent
   },
-
   {
     path: 'changeTempPass',
     component: ChangeTempPassComponent

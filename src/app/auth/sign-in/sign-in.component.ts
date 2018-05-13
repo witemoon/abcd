@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { FormGroup ,FormControl } from '@angular/forms';
 
 
@@ -12,9 +12,17 @@ import { FormGroup ,FormControl } from '@angular/forms';
 export class SignInComponent implements OnInit {
 
   constructor(private router:Router) { }
-    
+  urlEmail = "";
   ngOnInit() {
-    
+    // console.log('----router----',this.router)
+    this.urlEmail = this.router.url.replace('/login/',"")
+    this.urlEmail  = this.urlEmail.replace('/login','')
+    this.router.events
+    .filter(event => event instanceof NavigationEnd)
+    .subscribe((event:NavigationEnd) => {
+      this.urlEmail = event.url.replace('/login/',"");
+      // console.log('---------url email---------',this.urlEmail)
+    });
    
   }
 
