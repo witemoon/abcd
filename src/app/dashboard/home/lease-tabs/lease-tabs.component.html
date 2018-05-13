@@ -322,9 +322,9 @@
                 <div class="col-sm-6 col-12 col-md-3">
                   <ul>
                     <!--End Date-->
-                    <li>
+                    <li *ngIf="  selectedLease['contractStatus']['endDate'] | is_Greater_Than_Current_Date ">
                       <label>End date:</label>
-                      <span class="">{{selectedLease['contractStatus']['endDate']}}</span>
+                      <span class="">{{ selectedLease['contractStatus']['endDate']}}</span>
                     </li>
                     <!--Payments Made:-->
                     <li>

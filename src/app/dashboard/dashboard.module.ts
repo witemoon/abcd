@@ -20,7 +20,7 @@ import { PaymentHelpPopupComponent } from './payment-help-popup/payment-help-pop
 import { DashboardServiceService } from './dashboard-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EppPopupComponent } from './epp/epp-popup/epp-popup.component';
-import { AddCommaPipe } from './dashboard-pipe';
+import { AddCommaPipe, Is_Greater_Than_Current_Date } from './dashboard-pipe';
 import { EppthankComponent } from './epp/eppthank/eppthank.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EppstaticComponent } from './epp/eppstatic/eppstatic.component';
@@ -67,6 +67,7 @@ const dashboardRoute: Routes = [
                   AddCommaPipe,
                   EppthankComponent,
                   EppstaticComponent,
+                  Is_Greater_Than_Current_Date
               ],
   providers: [
     DashboardServiceService

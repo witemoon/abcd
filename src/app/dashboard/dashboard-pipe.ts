@@ -14,3 +14,13 @@ export class AddCommaPipe implements PipeTransform {
     return x1 + x2;
   }
 }
+
+@Pipe({name: 'is_Greater_Than_Current_Date'})
+export class Is_Greater_Than_Current_Date implements PipeTransform {
+  transform(date) {
+    var incomming_date = new Date(date);
+    var today = new Date();
+    console.log('----------incomming date',incomming_date,'-------------today',today,'---------',incomming_date.getTime() > today.getTime())
+    return incomming_date.getTime() > today.getTime()
+  }
+}
