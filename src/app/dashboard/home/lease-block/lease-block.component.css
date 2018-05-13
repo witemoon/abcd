@@ -1,0 +1,9 @@
+.your-class div{
+  padding: 10px;
+  border:1px solid red;
+  margin: 10px;
+}
+
+.leaseCardSelected{
+  border: 1px solid green !important;
+}

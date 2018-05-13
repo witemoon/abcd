@@ -21,9 +21,15 @@
       "styles": [
         "styles.css",
         "./assets/css/resp.css",
-        "./assets/css/urLease.css"
+        "./assets/css/urLease.css",
+        "../node_modules/slick-carousel/slick/slick.css",
+        "../node_modules/slick-carousel/slick/slick-theme.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "script.js",
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/slick-carousel/slick/slick.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

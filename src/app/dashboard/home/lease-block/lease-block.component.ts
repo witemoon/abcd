@@ -1,17 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DashboardServiceService } from '../../dashboard-service.service';
 // import { dashboardData } from '../dashboard-model';
+declare var $;
 
 @Component({
   selector: 'lease-block',
   templateUrl: './lease-block.component.html',
   styleUrls: ['./lease-block.component.css']
 })
-export class LeaseBlockComponent implements OnInit {
+export class LeaseBlockComponent implements OnInit, AfterViewInit {
+ 
   selectedLease = 0;
   leaseArray = [];
 
   constructor(private dashboardService:DashboardServiceService) {
+  }
+
+  ngAfterViewInit(): void {
+    
   }
 
   ngOnInit() {
@@ -43,6 +49,43 @@ export class LeaseBlockComponent implements OnInit {
         this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour);
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
+      $(document).ready(function(){
+        $('.your-class').slick(
+          {
+            dots: true,
+            speed: 500,
+            prevArrow:$('.lease-prev'),
+            nextArrow:$('.lease-next'),
+            slidesToShow:4,
+            slidesToScroll:1,
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                  infinite: true,
+                  dots: true
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+            ]
+          }
+        );
+      });
     });
   }
 

@@ -17,7 +17,7 @@ export class DashboardServiceService {
   }
 
   getLeaseData(merchantId){
-    let observable = this.http.get('https://api.myjson.com/bins/1gvlee');
+    let observable = this.http.get('https://api.myjson.com/bins/8y0o6');
     return observable;
   }
 
