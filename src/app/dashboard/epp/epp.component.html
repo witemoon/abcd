@@ -3,13 +3,13 @@
 <div [hidden]="showeppstatic">
   <div class="col-12 db-inner-wrap  ">
     <!--breadcrums Starts Here-->
-    <div class="row db-bread-wrap">
+    <div class=" db-bread-wrap">
       <ol class="breadcrumb  w-100">
         <li class="breadcrumb-item">urLease</li>
         <li class="breadcrumb-item">Dashboard</li>
         <li class="breadcrumb-item active">EPP</li>
       </ol>
-  
+
     </div>
     <!--wraper for FAQ-->
     <div class="db-inner-box col-12 epp eol ">
@@ -30,19 +30,19 @@
               <label>Total Monthly EPP:</label>
               <span class="activeBg"> ${{totalAmt}}.00</span>
             </li>
-  
+
           </ul>
         </div>
-  
+
       </div>
       <!--EPP basic Details Ends-->
-  
-  
+
+
       <!--Horizondal Line Starts-->
       <div class="btmBorder"></div>
       <!--Horizondal Line Starts-->
-  
-  
+
+
       <!--Toggle Button Starts-->
       <div class="row ">
         <div class="col-12">
@@ -51,14 +51,12 @@
             You have the following leases that do not have any equipment protection coverage. Please select the leases for
             which you would like to have EPP coverage. </p>
           <!--warning txt Ends-->
-  
-  
+
+
           <!--Epp Lease toggles Starts-->
-          <!-- <div class=""> -->
-            <div class="" *ngIf="leaseData">
-                <div class="lease-prev">Prev</div>
-                <div class="lease-next">Next</div>
-              <div class="your-class" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }"
+          <div class="row">
+            <div class="toggleWrap" *ngIf="leaseData">
+              <div class="toggle-item-wrap" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }"
                    *ngFor="let item of leaseData">
                 <div class="leftWrap">
                   <p class="">Lease #</p>
@@ -72,37 +70,37 @@
                   </label></p>
                   <p class="">${{leaseFormGroup.controls[item.leaseNo].value?'10':'0'}}.00</p>
                 </div>
-  
-  
+
+
               </div>
             </div>
-  
-          <!-- </div> -->
+
+          </div>
           <!--Epp Lease toggles Ends-->
-  
+
         </div>
       </div>
       <!--Toggle Button Ends-->
-  
+
       <!--Horizondal Line Starts-->
-  
+
       <div class="btmBorder"></div>
       <!--Horizondal Line Starts-->
-  
-  
+
+
       <!--Checkbox Boxes Wrap Starts Here-->
       <div class="row ">
         <div class="col-12">
-  
-  
+
+
           <!--Check Box Starts-->
-  
+
           <div class="epp-cb-wrap" [ngClass]="{ 'opacity-disable' : checkbox.yes }">
             <input type="checkbox" [checked]="yesModel" [disabled]="checkbox.yes" name="option1" id="checkbox1"
                    class="check1" value="yes" (change)="onYesNoClicked($event)"/>
             <label for="checkbox1" class="label1"> YES, I choose to enroll in First Data's Equipment Protection
               Program</label>
-  
+
             <input type="checkbox" [checked]="noModel" [disabled]="checkbox.no" name="option2" id="checkbox2"
                    class="check2" value="no" (change)="onYesNoClicked($event)"/>
             <label for="checkbox2" class="label2"> NO, I am providing a certificate of insurance that names First Data
@@ -111,7 +109,7 @@
               insurance certificate is included with this response </label>
           </div>
           <!--Check Box Ends-->
-  
+
           <!--cnt Txt Starts-->
           <p>
             Enrollment in the First Data Equipment Protection Program relieves you of the requirement
@@ -129,15 +127,15 @@
             Board Protection: The First Data Equipment Protection Program provides FULL REPLACEMENT
             protection for loss due to a wide variety of perils.</p>
           <!--cnt Txt Ends-->
-  
-  
+
+
         </div>
-  
-  
+
+
       </div>
       <!--Checkbox Boxes Wrap Starts Here-->
-  
-  
+
+
       <!--EPP  Covers List Starts-->
       <div class="row ">
         <div class="col-12 col-sm-6 listWrap ">
@@ -151,13 +149,13 @@
             <li> Falling Objects</li>
             <li> Fire and Smoke
           </ul>
-  
+
         </div>
         <div class="col-12 col-sm-6 listWrap">
           <ul>
             <li>
               Hail
-  
+
             </li>
             <li> Flood and Water
             </li>
@@ -169,7 +167,7 @@
             </li>
             <li> Wind, Hurricane and Tornado
           </ul>
-  
+
         </div>
         <div class=" ftrtxt ">Perils shown in bold above are often not covered by standard business
           insurance
@@ -177,41 +175,41 @@
         </div>
       </div>
       <!--EPP  Covers List  Ends-->
-  
-  
+
+
       <!--Horizondal Line Starts-->
       <div class="btmBorder"></div>
       <!--Horizondal Line Starts-->
-  
-  
+
+
       <!--submit but wrap Starts-->
       <div class="row ">
-  
+
         <div class="col-sm-12 col-md-9">
           <!--Check Box Starts-->
           <div class="epp-cb-wrap" [ngClass]="{ 'opacity-disable' : checkbox.agree }">
             <input type="checkbox" [checked]="agreeModel" [disabled]="checkbox.agree" name="option1" id="checkbox3" value="agree" class="check3" (change)="onYesNoClicked($event)"/>
             <label for="checkbox3" class="label3"> I agree to the First Data Terms of Service and Privacy Policy</label>
-  
+
           </div>
           <!--Check Box Ends-->
-  
-  
+
+
         </div>
-  
+
         <div class="col-sm-12 col-md-3 ftrBtnWrap  text-md-right text-center">
           <button type="button" [disabled]="checkbox.submit" [routerLink]="['/dashboard/eppthank']" class="btn butSec   ">
             Submit
-  
+
           </button>
         </div>
-  
-  
+
+
       </div>
       <!--submit but wrap Startss-->
     </div>
   </div>
-  
+
   <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" (addClicked)="addButtonClicked();"
              (closeClicked)="closePopup();"></epp-popup>
 </div>

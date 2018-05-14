@@ -1,38 +1,46 @@
-<div class="row db-lease-tab-cnt  py-4">
-  <div class="col-12 col-md-6 col-sm-12  ">
+<div class="db-lease-tab-btn">
+
+  <div class="row">
+
+    <div class="col-md-6 col-sm-12 ">
+
       <ul>
-          <li>
-              <label>Merchant Name:</label>
-              <span class="">{{leaseData["merchantName"]}}</span>
-          </li>
-          <li>
-              <label>
-                  Merchant ID:</label>
-              <span class="">{{leaseData["merchantId"]}}</span>
-          </li>
-          <li>
-              <label>Lease # : </label>
-              <span class="" *ngIf="selectedLease">{{selectedLease['leaseNo']}}</span>
-          </li>
+        <li>
+          <label>Merchant Name:</label>
+          <span class="">{{leaseData["merchantName"]}}</span>
+        </li>
+        <li>
+          <label>
+            Merchant ID:</label>
+          <span class="">{{leaseData["merchantId"]}}</span>
+        </li>
+        <li>
+          <label>Lease # : </label>
+          <span class="" *ngIf="selectedLease">{{selectedLease['leaseNo']}}</span>
+        </li>
       </ul>
 
-  </div>
-  <div class=" col-12 col-md-6 col-sm-12  ">
+    </div>
+
+    <div class="col-md-6 col-sm-12   ">
       <ul>
-          <li>
-              <label>Business Address: </label>
-              <span class="">{{leaseData['businessAddress']}}</span>
-          </li>
-          <li>
-              <label>
-                  Business Contact:</label>
-              <span class=""> {{leaseData['businessPhone']}}</span>
-          </li>
-          <li>
-              <label>Email:</label>
-              <span class="">{{leaseData['email']}}</span>
-          </li>
+        <li>
+          <label>Business Address: </label>
+          <span class="">{{leaseData['businessAddress']}}</span>
+        </li>
+        <li>
+          <label>
+            Business Contact:</label>
+          <span class=""> {{leaseData['businessPhone']}}</span>
+        </li>
+        <li>
+          <label>Email:</label>
+          <span class="">{{leaseData['email']}}</span>
+        </li>
       </ul>
+    </div>
   </div>
+
 
 </div>
+

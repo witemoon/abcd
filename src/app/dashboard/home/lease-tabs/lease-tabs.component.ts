@@ -32,8 +32,7 @@ export class LeaseTabsComponent implements OnInit {
     this.openPopup = true;
   }
   ec(){
-    if( this.selectedLease['equipmentCoverage'] && this.selectedLease['equipmentCoverage']['equipmentCoverage'] && this.selectedLease['equipmentCoverage']['equipmentCoverage']=='No'){
-
+    if(this.selectedLease['equipmentCoverage'] && this.selectedLease['equipmentCoverage']['equipmentCoverage'] && this.selectedLease['equipmentCoverage']['equipmentCoverage']=='No'){
       this.router.navigate(['/dashboard/epp']);
     }
   }

@@ -30,11 +30,11 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
 
         // this.leaseArray = data['leaseArray'];
         data['leaseArray'].forEach(item => {
-          if(item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] == "Default") {
+          if(item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] == "Default") {
             arrayOne.push(item);
-          } else if (item.equipmentCoverage.equipmentCoverage != "No" && item['legalStatus'] == "Default") {
+          } else if (item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage != "No" && item['legalStatus'] == "Default") {
             arrayTwo.push(item);
-          } else if (item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] != "Default") {
+          } else if (item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] != "Default") {
             arrayThree.push(item);
           } else {
             arrayFour.push(item);

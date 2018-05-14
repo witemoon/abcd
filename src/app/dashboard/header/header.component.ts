@@ -8,8 +8,6 @@ declare var $;
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
 
-  
-
   openPopup = false;
   leaseData = {};
   alertCount: any = {
@@ -20,9 +18,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   constructor(private dashboardService:DashboardServiceService) {
 
-
    }
-
    ngAfterViewInit(): void {
     
     $('#capital-trigger').on('click touch', function(){
@@ -39,8 +35,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     $('#capital-tooltip').on('click touch', function(event) {
       event.stopPropagation();
     });
+    
   }
-  
+
   ngOnInit() {
     this.dashboardService.changeObject.subscribe(data=>{
       if (data && data['totalBadgeCount']) {
