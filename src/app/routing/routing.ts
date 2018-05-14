@@ -18,6 +18,8 @@ import {ResetComponent} from '../forgot-password/reset/reset.component';
 import {TempSigninComponent} from '../auth-temp/temp-signin/temp-signin.component';
 import { SignchangepassComponent } from '../auth/new/signchangepass/signchangepass.component';
 import { SignthankComponent } from '../auth/new/signthank/signthank.component';
+import { Error401Component } from '../errorhandler/error401/error401.component';
+import { ServiceerrorsComponent } from '../errorhandler/serviceerrors/serviceerrors.component';
 
 const appRoutes: Routes = [
 
@@ -48,11 +50,6 @@ const appRoutes: Routes = [
 
   },
   {
-    path: 'login/:email',
-    component: SignInComponent
-
-  },
-  {
     path: 'signchangepass',
     component: SignchangepassComponent
   },
@@ -69,6 +66,7 @@ const appRoutes: Routes = [
     path: 'thankyou',
     component: ThankComponent
   },
+
   {
     path: 'changeTempPass',
     component: ChangeTempPassComponent
@@ -77,6 +75,14 @@ const appRoutes: Routes = [
     path: 'dashboard',
     loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
   },
+{
+  path:'error401',
+  component: Error401Component
+},
+{
+  path:'serviceerrors',
+  component: ServiceerrorsComponent
+},
   {
     path: '**',
     component: NotFoundComponent

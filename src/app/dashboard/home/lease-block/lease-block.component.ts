@@ -52,12 +52,13 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
       $(document).ready(function(){
         $('.your-class').slick(
           {
-            dots: true,
+            dots: false,
             speed: 500,
             prevArrow:$('.lease-prev'),
             nextArrow:$('.lease-next'),
             slidesToShow:4,
             slidesToScroll:1,
+            variableWidth: true,
             responsive: [
               {
                 breakpoint: 1024,
@@ -65,7 +66,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
                   slidesToShow: 3,
                   slidesToScroll: 3,
                   infinite: true,
-                  dots: true
+                  dots: false
                 }
               },
               {

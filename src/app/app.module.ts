@@ -38,6 +38,8 @@ import { SignthankComponent } from './auth/new/signthank/signthank.component';
 import { SignchangepassComponent } from './auth/new/signchangepass/signchangepass.component';
 import { BackEndInterceptorService } from './shared/back-end-interceptor.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { Error401Component } from './errorhandler/error401/error401.component';
+import { ServiceerrorsComponent } from './errorhandler/serviceerrors/serviceerrors.component';
 
 
 
@@ -72,7 +74,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
     SignthankComponent,
 
-    SignchangepassComponent
+    SignchangepassComponent,
+
+    Error401Component,
+
+    ServiceerrorsComponent
 
 
 

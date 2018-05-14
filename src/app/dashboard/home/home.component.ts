@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let leaseArray = [];
     this.dashboardService.getLeaseData("").subscribe(data=>{
-      if(data['statusCode']=='401'){
+      if(data['statusCode']=='401'|| data['status']=='Failure'){
         console.log('-------error code 401--------redirect here----')
         this.router.navigate(['/error401']);
       }
@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
         console.log('-------error code 500,501,503--------redirect here----')
         this.router.navigate(['/serviceerrors']);
       }
-      
       if (data && data['responseData']) {
         // let data = dashboardData;
         let totalBadgeCount = 0;
@@ -41,7 +40,7 @@ export class HomeComponent implements OnInit {
           this.equipmentBadgeCount = 0;
           this.defaultLeaseBadgeCount = 0;
 
-          if ( item['equipmentCoverage'] && item['equipmentCoverage']['equipmentCoverage'] && item['equipmentCoverage']['equipmentCoverage'] == "No") {
+          if (item['equipmentCoverage'] && item['equipmentCoverage']['equipmentCoverage'] && item['equipmentCoverage']['equipmentCoverage'] == "No") {
             this.equipmentBadgeCount = 1;
             totalEquipmentBadgeCount++;
           }

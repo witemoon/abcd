@@ -8,13 +8,13 @@
         <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
           <a class="nav-link active show" data-toggle="pill" href="#Equipment">Equipment</a>
         </li>
-        <li class="nav-item mb-2 col-12 col-sm-6 col-md-3"  *ngIf=" selectedLease['legalStatus']=='current' || selectedLease['legalStatus']=='Default'">
+        <li class="nav-item mb-2 col-12 col-sm-6 col-md-3"  *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
           <a class="nav-link" data-toggle="pill" href="#Payment">Payment</a>
         </li>
         <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
           <a class="nav-link " data-toggle="pill" href="#Contract">Contract Status</a>
         </li>
-        <li class="nav-item mb-2 col-12 col-sm-6 col-md-3">
+        <li class="nav-item mb-2 col-12 col-sm-6 col-md-3" *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
           <a class="nav-link" data-toggle="pill" href="#Coverage" (click)="ec()">Equipment Coverage</a>
         </li>
       </ul>
@@ -219,8 +219,8 @@
 
             </div>
 
-            <div class="card-body py-2">
-              <h6>Your payment is past due! <span class="paymentWrap" data-toggle="modal" data-target="#paymentpop"
+            <div class="card-body py-2" >
+              <h6 *ngIf= "selectedLease['legalStatus']=='Default'">Your payment is past due! <span class="paymentWrap" data-toggle="modal" data-target="#paymentpop"
                                                   (click)="showAlerts()">Click here for next steps</span>
               </h6>
               <!--<div class="alertWrap  float-right d-inline-block" data-toggle="modal" data-target="#paymentpop">-->
@@ -293,83 +293,68 @@
             </div>
 
             <div class="card-body py-5">
+
+
               <div class="row">
 
                 <!--col one-->
-                <div class=" col-sm-6 col-12 col-md-3">
+                <div class="col-12">
                   <ul>
                     <!--Lease Status:-->
-                    <li>
+                    <li class="col-md-6 col-lg-3">
                       <label>Lease Status:</label>
                       <span class="">{{selectedLease['legalStatus']}}</span>
                     </li>
                     <!--Lease Term:-->
-                    <li>
+                    <li class="col-md-6 col-lg-3">
                       <label>
                         Lease Term:</label>
                       <span class="">{{selectedLease['contractStatus']['leaseTerm']}}</span>
                     </li>
                     <!--Start Date:-->
-                    <li>
+                    <li class="col-md-6 col-lg-3">
                       <label>Start Date:</label>
                       <span class=""> {{selectedLease['contractStatus']['startDate']}} </span>
                     </li>
 
-                  </ul>
 
-                </div>
-                <!--col two-->
-                <div class="col-sm-6 col-12 col-md-3">
-                  <ul>
                     <!--End Date-->
-                    <li *ngIf="  selectedLease['contractStatus']['endDate'] | is_Greater_Than_Current_Date ">
+                    <li class="col-md-6 col-lg-3"  *ngIf="  selectedLease['contractStatus']['endDate'] | is_Greater_Than_Current_Date ">
                       <label>End date:</label>
-                      <span class="">{{ selectedLease['contractStatus']['endDate']}}</span>
+                      <span class="">{{selectedLease['contractStatus']['endDate']}}</span>
                     </li>
                     <!--Payments Made:-->
-                    <li>
+                    <li class="col-md-6 col-lg-3">
                       <label>Payments Made:</label>
                       <span class="">{{selectedLease['contractStatus']['paymentsMade']}}</span>
                     </li>
                     <!--Payment Amount:-->
-                    <li>
+                    <li class="col-md-6 col-lg-3">
                       <label>
                         Payment Amount:</label>
                       <span class="">{{selectedLease['contractStatus']['paymentAmount'] | add_comma_pipe}}</span>
                     </li>
 
-                  </ul>
-
-                </div>
-                <!--col three-->
-                <div class="col-sm-6 col-12 col-md-3">
-                  <ul>
 
                     <!--Past Due Amount:-->
-                    <li *ngIf= " selectedLease['legalStatus']!='current'">
+                    <li class="col-md-6 col-lg-3" *ngIf= " selectedLease['legalStatus']!='Default'">
                       <label>Past Due Amount:</label>
                       <span class="">{{selectedLease['contractStatus']['pastDueAmount'] | add_comma_pipe}} </span>
                     </li>
                     <!--Days Past Due:-->
-                    <li>
+                    <li class="col-md-6 col-lg-3" *ngIf= " selectedLease['legalStatus']!='Default'">
                       <label>Days Past Due:</label>
                       <span class="">{{selectedLease['contractStatus']['daysPastDue']}}</span>
                     </li>
                     <!--Personal Guarantor:-->
-                    <li>
+                    <li class="col-md-6 col-lg-3">
                       <label>Personal Guarantor:</label>
                       <span class="">{{selectedLease['contractStatus']['personalGurantor']}}</span>
                     </li>
 
-                  </ul>
-
-                </div>
-                <!--col four-->
-                <div class="col-sm-6 col-12 col-md-3">
-                  <ul>
 
                     <!--Buyout Quote:-->
-                    <li class="toopwrap">
+                    <li class="toopwrap col-md-6 col-lg-3">
 
                       <label>Buyout Quote:
                         <button type="button" class="btn roundit" ngbTooltip="Current balance represents the outstanding amount on your lease.
@@ -377,13 +362,13 @@
 
                         </button>
                       </label>
-                      <span class="" *ngIf="selectedLease['contractStatus']['buyoutQuote']">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
+                      <span class="">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
                       <div class="popwrap" [ngClass]="{'d-none':!openBuyOutInfo }">
 
                       </div>
                     </li>
                     <!--EPP Enrolled:-->
-                    <li>
+                    <li class="col-md-6 col-lg-3">
                       <label>Equipment Coverage:
                       </label>
                       <span class="">{{selectedLease['contractStatus']['eppInrolled']}}</span>
@@ -391,34 +376,36 @@
 
                     <!--d-none-->
 
-                    <li class="d-none">
-                      <label>Bank Routing Number:</label>
-                      <span class=""> </span>
-                    </li>
-                    <!--d-none-->
+                    <!--<li class="d-none">-->
+                    <!--<label>Bank Routing Number:</label>-->
+                    <!--<span class=""> </span>-->
+                    <!--</li>-->
+                    <!--&lt;!&ndash;d-none&ndash;&gt;-->
 
-                    <li class="d-none">
-                      <label>Bank Account Number:</label>
-                      <span class=""></span>
-                    </li>
+                    <!--<li class="d-none">-->
+                    <!--<label>Bank Account Number:</label>-->
+                    <!--<span class=""></span>-->
+                    <!--</li>-->
 
                     <!--Cost of EPP:-->
-                    <li *ngIf = "selectedLease['contractStatus']['eppInrolled'] != 'Yes'">
+                    <li class="col-md-6 col-lg-3" *ngIf="selectedLease['contractStatus']['eppInrolled'] != 'Yes'">
                       <label>
                         Cost of EPP:</label>
                       <span class="">{{selectedLease['contractStatus']['eppAmount'] | add_comma_pipe}}</span>
                     </li>
 
                     <!--d-none-->
-                    <li class="d-none">
-                      <label>Property Tax Handling Fee:</label>
-                      <span class=""></span>
-                    </li>
+                    <!--<li class="d-none">-->
+                    <!--<label>Property Tax Handling Fee:</label>-->
+                    <!--<span class=""></span>-->
+                    <!--</li>-->
 
 
                   </ul>
 
+
                 </div>
+
 
               </div>
               <h6 class="d-none">Your account has beed handed over to the following collection agency:
@@ -452,27 +439,31 @@
                   <label>Equipment Coverage:</label>
                   <span class="">{{selectedLease['equipmentCoverage']['equipmentCoverage']}}</span>
                 </li>
-                <li>
+                <li *ngIf = "selectedLease['equipmentCoverage']['equipmentCoverage'] != 'No'">
                   <label>Equipment Coverage Type:</label>
                   <span class="">{{selectedLease['equipmentCoverage']['equipmentCoverageType']}}</span>
                 </li>
-                <li>
+                <li *ngIf = "selectedLease['equipmentCoverage']['equipmentCoverage'] != 'No'">
                   <label>
                     Equipment Coverage Company:</label>
                   <span class=""> {{selectedLease['equipmentCoverage']['equipmentCoverageCompaney']}}</span>
                 </li>
-                <li>
+
+                <li *ngIf = "selectedLease['equipmentCoverage']['equipmentCoverageCompaney'] != 'FIRST DATA' && selectedLease['equipmentCoverage']['equipmentCoverage'] != 'No'"> 
+                  
                   <label>Policy Number:</label>
-                  <span class="">{{selectedLease['equipmentCoverage']['insurancePolicyNumber']}}</span>
+                  <span class="">{{selectedLease['equipmentCoverage']['insurancePolicyNumber']}}</span> 
+                               
                 </li>
-                <li>
+                <li *ngIf = "selectedLease['equipmentCoverage']['equipmentCoverageCompaney'] != 'FIRST DATA' && selectedLease['equipmentCoverage']['equipmentCoverage'] != 'No'"> 
                   <label>Start Date:</label>
                   <span class="">{{selectedLease['equipmentCoverage']['startDate']}} </span>
                 </li>
-                <li>
+                <li *ngIf = "selectedLease['equipmentCoverage']['equipmentCoverageCompaney'] != 'FIRST DATA' && selectedLease['equipmentCoverage']['equipmentCoverage'] != 'No'"> 
                   <label>End date:</label>
                   <span class=""> {{selectedLease['equipmentCoverage']['endDate']}} </span>
                 </li>
+              
               </ul>
               <h6> For information regarding how to raise a claim
                 <a [routerLink]="['/dashboard/claims']">Click

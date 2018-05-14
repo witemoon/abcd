@@ -9,4 +9,6 @@
         color: white;
         line-height: 13px;
         }
-
+        #Contract ul li {
+            float: left;
+          }
