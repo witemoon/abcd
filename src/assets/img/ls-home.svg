@@ -7,14 +7,14 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.900000036">
         <g id="Artboard" transform="translate(-54.000000, -55.000000)">
             <g id="home" transform="translate(54.000000, 55.000000)">
-                <g id="ic_home" transform="translate(18.000000, 13.000000)" stroke-linecap="round" stroke="#FFFFFF" stroke-linejoin="round">
+                <g id="ic_home" transform="translate(18.000000, 18.000000)" stroke-linecap="round" stroke="#FFFFFF" stroke-linejoin="round">
                     <g id="home">
                         <g transform="translate(3.000000, 4.000000)" stroke-width="2">
                             <polygon id="Path-3" points="0 8 9 0 18 8 15 8 15 17 3 17 3 8"></polygon>
                         </g>
                     </g>
                 </g>
-                <g id="ic_home_ACTIVE" transform="translate(78.000000, 13.000000)">
+                <g id="ic_home_ACTIVE" transform="translate(78.000000, 18.000000)">
                     <g id="ac_home">
                         <rect id="ab_home" fill-opacity="0.329999983" fill="#FF5252" opacity="0" x="0" y="0" width="24" height="24"></rect>
                         <g id="home" transform="translate(3.000000, 4.000000)" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">

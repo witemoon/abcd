@@ -56,6 +56,17 @@ export class SignchangepassComponent implements OnInit {
       }
     });
   }
+  encryption(encryptVal){
+    let str = btoa(encryptVal);
+    console.log("str",str)
+    let data = [];
+    for (var i = 0; i < str.length; i++){ 
+    data.push(str.charCodeAt(i));
+    }
+    console.log("data",data)
+    return data;
+    }
+
     
   changePassword(changePass){
 
@@ -77,6 +88,9 @@ export class SignchangepassComponent implements OnInit {
       "currentPassword": "" + tempPass,
       "newPassword": "" + newPass
       }
+      tempPass = this.encryption(tempPass);
+    newPass = this.encryption(newPass);
+    cnfPass = this.encryption(cnfPass);
     this.authservice.changePassword(payLoad).subscribe(res=>{
       if(res['status']=='Success'){
         this.router.navigate(['/dashboard/home']);

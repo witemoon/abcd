@@ -4,11 +4,10 @@
     <title>ls-con</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-54.000000, -383.000000)">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Artboard" transform="translate(-54.000000, -383.000000)" stroke="#FFFFFF">
             <g id="contact" transform="translate(54.000000, 383.000000)">
-                <rect id="Rectangle" fill="#827878" opacity="0.5" x="0" y="0" width="60" height="60"></rect>
-                <g id="ic_phone" transform="translate(18.000000, 16.054054)" stroke-linecap="round" stroke="#FFFFFF" stroke-linejoin="round">
+                <g id="ic_phone" transform="translate(18.000000, 16.054054)">
                     <g id="phone">
                         <g transform="translate(4.000000, 4.666667)" stroke-width="2">
                             <path d="M0,0 C0,10.3093153 7.163444,18.6666667 16,18.6666667 L16,18.6666667" id="Oval-2"></path>
@@ -17,8 +16,7 @@
                         </g>
                     </g>
                 </g>
-                <rect id="Rectangle-Copy" fill="#4F95D4" opacity="0.5" x="60" y="0" width="60" height="60"></rect>
-                <g id="phone" transform="translate(82.000000, 20.500000)" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <g id="phone" transform="translate(82.000000, 20.500000)" stroke-width="2">
                     <path d="M0,0 C0,10.269511 7.163444,18.5945946 16,18.5945946 L16,18.5945946" id="Oval-2"></path>
                     <path d="M0,5.31833977e-14 L6,-1.31287527e-08 L6,5.8108108 L1.16303409,6.97297297 C0.41301427,4.81964585 0,2.46587671 0,5.31833977e-14 Z" id="Combined-Shape" fill="#FFFFFF"></path>
                     <path d="M16,18.5945946 L16,11.6216216 L11,11.6216216 L10,17.2429604 C11.8528629,18.114605 13.8781991,18.5945946 16,18.5945946 Z" id="Combined-Shape" fill="#FFFFFF"></path>

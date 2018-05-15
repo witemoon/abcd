@@ -144,6 +144,14 @@ export class SignupFormComponent implements OnInit {
 
    var email=signInReg.value.email.toLowerCase();
    var passwordReg=signInReg.value.password;
+   let str = btoa(passwordReg);
+    console.log("str",str)
+    let data = [];
+    for (var i = 0; i < str.length; i++){ 
+    data.push(str.charCodeAt(i));
+    }
+    passwordReg = data;
+    console.log("encr",passwordReg)
    let payLoad = {
     "emailId": "" + email,
     "password": "" + passwordReg

@@ -9,7 +9,7 @@
         <a class="nav-link active show" data-toggle="pill" href="#Equipment">Equipment</a>
       </li>
 
-      <li class="nav-item mb-2 col-12 col-sm-6 col-md-3"
+      <li class="nav-item  col-6 col-sm-6 col-md-3"
           *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
 
         <a class="nav-link" data-toggle="pill" href="#Payment">Payment</a>
@@ -17,7 +17,7 @@
       <li class="nav-item col-6 col-sm-6 col-md-3">
         <a class="nav-link " data-toggle="pill" href="#Contract">Contract Status</a>
       </li>
-      <li class="nav-item mb-2 col-12 col-sm-6 col-md-3"
+      <li class="nav-item col-6 col-sm-6 col-md-3"
           *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
         <a class="nav-link" data-toggle="pill" href="#Coverage" (click)="ec()">Equipment Coverage</a>
       </li>
@@ -241,12 +241,10 @@
                   </tr>
                   <tr>
                     <td>Current Balance
-                      <button type="button" class="btn roundit"
-                              ngbTooltip="Current balance represents the outstanding amount on your lease. This is not the amount required to pay the lease in full."
-                              triggers="click:blur">i
-
-                      </button>
+                      <button id="trigger1" type="button" class="btn roundit" triggers="click:blur">i </button>
+                              
                     </td>
+                    <div id="trigger1"><span id="tp1" placement="bottom" style="display: none;">Coming Soon</span></div>
                     <td>{{ selectedLease['payment']['currentBalance'] | add_comma_pipe }}</td>
                   </tr>
                   <tr class="d-none">
@@ -361,11 +359,13 @@
                     <li class="toopwrap col-md-6 col-lg-3">
 
                       <label>Buyout Quote:
-                        <button type="button" class="btn roundit" ngbTooltip="Current balance represents the outstanding amount on your lease.
-                        This is not the amount required to pay the lease in full." triggers="click:blur">i
+                        <button id="trigger2" type="button" class="btn roundit"  triggers="click:blur">i
 
                         </button>
+                        <div id="trigger2"><span id="tp2" placement="bottom" style="display: none;">Coming Soon</span></div>
+                        
                       </label>
+                     
                       <span class="">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
                       <div class="popwrap" [ngClass]="{'d-none':!openBuyOutInfo }">
 

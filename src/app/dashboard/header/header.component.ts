@@ -20,20 +20,27 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
    }
    ngAfterViewInit(): void {
-    
-    $('#capital-trigger').on('click touch', function(){
-      console.log('-----------clicked triger----------')
-      $('#capital-tooltip').show();
-    });         
-     
-    $(document).on('click touch', function(event) {
-      if (!$(event.target).parents().addBack().is('#capital-trigger')) {
-        $('#capital-tooltip').hide();
-      }
-    });
-
-    $('#capital-tooltip').on('click touch', function(event) {
+   
+    $('#trigger1').on('click touch', function(){
+      $('#tp1').show();
+    });  
+    $('#trigger2').on('click touch', function(){
+      $('#tp2').show();
+    });  
+    $('#tp1').on('click touch', function(event) {
       event.stopPropagation();
+    });
+    $('#tp2').on('click touch', function(event) {
+      event.stopPropagation();
+    });
+    $(document).on('click touch', function(event) {
+      if (!$(event.target).parents().addBack().is('#trigger1')) {
+        $('#tp1').hide();
+      }
+    if (!$(event.target).parents().addBack().is('#trigger2')) {
+        $('#tp2').hide();
+      }
+    
     });
     
   }

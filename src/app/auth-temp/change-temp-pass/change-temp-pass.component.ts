@@ -62,6 +62,16 @@ export class ChangeTempPassComponent implements OnInit {
       }
     });
   }
+  encryption(encryptVal){
+    let str = btoa(encryptVal);
+    console.log("str",str)
+    let data = [];
+    for (var i = 0; i < str.length; i++){ 
+    data.push(str.charCodeAt(i));
+    }
+    console.log("data",data)
+    return data;
+    }
 
   onInputBlur(event) {
     this.showError = false;
@@ -108,12 +118,13 @@ export class ChangeTempPassComponent implements OnInit {
     this.captchaSelected = true;
     this.onInputBlur("");
   }
+  
 
   changePassword(changePass){
 
-  //  var tempPass = changePass.value.tempPass;
-  //  var newPass = this.passwordFC.value;
-  //  var cnfPass = changePass.value.confPassword;
+   var tempPass = changePass.value.tempPass;
+   var newPass = this.passwordFC.value;
+   var cnfPass = changePass.value.confPassword;
    
   //  if (tempPass == ""){
   //     this.validationError.tempPasswordError = true;
@@ -130,6 +141,10 @@ export class ChangeTempPassComponent implements OnInit {
       "confirmPassword": '' + changePass.value.confPassword,
       "emailId": '' + this.authService.currentEmail
     };
+    tempPass = this.encryption(tempPass);
+    newPass = this.encryption(newPass);
+    cnfPass = this.encryption(cnfPass);
+
     this.authService.changePassword(payLoad).subscribe(res=>{
       if(res['status']=='Success'){
         this.router.navigate(['/user/signin']);

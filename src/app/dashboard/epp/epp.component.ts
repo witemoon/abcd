@@ -35,11 +35,9 @@ export class EppComponent implements OnInit, AfterViewInit {
   showeppstatic=false;
   dataReady = false;
   constructor(private dashboardService:DashboardServiceService, private authService:AuthService) { }
-
   ngAfterViewInit(): void {
     
   }
-
   ngOnInit() {
      // this.leaseData = eppMock.responseData.lease;
      // this.leaseData.forEach(item => {
@@ -72,25 +70,24 @@ export class EppComponent implements OnInit, AfterViewInit {
     },err=>{
       console.log('----- get lease data error-------',err);
     });
-
-    // this.postEpp(merchantid,arr);
     $(document).ready(function(){
-      $('.your-class').slick(
+      $('.your-epp').slick(
         {
           dots: false,
           speed: 500,
-          prevArrow:$('.lease-prev'),
-          nextArrow:$('.lease-next'),
+          prevArrow:$('.epp-prev'),
+          nextArrow:$('.epp-next'),
           slidesToShow:4,
           slidesToScroll:1,
           variableWidth: true,
+          infinite: false,
           responsive: [
             {
               breakpoint: 1024,
               settings: {
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                infinite: true,
+                infinite: false,
                 dots: false
               }
             },
@@ -112,6 +109,7 @@ export class EppComponent implements OnInit, AfterViewInit {
         }
       );
     });
+    // this.postEpp(merchantid,arr);
   }
 
   // getEppData(){

@@ -9,7 +9,7 @@ declare var $;
   styleUrls: ['./lease-block.component.css']
 })
 export class LeaseBlockComponent implements OnInit, AfterViewInit {
- 
+
   selectedLease = 0;
   leaseArray = [];
 
@@ -17,7 +17,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    
+
   }
 
   ngOnInit() {
@@ -50,7 +50,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
       $(document).ready(function(){
-        $('.your-class').slick(
+        $('.ca-box-wrap').slick(
           {
             dots: false,
             speed: 500,
@@ -58,6 +58,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
             nextArrow:$('.lease-next'),
             slidesToShow:4,
             slidesToScroll:1,
+            infinite: false,
             variableWidth: true,
             responsive: [
               {
@@ -65,7 +66,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
                 settings: {
                   slidesToShow: 3,
                   slidesToScroll: 3,
-                  infinite: true,
+                  infinite: false,
                   dots: false
                 }
               },

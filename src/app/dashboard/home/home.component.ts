@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let leaseArray = [];
     this.dashboardService.getLeaseData("").subscribe(data=>{
-      if(data['statusCode']=='401'|| data['status']=='Failure'){
+      if(data['statusCode']=='401'){
         console.log('-------error code 401--------redirect here----')
         this.router.navigate(['/error401']);
       }

@@ -14,10 +14,17 @@ export class TempSigninComponent implements OnInit {
 
   ngOnInit() {
   }
-
   tempSignInUser(tempSignIn){
     var email=tempSignIn.value.email;
     var tempPass=tempSignIn.value.tempPass;
+    let str = btoa(tempPass);
+    console.log("str",str)
+    let data = [];
+    for (var i = 0; i < str.length; i++){  
+        data.push(str.charCodeAt(i));
+    }
+    tempPass = data;
+    console.log("tempPass",data);
     // if(email=="demo2@test.com" && tempPass=="Photon123"){
     //   this.router.navigate(['/signchangepass'])
     // }

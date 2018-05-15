@@ -19,6 +19,6 @@ export class AlertsPopupComponent implements OnInit {
 
   closeButtonClicked(){
     this.showPopup = false;
-    this.router.navigate(['/dashboard/home']);
+    // this.router.navigate(['/dashboard/home']);
   }
 }
