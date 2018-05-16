@@ -18,14 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let leaseArray = [];
     this.dashboardService.getLeaseData("").subscribe(data=>{
-      if(data['statusCode']=='401'){
-        console.log('-------error code 401--------redirect here----')
-        this.router.navigate(['/error401']);
-      }
-      if(data['statusCode']=='500' || data['statusCode']=='501' || data['statusCode']=='503'){
-        console.log('-------error code 500,501,503--------redirect here----')
-        this.router.navigate(['/serviceerrors']);
-      }
+      
       if (data && data['responseData']) {
         // let data = dashboardData;
         let totalBadgeCount = 0;
@@ -60,6 +53,14 @@ export class HomeComponent implements OnInit {
       }
     },err=>{
       console.log('----- get lease data error-------',err);
+      if(err['error']['statusCode']=='401'){
+        console.log('-------error code 401--------redirect here----')
+        this.router.navigate(['/error401']);
+      }
+      if(err['error']['statusCode']=='500' || err['error']['statusCode']=='501' || err['error']['statusCode']=='503'){
+        console.log('-------error code 500,501,503--------redirect here----')
+        this.router.navigate(['/serviceerrors']);
+      }
     });
   }
 }
