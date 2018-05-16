@@ -6,20 +6,20 @@
     <!-- Nav pills -->
     <ul class="nav nav-pills">
       <li class="nav-item col-6 col-sm-6 col-md-3">
-        <a class="nav-link active show" data-toggle="pill" href="#Equipment">Equipment</a>
+        <a class="nav-link active show" data-toggle="pill" href="#Equipment" (click)="showContent('equipment')">Equipment</a>
       </li>
 
       <li class="nav-item  col-6 col-sm-6 col-md-3"
           *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
 
-        <a class="nav-link" data-toggle="pill" href="#Payment">Payment</a>
+        <a class="nav-link" data-toggle="pill" href="#Payment" (click)="showContent('payment')">Payment</a>
       </li>
       <li class="nav-item col-6 col-sm-6 col-md-3">
-        <a class="nav-link " data-toggle="pill" href="#Contract">Contract Status</a>
+        <a class="nav-link " data-toggle="pill" href="#Contract" (click)="showContent('contract')">Contract Status</a>
       </li>
       <li class="nav-item col-6 col-sm-6 col-md-3"
           *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
-        <a class="nav-link" data-toggle="pill" href="#Coverage" (click)="ec()">Equipment Coverage</a>
+        <a class="nav-link" data-toggle="pill" href="#Coverage" (click)="ec()" (click)="showContent('coverage')">Equipment Coverage</a>
       </li>
     </ul>
 
@@ -38,7 +38,7 @@
 
       <div class="tab-content" *ngIf="selectedLease">
         <!--Equipment Tab Cnt starts-->
-        <div class="tab-pane active show" id="Equipment">
+        <div class="tab-pane active show" id="Equipment" *ngIf="currentActiveTab=='equipment'">
 
           <div class="card">
             <div class="card-header text-center">
