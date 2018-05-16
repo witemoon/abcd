@@ -13,6 +13,7 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit{
   openPopup = false;
   showTabs = false;
   selectedLease = {};
+  currentActiveTab = 'equipment';
 
   constructor(private router:Router,private dashboardService: DashboardServiceService) {
   }
@@ -20,6 +21,12 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit{
    
     
   }
+
+  
+  showContent(tabname){
+    this.currentActiveTab = tabname;
+  }
+
   ngOnInit() {
     this.dashboardService.selectedLeaseObj.subscribe(data => {
       this.selectedLease = data;
