@@ -706,11 +706,11 @@ input[type=text], input[type=password] {
   .db-header .but-wrap {
     padding-top: 12px;
     float: right;
-    padding-right: 63px; }
+    padding-right: 97px; }
     .db-header .but-wrap button {
       margin-right: 8px; }
   .db-header .icon-wrap {
-    padding-right: 12px; }
+    padding-right: 32px; }
     .db-header .icon-wrap .alertWrap, .db-header .icon-wrap .chatWrap {
       padding: 8px 10px;
       font-family: SimpleSans-Regular, Helvetica, sans-serif;
@@ -791,6 +791,9 @@ input[type=text], input[type=password] {
 
 .btmTabCtrl {
   margin-top: -20px; }
+  .btmTabCtrl .tab-pane.container {
+    padding-right: 0px;
+    padding-left: 0px; }
 
 .icon-wrap {
   position: absolute;
@@ -891,7 +894,9 @@ input[type=text], input[type=password] {
     padding-top: 5px; }
 #Contract ul li {
   padding-bottom: 15px;
-  float: left; }
+  float: left;
+  border: 1px red dashed;
+  min-height: 100px; }
   #Contract ul li label {
     font-family: SimpleSans-Bold, Helvetica, sans-serif;
     font-size: 1rem;
@@ -1181,29 +1186,6 @@ input[type=text], input[type=password] {
 .paymentWrap {
   cursor: pointer; }
 
-#alertspop, #paymentspop {
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 10%; }
-  #alertspop .modal-dialog, #paymentspop .modal-dialog {
-    border-radius: 6px;
-    background-color: #ffffff;
-    -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
-            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
-    margin: 0 auto; }
-  #alertspop .modal-content, #paymentspop .modal-content {
-    min-height: 300px; }
-  #alertspop .cntWrap, #paymentspop .cntWrap {
-    margin-left: -13px;
-    margin-right: -13px;
-    background-color: rgba(97, 99, 101, 0.1);
-    padding-left: 30px !important; }
-    #alertspop .cntWrap span, #paymentspop .cntWrap span {
-      font-family: SimpleSans-Regular, Helvetica, sans-serif;
-      font-size: 16px;
-      display: inline-block;
-      margin-left: 20px; }
-
 #paymentpop .mod-heading, #paymentpop p, #epppop .mod-heading, #epppop p {
   font-family: SimpleSans-Black, Helvetica, sans-serif;
   font-size: 16px;
@@ -1304,6 +1286,7 @@ input[type=text], input[type=password] {
   color: #535353;
   padding-bottom: 5px; }
 .epp .details {
+  display: inline-block;
   margin: 15px 0; }
   .epp .details li {
     line-height: 1.67; }
@@ -1311,7 +1294,12 @@ input[type=text], input[type=password] {
       margin-right: 7px;
       text-align: right;
       margin-bottom: 0px;
-      width: 106px; }
+      width: 106px;
+      display: inline-block;
+      float: left; }
+    .epp .details li span {
+      display: inline-block;
+      float: left; }
 .epp .toggleWrap {
   width: 100%;
   padding: 0px 45px;
@@ -1559,33 +1547,31 @@ input[type=text], input[type=password] {
     height: 20px;
     position: absolute; }
 
-#paymentpop {
-  margin-top: 10%; }
-  #paymentpop p {
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 14px; }
-    #paymentpop p span {
-      color: #0072ce;
-      display: inline-block;
-      margin-right: 5px; }
-  #paymentpop .mod-heading {
-    font-family: SimpleSans-Black, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    text-align: center;
-    color: #0072ce; }
-  #paymentpop .popbld {
-    font-weight: bold;
-    font-family: SimpleSans-Bold, Helvetica, sans-serif;
-    font-size: 14px;
-    text-align: left !important;
-    margin-left: 36px;
-    margin-top: -9px; }
+#paymentpop p {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px; }
+  #paymentpop p span {
+    color: #0072ce;
+    display: inline-block;
+    margin-right: 5px; }
+#paymentpop .mod-heading {
+  font-family: SimpleSans-Black, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #0072ce; }
+#paymentpop .popbld {
+  font-weight: bold;
+  font-family: SimpleSans-Bold, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: left !important;
+  margin-left: 36px;
+  margin-top: -9px; }
 
 .btn:focus {
   outline: none; }
@@ -1616,6 +1602,10 @@ input[type=text], input[type=password] {
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal; }
+
+.fixwid {
+  width: 100%;
+  clear: both; }
 
 /*********************************** dashboard ENDS here *********************************/
 /*********************************** sidebar  STARTS here *********************************/
@@ -1812,7 +1802,22 @@ ul.lft-icon-wrap li.active {
   border-bottom: 2px solid #eeeeee; }
 
 .pro-cnt-wrap {
-  padding-left: 10px; }
+  padding-left: 0px; }
+  .pro-cnt-wrap span {
+    display: inline-block;
+    border-radius: 10px;
+    border: solid 0.5px #6d6d6d;
+    opacity: 0.5;
+    font-family: SimpleSans-Bold, Helvetica, sans-serif;
+    font-size: 8px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+    padding: 3px 15px;
+    margin-top: 10px; }
   .pro-cnt-wrap h3 {
     font-family: SimpleSans-Black, Helvetica, sans-serif;
     font-size: 1.16rem;
@@ -1825,7 +1830,9 @@ ul.lft-icon-wrap li.active {
     padding-top: 14px; }
   .pro-cnt-wrap p {
     font-family: SimpleSans-Regular, Helvetica, sans-serif;
-    font-size: .83rem; }
+    font-size: .83rem;
+    color: #858585;
+    line-height: normal; }
 
 .ctrlWidthRyt {
   right: 0px;
@@ -1841,8 +1848,6 @@ ul.lft-icon-wrap li.active {
   /* 0.5 second transition effect to slide in the sidenav */ }
 
 .ctrlWidthLftB {
-  left: 160px;
-  /* 0 width - change this with JavaScript */
   -webkit-transition: 0.2s;
   transition: 0.2s;
   /* 0.5 second transition effect to slide in the sidenav */ }
@@ -1868,7 +1873,8 @@ ul.lft-icon-wrap li.active {
   background-image: url("../img/close.svg");
   background-repeat: no-repeat;
   width: 60px;
-  cursor: pointer; }
+  cursor: pointer;
+  left: 160px; }
 
 #SidenavRytBut.tbut {
   background-image: url("../img/closeArrow.svg");
@@ -2034,11 +2040,6 @@ input:checked + .slider:before {
 
 /*********************************** sidebar ENDS here *********************************/
 /*********************************** captcha  STARTS here *********************************/
-.cWrap > div {
-  border: 1px solid red;
-  width: 100%;
-  overflow: hidden; }
-
 /*********************************** captcha ENDS here *********************************/
 /*********************************** Fixes  STARTS here *********************************/
 .faq-o-wrap .db-bread-wrap {
@@ -2062,25 +2063,8 @@ input:checked + .slider:before {
     .faq-o-wrap .pdfDownload a:hover {
       text-decoration: none; }
 
-.toopwrap button {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  background-image: url("../img/info-icon-active.svg");
-  background-position: 0px 0px;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
-  opacity: .7;
-  position: absolute;
-  margin-left: 5px; }
-  .toopwrap button:focus {
-    outline: none; }
-  .toopwrap button:hover, .toopwrap button:active, .toopwrap button.active {
-    opacity: 1;
-    outline: none; }
+button:focus {
+  outline: 0 !important; }
 
 .db-lease-tab li {
   margin-bottom: 10px; }
@@ -2225,6 +2209,144 @@ input:checked + .slider:before {
 
 #signWrap button.btn {
   min-width: 100%; }
+#signWrap button.btn.thankwrap {
+  width: 320px !important; }
+
+.tt-outer-wrap {
+  display: inline-block;
+  position: relative; }
+  .tt-outer-wrap .tt-wrap span {
+    display: inline-block;
+    position: absolute;
+    line-height: 40px;
+    left: -12px;
+    top: 50px;
+    font-family: SimpleSans-Bold, Helvetica, sans-serif;
+    color: #0072ce;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 40px;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    width: 145px;
+    height: 40px;
+    -webkit-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+            box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    border: solid 1px #0072ce;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 1005; }
+    .tt-outer-wrap .tt-wrap span#tp2 {
+      left: 22px;
+      top: 50px; }
+    .tt-outer-wrap .tt-wrap span:before {
+      display: inline-block;
+      content: url("../img/white_triangle.svg");
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 73px;
+      top: -23px; }
+
+.col-centered {
+  margin: 0 auto; }
+
+#alertspop .modal-dialog, #paymentspop .modal-dialog {
+  border-radius: 6px;
+  margin: 0 auto; }
+#alertspop .modal-content, #paymentspop .modal-content {
+  min-height: 300px; }
+#alertspop .cntWrap, #paymentspop .cntWrap {
+  margin-left: -13px;
+  margin-right: -13px;
+  background-color: rgba(97, 99, 101, 0.1);
+  padding-left: 30px !important; }
+  #alertspop .cntWrap span, #paymentspop .cntWrap span {
+    font-family: SimpleSans-Regular, Helvetica, sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 20px; }
+
+.modal-open #alertspop.modal.show, .modal-open #paymentpop.modal.show {
+  width: 100% !important;
+  height: 100% !important;
+  display: table !important; }
+  .modal-open #alertspop.modal.show .modal-dialog, .modal-open #paymentpop.modal.show .modal-dialog {
+    display: table-cell !important;
+    vertical-align: middle !important; }
+    .modal-open #alertspop.modal.show .modal-dialog .modal-content, .modal-open #paymentpop.modal.show .modal-dialog .modal-content {
+      max-width: 600px;
+      margin: 0 auto;
+      z-index: 5000; }
+
+.tooltip2 {
+  width: 496px;
+  height: 87px;
+  opacity: 0.9;
+  -webkit-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+  background-color: #0072ce;
+  border: solid 1px #0072ce; }
+
+.toopwrap {
+  border: 1px dashed green;
+  overflow: hidden; }
+  .toopwrap label {
+    background: blue;
+    display: inline-block; }
+  .toopwrap a {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url("../img/info-icon-active.svg");
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    opacity: 1;
+    position: absolute;
+    margin-left: 5px; }
+    .toopwrap a:focus {
+      outline: none;
+      border: none; }
+    .toopwrap a:hover, .toopwrap a:active, .toopwrap a.active {
+      opacity: 1;
+      outline: none;
+      border: none; }
+
+.errorwrap {
+  display: table;
+  height: 100%;
+  background: #f5f7fa; }
+  .errorwrap .errorinner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-family: SimpleSans-Regular, Helvetica, sans-serif;
+    color: #3e3e3e;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal; }
+    .errorwrap .errorinner > div {
+      margin-bottom: 30px; }
+    .errorwrap .errorinner a {
+      font-family: SimpleSans-Bold, Helvetica, sans-serif;
+      color: #0072ce;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: normal;
+      font-style: normal;
+      font-stretch: normal;
+      letter-spacing: normal;
+      cursor: pointer; }
 
 /*********************************** sidebar  STARTS here *********************************/
 @media (min-width: 320px) and (max-width: 767.98px) {
@@ -2395,5 +2517,11 @@ input:checked + .slider:before {
     padding-right: 0 !important;
     padding-left: 0 !important; } }
 /*********************************** sidebar ENDS here *********************************/
-
+/*********************************** sidebar  STARTS here *********************************/
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS styles go here */
+  .formWrapInner .form-group .form-control {
+    width: 100%;
+    height: 44px; } }
+/*********************************** sidebar ENDS here *********************************/
 /*# sourceMappingURL=urLease.css.map */

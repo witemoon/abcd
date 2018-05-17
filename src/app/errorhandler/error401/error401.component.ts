@@ -11,6 +11,7 @@ export class Error401Component implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
+    console.log('----came to 401 error page----')
   }
   loginclick(){
     this.router.navigate(['user/signin']);

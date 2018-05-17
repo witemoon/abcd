@@ -1,44 +1,56 @@
+<div class="col logoWrap mobview d-md-none d-block">
 
-  <div class="col logoWrap mobview d-md-none d-block">
 
+  <div class="mobview-inner ">
+    <img class="" src="assets/img/firstdata_logo.svg"></div>
 
-    <div class="mobview-inner ">
-      <img class="" src="assets/img/firstdata_logo.svg"></div>
+</div>
+<div class="col-12 db-header ">
+  <div class="row">
+    <div class="col-5 d-md-block d-none logoWrap   ">
+      <img class="" src="assets/img/firstdata_logo.svg">
+    </div>
+    <div class="fd-dd-mob text-center ">
+      <div class="dropdown d-inline-block d-md-none d-sm-block ">
+        <button class="btn  dropdown-toggle btn-outline-primary" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          -Select Product-
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-  </div>
-  <div class="col-12 db-header ">
-    <div class="row">
-      <div class="col-5 d-md-block d-none logoWrap   ">
-        <img class="" src="assets/img/firstdata_logo.svg">
-      </div>
-      <div class="fd-dd-mob text-center ">
-        <div class="dropdown d-inline-block d-md-none d-sm-block ">
-          <button class="btn  dropdown-toggle btn-outline-primary" type="button" id="dropdownMenuButton"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            -Select Product-
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-            <a class="dropdown-item" >Clover Capital</a>
-            <a class="dropdown-item" >Advanced Same Day Funding </a>
-          </div>
+          <a class="dropdown-item">Clover Capital</a>
+          <a class="dropdown-item">Advanced Same Day Funding </a>
         </div>
-
       </div>
-      <div class="col-12 col-md-7   ">
-        <!--dropdown for Mobile-->
+
+    </div>
+    <div class="col-12 col-md-7   ">
+      <!--dropdown for Mobile-->
 
 
-        <div class="clearfix"></div>
+      <div class="clearfix"></div>
 
-        <div class=" but-wrap d-md-block d-sm-none d-none ">
-          <button id="trigger1" type="button" class="btn btn-outline-secondary" class="btn btn-outline-primary" placement="bottom"  triggers="click:blur">Clover Capital</button>
+      <div class=" but-wrap d-md-block d-sm-none d-none ">
+
+
+        <!--tooltip One Starts-->
+        <div class="tt-outer-wrap ">
+          <button id="trigger1" type="button" class="btn btn-outline-secondary" class="btn btn-outline-primary"
+                  triggers="click:blur">Clover Capital
+          </button>
           <!-- <div id="tp1" style="display: none;">Coming Soon</div> -->
-          <div id="trigger1"><span id="tp1" placement="bottom" style="display: none;">Coming Soon</span></div>
-          <button id="trigger2" type="button" class="btn btn-outline-secondary" class="btn btn-outline-primary" placement="bottom"  triggers="click:blur" class="btn btn-outline-primary ">Advanced Same Day Funding</button>
-          <div id="trigger2"><span id="tp2" placement="bottom" style="display: none;">Coming Soon</span></div>
+          <div class="tt-wrap"><span id="tp1" placement="bottom" style="display: none;">Coming Soon</span></div>
+
+        </div>
+        <!--tooltip One Starts-->
+        <div class="tt-outer-wrap ">
+          <button id="trigger2" type="button" class="btn btn-outline-secondary" class="btn btn-outline-primary"
+                  triggers="click:blur" class="btn btn-outline-primary ">Advanced Same Day Funding
+          </button>
+          <div class="tt-wrap"><span id="tp2" placement="bottom" style="display: none;">Coming Soon</span></div>
           <!-- <div id="tp2" style="display: none;">Coming Soon</div> -->
         </div>
+
         <div class="icon-wrap  float-right">
           <!--<span class="chatWrap   float-right d-none">-->
           <!--<img src="assets/img/chatIcon.svg">-->
@@ -64,12 +76,13 @@
 
 
   </div>
-
+</div>
 
 
 <!-- -------------alerts popup------------------- -->
 <alerts-popup
-[(showPopup)]="openPopup"
-[equipmentLeaseCount] = "alertCount.totalEquipmentCount"
-[defaultLeaseCount] = "alertCount.totalDefaultBadgeCount"
+  [(showPopup)]="openPopup"
+  [equipmentLeaseCount]="alertCount.totalEquipmentCount"
+  [defaultLeaseCount]="alertCount.totalDefaultBadgeCount"
 ></alerts-popup>
+

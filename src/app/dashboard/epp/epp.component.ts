@@ -1,15 +1,16 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DashboardServiceService } from '../dashboard-service.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
 import { eppMock } from './epp-model';
-declare var $;
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-epp',
   templateUrl: './epp.component.html',
   styleUrls: ['./epp.component.css']
 })
-export class EppComponent implements OnInit, AfterViewInit {
+export class EppComponent implements OnInit {
 
   leaseData = [];
   merchanName='';
@@ -34,10 +35,8 @@ export class EppComponent implements OnInit, AfterViewInit {
   agreeModel = false;
   showeppstatic=false;
   dataReady = false;
-  constructor(private dashboardService:DashboardServiceService, private authService:AuthService) { }
-  ngAfterViewInit(): void {
-    
-  }
+  constructor(private dashboardService:DashboardServiceService, private authService:AuthService,private router:Router) { }
+
   ngOnInit() {
      // this.leaseData = eppMock.responseData.lease;
      // this.leaseData.forEach(item => {
@@ -70,45 +69,7 @@ export class EppComponent implements OnInit, AfterViewInit {
     },err=>{
       console.log('----- get lease data error-------',err);
     });
-    $(document).ready(function(){
-      $('.your-epp').slick(
-        {
-          dots: false,
-          speed: 500,
-          prevArrow:$('.epp-prev'),
-          nextArrow:$('.epp-next'),
-          slidesToShow:4,
-          slidesToScroll:1,
-          variableWidth: true,
-          infinite: false,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: false,
-                dots: false
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-              }
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
-        }
-      );
-    });
+
     // this.postEpp(merchantid,arr);
   }
 
@@ -138,8 +99,16 @@ export class EppComponent implements OnInit, AfterViewInit {
     this.dashboardService.postEppData(merchantId,payLoad).subscribe(res=>{
       console.log('------post epp data success-----',res)
     },err=>{
-      console.log('---------post epp data failure--------',err)
-    })
+      console.log('----- get lease data error-------',err);
+      if(err['error']['statusCode']=='401'){
+        console.log('-------error code 401--------redirect here----')
+        this.router.navigate(['/error401']);
+      }
+      if(err['error']['statusCode']=='500' || err['error']['statusCode']=='501'|| err['error']['statusCode']=='503'){
+        console.log('-------error code 500,501,503--------redirect here----')
+        this.router.navigate(['/serviceerrors']);
+      }
+    });
   }
   onYesNoClicked(event) {
     

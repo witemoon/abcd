@@ -13,3 +13,6 @@
 #Contract ul li {
   float: left;
 }
+.slick-slide{
+  width: 300px;
+  }

@@ -50,7 +50,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
       $(document).ready(function(){
-        $('.ca-box-wrap').slick(
+        $('.ca-box-wrap').not('.slick-initialized').slick(
           {
             dots: false,
             speed: 500,

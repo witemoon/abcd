@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
 
@@ -31,12 +31,17 @@ export class ChangeTempPassComponent implements OnInit {
     "newPasswordError": false,
     "confirmPasswordError": false
   };
-
-  constructor(private router:Router, private authService:AuthService) {
+  email:string;
+  constructor(private router:Router, private authService:AuthService, private activatedRoute:ActivatedRoute) {
     this.authService.setToken("");
    }
  
   ngOnInit() {
+
+    this.activatedRoute.queryParams.subscribe(
+      data => {this.email = data.email
+       console.log('queryParams', data['email'])}); 
+
     this.passwordFC.valueChanges.subscribe(value=>{
       if(this.hasLowerCase(value) && this.hasUpperCase(value)){
         this.upperAndLowerCase = true;
@@ -135,15 +140,16 @@ export class ChangeTempPassComponent implements OnInit {
   //    this.validationError.newPasswordError = true;
   //    this.captcha.reset();
   //  } else if(newPass && cnfPass && (newPass == cnfPass)){
-    let payLoad = {
-      "currentPassword": '' + changePass.value.tempPass,
-      "newPassword": '' + this.passwordFC.value,
-      "confirmPassword": '' + changePass.value.confPassword,
-      "emailId": '' + this.authService.currentEmail
-    };
     tempPass = this.encryption(tempPass);
     newPass = this.encryption(newPass);
     cnfPass = this.encryption(cnfPass);
+    let payLoad = {
+      "currentPassword": tempPass,
+      "newPassword": newPass,
+      "confirmPassword": cnfPass,
+      "emailId": '' + this.email,
+    };
+    
 
     this.authService.changePassword(payLoad).subscribe(res=>{
       if(res['status']=='Success'){

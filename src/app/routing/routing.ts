@@ -85,7 +85,7 @@ const appRoutes: Routes = [
 },
   {
     path: '**',
-    component: NotFoundComponent
+    component: ServiceerrorsComponent
   },
 
 ];

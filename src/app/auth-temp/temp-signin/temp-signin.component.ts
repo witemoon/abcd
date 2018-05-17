@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit,Input } from '@angular/core';
+import { Router,ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
 
 @Component({
@@ -8,11 +8,16 @@ import { AuthService } from '../../shared/auth.service';
   styleUrls: ['./temp-signin.component.css']
 })
 export class TempSigninComponent implements OnInit {
+  email:string;
+  constructor(private router:Router,  private authService:AuthService, private activatedRoute:ActivatedRoute) {
+   
+  }
+  showError = false; 
 
-  constructor(private router:Router,  private authService:AuthService) { }
-  showError = false;
-
-  ngOnInit() {
+  ngOnInit() { 
+      this.activatedRoute.queryParams.subscribe(
+      data => {this.email = data.email
+      console.log('queryParams', data['email'])});         
   }
   tempSignInUser(tempSignIn){
     var email=tempSignIn.value.email;
@@ -32,8 +37,8 @@ export class TempSigninComponent implements OnInit {
     //   console.log('failded!')
     // }
     let payLoad = {
-      "emailId": "" + email,
-      "password": "" + tempPass
+      "emailId":  email,
+      "password":  tempPass
       }
     this.authService.signIn(payLoad).subscribe(res=>{
       if(res['status']=='Success'){

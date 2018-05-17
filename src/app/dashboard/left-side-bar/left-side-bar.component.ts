@@ -43,6 +43,12 @@ export class LeftSideBarComponent implements OnInit {
     this.lftSide = !this.lftSide;
     this.lftSideBut = !this.lftSideBut;
 }
+sidebarLft1(){
+if(this.lftSide == true && this.lftSideBut ==true ){
+this.lftSide = false;
+this.lftSideBut =false;
+}
+}
 
 logout(){
   console.log('This is not happening');
@@ -50,7 +56,10 @@ logout(){
     console.log('logout Response:',res);
     this.router.navigate(['/user/signin']);
   },error=>{
-    console.log('logout error-----',error);
+    if(error['error']['statusCode']== '401'){
+      this.router.navigate(['/error401']);
+      }
+    console.log('-----logout error-----',error);
   });
 }
 

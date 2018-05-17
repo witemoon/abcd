@@ -10,6 +10,7 @@ export class ServiceerrorsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('------came to 500,etc page------')
   }
 
 }

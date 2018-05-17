@@ -8,7 +8,8 @@ declare var $;
   templateUrl: './lease-tabs.component.html',
   styleUrls: ['./lease-tabs.component.css']
 })
-export class LeaseTabsComponent implements OnInit, AfterViewInit{
+export class LeaseTabsComponent implements OnInit, AfterViewInit {
+  
   openBuyOutInfo=false;
   openPopup = false;
   showTabs = false;
@@ -22,38 +23,90 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit{
     
   }
 
-  
-  showContent(tabname){
-    this.currentActiveTab = tabname;
-  }
 
-  ngOnInit() {
-    this.dashboardService.selectedLeaseObj.subscribe(data => {
-      this.selectedLease = data;
-      this.showTabs = true;
-    })
-    $('#trigger1').on('click touch', function(){
-      $('#tp1').show();
+  initToolTip(){
+    
+    console.log('----- going to set jquery on currentbala-trigger -----------')
+    $('#currentbala-trigger').on('click touch', function(){
+      $('#currentbala-tooltip').show();
+      console.log("--- $('#currentbala-tooltip').show(); ------");
     });  
-    $('#trigger2').on('click touch', function(){
-      $('#tp2').show();
+    $('#Buyout-trigger').on('click touch', function(){
+      $('#Buyout-tooltip').show();
     });  
-    $('#tp1').on('click touch', function(event) {
+    $('#currentbala-tooltip').on('click touch', function(event) {
       event.stopPropagation();
     });
-    $('#tp2').on('click touch', function(event) {
+    $('#Buyout-tooltip').on('click touch', function(event) {
       event.stopPropagation();
     });
     $(document).on('click touch', function(event) {
-      if (!$(event.target).parents().addBack().is('#trigger1')) {
-        $('#tp1').hide();
+      if (!$(event.target).parents().addBack().is('#currentbala-trigger')) {
+        $('#currentbala-tooltip').hide();
       }
-    if (!$(event.target).parents().addBack().is('#trigger2')) {
-        $('#tp2').hide();
+    if (!$(event.target).parents().addBack().is('#Buyout-trigger')) {
+        $('#Buyout-tooltip').hide();
       }
     
     });
   }
+
+  showContent(tabname){
+    this.currentActiveTab = tabname;
+  }
+  ngOnInit() {
+    this.dashboardService.selectedLeaseObj.subscribe(data => {
+      this.selectedLease = data;
+      this.showTabs = true;
+      setTimeout(()=>{
+        this.initToolTip();
+        // this.initCaro();
+      },2000)
+    })
+    
+  }
+
+  // initCaro(){
+    
+  //     $('.eqiptabs').not('.slick-initialized').slick(
+  //       {
+  //         dots: false,
+  //         speed: 500,
+  //         prevArrow:$('.lease-prev'),
+  //         nextArrow:$('.lease-next'),
+  //         slidesToShow:4,
+  //         slidesToScroll:1,
+  //         infinite: false,
+  //         variableWidth: true,
+  //         responsive: [
+  //           {
+  //             breakpoint: 1024,
+  //             settings: {
+  //               slidesToShow: 3,
+  //               slidesToScroll: 3,
+  //               infinite: false,
+  //               dots: false
+  //             }
+  //           },
+  //           {
+  //             breakpoint: 600,
+  //             settings: {
+  //               slidesToShow: 2,
+  //               slidesToScroll: 2
+  //             }
+  //           },
+  //           {
+  //             breakpoint: 480,
+  //             settings: {
+  //               slidesToShow: 1,
+  //               slidesToScroll: 1
+  //             }
+  //           }
+  //         ]
+  //       }
+  //     );
+  
+  // }
 
   showBuyOutMsg(s){
     this.openBuyOutInfo =s;
@@ -68,5 +121,3 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit{
     }
   }
 }
-
-

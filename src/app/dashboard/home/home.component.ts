@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let leaseArray = [];
     this.dashboardService.getLeaseData("").subscribe(data=>{
-      
+     
       if (data && data['responseData']) {
         // let data = dashboardData;
         let totalBadgeCount = 0;
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
         console.log('-------error code 401--------redirect here----')
         this.router.navigate(['/error401']);
       }
-      if(err['error']['statusCode']=='500' || err['error']['statusCode']=='501' || err['error']['statusCode']=='503'){
+      if(err['error']['statusCode']=='500' || err['error']['statusCode']=='501'|| err['error']['statusCode']=='503'){
         console.log('-------error code 500,501,503--------redirect here----')
         this.router.navigate(['/serviceerrors']);
       }

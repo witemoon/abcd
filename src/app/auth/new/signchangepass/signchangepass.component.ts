@@ -82,15 +82,16 @@ export class SignchangepassComponent implements OnInit {
    this.validationError.newPasswordError = true;
    this.captcha.reset();
  } else if(newPass && cnfPass && (newPass == cnfPass)){
+  tempPass = this.encryption(tempPass);
+  newPass = this.encryption(newPass);
+  cnfPass = this.encryption(cnfPass);
     let payLoad = {
       "emailId": "" + this.authservice.currentEmail,
-      "confirmPassword": "" + cnfPass,
-      "currentPassword": "" + tempPass,
-      "newPassword": "" + newPass
+      "confirmPassword":  cnfPass,
+      "currentPassword":  tempPass,
+      "newPassword":  newPass
       }
-      tempPass = this.encryption(tempPass);
-    newPass = this.encryption(newPass);
-    cnfPass = this.encryption(cnfPass);
+     
     this.authservice.changePassword(payLoad).subscribe(res=>{
       if(res['status']=='Success'){
         this.router.navigate(['/dashboard/home']);

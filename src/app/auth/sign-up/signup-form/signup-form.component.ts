@@ -48,6 +48,7 @@ export class SignupFormComponent implements OnInit {
 
   leaseNumberFirstTime = true;
   ngOnInit() {
+    console.log('---------- came to sign in page-------')
   }
 
   isNumeric(n) {
@@ -154,7 +155,7 @@ export class SignupFormComponent implements OnInit {
     console.log("encr",passwordReg)
    let payLoad = {
     "emailId": "" + email,
-    "password": "" + passwordReg
+    "password":   passwordReg
     }
 
    this.authService.signIn(payLoad).subscribe(res=>{
