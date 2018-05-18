@@ -21,6 +21,6 @@ export class SignupMainComponent implements OnInit {
   }
 
   updateStatDescription(obj) {
-    // this.description = obj;
+    this.description = obj;
   }
 }

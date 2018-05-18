@@ -37,8 +37,8 @@ export class TempSigninComponent implements OnInit {
     //   console.log('failded!')
     // }
     let payLoad = {
-      "emailId":  email,
-      "password":  tempPass
+     "emailId": this.email,
+     "password":  tempPass
       }
     this.authService.signIn(payLoad).subscribe(res=>{
       if(res['status']=='Success'){

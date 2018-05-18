@@ -871,12 +871,13 @@ input[type=text], input[type=password] {
   #Coverage ul li span {
     font-family: SimpleSans-Regular, Helvetica, sans-serif;
     font-size: 1.16rem;
-    color: #0072ce; }
+    color: #4a90e2; }
 #Coverage .card-body h6 {
   font-family: SimpleSans-Regular, Helvetica, sans-serif;
   font-size: 1.16rem;
   line-height: normal;
-  padding: 10px 0px 0px 0px; }
+  padding: 10px 0px 0px 0px;
+  margin-top: 15px; }
   #Coverage .card-body h6 a {
     font-family: SimpleSans-Bold, Helvetica, sans-serif; }
 
@@ -891,12 +892,11 @@ input[type=text], input[type=password] {
   #Contract h6 span {
     color: #616365;
     display: block;
-    padding-top: 5px; }
+    padding-top: 2px; }
 #Contract ul li {
   padding-bottom: 15px;
   float: left;
-  border: 1px red dashed;
-  min-height: 100px; }
+  min-height: 50px; }
   #Contract ul li label {
     font-family: SimpleSans-Bold, Helvetica, sans-serif;
     font-size: 1rem;
@@ -2109,87 +2109,108 @@ button:focus {
       font-stretch: normal;
       letter-spacing: normal; }
 
-.lease-prev, .lease-next {
-  display: none !important; }
-
-.ca-box-wrap .slick-list .slick-slide {
-  height: 120px;
-  border-radius: 5px;
-  background-color: #fff;
-  -webkit-box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.12);
-          box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.12);
-  border: none;
-  width: 180px;
-  margin: 10px;
-  cursor: pointer; }
-  .ca-box-wrap .slick-list .slick-slide.leaseCardSelected {
-    background: #0072ce;
-    outline: none; }
-    .ca-box-wrap .slick-list .slick-slide.leaseCardSelected li label {
-      font-family: SimpleSans-Regular, Helvetica, sans-serif;
-      color: #fff;
-      font-size: 14px;
-      font-weight: normal;
-      line-height: 18px;
-      font-style: normal;
-      font-stretch: normal;
-      letter-spacing: normal; }
-    .ca-box-wrap .slick-list .slick-slide.leaseCardSelected li span {
-      font-family: SimpleSans-Regular, Helvetica, sans-serif;
-      color: #fff;
-      font-size: 14px;
-      font-weight: normal;
-      line-height: 18px;
-      font-style: normal;
-      font-stretch: normal;
-      letter-spacing: normal; }
-    .ca-box-wrap .slick-list .slick-slide.leaseCardSelected:focus {
+.ca-box-wrap {
+  min-height: 134px; }
+  .ca-box-wrap .slick-list .slick-slide {
+    height: 120px;
+    border-radius: 5px;
+    background-color: #fff;
+    -webkit-box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.12);
+    border: none;
+    width: 180px;
+    margin: 10px;
+    cursor: pointer; }
+    .ca-box-wrap .slick-list .slick-slide.leaseCardSelected {
+      background: #0072ce;
       outline: none; }
-  .ca-box-wrap .slick-list .slick-slide > div {
-    height: 100%;
-    position: relative; }
-    .ca-box-wrap .slick-list .slick-slide > div > ul {
-      list-style-type: none;
-      padding-left: 0px; }
-      .ca-box-wrap .slick-list .slick-slide > div > ul li {
-        padding-left: 25px;
-        margin-top: 40px; }
-        .ca-box-wrap .slick-list .slick-slide > div > ul li label {
-          font-family: SimpleSans-Regular, Helvetica, sans-serif;
-          color: #0072ce;
-          font-size: 14px;
-          font-weight: normal;
-          line-height: 18px;
-          font-style: normal;
-          font-stretch: normal;
-          letter-spacing: normal; }
-        .ca-box-wrap .slick-list .slick-slide > div > ul li span {
-          font-family: SimpleSans-Regular, Helvetica, sans-serif;
-          color: #0072ce;
-          font-size: 14px;
-          font-weight: normal;
-          line-height: 18px;
-          font-style: normal;
-          font-stretch: normal;
-          letter-spacing: normal; }
-    .ca-box-wrap .slick-list .slick-slide > div > span {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border-radius: 70px;
-      background: #ff1b1b;
-      font-family: SimpleSans-Regular, Helvetica, sans-serif;
-      color: #fff;
-      font-size: 10px;
-      font-weight: normal;
-      line-height: 18px;
-      font-style: normal;
-      font-stretch: normal;
-      letter-spacing: normal;
-      text-align: center;
-      position: absolute;
-      right: 5px;
-      top: -35px; }
+      .ca-box-wrap .slick-list .slick-slide.leaseCardSelected li label {
+        font-family: SimpleSans-Regular, Helvetica, sans-serif;
+        color: #fff;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 18px;
+        font-style: normal;
+        font-stretch: normal;
+        letter-spacing: normal; }
+      .ca-box-wrap .slick-list .slick-slide.leaseCardSelected li span {
+        font-family: SimpleSans-Regular, Helvetica, sans-serif;
+        color: #fff;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 18px;
+        font-style: normal;
+        font-stretch: normal;
+        letter-spacing: normal; }
+      .ca-box-wrap .slick-list .slick-slide.leaseCardSelected:focus {
+        outline: none; }
+    .ca-box-wrap .slick-list .slick-slide > div {
+      height: 100%;
+      position: relative; }
+      .ca-box-wrap .slick-list .slick-slide > div > ul {
+        list-style-type: none;
+        padding-left: 0px; }
+        .ca-box-wrap .slick-list .slick-slide > div > ul li {
+          padding-left: 25px;
+          margin-top: 40px; }
+          .ca-box-wrap .slick-list .slick-slide > div > ul li label {
+            font-family: SimpleSans-Regular, Helvetica, sans-serif;
+            color: #0072ce;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 18px;
+            font-style: normal;
+            font-stretch: normal;
+            letter-spacing: normal; }
+          .ca-box-wrap .slick-list .slick-slide > div > ul li span {
+            font-family: SimpleSans-Regular, Helvetica, sans-serif;
+            color: #0072ce;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 18px;
+            font-style: normal;
+            font-stretch: normal;
+            letter-spacing: normal; }
+      .ca-box-wrap .slick-list .slick-slide > div > span {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 70px;
+        background: #ff1b1b;
+        font-family: SimpleSans-Regular, Helvetica, sans-serif;
+        color: #fff;
+        font-size: 10px;
+        font-weight: normal;
+        line-height: 18px;
+        font-style: normal;
+        font-stretch: normal;
+        letter-spacing: normal;
+        text-align: center;
+        position: absolute;
+        right: 5px;
+        top: -35px; }
+
+.pn-wrap {
+  width: 100%;
+  position: relative; }
+  .pn-wrap .lease-prev {
+    left: 10px;
+    top: 50px;
+    z-index: 20000;
+    position: absolute;
+    cursor: pointer;
+    opacity: .75; }
+    .pn-wrap .lease-prev:hover {
+      opacity: 1; }
+  .pn-wrap .lease-next {
+    right: 10px;
+    z-index: 20000;
+    position: absolute;
+    top: 50px;
+    cursor: pointer;
+    opacity: .75; }
+    .pn-wrap .lease-next:hover {
+      opacity: 1; }
 
 .slick-slide {
   width: 180px; }
@@ -2207,8 +2228,6 @@ button:focus {
   font-stretch: normal;
   letter-spacing: normal; }
 
-#signWrap button.btn {
-  min-width: 100%; }
 #signWrap button.btn.thankwrap {
   width: 320px !important; }
 
@@ -2283,41 +2302,74 @@ button:focus {
       z-index: 5000; }
 
 .tooltip2 {
-  width: 496px;
+  width: 296px;
   height: 87px;
-  opacity: 0.9;
+  opacity: .9;
   -webkit-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
   background-color: #0072ce;
-  border: solid 1px #0072ce; }
+  border: solid 1px #0072ce;
+  position: absolute;
+  text-align: justify;
+  color: white !important;
+  z-index: 2;
+  border-radius: 5px;
+  padding: 20px;
+  font-family: SimpleSans-Regular, Helvetica, sans-serif;
+  color: #fff;
+  font-size: 10px !important;
+  font-weight: normal;
+  line-height: 1.5;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal; }
 
-.toopwrap {
-  border: 1px dashed green;
-  overflow: hidden; }
-  .toopwrap label {
-    background: blue;
-    display: inline-block; }
-  .toopwrap a {
-    -webkit-box-shadow: none;
-            box-shadow: none;
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    background-image: url("../img/info-icon-active.svg");
-    background-position: 0px 0px;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    border: none;
+.cbalance {
+  display: inline-block; }
+
+#currentbala-tooltip.tooltip2 {
+  left: 19px;
+  top: 131px; }
+  #currentbala-tooltip.tooltip2 .arrowwrap {
+    top: -79px;
+    right: -70px; }
+
+#Buyout-tooltip.tooltip2 {
+  left: 21px;
+  top: 28px; }
+
+.Buyout.arrowwrap {
+  top: -79px;
+  right: -41px; }
+
+.arrowwrap {
+  position: relative;
+  width: 20px;
+  height: 20px; }
+
+.toopwrap label {
+  display: inline-block; }
+.toopwrap a {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url("../img/info-icon-active.svg");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  opacity: 1;
+  position: absolute;
+  margin-left: 5px; }
+  .toopwrap a:focus {
+    outline: none;
+    border: none; }
+  .toopwrap a:hover, .toopwrap a:active, .toopwrap a.active {
     opacity: 1;
-    position: absolute;
-    margin-left: 5px; }
-    .toopwrap a:focus {
-      outline: none;
-      border: none; }
-    .toopwrap a:hover, .toopwrap a:active, .toopwrap a.active {
-      opacity: 1;
-      outline: none;
-      border: none; }
+    outline: none;
+    border: none; }
 
 .errorwrap {
   display: table;
@@ -2524,4 +2576,5 @@ button:focus {
     width: 100%;
     height: 44px; } }
 /*********************************** sidebar ENDS here *********************************/
+
 /*# sourceMappingURL=urLease.css.map */

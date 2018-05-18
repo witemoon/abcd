@@ -11,7 +11,7 @@
           <!-- Modal body -->
           <div class="modal-body ">
 
-              <div class="cntWrap  p-3" *ngIf="equipmentLeaseCount">
+              <div class="cntWrap  p-3" *ngIf="equipmentLeaseCount" data-dismiss="modal">
                  <a [routerLink]="['/dashboard/epp']"> <img src="assets/img/epp_m.svg"><span>Equipment Protection Program ({{equipmentLeaseCount}}) </span></a>
               </div>
 

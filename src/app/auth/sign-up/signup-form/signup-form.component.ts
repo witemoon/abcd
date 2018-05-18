@@ -101,7 +101,9 @@ export class SignupFormComponent implements OnInit {
             this.errorResponse.incorrectLeaseNo = errMessage.includes("lease number") ? true : false;
             this.errorResponse.incorrectMerchant = errMessage.includes("merchant dba") ? true : false;
 
-            this.errorToStat.emit(error.error.message);
+            if (errMessage.includes("locked")) {
+              this.errorToStat.emit(error.error.message);
+            }
           }
         });
     }

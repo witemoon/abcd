@@ -1,68 +1,27 @@
+<div class="pn-wrap">
+  <div class="lease-prev"><img src="/assets/img/lftarrow.svg"></div>
+  <div class="lease-next"><img src="/assets/img/rytarrow.svg"></div>
 
-<div class="lease-prev">Prev</div>
-<div class="lease-next">Next</div>
-
-<div class="ca-box-wrap" >
-  <div class="  "
-  *ngFor="let item of leaseArray; let i=index;"
-  [ngClass]="{'leaseCardSelected':selectedLease==i}"
-  (click)="selectedLease=i;emitSelectedLeaseObj(item)"
-  >
-      <div class="" [ngClass]="{'leaseCardSelected':selectedLease==i}">
-        <span class="" *ngIf="item['cardAlert']">{{item['cardAlert']}}</span>
-        <ul>
-          <li>
-            <label  [ngClass]="{'leaseCardSelected':selectedLease==i}" >Lease</label>
-            <br>
-            <span class=""  [ngClass]="{'leaseCardSelected':selectedLease==i}" >{{item['leaseNo']}}</span>
-          </li>
-        </ul>
-      </div>
-    </div>
 </div>
 
-<!--
-<div class="row ">
-  <div class="db-lease-wrap col-12 ">
-    <div id="fd-lease-blocks-wrap" class="carousel slide" data-interval="false" data-ride="carousel">
-      <div class="carousel-inner" role="listbox">
+<div class="ca-box-wrap">
 
-          <div class="carousel-item  py-3 active">
-              <div class="row">
-                <div class="col-12  ">
-                  <div class="row">
-                      <div class=" fd-lease-blocks col-12 col-sm-6  col-md-3  "
-                      *ngFor="let item of leaseArray; let i=index;"
-                      [ngClass]="{'leaseCardSelected':selectedLease==i}"
-                      (click)="selectedLease=i;emitSelectedLeaseObj(item)"
-                      >
-                          <div class="cus-card  p-5 col-12  " [ngClass]="{'leaseCardSelected':selectedLease==i}">
-                            <span class="fd-badge" *ngIf="item['cardAlert']">{{item['cardAlert']}}</span>
-                            <ul>
-                              <li>
-                                <label  [ngClass]="{'leaseCardSelected':selectedLease==i}" >Lease</label>
-                                <br>
-                                <span class=""  [ngClass]="{'leaseCardSelected':selectedLease==i}" >{{item['leaseNo']}}</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-      </div>
-      <a href="#fd-lease-blocks-wrap" class="carousel-control-prev" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a href="#fd-lease-blocks-wrap" class="carousel-control-next" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+
+  <div class="  "
+       *ngFor="let item of leaseArray; let i=index;"
+       [ngClass]="{'leaseCardSelected':selectedLease==i}"
+       (click)="selectedLease=i;emitSelectedLeaseObj(item)"
+  >
+    <div class="" [ngClass]="{'leaseCardSelected':selectedLease==i}">
+      <span class="" *ngIf="item['cardAlert']">{{item['cardAlert']}}</span>
+      <ul>
+        <li>
+          <label [ngClass]="{'leaseCardSelected':selectedLease==i}">Lease</label>
+          <br>
+          <span class="" [ngClass]="{'leaseCardSelected':selectedLease==i}">{{item['leaseNo']}}</span>
+        </li>
+      </ul>
     </div>
-
-
   </div>
+</div>
 
-</div> -->

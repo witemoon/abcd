@@ -223,7 +223,7 @@
             <div class="card-body py-2">
 
               <h6 *ngIf="selectedLease['legalStatus']=='Default'">Your payment is past due!<br
-                class="d-block d-lg-none d-xl-none" > <span
+                class="d-block d-lg-none d-xl-none"> <span
                 class="paymentWrap"
                 data-toggle="modal"
                 data-target="#paymentpop"
@@ -243,12 +243,18 @@
                     <td>{{selectedLease['legalStatus']}}</td>
                   </tr>
                   <tr>
-                    <td>Current Balance
-                      <div class="toopwrap">
-                        <a id="currentbala-trigger" class="btn">
+                    <td>
 
+
+                      <div class="toopwrap">
+                        <span class="cbalance">Current Balance</span>
+                        <a id="currentbala-trigger" class="btn">
                         </a>
-                        <span class="tooltip2" id="currentbala-tooltip" style="display: none;">Current balance represents the outstanding amount on your lease. This is not the amount required to pay the lease in full.</span>
+                        <span class="tooltip2" id="currentbala-tooltip" style="display: none;">
+                          Current balance represents the outstanding amount on your lease. This is not the amount required to pay the lease in full.
+                                                <div class="Buyout arrowwrap"><img src="/assets/img/blue_triangle.svg"></div>
+
+                        </span>
                       </div>
                     </td>
                     <td>{{ selectedLease['payment']['currentBalance'] | add_comma_pipe }}</td>
@@ -319,19 +325,22 @@
                       <span class="">{{selectedLease['contractStatus']['endDate']}}</span>
                     </li>
                     <!--Past Due Amount:-->
-                    <li class="col-md-6 col-lg-3" *ngIf=" selectedLease['legalStatus']!='Default'">
+                    <li class="col-md-6 col-lg-3" *ngIf=" selectedLease['legalStatus']=='Default'">
                       <label>Past Due Amount:</label>
                       <span class="">{{selectedLease['contractStatus']['pastDueAmount'] | add_comma_pipe}} </span>
                     </li>
                     <!--Buyout Quote:-->
-                    <li class="toopwrap col-md-6 col-lg-3">
+                    <li *ngIf="selectedLease['contractStatus']['buyoutQuote']!== undefined" class="toopwrap col-md-6 col-lg-3">
 
                       <label>Buyout Quote:
 
                         <a id="Buyout-trigger" class="btn">
-
                         </a>
-                        <span class="tooltip2" id="Buyout-tooltip" style="display: none;">Current balance represents the outstanding amount on your lease. This is not the amount required to pay the lease in full.</span>
+                        <span class="tooltip2" id="Buyout-tooltip" style="display: none;">
+                          This quote includes buying out your lease and you keeping the equipment.  For a different Buyout Quote in returning the equipment contact customer service.
+                        <div class="Buyout arrowwrap"><img src="/assets/img/blue_triangle.svg"></div>
+                        </span>
+
 
                       </label>
                       <span class="">{{selectedLease['contractStatus']['buyoutQuote'] | add_comma_pipe}}</span>
@@ -353,7 +362,7 @@
                       <span class="">{{selectedLease['contractStatus']['paymentsMade']}}</span>
                     </li>
                     <!--Days Past Due:-->
-                    <li class="col-md-6 col-lg-3" *ngIf=" selectedLease['legalStatus']!='Default'">
+                    <li class="col-md-6 col-lg-3" *ngIf=" selectedLease['legalStatus']=='Default'">
                       <label>Days Past Due:</label>
                       <span class="">{{selectedLease['contractStatus']['daysPastDue']}}</span>
                     </li>

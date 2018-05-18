@@ -38,9 +38,14 @@ export class ChangeTempPassComponent implements OnInit {
  
   ngOnInit() {
 
-    this.activatedRoute.queryParams.subscribe(
-      data => {this.email = data.email
-       console.log('queryParams', data['email'])}); 
+    if(!this.authService.currentEmail){
+      this.activatedRoute.queryParams.subscribe(
+        data => {this.email =data.email
+         console.log('queryParams', data['email'])}); 
+        }else{      
+          this.email = this.authService.currentEmail
+        }
+ 
 
     this.passwordFC.valueChanges.subscribe(value=>{
       if(this.hasLowerCase(value) && this.hasUpperCase(value)){
@@ -150,7 +155,6 @@ export class ChangeTempPassComponent implements OnInit {
       "emailId": '' + this.email,
     };
     
-
     this.authService.changePassword(payLoad).subscribe(res=>{
       if(res['status']=='Success'){
         this.router.navigate(['/user/signin']);
@@ -158,7 +162,7 @@ export class ChangeTempPassComponent implements OnInit {
     },err=>{
       this.captcha.reset();
       this.tmpPass.nativeElement.value = "";
-      this.validationError.tempPasswordError = true;
+      // this.validationError.tempPasswordError = true;
       this.submitted = true;
       this.pass.nativeElement.value = this.validationError.newPasswordError ? "" : this.passwordFC.value;
       this.cPass.nativeElement.value =  this.validationError.confirmPasswordError ? "" : this.cPass.nativeElement.value;

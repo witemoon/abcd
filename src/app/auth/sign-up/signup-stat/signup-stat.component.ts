@@ -25,6 +25,8 @@ export class SignupStatComponent implements OnInit {
       this.locked = true;
       this.heading = "Your account has been locked!";
       this.description = "Please contact customer service at:";
+    } else {
+      this.locked = false;
     }
   }
 

@@ -25,11 +25,12 @@
 
                 <div class="form-group emailWrap">
                   <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Email"
-                    [value]="email"
-                    required
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"                 
+                  required
+                  name="email"
+                  [(ngModel)] ="email"
                    
                   >
 
