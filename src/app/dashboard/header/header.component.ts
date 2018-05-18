@@ -56,7 +56,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   showAlerts(){
-    this.openPopup = true;
+    if(this.alertCount.totalBadgeCount){
+      this.openPopup = true;
+    }
   }
 
 }

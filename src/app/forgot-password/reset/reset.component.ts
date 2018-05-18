@@ -42,7 +42,8 @@ export class ResetComponent implements OnInit {
   }
 
   onEmailEnter(event) {
-    let reg = /^[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2})?$/;
+    // let reg = /^[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2})?$/;
+    var reg = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     let email = event.target.value;
 
     if (reg.test(email)) {
