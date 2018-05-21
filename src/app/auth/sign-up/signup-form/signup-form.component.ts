@@ -169,6 +169,7 @@ export class SignupFormComponent implements OnInit {
      // this.authService.currentMerchantId ="903532646994"; // 903532646994 change the key name properly from success message
        localStorage.setItem("referenceKey", res['responseData'].referenceKey);
        localStorage.setItem("token", res['responseData'].token);
+       localStorage.setItem("merchantId",res['responseData'].merchantId);
       this.router.navigate(['/dashboard/home']);
     }
     else{

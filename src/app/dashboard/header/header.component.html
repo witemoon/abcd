@@ -10,16 +10,19 @@
     <div class="col-5 d-md-block d-none logoWrap   ">
       <img class="" src="assets/img/firstdata_logo.svg">
     </div>
-    <div class="fd-dd-mob text-center ">
+    <div class="fd-dd-mob text-center "> 
       <div class="dropdown d-inline-block d-md-none d-sm-block ">
-        <button class="btn  dropdown-toggle btn-outline-primary" type="button" id="dropdownMenuButton"
+        <button  class="btn   dropdown-toggle btn-outline-primary" type="button"
+                id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           -Select Product-
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-          <a class="dropdown-item">Clover Capital</a>
-          <a class="dropdown-item">Advanced Same Day Funding </a>
+          <button id="trigger3" class="dropdown-item">Clover Capital</button>
+          <div class=""></div><span id="tp3" placement="bottom" style="display: none;">Coming Soon</span>
+          <button id="trigger4" class="dropdown-item">Advanced Same Day Funding </button>
+          <div class=""></div><span id="tp4" placement="bottom" style="display: none;">Coming Soon</span>
         </div>
       </div>
 
@@ -51,23 +54,22 @@
           <!-- <div id="tp2" style="display: none;">Coming Soon</div> -->
         </div>
 
-        <div class="icon-wrap  float-right">
-          <!--<span class="chatWrap   float-right d-none">-->
-          <!--<img src="assets/img/chatIcon.svg">-->
-          <!--<br>-->
-          <!--<span class="clearfix">Chat</span>-->
-          <!--</span>-->
+
+      </div>
+      <div class="icon-wrap  float-right">
+        <!--<span class="chatWrap   float-right d-none">-->
+        <!--<img src="assets/img/chatIcon.svg">-->
+        <!--<br>-->
+        <!--<span class="clearfix">Chat</span>-->
+        <!--</span>-->
 
 
-          <div class="alertWrap   d-inline-block" data-toggle="modal" data-target="#alertspop"
-               (click)="showAlerts()">
-            <span class="fd-badge" *ngIf="alertCount.totalBadgeCount">{{alertCount.totalBadgeCount}}</span>
-            <img src="assets/img/alert.svg">
-            <br>
-            <span class="clearfix">Alert</span>
-          </div>
-
-
+        <div class="alertWrap   d-inline-block" data-toggle="modal" data-target="#alertspop"
+             (click)="showAlerts()">
+          <span class="fd-badge" *ngIf="alertCount.totalBadgeCount">{{alertCount.totalBadgeCount}}</span>
+          <img src="assets/img/alert.svg">
+          <br>
+          <span class="clearfix">Alert</span>
         </div>
 
 

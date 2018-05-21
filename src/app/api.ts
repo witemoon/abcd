@@ -3,7 +3,7 @@
 var api_Base = '/api'
 
   export var API_DEV_HOST = 'dev-urlease.firstdata.com';
-    // export var API_DEV_HOST = 'localhost:8080';
+//   export var API_DEV_HOST = 'localhost:8080';
 
 
 export var API = {
@@ -15,7 +15,8 @@ export var API = {
     forget_password: api_Base + '/merchants/password',
     change_password: api_Base + '/password',
     get_epp: api_Base + '/epps?startDate={startDate}endDate={endDate}',
-    save_epp: api_Base + '/merchants/{merchantId}/epp'
+    save_epp: api_Base + '/merchants/{merchantId}/epp',
+    ins_epp: api_Base + '/epps/{merchantId}'
 };
 
 export var api_header = {

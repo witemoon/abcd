@@ -27,10 +27,22 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     $('#trigger2').on('click touch', function(){
       $('#tp2').show();
     });  
+    $('#trigger3').on('click touch', function(){
+      $('#tp3').show();
+    });  
+    $('#trigger4').on('click touch', function(){
+      $('#tp4').show();
+    });
     $('#tp1').on('click touch', function(event) {
       event.stopPropagation();
     });
     $('#tp2').on('click touch', function(event) {
+      event.stopPropagation();
+    });
+    $('#tp3').on('click touch', function(event) {
+      event.stopPropagation();
+    });
+    $('#tp4').on('click touch', function(event) {
       event.stopPropagation();
     });
     $(document).on('click touch', function(event) {
@@ -39,6 +51,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       }
     if (!$(event.target).parents().addBack().is('#trigger2')) {
         $('#tp2').hide();
+      }
+      if (!$(event.target).parents().addBack().is('#trigger3')) {
+        $('#tp3').hide();
+      }
+    if (!$(event.target).parents().addBack().is('#trigger4')) {
+        $('#tp4').hide();
       }
     
     });

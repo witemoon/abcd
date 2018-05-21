@@ -8,14 +8,15 @@
     <div class="loginname">{{leaseData["contactName"]}}
     </div>
     <div class="signout-Wrap" (click)="logout()">
-      Sign out
+      <button class="btn spebutton"><span>Sign Out</span></button>
     </div>
 
 
   </div>
   <ul class="lft-icon-wrap p-0">
-    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()" [routerLink]="['home']">
-      <div  class="icnWrap ls-home ">
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['home']">
+      <div class="icnWrap ls-home ">
 
         <span class="nrtitle">Home</span>
       </div>
@@ -23,7 +24,8 @@
 
 
     </li>
-    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()" [routerLink]="['epp']">
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['epp']">
       <div class="icnWrap ls-epp">
 
         <span class="nrtitle">EPP</span>
@@ -36,7 +38,8 @@
 
 
     </li>
-    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()" [routerLink]="['claims']">
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['claims']">
       <div class="icnWrap ls-claims">
 
         <span class="nrtitle">Claims</span>
@@ -45,7 +48,8 @@
 
 
     </li>
-    <li [hidden]="!showeol" [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()" [routerLink]="['eol']">
+    <li [hidden]="!showeol" [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }"
+        (click)="sidebarLft1()" [routerLink]="['eol']">
       <div class="icnWrap ls-eol">
 
         <span class="nrtitle">EOL</span>
@@ -54,7 +58,8 @@
 
 
     </li>
-    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()" [routerLink]="['faq']">
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['faq']">
       <div class="icnWrap ls-faq ">
 
         <span class="nrtitle">FAQ</span>
@@ -63,7 +68,8 @@
 
 
     </li>
-    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()" [routerLink]="['contact']">
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['contact']">
       <div class="icnWrap ls-con">
 
         <span class="nrtitle">Contact</span>

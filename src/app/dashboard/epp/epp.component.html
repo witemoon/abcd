@@ -14,7 +14,7 @@
       <!--wraper for FAQ-->
       <div class="db-inner-box col-12 epp eol ">
         <!--EPP basic Details Starts-->
-        <div class="row ">
+        <div class="row  ">
           <div class=" col-12 text-center text-lg-left">
             <ul class="details">
               <li>
@@ -49,10 +49,20 @@
         <div class="row ">
           <div class="col-12">
             <!--warning txt Starts-->
-            <p class="cntTxt">
-              You have the following leases that do not have any equipment protection coverage. Please select the leases
-              for
-              which you would like to have EPP coverage. </p>
+            <div class="eppalertwrap">
+              <div class="icon">
+                <img src="/assets/img/alertred.svg">
+              </div>
+              <div class="txt">
+                You have the following leases that do not have any equipment protection coverage. Please select the
+                leases
+                for
+                which you would like to have EPP coverage.
+              </div>
+
+            </div>
+
+
             <!--warning txt Ends-->
 
 
@@ -60,7 +70,7 @@
             <div class="row">
               <div class="toggleWrap" *ngIf="leaseData">
                 <div class="toggle-item-wrap" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }"
-                     *ngFor="let item of leaseData">
+                     *ngFor="let item of leaseData" >
                   <div class="leftWrap">
                     <p class="">Lease #</p>
                     <p class="">{{item.leaseNo}}</p>
@@ -68,7 +78,8 @@
                   <div class="rightWrap">
                     <p class=""><label class="switch">
                       <input type="checkbox" class="togBtn" id="togBtn"
-                             [formControl]="leaseFormGroup.controls[item.leaseNo]" (change)="onToggleChange($event)">
+                             [formControl]="leaseFormGroup.controls[item.leaseNo]" (change)="onToggleChange($event)"
+                             value={{item.leaseNo}}>
                       <span class="slider round en-first-checkbox"></span>
                     </label></p>
                     <p class="">${{leaseFormGroup.controls[item.leaseNo].value?'10':'0'}}.00</p>
@@ -114,22 +125,23 @@
             <!--Check Box Ends-->
 
             <!--cnt Txt Starts-->
-            <p>
-              Enrollment in the First Data Equipment Protection Program relieves you of the requirement
-              to maintain insurance on your leased equipment</p>
-            <p>
-              By checking YES above, the Lessee(s) is/are relived of their obligation to provide
+            <div class="pdivwrap">
+              <p>
+                Enrollment in the First Data Equipment Protection Program relieves you of the requirement
+                to maintain insurance on your leased equipment</p>
+              <p>
+              <span>By checking YES above, the Lessee(s) is/are relived of their obligation to provide
               proof
-              of insurance under the Lease Agreement. Each lease that checks Yes above pays a
-              monthly
-              charge to FDMS, determined by FBMS and included on the monthly lease payment. The
-              monthly charge includes a program fee and compensation to EDMS for program
-              administration. FDMS reserves the right to change the monthly charge. We will notify you
-              thirty (30) days prior to the effective date of charge.</p>
-            <p>
-              Board Protection: The First Data Equipment Protection Program provides FULL REPLACEMENT
-              protection for loss due to a wide variety of perils.</p>
-            <!--cnt Txt Ends-->
+                of insurance under the Lease Agreement.</span> Each lease that checks <span>YES</span> above pays a
+                monthly
+                charge to FDMS, determined by FBMS and included on the monthly lease payment. The
+                monthly charge includes a program fee and compensation to EDMS for program
+                administration. FDMS reserves the right to change the monthly charge. We will notify you
+                thirty (30) days prior to the effective date of charge.</p>
+              <p>
+                <span>Board Protection:</span> The First Data Equipment Protection Program provides FULL REPLACEMENT
+                protection for loss due to a wide variety of perils.</p>
+              <!--cnt Txt Ends--></div>
 
 
           </div>
@@ -140,8 +152,8 @@
 
 
         <!--EPP  Covers List Starts-->
-        <div class="row ">
-          <div class="col-12 col-sm-6 listWrap ">
+        <div class="row  ">
+          <div class="col-6 listWrap leftWrap  pr-0 ">
             <ul>
               <li>
                 Accidental Damage
@@ -154,7 +166,7 @@
             </ul>
 
           </div>
-          <div class="col-12 col-sm-6 listWrap">
+          <div class="col-6 listWrap rightWrap pl-0">
             <ul>
               <li>
                 Hail
@@ -186,7 +198,7 @@
 
 
         <!--submit but wrap Starts-->
-        <div class="row ">
+        <div class="row ftrBtnOuterWrap ">
 
           <div class="col-sm-12 col-md-9">
             <!--Check Box Starts-->
@@ -204,7 +216,7 @@
 
           <div class="col-sm-12 col-md-3 ftrBtnWrap  text-md-right text-center">
             <button type="button" [disabled]="checkbox.submit" [routerLink]="['/dashboard/eppthank']"
-                    class="btn butSec   ">
+                    class="btn butSec" (click)="postEpp()">
               Submit
 
             </button>

@@ -25,7 +25,8 @@ export class BackEndInterceptorService {
     let headers = new HttpHeaders();
     headers = headers
               .set('X-App-Client', api_header.X_App_Client)
-              .set('token', this.token);
+              .set('token', this.token)
+              .set('Content-Type','application/json');
     return headers;
   }
 

@@ -33,9 +33,14 @@ export class DashboardServiceService {
     let url = API.get_epp.replace(/{(startDate)}/,startDate).replace(/{(endDate)}/,endDate);
     return this.backEndInterceptorService.getUrl(url);
   }
+  getEppByMerchant(merchantId){
+    let url=API.ins_epp.replace(/{(merchantId)}/,merchantId);
+    return this.backEndInterceptorService.getUrl(url);
+  }
 
   postEppData(merchantId, payLoad){
     merchantId = localStorage.getItem("merchantId");
+    console.log("payload.......",payLoad)
     let url = API.save_epp.replace(/{(merchantId)}/,merchantId);
     return this.backEndInterceptorService.postUrl(url,payLoad);
   }

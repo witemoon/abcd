@@ -1,31 +1,41 @@
 <div class="modal fade" [ngClass]="{'show':showPopup}" id="alertspop" [style.display]="showPopup?'block':'none'">
   <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-content">
 
-          <!-- Modal Header -->
-          <div class="modal-header">
-              <h4 class="modal-title"></h4>
-              <button type="button" class="close" data-dismiss="modal" (click)="closeButtonClicked()"><img src="assets/img/close-icon.svg"></button>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="closeButtonClicked()"><img
+          src="assets/img/close-icon.svg"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body ">
+
+        <div class="cntWrap  p-3" *ngIf="equipmentLeaseCount" data-dismiss="modal">
+          <div class="icon"><img src="assets/img/epp_m.svg"></div>
+          <div class="txt"><a [routerLink]="['/dashboard/epp']"><span>Equipment Protection Program ({{equipmentLeaseCount}}) </span></a>
           </div>
 
-          <!-- Modal body -->
-          <div class="modal-body ">
 
-              <div class="cntWrap  p-3" *ngIf="equipmentLeaseCount" data-dismiss="modal">
-                 <a [routerLink]="['/dashboard/epp']"> <img src="assets/img/epp_m.svg"><span>Equipment Protection Program ({{equipmentLeaseCount}}) </span></a>
-              </div>
+        </div>
 
-              <div class="cntWrap  p-3 mt-2" *ngIf="defaultLeaseCount">
-                  <img src="assets/img/default-icon.svg"><span>Default Lease({{defaultLeaseCount}}) </span>
-              </div>
+        <div class="cntWrap  p-3 mt-2" *ngIf="defaultLeaseCount">
 
-
+          <div class="icon"><img src="assets/img/default-icon.svg"></div>
+          <div class="txt"><span>Default Lease({{defaultLeaseCount}}) </span>
           </div>
 
-          <!-- Modal footer -->
-          <div class="modal-footer ">
-          </div>
+
+        </div>
+
 
       </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer ">
+      </div>
+
+    </div>
   </div>
 </div>

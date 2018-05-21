@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./epp.component.css']
 })
 export class EppComponent implements OnInit {
-
+  selectedLease = "";
+  merchantId = "";
   leaseData = [];
   merchanName='';
   contactName='';
@@ -49,21 +50,33 @@ export class EppComponent implements OnInit {
         // this.leaseData = data['responseData']['lease'];
         this.contactName= data['responseData']['contactName'];
         this.merchanName= data['responseData']['merchantName'];
+        this.merchantId= data['responseData']['merchantId'];
         let leases = data['responseData']['lease'];
         let alltrue = true;
 
-        leases.forEach(item => {
-          if (item.equipmentCoverage.equipmentCoverage == "No") {
-            this.leaseFormGroup.addControl(item.leaseNo, new FormControl(false));
-            this.leaseData.push(item);
-            alltrue = false;
-          }
-        });
-        if(alltrue){
-          this.showeppstatic = true;
-        }
-
-        this.listenFormGroup();
+        this.dashboardService.getEppByMerchant(this.merchantId).subscribe(res=>{
+         
+            leases.forEach(item => {
+              let tohide= false;
+              res['responseData'].forEach(itm=>{
+                if(item.leaseNo==itm.leaseNumber){
+                  tohide=true;
+                 }
+              })
+              if (item.equipmentCoverage.equipmentCoverage == "No" && !tohide) {
+                this.leaseFormGroup.addControl(item.leaseNo, new FormControl(false));
+                this.leaseData.push(item);
+                alltrue = false;
+              }
+            });
+            if(alltrue){
+              this.showeppstatic = true;
+            }
+    
+            this.listenFormGroup();
+          
+        })
+        
       }
       this.dataReady = true;
     },err=>{
@@ -88,15 +101,28 @@ export class EppComponent implements OnInit {
 
   postEpp(merchantId,payLoadArray){
     let arr = [
-      {
-        "insCode": "string",
-        "leaseNumber": 0,
-        "name": "string"
-      }
-    ];
-
-    let payLoad = payLoadArray;
+      // {
+      // "insCode": "81",
+      // "leaseNumber": this.selectedLease,
+      // "name": this.merchanName,
+      // }
+      ];
+      console.log("present formGroup value...",this.leaseFormGroup.value)
+      this.leaseData.forEach(item=>{
+        if(this.leaseFormGroup.controls[item.leaseNo].value){
+          arr.push({
+            "insCode": "81",
+            "leaseNumber": item.leaseNo,
+            "name": this.merchanName,
+          })
+        }
+      })
+      
+      let payLoad = arr;
+      merchantId= this.merchantId;
+      console.log("merchantid",merchantId);
     this.dashboardService.postEppData(merchantId,payLoad).subscribe(res=>{
+      
       console.log('------post epp data success-----',res)
     },err=>{
       console.log('----- get lease data error-------',err);
@@ -214,6 +240,8 @@ export class EppComponent implements OnInit {
   onToggleChange(event) {
     
     if (event.target.checked && !this.allLeaseSelected) {
+      console.log("event.....",event.target.value);
+      this.selectedLease = event.target.value;
       this.showPopup = true;
     }
   }
