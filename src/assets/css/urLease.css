@@ -2587,6 +2587,10 @@ button:focus {
   .prodisplay .pro-cnt-wrap {
     display: none; }
 
+.tt-outer-wrap.mobdrop .tt-wrap span {
+  left: -152px;
+  top: 27px; }
+
 /*********************************** sidebar  STARTS here *********************************/
 @media (min-width: 320px) and (max-width: 767.98px) {
   #Buyout-tooltip.tooltip2 {
@@ -2972,4 +2976,5 @@ button:focus {
     height: 44px; } }
 @-moz-document url-prefix() {}
 /*********************************** sidebar ENDS here *********************************/
+
 /*# sourceMappingURL=urLease.css.map */

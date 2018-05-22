@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
    }
    ngAfterViewInit(): void {
+    $('.dropdown-menu button').on('click touch', function(){
+      $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+       });
    
     $('#trigger1').on('click touch', function(){
       $('#tp1').show();
@@ -29,9 +32,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     });  
     $('#trigger3').on('click touch', function(){
       $('#tp3').show();
+      
     });  
     $('#trigger4').on('click touch', function(){
       $('#tp4').show();
+      
     });
     $('#tp1').on('click touch', function(event) {
       event.stopPropagation();

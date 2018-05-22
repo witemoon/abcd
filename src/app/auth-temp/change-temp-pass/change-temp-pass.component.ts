@@ -166,8 +166,8 @@ export class ChangeTempPassComponent implements OnInit {
       }
     },err=>{
       this.captcha.reset();
-      this.tmpPass.nativeElement.value = "";
-      // this.validationError.tempPasswordError = true;
+      // this.tmpPass.nativeElement.value = "";
+      this.validationError.tempPasswordError = true;
       this.submitted = true;
       this.pass.nativeElement.value = this.validationError.newPasswordError ? "" : this.passwordFC.value;
       this.cPass.nativeElement.value =  this.validationError.confirmPasswordError ? "" : this.cPass.nativeElement.value;

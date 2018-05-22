@@ -14,7 +14,7 @@ export class EppComponent implements OnInit {
   selectedLease = "";
   merchantId = "";
   leaseData = [];
-  merchanName='';
+  merchantName='';
   contactName='';
   leaseFormGroup  = new FormGroup({});
   checkboxGroup: FormGroup;
@@ -49,8 +49,10 @@ export class EppComponent implements OnInit {
       if (data) {
         // this.leaseData = data['responseData']['lease'];
         this.contactName= data['responseData']['contactName'];
-        this.merchanName= data['responseData']['merchantName'];
-        this.merchantId= data['responseData']['merchantId'];
+        this.merchantName= data['responseData']['merchantName'];
+        // this.merchantId= data['responseData']['merchantId'];
+        this.merchantId = localStorage.getItem("merchantId");
+        console.log("merchantid.........",this.merchantId);
         let leases = data['responseData']['lease'];
         let alltrue = true;
 
@@ -113,7 +115,7 @@ export class EppComponent implements OnInit {
           arr.push({
             "insCode": "81",
             "leaseNumber": item.leaseNo,
-            "name": this.merchanName,
+            "name": this.merchantName,
           })
         }
       })

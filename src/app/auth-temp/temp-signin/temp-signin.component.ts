@@ -15,20 +15,18 @@ export class TempSigninComponent implements OnInit {
   showError = false; 
 
   ngOnInit() { 
-    if(!this.authService.currentEmail){
-   
-      this.activatedRoute.queryParams.subscribe(
-        data => {this.email =data.email
-         console.log('queryParams', data['email'])
-         let encodedName = encodeURI(data['email']);       
-         let str = encodedName.replace("%20","%2B");         
-         let encodedURI = decodeURI(str);           
-        this.email= decodeURIComponent(str);
-        }); 
-        }else{      
-          this.email = this.authService.currentEmail     
-        }       
-  }
+    this.activatedRoute.queryParams.subscribe(
+      data => {this.email =data.email
+       
+       console.log('queryParams', data['email'])
+       if(data['email']){
+           let encodedName = encodeURI(data['email']);       
+           let str = encodedName.replace("%20","%2B");         
+           let encodedURI = decodeURI(str);           
+           this.email= decodeURIComponent(str);
+         }      
+       });
+        }
   tempSignInUser(tempSignIn){
     var email=tempSignIn.value.email;
     var tempPass=tempSignIn.value.tempPass;
