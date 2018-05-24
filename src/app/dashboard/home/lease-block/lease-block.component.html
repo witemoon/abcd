@@ -6,7 +6,7 @@
 
 <div class="ca-box-wrap">
 
-
+<!-- 
   <div class="  "
        *ngFor="let item of leaseArray; let i=index;"
        [ngClass]="{'leaseCardSelected':selectedLease==i}"
@@ -16,12 +16,13 @@
       <span class="" *ngIf="item['cardAlert']">{{item['cardAlert']}}</span>
       <ul>
         <li>
-          <label [ngClass]="{'leaseCardSelected':selectedLease==i}">Lease</label>
+          <label [ngClass]="{'leaseCardSelected':selectedLease==i}" >Lease</label>
           <br>
           <span class="" [ngClass]="{'leaseCardSelected':selectedLease==i}">{{item['leaseNo']}}</span>
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
+  <button (click)="emitSelectedLeaseObj('2')">Emit</button>
 </div>
 

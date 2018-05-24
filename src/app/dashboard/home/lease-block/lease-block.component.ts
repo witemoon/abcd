@@ -103,5 +103,6 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
   emitSelectedLeaseObj(selectedLease) {
     console.log(selectedLease);
     this.dashboardService.selectedLeaseObj.next(selectedLease);
+    this.dashboardService.selectedCard.next(selectedLease);
   }
 }

@@ -55,6 +55,12 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit {
     this.currentActiveTab = tabname;
   }
   ngOnInit() {
+    this.dashboardService.selectedCard.asObservable().subscribe(
+      (data:any) => {
+        console.log('Tab Comp::'+ data);
+        
+      }
+    );
     this.dashboardService.selectedLeaseObj.subscribe(data => {
       this.selectedLease = data;
       this.showTabs = true;
