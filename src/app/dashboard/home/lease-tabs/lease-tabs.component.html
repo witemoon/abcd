@@ -4,22 +4,22 @@
   <div class="db-lease-tab col-12 ">
 
     <!-- Nav pills -->
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills" >
       <li class="nav-item col-6 col-sm-6 col-md-3">
-        <a class="nav-link active show" data-toggle="pill" href="#Equipment">Equipment</a>
+        <a class="nav-link" [attr.index]="1"  [ngClass]="{'active show': selectedIndex == '1' }"  data-toggle="pill" href="#Equipment">Equipment</a>
       </li>
 
       <li class="nav-item  col-6 col-sm-6 col-md-3"
           *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
 
-        <a class="nav-link" data-toggle="pill" href="#Payment">Payment</a>
+        <a class="nav-link" [attr.index]="2"  [ngClass]="{'active show': selectedIndex == '2' }"   data-toggle="pill" href="#Payment">Payment</a>
       </li>
       <li class="nav-item col-6 col-sm-6 col-md-3">
-        <a class="nav-link " data-toggle="pill" href="#Contract">Contract Status</a>
+        <a class="nav-link" [attr.index]="3"  [ngClass]="{'active show': selectedIndex == '3' }"  data-toggle="pill" href="#Contract">Contract Status</a>
       </li>
       <li class="nav-item col-6 col-sm-6 col-md-3"
           *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
-        <a class="nav-link" data-toggle="pill" href="#Coverage" (click)="ec()">Equipment Coverage</a>
+        <a class="nav-link" [attr.index]="4"  [ngClass]="{'active show': selectedIndex == '4' }"  data-toggle="pill" href="#Coverage" (click)="ec()">Equipment Coverage</a>
       </li>
     </ul>
 
@@ -38,7 +38,7 @@
 
       <div class="tab-content" *ngIf="selectedLease">
         <!--Equipment Tab Cnt starts-->
-        <div class="tab-pane active show" id="Equipment">
+        <div class="tab-pane container" [ngClass]="{'active show': selectedIndex == '1' }"  id="Equipment">
 
           <div class="card">
             <div class="card-header text-center">
@@ -55,18 +55,20 @@
             </div>
 
             <div class="card-body">
-              <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-
-                  <div class="carousel-item active">
-                    <div class="row">
-                      <div class="col-10 offset-1">
+             
+                      
                         <div class="row">
-                          <div class="col-12 col-md-6 "
+                            <div class="pn-wrap">
+                                <div class="lease-prev"><img src="/assets/img/lftarrow.svg"></div>
+                                <div class="lease-next"><img src="/assets/img/rytarrow.svg"></div>
+                              </div>
+                            <div class="ca-box-wrap">
+
+                          <div class=" eqptest col-12 col-md-6 "
                                *ngFor="let item of selectedLease['equipments'];"
                           >
-
-                            <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
+                          
+                            <div class=" eqptestinner ">
                               <ul>
                                 <li>
                                   <label>Equipment:</label>
@@ -91,114 +93,11 @@
                               </ul>
 
                             </div>
+                            </div>
                           </div>
-                        </div>
-                          <!-- <div class="col-12 col-md-6 d-none d-sm-none d-md-block ">
-                              <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
-                                  <ul>
-                                      <li>
-                                          <label>Equipment:</label>
-                                          <br>
-                                          <span class="">Clover Station</span>
-                                      </li>
-                                      <li>
-                                          <label>Make and Model:</label>
-                                          <br>
-                                          <span class="">12313313 | 2010</span>
-                                      </li>
-                                      <li>
-                                          <label>Serial number:</label>
-                                          <br>
-                                          <span class="">XXX-XXXXXXXXX-XXX</span>
-                                      </li>
-                                      <li>
-                                          <label>Equipment Status:</label>
-                                          <br>
-                                          <span class="">Returned</span>
-                                      </li>
-                                  </ul>
-
-                              </div>
-                          </div> -->
-                        </div>
-
-                      </div>
-
-                    
-                  </div>
-                  <!-- <div class="carousel-item">
-                      <div class="row">
-                          <div class="col-10 offset-1">
-                              <div class="row">
-                                  <div class="col-12 col-md-6 d-none d-sm-none d-md-block ">
-                                      <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
-                                          <ul>
-                                              <li>
-                                                  <label>Equipment:</label>
-                                                  <br>
-                                                  <span class="">Clover Station</span>
-                                              </li>
-                                              <li>
-                                                  <label>Make and Model:</label>
-                                                  <br>
-                                                  <span class="">12313313 | 2010</span>
-                                              </li>
-                                              <li>
-                                                  <label>Serial number:</label>
-                                                  <br>
-                                                  <span class="">XXX-XXXXXXXXX-XXX</span>
-                                              </li>
-                                              <li>
-                                                  <label>Equipment Status:</label>
-                                                  <br>
-                                                  <span class="">Returned</span>
-                                              </li>
-                                          </ul>
-
-                                      </div>
-                                  </div>
-                                  <div class="col-12 col-md-6  ">
-                                      <div class="cus-card p-5 col-12 col-md-10 offset-md-1">
-                                          <ul>
-                                              <li>
-                                                  <label>Equipment:</label>
-                                                  <br>
-                                                  <span class="">Clover Station</span>
-                                              </li>
-                                              <li>
-                                                  <label>Make and Model:</label>
-                                                  <br>
-                                                  <span class="">12313313 | 2010</span>
-                                              </li>
-                                              <li>
-                                                  <label>Serial number:</label>
-                                                  <br>
-                                                  <span class="">XXX-XXXXXXXXX-XXX</span>
-                                              </li>
-                                              <li>
-                                                  <label>Equipment Status:</label>
-                                                  <br>
-                                                  <span class="">Returned</span>
-                                              </li>
-                                          </ul>
-
-                                      </div>
-                                  </div>
-                              </div>
-
-                          </div>
-
-                      </div>
-                  </div> -->
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
+                       
+                          
+                 
               </div>
             </div>
           </div>
@@ -206,7 +105,7 @@
 
         </div>
         <!--Payment Tab Cnt starts-->
-        <div class="tab-pane container" id="Payment">
+        <div class="tab-pane container"  [ngClass]="{'active show': selectedIndex == '2' }" id="Payment">
           <div class="card">
             <div class="card-header text-center">
               <label>Lease Status:</label>
@@ -291,7 +190,7 @@
         </div>
         <!--Contract Status Tab Cnt starts-->
 
-        <div class="tab-pane container " id="Contract">
+        <div class="tab-pane container" [ngClass]="{'active show': selectedIndex == '3' }" id="Contract">
           <div class="card">
             <div class="card-header text-center">
               <label>Lease Status:</label>
@@ -438,7 +337,7 @@
 
         <!--Equipment Coverage Tab Cnt starts-->
 
-        <div class="tab-pane container" id="Coverage">
+        <div class="tab-pane container" [ngClass]="{'active show': selectedIndex == '4' }" id="Coverage">
 
           <div class="card">
             <div class="card-header text-center">

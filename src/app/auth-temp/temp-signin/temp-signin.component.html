@@ -12,7 +12,7 @@
 
             <div class="tab-pane fade show active" id="signup" role="tabpanel"
                  aria-labelledby="signup-tab">
-                 <div *ngIf="showError">
+                 <div *ngIf="showError; else show ">
                     <p  class="loginDesc fd-bld">Your email or password is incorrect!</p>
                  </div>
 
@@ -51,7 +51,7 @@
 
                 <button type="submit"
 
-                        class="btnSubmit btn btn-primary btn-lg btn-block bg-secondary"
+                class="btnSubmit btn btn-primary btn-lg btn-block"
                         [disabled]="!tempSignIn.valid">Sign In
                 </button>
 

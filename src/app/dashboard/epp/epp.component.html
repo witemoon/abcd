@@ -67,28 +67,35 @@
 
 
             <!--Epp Lease toggles Starts-->
+           
             <div class="row">
               <div class="toggleWrap" *ngIf="leaseData">
-                <div class="toggle-item-wrap" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }"
-                     *ngFor="let item of leaseData" >
-                  <div class="leftWrap">
-                    <p class="">Lease #</p>
-                    <p class="">{{item.leaseNo}}</p>
-                  </div>
-                  <div class="rightWrap">
-                    <p class=""><label class="switch">
-                      <input type="checkbox" class="togBtn" id="togBtn"
-                             [formControl]="leaseFormGroup.controls[item.leaseNo]" (change)="onToggleChange($event)"
-                             value={{item.leaseNo}}>
-                      <span class="slider round en-first-checkbox"></span>
-                    </label></p>
-                    <p class="">${{leaseFormGroup.controls[item.leaseNo].value?'10':'0'}}.00</p>
-                  </div>
-
-
+                <div class="pn-wrap">
+                  <div class="lease-prev"><img src="/assets/img/lftarrow.svg"></div>
+                  <div class="lease-next"><img src="/assets/img/rytarrow.svg"></div>
                 </div>
-              </div>
+                <div class="ca-box-wrap">
+                  <div class="toggle-item-wrap" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }"
+                      *ngFor="let item of leaseData" >
+                    <div class="leftWrap">
+                      <p class="">Lease #</p>
+                      <p class="">{{item.leaseNo}}</p>
+                    </div>
+                    <div class="rightWrap">
+                      <p class=""><label class="switch">
+                        <input type="checkbox" class="togBtn" id="{{item.leaseNo}}"
+                              [formControl]="leaseFormGroup.controls[item.leaseNo]" (change)="onToggleChange($event)"
+                              value={{item.leaseNo}}>
+                        <span class="slider round en-first-checkbox"></span>
+                      </label></p>
+                      <p class="">${{leaseFormGroup.controls[item.leaseNo].value?'10':'10'}}.00</p>
+                    </div>
 
+
+                  </div>
+                </div>
+
+              </div>
             </div>
             <!--Epp Lease toggles Ends-->
 
@@ -228,7 +235,8 @@
       </div>
     </div>
 
-    <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" (addClicked)="addButtonClicked();"
+    <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" 
                (closeClicked)="closePopup();"></epp-popup>
+               <!-- (addClicked)="addButtonClicked();" -->
   </div>
 </div>

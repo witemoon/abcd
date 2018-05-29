@@ -24,6 +24,7 @@ import { AddCommaPipe, Is_Greater_Than_Current_Date } from './dashboard-pipe';
 import { EppthankComponent } from './epp/eppthank/eppthank.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EppstaticComponent } from './epp/eppstatic/eppstatic.component';
+import { LoadingComponent } from './loading/loading.component';
 
 const dashboardRoute: Routes = [
   { path: '', component: DashboardComponent,
@@ -35,6 +36,7 @@ const dashboardRoute: Routes = [
       { path:'faq', component: FaqComponent },
       { path:'contact', component: ContactComponent },
       { path:'eppthank', component: EppthankComponent},
+      { path: 'loading', component:LoadingComponent}
     ]
  },
 ];
@@ -67,7 +69,8 @@ const dashboardRoute: Routes = [
                   AddCommaPipe,
                   EppthankComponent,
                   EppstaticComponent,
-                  Is_Greater_Than_Current_Date
+                  Is_Greater_Than_Current_Date,
+                  LoadingComponent
               ],
   providers: [
     DashboardServiceService

@@ -9,7 +9,7 @@ export class SignupMainComponent implements OnInit {
   showstat = false;
   heading: String = "";
   description: String = "";
-
+  locked: boolean = false;
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +21,16 @@ export class SignupMainComponent implements OnInit {
   }
 
   updateStatDescription(obj) {
-    this.description = obj;
+    if (obj.includes("locked") || obj.includes("registration")) {
+      this.locked = true;
+      this.heading = obj.includes("locked") ? "Your account has been locked!" : "There was a problem with your registration";
+      this.description = "Please contact customer service at:";
+    } else if (obj.includes("registered")) {
+      this.heading = "You already have an account with us.";
+      this.description = "Please Sign In or tap on <b>Forgot Password</b> from the sign in page";
+    } else { 
+      this.heading = "";
+      this.description = "";
+    }
   }
 }

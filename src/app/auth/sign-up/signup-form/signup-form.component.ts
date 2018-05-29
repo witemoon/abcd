@@ -98,12 +98,12 @@ export class SignupFormComponent implements OnInit {
             let errMessage = error.error.message;
             
             this.errorResponse.incorrectRefKey = errMessage.includes("reference key") ? true : false;
+            signUpForm.resetForm();
             this.errorResponse.incorrectLeaseNo = errMessage.includes("lease number") ? true : false;
+            signUpForm.resetForm();
             this.errorResponse.incorrectMerchant = errMessage.includes("merchant dba") ? true : false;
-
-            if (errMessage.includes("locked")) {
-              this.errorToStat.emit(error.error.message);
-            }
+            signUpForm.resetForm();
+            this.errorToStat.emit(error.error.message);
           }
         });
     }

@@ -20,9 +20,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
    }
    ngAfterViewInit(): void {
-    $('.dropdown-menu button').on('click touch', function(){
-      $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-       });
+    // $('.dropdown-menu button').on('click touch', function(){
+    //   $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+    //    });
    
     $('#trigger1').on('click touch', function(){
       $('#tp1').show();
@@ -32,11 +32,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     });  
     $('#trigger3').on('click touch', function(){
       $('#tp3').show();
-      
+      $('#trigger3').css({'background-color': '#0072ce' , color : '#fff' });
+      event.stopPropagation();
     });  
     $('#trigger4').on('click touch', function(){
       $('#tp4').show();
-      
+      $('#trigger4').css({'background-color': '#0072ce' , color : '#fff' });
+      event.stopPropagation();
     });
     $('#tp1').on('click touch', function(event) {
       event.stopPropagation();
@@ -58,9 +60,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         $('#tp2').hide();
       }
       if (!$(event.target).parents().addBack().is('#trigger3')) {
+        $('#trigger3').css({'background-color': '' , color : '' });
         $('#tp3').hide();
       }
     if (!$(event.target).parents().addBack().is('#trigger4')) {
+      $('#trigger4').css({'background-color': '' , color : '' });
         $('#tp4').hide();
       }
     

@@ -4,7 +4,7 @@
       <app-signup-form (ctab)="ctab($event)" (errorToStat)="updateStatDescription($event);"></app-signup-form>
     </div>
     <div class="col-sm-12   col-md-6 col-lg-5" *ngIf="!showstat">
-      <app-signup-stat [heading]="heading" [description]="description"></app-signup-stat>
+      <app-signup-stat [locked]="locked" [heading]="heading" [description]="description"></app-signup-stat>
     </div>
   </div>
 </div>

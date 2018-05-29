@@ -74,6 +74,74 @@ a {
   color: #ec000a !important; }
 
 /*********************************** bootstrap-overrides ENDS here *********************************/
+/*********************************** RESP STARTS here *********************************/
+/*Extra small devices (portrait phones, less than 576px)*/
+/*No media query since this is the default in Bootstrap*/
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 575px) {
+  .aLeft {
+    text-align: center; }
+
+  .aRight {
+    text-align: center; }
+
+  .mTop {
+    margin-top: 20px; }
+
+  .land-hero-cnt {
+    width: 100%;
+    float: right;
+    padding: 30px; } }
+@media (min-width: 576px) {
+  .aLeft {
+    text-align: center; }
+
+  .aRight {
+    text-align: center; }
+
+  .mTop {
+    margin-top: 20px; }
+
+  .land-hero-cnt {
+    width: 100%;
+    float: right;
+    padding: 30px; } }
+/*Medium devices (tablets, 770px and up)*/
+@media (min-width: 770px) {
+  .aLeft {
+    text-align: left; }
+
+  .aRight {
+    text-align: right; }
+
+  .mTop {
+    margin-top: 2px; }
+
+  .land-hero-cnt {
+    width: 50%;
+    float: right;
+    padding: 30px; } }
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .aLeft {
+    text-align: left; }
+
+  .aRight {
+    text-align: right; }
+
+  .mTop {
+    margin-top: 2px; } }
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .aLeft {
+    text-align: left; }
+
+  .aRight {
+    text-align: right; }
+
+  .mTop {
+    margin-top: 2px; } }
+/*********************************** RESP ENDS  ENDS here *********************************/
 /*********************************** layout STARTS here *********************************/
 body, html {
   height: 100%;
@@ -508,7 +576,7 @@ input[type=text], input[type=password] {
     font-weight: bold; }
   .txtInnerWrap p {
     font-family: SimpleSans-Regular, Helvetica, sans-serif !important;
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -2327,6 +2395,9 @@ button:focus {
 .col-centered {
   margin: 0 auto; }
 
+.modal-backdrop.show {
+  opacity: .7 !important; }
+
 #alertspop .modal-dialog, #paymentspop .modal-dialog {
   border-radius: 6px;
   margin: 0 auto;
@@ -2344,17 +2415,20 @@ button:focus {
     display: inline-block;
     margin-left: 20px; }
 
-.modal-open #alertspop.modal.show, .modal-open #paymentpop.modal.show {
+#alertspop.modal.show, #paymentpop.modal.show, #myModal1.modal.show, #myModal.modal.show {
   width: 100% !important;
   height: 100% !important;
   display: table !important; }
-  .modal-open #alertspop.modal.show .modal-dialog, .modal-open #paymentpop.modal.show .modal-dialog {
+  #alertspop.modal.show .modal-dialog, #paymentpop.modal.show .modal-dialog, #myModal1.modal.show .modal-dialog, #myModal.modal.show .modal-dialog {
     display: table-cell !important;
     vertical-align: middle !important; }
-    .modal-open #alertspop.modal.show .modal-dialog .modal-content, .modal-open #paymentpop.modal.show .modal-dialog .modal-content {
+    #alertspop.modal.show .modal-dialog .modal-content, #paymentpop.modal.show .modal-dialog .modal-content, #myModal1.modal.show .modal-dialog .modal-content, #myModal.modal.show .modal-dialog .modal-content {
       max-width: 500px;
       margin: 0 auto;
-      z-index: 5000; }
+      z-index: 5000;
+      border-radius: 6px;
+      -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+              box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5); }
 
 .tooltip2 {
   width: 296px;
@@ -2524,8 +2598,12 @@ button:focus {
     font-stretch: normal;
     letter-spacing: normal; }
 
-#alertspop .modal-content .modal-body {
-  padding: 0px; }
+#alertspop .modal-content {
+  min-height: 100px;
+  margin: 50px 0px; }
+  #alertspop .modal-content .modal-body {
+    padding: 0px;
+    margin: 40px 0px; }
 #alertspop .cntWrap {
   display: table;
   width: 100%;
@@ -2547,7 +2625,24 @@ button:focus {
     font-stretch: normal;
     letter-spacing: normal; }
     #alertspop .cntWrap .txt span {
-      margin-left: 6px; }
+      margin-left: 6px;
+      font-family: SimpleSans-Regular, Helvetica, sans-serif;
+      color: #3e3e3e;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: normal;
+      font-style: normal;
+      font-stretch: normal;
+      letter-spacing: normal; }
+      #alertspop .cntWrap .txt span span.cntnum {
+        font-family: SimpleSans-Bold, Helvetica, sans-serif;
+        color: #3e3e3e;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: normal;
+        font-style: normal;
+        font-stretch: normal;
+        letter-spacing: normal; }
 
 .btn.spebutton {
   background: none;
@@ -2588,11 +2683,22 @@ button:focus {
     display: none; }
 
 .tt-outer-wrap.mobdrop .tt-wrap span {
-  left: -152px;
-  top: 27px; }
+  left: 0px;
+  top: 0px; }
 
-/*********************************** sidebar  STARTS here *********************************/
-@media (min-width: 320px) and (max-width: 767.98px) {
+.txtInnerWrap {
+  text-align: center; }
+  .txtInnerWrap * {
+    margin: 0px; }
+  .txtInnerWrap p {
+    margin-top: 28px;
+    margin-bottom: 18px; }
+  .txtInnerWrap .clrFix {
+    color: #000000;
+    margin-bottom: 50px; }
+
+/*********************************** RWD  STARTS here *********************************/
+@media (min-width: 320px) and (max-width: 770px) {
   #Buyout-tooltip.tooltip2 {
     left: -139px;
     top: 28px; }
@@ -2899,7 +3005,7 @@ button:focus {
   .epp .listWrap.rightWrap ul li {
     margin-left: 30%;
     text-overflow: ellipsis; } }
-/*********************************** sidebar ENDS here *********************************/
+/*********************************** RWD ENDS here *********************************/
 /*********************************** sidebar  STARTS here *********************************/
 @media (min-width: 767px) and (max-width: 991px) {
   .land-hero-cnt {

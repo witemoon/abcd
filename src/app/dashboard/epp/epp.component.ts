@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
 import { eppMock } from './epp-model';
 import { Router } from '@angular/router';
+declare var $;
 
 @Component({
   selector: 'app-epp',
@@ -23,6 +24,7 @@ export class EppComponent implements OnInit {
   showPopup = false;
   allLeaseSelected = false;
   noButtonPopup = false;
+  checked = false;
   checkbox: any = {
     "yes": true,
     "no": true,
@@ -76,7 +78,10 @@ export class EppComponent implements OnInit {
             }
     
             this.listenFormGroup();
-          
+            
+            setTimeout(()=>{
+              this.addCarousel();
+            }, 100);
         })
         
       }
@@ -88,19 +93,46 @@ export class EppComponent implements OnInit {
     // this.postEpp(merchantid,arr);
   }
 
-  // getEppData(){
-  //   var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  //   var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-  //   let d = new Date();
-  //   let startDate = d.getDate() + '-' + mS[d.getMonth()] + '-' + d.getFullYear(); //"20-Apr-2018"
-  //   let endDate = "30-Apr-2018";
-  //   this.dashboardService.getEppData(startDate,endDate).subscribe(res=>{
-  //     console.log('-----epp data received--------',res)
-  //   },err=>{
-  //     console.log('-------epp data not received-----------',err);
-  //   });
-  // }
-
+  addCarousel() {
+      $('.ca-box-wrap').not('.slick-initialized').slick(
+        {
+          dots: false,
+          speed: 500,
+          prevArrow:$('.lease-prev'),
+          nextArrow:$('.lease-next'),
+          slidesToShow:4,
+          slidesToScroll:1,
+          infinite: false,
+          variableWidth: true,
+          vertical:false,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: false,
+                dots: false
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        }
+      );
+  }
   postEpp(merchantId,payLoadArray){
     let arr = [
       // {
@@ -248,22 +280,28 @@ export class EppComponent implements OnInit {
     }
   }
 
-  addButtonClicked() {
-    this.closeButtonClicked = false;
-    this.showPopup = false;
-    this.noButtonPopup = false;
-  }
+  // addButtonClicked() {
+  //   this.closeButtonClicked = false;
+  //   this.showPopup = false;
+  //   this.noButtonPopup = false;
+  // }
 
   closePopup() {
     this.closeButtonClicked = true;
     this.showPopup = false;
     this.checkbox = {
-      "yes": false,
-      "no": false,
-      "agree": false,
+      "yes": true,
+      "no": true,
+      "agree": true,
       "submit": true
     };
+    this.allLeaseSelected = false;
 
+    this.leaseData.forEach((value) => {
+      $("#"+value.leaseNo).prop("checked", false)
+      this.totalAmt = 0;
+    });
+    
     if ((this.yesModel || this.noModel) && this.agreeModel) {
       this.checkbox.submit = false;
     }
