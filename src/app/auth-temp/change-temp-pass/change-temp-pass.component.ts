@@ -48,9 +48,9 @@ export class ChangeTempPassComponent implements OnInit {
          let encodedURI = decodeURI(str);           
         this.email= decodeURIComponent(str);
         }); 
-        }else{      
-          this.email = this.authService.currentEmail     
-        }
+      }else{      
+        this.email = this.authService.currentEmail     
+      }
 
     this.passwordFC.valueChanges.subscribe(value=>{
       if(this.hasLowerCase(value) && this.hasUpperCase(value)){
@@ -165,10 +165,18 @@ export class ChangeTempPassComponent implements OnInit {
         this.router.navigate(['/user/signin']);
       }
     },err=>{
-      this.captcha.reset();
-      // this.tmpPass.nativeElement.value = "";
-      this.validationError.tempPasswordError = true;
       this.submitted = true;
+      this.captcha.reset();
+      this.captchaSelected = false;
+      this.tmpPass.nativeElement.value = "";
+      this.passwordFC.setValue("");
+      this.cPass.nativeElement.value = "";
+      this.passwordValid = false;
+
+      if (err.error.message.includes("correct")) {
+        this.validationError.tempPasswordError = true;
+      }
+      
       this.pass.nativeElement.value = this.validationError.newPasswordError ? "" : this.passwordFC.value;
       this.cPass.nativeElement.value =  this.validationError.confirmPasswordError ? "" : this.cPass.nativeElement.value;
       console.log('change paswword service failed',err);

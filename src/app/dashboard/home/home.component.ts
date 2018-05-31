@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
         this.dashboardService.changeObj({"totalBadgeCount": totalBadgeCount, "totalEquipmentBadgeCount": totalEquipmentBadgeCount, "totalDefaultLeaseBadgeCount": totalDefaultLeaseBadgeCount, "leaseArray": leaseArray });
         this.dashboardService.leaseData.next(data['responseData']);
       }
+      // if(!data){this.router.navigate(['/dashboard/loading']);}
     },err=>{
       console.log('----- get lease data error-------',err);
       if(err['error']['statusCode']=='401'){

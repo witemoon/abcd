@@ -17,17 +17,14 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           -Select Product-
         </button>
-        <div class="tt-outer-wrap mobdrop">
-          <div class="tt-wrap"><span id="tp3" placement="bottom" style="display: none;">Coming Soon</span></div>
 
-          <div class="tt-wrap"><span id="tp4" placement="bottom" style="display: none;">Coming Soon</span></div>
-
-        </div>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
           <button id="trigger3" class="dropdown-item">Clover Capital</button>
+          <div class="tt-outer-wrap mobdrop"><div class="tt-wrap"><span id="tp3" placement="bottom" style="display: none;">Coming Soon</span></div> </div>
           <button id="trigger4" class="dropdown-item">Advanced Same Day Funding</button>
+          <div class="tt-outer-wrap mobdrop"><div class="tt-wrap"><span id="tp4" placement="bottom" style="display: none;">Coming Soon</span></div> </div>
         </div>
       </div>
 
@@ -67,6 +64,7 @@
         <!--<br>-->
         <!--<span class="clearfix">Chat</span>-->
         <!--</span>-->
+        <!--span-->
 
 
         <div class="alertWrap   d-inline-block" data-toggle="modal" data-target="#alertspop"
@@ -74,7 +72,7 @@
           <span class="fd-badge" *ngIf="alertCount.totalBadgeCount">{{alertCount.totalBadgeCount}}</span>
           <img src="assets/img/alert.svg">
           <br>
-          <span class="clearfix">Alert</span>
+          <span class="clearfix">Alerts</span>
         </div>
 
 
@@ -87,9 +85,10 @@
 
 
 <!-- -------------alerts popup------------------- -->
-<alerts-popup
-  [(showPopup)]="openPopup"
-  [equipmentLeaseCount]="alertCount.totalEquipmentCount"
-  [defaultLeaseCount]="alertCount.totalDefaultBadgeCount"
-></alerts-popup>
-
+<div *ngIf="alertCount.totalBadgeCount">
+    <alerts-popup
+      [(showPopup)]="openPopup"
+      [equipmentLeaseCount]="alertCount.totalEquipmentCount"
+      [defaultLeaseCount]="alertCount.totalDefaultBadgeCount"
+    ></alerts-popup>
+</div>

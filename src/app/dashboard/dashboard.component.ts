@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     let referenceKey = this.authService.currentReferenceKey;
     this.dashboardService.getLeaseData("").subscribe(data=>{
+      // if(!data){this.router.navigate(['/dashboard/loading']);}
     console.log('-----lease data received-------',data);
     this.dashboardService.leaseData.next(data['responseData']);
     },err=>{

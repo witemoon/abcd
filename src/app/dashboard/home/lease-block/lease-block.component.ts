@@ -60,6 +60,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
             slidesToScroll:1,
             infinite: false,
             variableWidth: true,
+            vertical:false,
             responsive: [
               {
                 breakpoint: 1024,

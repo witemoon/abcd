@@ -14,7 +14,7 @@
 
         <div class="cntWrap  p-3" *ngIf="equipmentLeaseCount" data-dismiss="modal">
           <div class="icon"><img src="assets/img/epp_m.svg"></div>
-          <div class="txt"><a [routerLink]="['/dashboard/epp']"><span>Equipment Protection Program ({{equipmentLeaseCount}}) </span></a>
+          <div class="txt"><a [routerLink]="['/dashboard/epp']"><span>Equipment Protection Program <span class="cntnum">({{equipmentLeaseCount}})</span>  </span></a>
           </div>
 
 
@@ -22,12 +22,18 @@
 
         <div class="cntWrap  p-3 mt-2" *ngIf="defaultLeaseCount">
 
-          <div class="icon"><img src="assets/img/default-icon.svg"></div>
-          <div class="txt"><span>Default Lease({{defaultLeaseCount}}) </span>
+          <div class="icon">
+          <img src="assets/img/default-icon.svg"></div>
+          <div class="txt"><a [routerLink]="['/dashboard/home']" data-dismiss="modal" (click)="closeButtonClicked()"><span>Default Lease<span class="cntnum">({{defaultLeaseCount}})</span> </span></a>
           </div>
 
 
         </div>
+        <!--<div class="cntWrap  p-3 " *ngIf="defaultLeaseCount">-->
+        <!--<a [routerLink]="['/dashboard/home']" data-dismiss="modal" (click)="closeButtonClicked()"> -->
+        <!--<img src="assets/img/default-icon.svg"><span>Default Lease({{defaultLeaseCount}}) </span></a>-->
+        <!---->
+        <!--</div>-->
 
 
       </div>
