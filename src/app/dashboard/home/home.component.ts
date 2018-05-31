@@ -3,6 +3,8 @@ import { DashboardServiceService } from '../dashboard-service.service';
 import { Router } from '@angular/router';
 // import { dashboardData } from './dashboard-model';
 
+import { SharedService } from '../../shared/shared';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,9 +15,19 @@ export class HomeComponent implements OnInit {
   equipmentBadgeCount = 0;
   defaultLeaseBadgeCount = 0;
 
-  constructor(private dashboardService: DashboardServiceService, private router:Router) { }
+  breadCrumb: any;
+  constructor(private dashboardService: DashboardServiceService, private router:Router,
+  private sharedService: SharedService) { }
 
   ngOnInit() {
+
+    this.sharedService.braedValue.asObservable().subscribe(
+      (data:any) => {
+        console.log(data);
+        this.breadCrumb = data;
+      }
+    );
+
     let leaseArray = [];
     this.dashboardService.getLeaseData("").subscribe(data=>{
      

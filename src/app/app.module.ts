@@ -42,7 +42,7 @@ import { Error401Component } from './errorhandler/error401/error401.component';
 import { ServiceerrorsComponent } from './errorhandler/serviceerrors/serviceerrors.component';
 
 
-
+import { SharedService } from './shared/shared';
 
 @NgModule({
   declarations: [
@@ -103,7 +103,8 @@ providers: [AuthService,{
     siteKey: '6LeAyiAUAAAAAFBfMpYA4iGyFQssmt99CpCLr8Ru',
   } as RecaptchaSettings,
 },
-BackEndInterceptorService
+BackEndInterceptorService,
+SharedService
 ],
   bootstrap: [AppComponent]
 })

@@ -6,20 +6,20 @@
     <!-- Nav pills -->
     <ul class="nav nav-pills" >
       <li class="nav-item col-6 col-sm-6 col-md-3">
-        <a class="nav-link" [attr.index]="1"  [ngClass]="{'active show': selectedIndex == '1' }"  data-toggle="pill" href="#Equipment">Equipment</a>
+        <a class="nav-link" [attr.index]="1" (click)="getPage('Equipment')" [ngClass]="{'active show': selectedIndex == '1' }"  data-toggle="pill" href="#Equipment">Equipment</a>
       </li>
 
       <li class="nav-item  col-6 col-sm-6 col-md-3"
           *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
 
-        <a class="nav-link" [attr.index]="2"  [ngClass]="{'active show': selectedIndex == '2' }"   data-toggle="pill" href="#Payment">Payment</a>
+        <a class="nav-link" [attr.index]="2"  (click)="getPage('Equipment')" [ngClass]="{'active show': selectedIndex == '2' }"   data-toggle="pill" href="#Payment">Payment</a>
       </li>
       <li class="nav-item col-6 col-sm-6 col-md-3">
-        <a class="nav-link" [attr.index]="3"  [ngClass]="{'active show': selectedIndex == '3' }"  data-toggle="pill" href="#Contract">Contract Status</a>
+        <a class="nav-link" [attr.index]="3" (click)="getPage('Equipment')"  [ngClass]="{'active show': selectedIndex == '3' }"  data-toggle="pill" href="#Contract">Contract Status</a>
       </li>
       <li class="nav-item col-6 col-sm-6 col-md-3"
           *ngIf=" selectedLease['legalStatus']=='Current' || selectedLease['legalStatus']=='Default'">
-        <a class="nav-link" [attr.index]="4"  [ngClass]="{'active show': selectedIndex == '4' }"  data-toggle="pill" href="#Coverage" (click)="ec()">Equipment Coverage</a>
+        <a class="nav-link" [attr.index]="4"  [ngClass]="{'active show': selectedIndex == '4' }"  data-toggle="pill" href="#Coverage" (click)="ec('Equipment Coverage');">Equipment Coverage</a>
       </li>
     </ul>
 

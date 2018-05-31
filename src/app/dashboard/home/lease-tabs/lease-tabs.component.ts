@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges} from '@angular/core';
 import {DashboardServiceService} from '../../dashboard-service.service';
 import { Router } from '@angular/router';
+import { SharedService } from '../../../shared/shared';
 declare var $;
 
 @Component({
@@ -19,7 +20,8 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
   selectedLease = {};
   @Input() selectedIndex;
 
-  constructor(private router:Router,private dashboardService: DashboardServiceService) {
+  constructor(private router:Router,private dashboardService: DashboardServiceService,
+  private sharedService: SharedService) {
   }
   onNavItemClicked(event) {
     this.selectedIndex = event.target.getAttribute("index");
@@ -104,12 +106,19 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
       (data:any) => {
         console.log('Tab Comp::'+ data);
         
+        
       }
     );
-    this.dashboardService.selectedLeaseObj.subscribe(data => {
+    this.dashboardService.selectedLeaseObj.subscribe((data:any) => {
       this.selectedLease = data;
       this.showTabs = true;
       setTimeout(()=>{
+        if(data.legalStatus == 'Default'){
+          this.getPage('Payment');
+        } else {
+          this.getPage('Equipment');
+        }
+       
         this.initToolTip();
         
         
@@ -135,9 +144,14 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
   showAlerts() {
     this.openPopup = true;
   }
-  ec(){
+  ec(value){
+    this.getPage(value);
     if(this.selectedLease['equipmentCoverage'] && this.selectedLease['equipmentCoverage']['equipmentCoverage'] && this.selectedLease['equipmentCoverage']['equipmentCoverage']=='No'){
       this.router.navigate(['/dashboard/epp']);
     }
+  }
+  getPage(value){
+
+    this.sharedService.braedValue.next(value);
   }
 }
