@@ -11,27 +11,31 @@
         </ol>
 
       </div>
+
+
+
+
       <!--wraper for FAQ-->
       <div class="db-inner-box col-12 epp eol ">
         <!--EPP basic Details Starts-->
         <div class="row  ">
-          <div class=" col-12 text-center text-lg-left">
-            <ul class="details">
-              <li>
+          <div class=" col-12  ">
+            <div class="details">
+              <div class="details-inner">
                 <label>Merchant Name:</label>
                 <span>{{merchantName}}</span>
-              </li>
-              <li>
+              </div>
+              <div class="details-inner">
                 <label>
                   Contact Name:</label>
                 <span class="">{{contactName}}</span>
-              </li>
-              <li>
+              </div>
+              <div class="details-inner">
                 <label>Total Monthly EPP:</label>
-                <span class="activeBg"> ${{totalAmt}}.00</span>
-              </li>
+                <span class="activeBg">${{totalAmt}}.00</span>
+              </div>
 
-            </ul>
+            </div>
 
 
           </div>
@@ -67,14 +71,14 @@
 
 
             <!--Epp Lease toggles Starts-->
-           
+
             <div class="row">
               <div class="toggleWrap" *ngIf="leaseData">
                 <div class="pn-wrap">
                   <div class="lease-prev"><img src="/assets/img/lftarrow.svg"></div>
                   <div class="lease-next"><img src="/assets/img/rytarrow.svg"></div>
                 </div>
-                <div class="ca-box-wrap">
+                <div class="epp-box-wrap">
                   <div class="toggle-item-wrap" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }"
                       *ngFor="let item of leaseData" >
                     <div class="leftWrap">
@@ -121,6 +125,7 @@
                      class="check1" value="yes" (change)="onYesNoClicked($event)"/>
               <label for="checkbox1" class="label1"> YES, I choose to enroll in First Data's Equipment Protection
                 Program</label>
+              <div class="clearfix"></div>
 
               <input type="checkbox" [checked]="noModel" [disabled]="checkbox.no" name="option2" id="checkbox2"
                      class="check2" value="no" (change)="onYesNoClicked($event)"/>
@@ -233,10 +238,15 @@
         </div>
         <!--submit but wrap Startss-->
       </div>
+
+
     </div>
 
-    <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" 
+    <!-- <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup"
+               (closeClicked)="closePopup();"> -->
+               <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" (addClicked)="addButtonClicked();"
                (closeClicked)="closePopup();"></epp-popup>
-               <!-- (addClicked)="addButtonClicked();" -->
+
+               <epp-popup *ngIf="showPopup1" [noButtonPopup1]="noButtonPopup1" (closeClicked1)="closePopup1();"></epp-popup>
   </div>
 </div>

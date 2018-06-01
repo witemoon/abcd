@@ -8,10 +8,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class EppPopupComponent implements OnInit {
 
   @Input() showPopup = false;
+  @Input() showPopup1 = false;
   @Input() noButtonPopup = false;
+  @Input() noButtonPopup1 = false;
 
   @Output() addClicked = new EventEmitter();
   @Output() closeClicked = new EventEmitter();
+  @Output() closeClicked1 = new EventEmitter();
 
   constructor() {
   }
@@ -25,5 +28,9 @@ export class EppPopupComponent implements OnInit {
 
   closeButtonClicked() {
     this.closeClicked.emit();
+  }
+
+  closeButtonClicked1() {
+    this.closeClicked1.emit();
   }
 }

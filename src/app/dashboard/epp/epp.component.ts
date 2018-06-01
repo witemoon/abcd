@@ -14,6 +14,7 @@ declare var $;
 export class EppComponent implements OnInit {
   selectedLease = "";
   merchantId = "";
+  email="";
   leaseData = [];
   merchantName='';
   contactName='';
@@ -22,8 +23,10 @@ export class EppComponent implements OnInit {
   coverageRate = 10;
   totalAmt = 0;
   showPopup = false;
+  showPopup1 = false;
   allLeaseSelected = false;
   noButtonPopup = false;
+  noButtonPopup1 = false;
   checked = false;
   checkbox: any = {
     "yes": true,
@@ -33,6 +36,7 @@ export class EppComponent implements OnInit {
   };
 
   closeButtonClicked = false;
+  closeButtonClicked1 = false;
   yesModel = false;
   noModel = false;
   agreeModel = false;
@@ -54,12 +58,13 @@ export class EppComponent implements OnInit {
         this.merchantName= data['responseData']['merchantName'];
         // this.merchantId= data['responseData']['merchantId'];
         this.merchantId = localStorage.getItem("merchantId");
+        this.email = data['responseData']['email']
         console.log("merchantid.........",this.merchantId);
         let leases = data['responseData']['lease'];
         let alltrue = true;
 
         this.dashboardService.getEppByMerchant(this.merchantId).subscribe(res=>{
-         
+
             leases.forEach(item => {
               let tohide= false;
               res['responseData'].forEach(itm=>{
@@ -76,14 +81,14 @@ export class EppComponent implements OnInit {
             if(alltrue){
               this.showeppstatic = true;
             }
-    
+
             this.listenFormGroup();
-            
+
             setTimeout(()=>{
               this.addCarousel();
             }, 100);
         })
-        
+
       }
       this.dataReady = true;
     },err=>{
@@ -94,7 +99,7 @@ export class EppComponent implements OnInit {
   }
 
   addCarousel() {
-      $('.ca-box-wrap').not('.slick-initialized').slick(
+      $('.epp-box-wrap').not('.slick-initialized').slick(
         {
           dots: false,
           speed: 500,
@@ -133,6 +138,20 @@ export class EppComponent implements OnInit {
         }
       );
   }
+
+  // getEppData(){
+  //   var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  //   var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+  //   let d = new Date();
+  //   let startDate = d.getDate() + '-' + mS[d.getMonth()] + '-' + d.getFullYear(); //"20-Apr-2018"
+  //   let endDate = "30-Apr-2018";
+  //   this.dashboardService.getEppData(startDate,endDate).subscribe(res=>{
+  //     console.log('-----epp data received--------',res)
+  //   },err=>{
+  //     console.log('-------epp data not received-----------',err);
+  //   });
+  // }
+
   postEpp(merchantId,payLoadArray){
     let arr = [
       // {
@@ -147,16 +166,17 @@ export class EppComponent implements OnInit {
           arr.push({
             "insCode": "81",
             "leaseNumber": item.leaseNo,
-            "name": this.merchantName,
+            "name": this.contactName,
+            "emailId":this.email,
           })
         }
       })
-      
+
       let payLoad = arr;
       merchantId= this.merchantId;
       console.log("merchantid",merchantId);
     this.dashboardService.postEppData(merchantId,payLoad).subscribe(res=>{
-      
+
       console.log('------post epp data success-----',res)
     },err=>{
       console.log('----- get lease data error-------',err);
@@ -171,11 +191,11 @@ export class EppComponent implements OnInit {
     });
   }
   onYesNoClicked(event) {
-    
+
     if(event.target.value == "yes" && event.target.checked) {
     this.yesModel = true;
     this.noModel = false;
-    
+
     this.checkbox.agree = false;
     this.checkbox.submit = true;
     // if (this.agreeModel) {
@@ -185,10 +205,10 @@ export class EppComponent implements OnInit {
     this.yesModel = false;
     this.checkbox.agree = true;
     this.checkbox.submit = true;
-    
+
     }
-    
-    
+
+
     if (event.target.value == "no" && event.target.checked) {
     this.checkbox.agree = true;
     this.checkbox.submit = true;
@@ -197,29 +217,29 @@ export class EppComponent implements OnInit {
     if( this.noModel = true){
     this.agreeModel = false;
     }
-    
-    this.showPopup = true;
-    this.noButtonPopup = true;
-    
+
+    this.showPopup1 = true;
+    this.noButtonPopup1 = true;
+
     if (this.agreeModel) {
     this.checkbox.submit = true;
     }
     } else if (event.target.value == "no" && !event.target.checked) {
-    this.noButtonPopup = false;
+    this.noButtonPopup1 = false;
     this.noModel = false;
     }
-    
+
     if (event.target.value == "agree" && event.target.checked) {
-    this.agreeModel = event.target.checked ? true : false; 
+    this.agreeModel = event.target.checked ? true : false;
     // if(event.target.value == "agree" && !event.target.checked){
     // this.checkbox.submit = false;
-    
+
     // }
-    
+
     // if(this.agreeModel){
     this.checkbox.submit = false;
     // }
-    
+
     // if (this.yesModel ) {
     // this.checkbox.submit = false;
     // }
@@ -272,7 +292,7 @@ export class EppComponent implements OnInit {
   }
 
   onToggleChange(event) {
-    
+
     if (event.target.checked && !this.allLeaseSelected) {
       console.log("event.....",event.target.value);
       this.selectedLease = event.target.value;
@@ -280,15 +300,37 @@ export class EppComponent implements OnInit {
     }
   }
 
-  // addButtonClicked() {
-  //   this.closeButtonClicked = false;
-  //   this.showPopup = false;
-  //   this.noButtonPopup = false;
-  // }
+  addButtonClicked() {
+    this.closeButtonClicked = false;
+    this.showPopup = false;
+    this.noButtonPopup = false;
+    this.checkbox = {
+      "yes": false,
+      "no": false,
+      "agree": true,
+      "submit": true
+    };
+  }
 
   closePopup() {
     this.closeButtonClicked = true;
     this.showPopup = false;
+    this.checkbox = {
+      "yes": false,
+      "no": false,
+      "agree": true,
+      "submit": true
+    };
+    if ((this.yesModel || this.noModel) && this.agreeModel) {
+      this.checkbox.submit = false;
+    }  
+  }
+
+  closePopup1() {
+    // $(".toggle-item-wrap").removeClass('active'); 
+    this.closeButtonClicked1 = true;
+    this.showPopup1 = false;
+
     this.checkbox = {
       "yes": true,
       "no": true,
@@ -299,9 +341,11 @@ export class EppComponent implements OnInit {
 
     this.leaseData.forEach((value) => {
       $("#"+value.leaseNo).prop("checked", false)
+      
       this.totalAmt = 0;
+      $(".toggle-item-wrap").removeClass('active'); 
     });
-    
+
     if ((this.yesModel || this.noModel) && this.agreeModel) {
       this.checkbox.submit = false;
     }

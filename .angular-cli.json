@@ -20,6 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
+        "./assets/css/bootstrap.css",
         "./assets/css/resp.css",
         "./assets/css/urLease.css",
         "../node_modules/slick-carousel/slick/slick.css",

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardServiceService } from '../dashboard-service.service';
 import { Router } from '@angular/router';
+// import { SharedService } from '../../shared/shared';
 // import { dashboardData } from './dashboard-model';
-
-import { SharedService } from '../../shared/shared';
 
 @Component({
   selector: 'app-home',
@@ -15,18 +14,16 @@ export class HomeComponent implements OnInit {
   equipmentBadgeCount = 0;
   defaultLeaseBadgeCount = 0;
 
-  breadCrumb: any;
-  constructor(private dashboardService: DashboardServiceService, private router:Router,
-  private sharedService: SharedService) { }
+  // breadCrumb: any;
+  constructor(private dashboardService: DashboardServiceService, private router:Router) { }
 
   ngOnInit() {
-
-    this.sharedService.braedValue.asObservable().subscribe(
-      (data:any) => {
-        console.log(data);
-        this.breadCrumb = data;
-      }
-    );
+    // this.sharedService.braedValue.asObservable().subscribe(
+    //   (data:any) => {
+    //     console.log(data);
+    //     this.breadCrumb = data;
+    //   }
+    // );
 
     let leaseArray = [];
     this.dashboardService.getLeaseData("").subscribe(data=>{
@@ -63,7 +60,6 @@ export class HomeComponent implements OnInit {
         this.dashboardService.changeObj({"totalBadgeCount": totalBadgeCount, "totalEquipmentBadgeCount": totalEquipmentBadgeCount, "totalDefaultLeaseBadgeCount": totalDefaultLeaseBadgeCount, "leaseArray": leaseArray });
         this.dashboardService.leaseData.next(data['responseData']);
       }
-      // if(!data){this.router.navigate(['/dashboard/loading']);}
     },err=>{
       console.log('----- get lease data error-------',err);
       if(err['error']['statusCode']=='401'){

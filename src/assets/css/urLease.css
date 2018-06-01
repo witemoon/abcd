@@ -107,7 +107,7 @@ a {
     float: right;
     padding: 30px; } }
 /*Medium devices (tablets, 770px and up)*/
-@media (min-width: 770px) {
+@media (min-width: 769px) {
   .aLeft {
     text-align: left; }
 
@@ -750,7 +750,8 @@ input[type=text], input[type=password] {
   line-height: 16px;
   background-repeat: no-repeat;
   cursor: pointer;
-  padding-left: 26px; }
+  padding-left: 26px;
+  min-height: 17px; }
 
 /*Change CB Sprite Pos*/
 .epp-cb-wrap input[type=checkbox].check1:checked + label.label1,
@@ -882,7 +883,7 @@ input[type=text], input[type=password] {
       font-weight: 900; }
 
 .db-lease-tab-cnt {
-  margin: 20px 0px 25px 0px; }
+  margin: 20px 0px 0px 0px; }
   .db-lease-tab-cnt .card {
     border-radius: 5px;
     -webkit-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.12);
@@ -1240,16 +1241,22 @@ input[type=text], input[type=password] {
   font-family: SimpleSans-Regular, Helvetica, sans-serif; }
   .epp .details {
     padding: 0px;
-    margin: 0px;
-    list-style-type: none; }
-    .epp .details label {
-      font-family: SimpleSans-Regular, Helvetica, sans-serif;
-      font-size: 1rem; }
-    .epp .details span {
-      font-family: SimpleSans-Black, Helvetica, sans-serif;
-      font-size: 1rem; }
-    .epp .details .activeBg {
-      color: #0072ce; }
+    margin: 15px 0px; }
+    .epp .details .details-inner {
+      display: table;
+      clear: both; }
+      .epp .details .details-inner label {
+        font-family: SimpleSans-Regular, Helvetica, sans-serif;
+        font-size: 1rem;
+        width: 110px;
+        text-align: right; }
+      .epp .details .details-inner span {
+        font-family: SimpleSans-Black, Helvetica, sans-serif;
+        font-size: 1rem;
+        min-width: 210px;
+        display: inline-block; }
+      .epp .details .details-inner .activeBg {
+        color: #0072ce; }
   .epp .listWrap {
     background: rgba(97, 99, 101, 0.1);
     font-family: SimpleSans-Bold, Helvetica, sans-serif; }
@@ -1397,21 +1404,6 @@ input[type=text], input[type=password] {
   font-size: 10px;
   color: #535353;
   padding-bottom: 5px; }
-.epp .details {
-  display: inline-block;
-  margin: 15px 0; }
-  .epp .details li {
-    line-height: 1.67; }
-    .epp .details li label {
-      margin-right: 7px;
-      text-align: right;
-      margin-bottom: 0px;
-      width: 106px;
-      display: inline-block;
-      float: left; }
-    .epp .details li span {
-      display: inline-block;
-      float: left; }
 .epp .toggleWrap {
   width: 100%;
   padding: 0px 45px;
@@ -1496,16 +1488,18 @@ input[type=text], input[type=password] {
   font-family: SimpleSans-Bold, Helvetica, sans-serif; }
 .epp .listWrap ul {
   margin-bottom: 10px;
-  margin-top: 10px; }
+  margin-top: 10px;
+  color: #3e3e3e; }
   .epp .listWrap ul li {
     font-family: SimpleSans-Bold, Helvetica, sans-serif;
-    color: #616365;
+    color:#3e3e3e;
     font-size: 10px;
     font-weight: bold;
     line-height: 1.6;
     font-style: normal;
     font-stretch: normal;
-    letter-spacing: normal; }
+    letter-spacing: normal;
+    margin-left: 30%; }
 .epp .ftrtxt {
   font-family: SimpleSans-Regular, Helvetica, sans-serif;
   color: #3e3e3e;
@@ -2213,7 +2207,7 @@ button:focus {
     margin: 0px;
     padding: 0px; }
     .db-lease-tab-btn ul li label {
-      font-family: SimpleSans-Regular, Helvetica, sans-serif;
+      font-family: SimpleSans-Bold, Helvetica, sans-serif;
       color: #616365;
       font-size: 10px;
       font-weight: normal;
@@ -2222,7 +2216,7 @@ button:focus {
       font-stretch: normal;
       letter-spacing: normal; }
     .db-lease-tab-btn ul li span {
-      font-family: SimpleSans-Bold, Helvetica, sans-serif;
+      font-family: SimpleSans-Regular, Helvetica, sans-serif;
       color: #616365;
       font-size: 10px;
       font-weight: normal;
@@ -2421,7 +2415,8 @@ button:focus {
   display: table !important; }
   #alertspop.modal.show .modal-dialog, #paymentpop.modal.show .modal-dialog, #myModal1.modal.show .modal-dialog, #myModal.modal.show .modal-dialog {
     display: table-cell !important;
-    vertical-align: middle !important; }
+    vertical-align: middle !important;
+    padding: 0px 15px; }
     #alertspop.modal.show .modal-dialog .modal-content, #paymentpop.modal.show .modal-dialog .modal-content, #myModal1.modal.show .modal-dialog .modal-content, #myModal.modal.show .modal-dialog .modal-content {
       max-width: 500px;
       margin: 0 auto;
@@ -2554,10 +2549,14 @@ button:focus {
 
 .epp .listWrap.leftWrap ul li {
   margin-left: 30%;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  color: #3e3e3e;
+  font-family: SimpleSans, Helvetica, sans-serif; }
 .epp .listWrap.rightWrap ul li {
   margin-left: 30%;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  color: #616365;
+ }
 
 .fd-dd-mob .dropdown {
   padding-left: 0px; }
@@ -2603,7 +2602,7 @@ button:focus {
   margin: 50px 0px; }
   #alertspop .modal-content .modal-body {
     padding: 0px;
-    margin: 40px 0px; }
+    margin: 21px 0px 40px 0px; }
 #alertspop .cntWrap {
   display: table;
   width: 100%;
@@ -2697,8 +2696,49 @@ button:focus {
     color: #000000;
     margin-bottom: 50px; }
 
+.toggleWrap .epp-box-wrap {
+  max-height: 40px; }
+  .toggleWrap .epp-box-wrap .slick-list .slick-slide {
+    margin-bottom: 0px; }
+
+.slick-slide:focus {
+  outline: none; }
+
+.toggleWrap {
+  position: relative; }
+  .toggleWrap .pn-wrap {
+    position: absolute;
+    left: 0px;
+    top: -50px; }
+    .toggleWrap .pn-wrap img {
+      width: 20px;
+      opacity: .5; }
+
+.db-lease-tab-cnt .tab-pane.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px; }
+
 /*********************************** RWD  STARTS here *********************************/
-@media (min-width: 320px) and (max-width: 770px) {
+@media (min-width: 320px) and (max-width: 769px) {
+  .details .details-inner {
+    margin: 0px auto;
+    width: auto; }
+    .details .details-inner label {
+      font-family: SimpleSans-Regular, Helvetica, sans-serif;
+      font-size: 1rem;
+      width: 110px;
+      text-align: right; }
+    .details .details-inner span {
+      font-family: SimpleSans-Black, Helvetica, sans-serif;
+      font-size: 1rem;
+      display: inline-block; }
+    .details .details-inner .activeBg {
+      color: #0072ce; }
+
+  .txtInnerWrap {
+    margin-top: 0px;
+    padding-top: 0px; }
+
   #Buyout-tooltip.tooltip2 {
     left: -139px;
     top: 28px; }
@@ -2938,9 +2978,6 @@ button:focus {
   #brandLogo {
     padding-top: 50px;
     padding-bottom: 25px; }
-
-  .txtInnerWrap {
-    padding-top: 0px; }
 
   .db-header, .sidenavB {
     top: 60px; }

@@ -1,13 +1,13 @@
-<div class="col logoWrap mobview d-md-none d-block">
+<div class="col logoWrap mobview  d-md-none d-block  ">
 
 
   <div class="mobview-inner ">
     <img class="" src="assets/img/firstdata_logo.svg"></div>
 
 </div>
-<div class="col-12 db-header ">
+<div class="col-12 db-header">
   <div class="row">
-    <div class="col-5 d-md-block d-none logoWrap   ">
+    <div class="col-5 d-md-block d-none logoWrap    ">
       <img class="" src="assets/img/firstdata_logo.svg">
     </div>
     <div class="fd-dd-mob text-center ">
@@ -22,9 +22,13 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
           <button id="trigger3" class="dropdown-item">Clover Capital</button>
-          <div class="tt-outer-wrap mobdrop"><div class="tt-wrap"><span id="tp3" placement="bottom" style="display: none;">Coming Soon</span></div> </div>
+          <div class="tt-outer-wrap mobdrop">
+            <div class="tt-wrap"><span id="tp3" placement="bottom" style="display: none;">Coming Soon</span></div>
+          </div>
           <button id="trigger4" class="dropdown-item">Advanced Same Day Funding</button>
-          <div class="tt-outer-wrap mobdrop"><div class="tt-wrap"><span id="tp4" placement="bottom" style="display: none;">Coming Soon</span></div> </div>
+          <div class="tt-outer-wrap mobdrop">
+            <div class="tt-wrap"><span id="tp4" placement="bottom" style="display: none;">Coming Soon</span></div>
+          </div>
         </div>
       </div>
 
@@ -35,7 +39,7 @@
 
       <div class="clearfix"></div>
 
-      <div class=" but-wrap d-md-block d-sm-none d-none ">
+      <div class=" but-wrap  d-none d-md-block">
 
 
         <!--tooltip One Starts-->
@@ -86,9 +90,9 @@
 
 <!-- -------------alerts popup------------------- -->
 <div *ngIf="alertCount.totalBadgeCount">
-    <alerts-popup
-      [(showPopup)]="openPopup"
-      [equipmentLeaseCount]="alertCount.totalEquipmentCount"
-      [defaultLeaseCount]="alertCount.totalDefaultBadgeCount"
-    ></alerts-popup>
+  <alerts-popup
+    [(showPopup)]="openPopup"
+    [equipmentLeaseCount]="alertCount.totalEquipmentCount"
+    [defaultLeaseCount]="alertCount.totalDefaultBadgeCount"
+  ></alerts-popup>
 </div>

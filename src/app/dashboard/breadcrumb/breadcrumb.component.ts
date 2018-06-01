@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../shared/shared';
 
 @Component({
   selector: 'breadcrumb',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./breadcrumb.component.css']
 })
 export class BreadcrumbComponent implements OnInit {
-
-  constructor() { }
+  breadCrumb: any;
+  constructor(private sharedService:SharedService) { }
 
   ngOnInit() {
+    this.sharedService.braedValue.asObservable().subscribe(
+      (data:any) => {
+        console.log(data);
+        this.breadCrumb = data;
+      }
+    );
   }
 
 }

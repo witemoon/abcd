@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DashboardServiceService } from '../../dashboard-service.service';
+import { SharedService } from '../../../shared/shared';
 // import { dashboardData } from '../dashboard-model';
-import {SharedService} from '../../../shared/shared';
 declare var $;
 
 @Component({
@@ -105,9 +105,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
   emitSelectedLeaseObj(selectedLease) {
     console.log(selectedLease);
     this.dashboardService.selectedLeaseObj.next(selectedLease);
-    this.dashboardService.selectedCard.next(selectedLease);
   }
-
   getPage(value){
     this.sharedService.braedValue.next(value);
   }
