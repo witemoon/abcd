@@ -20,6 +20,7 @@ import { SignchangepassComponent } from '../auth/new/signchangepass/signchangepa
 import { SignthankComponent } from '../auth/new/signthank/signthank.component';
 import { Error401Component } from '../errorhandler/error401/error401.component';
 import { ServiceerrorsComponent } from '../errorhandler/serviceerrors/serviceerrors.component';
+import { CookiesDisclosureComponent } from '../cookies-disclosure/cookies-disclosure.component';
 
 const appRoutes: Routes = [
 
@@ -75,14 +76,18 @@ const appRoutes: Routes = [
     path: 'dashboard',
     loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
   },
-{
-  path:'error401',
-  component: Error401Component
-},
-{
-  path:'serviceerrors',
-  component: ServiceerrorsComponent
-},
+  {
+    path:'error401',
+    component: Error401Component
+  },
+  {
+    path:'serviceerrors',
+    component: ServiceerrorsComponent
+  },
+  {
+    path:'cookiesdisclosure',
+    component: CookiesDisclosureComponent
+  },
   {
     path: '**',
     component: ServiceerrorsComponent

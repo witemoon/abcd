@@ -41,6 +41,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { Error401Component } from './errorhandler/error401/error401.component';
 import { ServiceerrorsComponent } from './errorhandler/serviceerrors/serviceerrors.component';
 import { SharedService } from './shared/shared';
+import { CookiesDisclosureComponent } from './cookies-disclosure/cookies-disclosure.component';
 
 
 
@@ -79,7 +80,9 @@ import { SharedService } from './shared/shared';
 
     Error401Component,
 
-    ServiceerrorsComponent
+    ServiceerrorsComponent,
+
+    CookiesDisclosureComponent
 
 
 

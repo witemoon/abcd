@@ -17,7 +17,7 @@
 
               <!--ee-->
 
-              <form #changePass="ngForm" (submit)="changePassword(changePass)">
+              <form autocomplete="off" #changePass="ngForm" (submit)="changePassword(changePass)">
                 <div class="form-group">
                   <input
                     type="password"
@@ -29,12 +29,13 @@
                     #tempPass="ngModel"
                     #tmpPass
                     pattern="Photon123"
+                    (blur)="onInputBlur($event);"
                   >
-                  <div *ngIf="!tempPass.valid">
+                  <!-- <div *ngIf="!tempPass.valid"> -->
                     <div class="fd-error" (click)="validationError.tempPasswordError = false"
-                         *ngIf="validationError.tempPasswordError">Incorrect temporary password
+                    *ngIf="validationError.tempPasswordError && submitted">Incorrect temporary password
                     </div>
-                  </div>
+                  <!-- </div> -->
 
                 </div>
                 <div class="form-group">
@@ -47,8 +48,10 @@
                     required
                     maxlength="25"
                     minlength="8"
-                    (blur)="showError = false" (focus)="validate($event)"
+                    #pass
+                    (focus)="validate($event)"
                     [formControl]="passwordFC"
+                    (blur)="onInputBlur($event);"
                   >
 
 
@@ -88,7 +91,7 @@
 
                   <div *ngIf="validationError.newPasswordError">
                     <div class="fd-error" (click)="validationError.newPasswordError = false"
-                         *ngIf="validationError.newPasswordError">Incorrect password format
+                    *ngIf="validationError.newPasswordError && submitted">Incorrect password format
                     </div>
                   </div>
                 </div>
@@ -104,27 +107,31 @@
                     validateEqual="passwordNew"
                     #confPassword="ngModel"
                     #cPass
+                    (blur)="onInputBlur($event);"
                   >
 
                   <div *ngIf="validationError.confirmPasswordError">
                     <div class="fd-error" (click)="validationError.confirmPasswordError = false"
-                         *ngIf="validationError.confirmPasswordError">Passwords do not match
+                    *ngIf="validationError.confirmPasswordError  && submitted">Passwords do not match
                     </div>
                   </div>
 
 
                 </div>
-                <div class="form-group">
-                  <re-captcha
-                    #captchaRef
-                    name="captcha"
-                    required
-                    ngModel></re-captcha>
-                </div>
-                <button type="submit"
-                        class="btnSubmit btn btn-primary btn-lg btn-block"
-                >Submit
-                </button>
+                <div class="form-group cWrap">
+                    <re-captcha
+                      #captchaRef
+                      name="captcha"
+                      required
+                      ngModel
+                      (resolved)="captchaResolved()"
+                      ngModel></re-captcha>
+                  </div>
+                  <button type="submit" 
+                  [disabled]="!passwordValid"
+                  class="btnSubmit btn btn-primary btn-lg btn-block">
+                  Submit
+          </button>
 
 
               </form>
