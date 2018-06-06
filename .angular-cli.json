@@ -25,6 +25,7 @@
         "./assets/css/urLease.css",
         "../node_modules/slick-carousel/slick/slick.css",
         "../node_modules/slick-carousel/slick/slick-theme.css"
+        
       ],
       "scripts": [
         "script.js",
