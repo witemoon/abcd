@@ -32,10 +32,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     });  
     $('#trigger3').on('click touch', function(){
       $('#tp3').show();
+      $('#tp4').hide();
       $('#trigger3').css({'background-color': '#0072ce' , color : '#fff' });
       event.stopPropagation();
     });  
     $('#trigger4').on('click touch', function(){
+      $('#tp3').hide();
       $('#tp4').show();
       $('#trigger4').css({'background-color': '#0072ce' , color : '#fff' });
       event.stopPropagation();

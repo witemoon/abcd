@@ -2,7 +2,7 @@ import {Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges} from 
 import {DashboardServiceService} from '../../dashboard-service.service';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../shared/shared';
-declare var $;
+declare var $: any;
 
 @Component({
   selector: 'lease-tabs',
@@ -67,6 +67,7 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
           }
       });
     }
+    
   //   eqpCarousel() {
   //     $('.ca-box-wrap').not('.slick-initialized').slick(
   //       {
@@ -110,6 +111,7 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
 
  
   ngOnInit() {
+    $.getScript('./assets/js/main.js');
     this.dashboardService.selectedLeaseObj.subscribe((data:any) => {
       this.selectedLease = data;
       this.showTabs = true;
