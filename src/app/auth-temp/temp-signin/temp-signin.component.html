@@ -12,26 +12,26 @@
 
             <div class="tab-pane fade show active" id="signup" role="tabpanel"
                  aria-labelledby="signup-tab">
-                 <div *ngIf="showError; else show ">
-                    <p  class="loginDesc fd-bld">Your email or password is incorrect!</p>
-                 </div>
+              <div *ngIf="showError; else show ">
+                <p class="loginDesc fd-bld">Your email or password is incorrect!</p>
+              </div>
 
-                 <ng-template #show>
-                  <p class="loginDesc ">  Please complete all fields below</p>
-                 </ng-template>
+              <ng-template #show>
+                <p class="loginDesc "> Please complete all fields below</p>
+              </ng-template>
 
               <!-- Sign In form -->
               <form #tempSignIn="ngForm" (submit)="tempSignInUser(tempSignIn)">
 
                 <div class="form-group emailWrap">
                   <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Email"                 
-                  required
-                  name="email"
-                  [(ngModel)] ="email"
-                   
+                    type="text"
+                    class="form-control"
+                    placeholder="Email"
+                    required
+                    name="email"
+                    [(ngModel)]="email"
+
                   >
 
                 </div>
@@ -51,25 +51,33 @@
 
                 <button type="submit"
 
-                class="btnSubmit btn btn-primary btn-lg btn-block"
+                        class="btnSubmit btn btn-primary btn-lg btn-block"
                         [disabled]="!tempSignIn.valid">Sign In
                 </button>
 
 
-
               </form>
               <!-- end of form -->
-              
+
             </div>
           </div>
 
 
         </div>
       </div>
+
+
     </div>
+
+  </div>
+  <div class="row">
     <div class="cookies-wrap">
-      <p> 2017-2018 First Data Corporation. All Rights Reserved.<a href="https://www.firstdata.com/en_us/privacy.html" target="blank">Privacy Policy.</a></p>
-       <p>This site uses cookies. By continuing to browse the site you are agreeing to our <a target="blank" [routerLink]="['/cookiesdisclosure']">Cookie Policy.</a></p></div>
+      <p> 2017-2018 First Data Corporation. All Rights Reserved.&nbsp;<a href="https://www.firstdata.com/en_us/privacy.html"
+                                                                   target="blank">Privacy Policy.</a></p>
+      <p>This site uses cookies. By continuing to browse the site you are agreeing to our <a target="target"
+                                                                                             [routerLink]="['/cookiesdisclosure']">Cookie
+        Policy.</a></p>
+    </div>
   </div>
 </div>
 

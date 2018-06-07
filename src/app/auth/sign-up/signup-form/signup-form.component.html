@@ -69,7 +69,7 @@
 
         <!-- end of sign IN form-->
       </div>
-      
+
 
       <!-- Start of signUP form -->
 
@@ -110,12 +110,12 @@
               required
               #refrenceNumber="ngModel"
               (keypress)="onInputKeyUp($event)"
-              (paste)="onInputKeyUp($event)"              
+              (paste)="onInputKeyUp($event)"
               >
-            
-            <div 
-            class="fd-error" 
-            (click)="errorResponse.incorrectRefKey =false"        
+
+            <div
+            class="fd-error"
+            (click)="errorResponse.incorrectRefKey =false"
             *ngIf="errorResponse.incorrectRefKey">
           Incorrect Reference Key!</div>
           </div>
@@ -138,19 +138,19 @@
             <input
               type="text"
               class="form-control "
-              placeholder="Lease Number"        
-              name="leaseNumber"           
-              #leaseNumber="ngModel"              
-              ngModel        
+              placeholder="Lease Number"
+              name="leaseNumber"
+              #leaseNumber="ngModel"
+              ngModel
               required
               (keyup)="onInputKeyUp($event)"
               >
-            <div class="fd-error"              
-            (click)="errorResponse.incorrectLeaseNo = false" 
+            <div class="fd-error"
+            (click)="errorResponse.incorrectLeaseNo = false"
             *ngIf="errorResponse.incorrectLeaseNo"
             >Incorrect Lease Number!</div>
           </div>
-<!-- 
+<!--
           <div class="form-group">
             <input
               type="text"
@@ -169,12 +169,12 @@
               type="text"
               class="form-control "
               placeholder="Merchant DBA"
-              name = "merchantDBA"      
-              ngModel         
+              name = "merchantDBA"
+              ngModel
               required
               #merchantDBA="ngModel"
               >
-            <div class="fd-error"         
+            <div class="fd-error"
             (click)="errorResponse.incorrectMerchant = false"
             *ngIf="errorResponse.incorrectMerchant"
             >Incorrect Merchant DBA!</div>
@@ -214,7 +214,6 @@
     </div>
 
   </div>
-  <div class="cookies-wrap">
-    <p> 2017-2018 First Data Corporation. All Rights Reserved.<a href="https://www.firstdata.com/en_us/privacy.html" target="blank">Privacy Policy.</a></p>
-     <p>This site uses cookies. By continuing to browse the site you are agreeing to our <a target="blank" [routerLink]="['/cookiesdisclosure']">Cookie Policy.</a></p></div>
+
 </div>
+
