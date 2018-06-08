@@ -20,3 +20,8 @@
   width: 520px;
     height: 90%;
 }
+#Equipment .cus-card:nth-child(odd){
+
+    border:1px solid red;
+}
+

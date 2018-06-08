@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DashboardServiceService } from '../../dashboard-service.service';
 import { SharedService } from '../../../shared/shared';
 // import { dashboardData } from '../dashboard-model';
-declare var $: any;
+declare var $;
 
 @Component({
   selector: 'lease-block',
@@ -50,47 +50,46 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour);
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
-      $.getScript('/assets/js/main.js');
-      // $(document).ready(function(){
-      //   $('.ca-box-wrap').not('.slick-initialized').slick(
-      //     {
-      //       dots: false,
-      //       speed: 500,
-      //       prevArrow:$('.lease-prev'),
-      //       nextArrow:$('.lease-next'),
-      //       slidesToShow:4,
-      //       slidesToScroll:1,
-      //       infinite: false,
-      //       variableWidth: true,
-      //       vertical:false,
-      //       responsive: [
-      //         {
-      //           breakpoint: 1024,
-      //           settings: {
-      //             slidesToShow: 3,
-      //             slidesToScroll: 3,
-      //             infinite: false,
-      //             dots: false
-      //           }
-      //         },
-      //         {
-      //           breakpoint: 600,
-      //           settings: {
-      //             slidesToShow: 2,
-      //             slidesToScroll: 2
-      //           }
-      //         },
-      //         {
-      //           breakpoint: 480,
-      //           settings: {
-      //             slidesToShow: 1,
-      //             slidesToScroll: 1
-      //           }
-      //         }
-      //       ]
-      //     }
-      //   );
-      // });
+      $(document).ready(function(){
+        $('.ca-box-wrap').not('.slick-initialized').slick(
+          {
+            dots: false,
+            speed: 500,
+            prevArrow:$('.lease-prev'),
+            nextArrow:$('.lease-next'),
+            slidesToShow:4,
+            slidesToScroll:1,
+            infinite: false,
+            variableWidth: true,
+            vertical:false,
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                  infinite: false,
+                  dots: false
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+            ]
+          }
+        );
+      });
     });
   }
 

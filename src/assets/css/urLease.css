@@ -1851,6 +1851,9 @@ ul.lft-icon-wrap li.active {
   transition: 0.2s;
   /* 0.5 second transition effect to slide in the sidenav */ }
 
+.sidenav.ctrlWidthLft .lft-but-wrap .loginname {
+  width: 160px; }
+
 .sidenavB {
   height: 60px;
   /* 100% Full-height */
@@ -2837,6 +2840,112 @@ button:focus {
 .cookies-wrap.thanks {
   position: relative; }
 
+.loaderpop-inner {
+  background: white;
+  overflow: hidden;
+  width: 270px;
+  height: 150px;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding-top: 35px;
+  margin: 0 auto; }
+  .loaderpop-inner p {
+    text-align: center;
+    font-family: SimpleSans-Regular, Helvetica, sans-serif;
+    color: #0072ce;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    margin-top: 5px; }
+
+.loaderpop-inner-cnt {
+  position: relative;
+  overflow: hidden;
+  width: 41px;
+  height: 41px;
+  margin: 0 auto; }
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px; }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    border-color: transparent #0070cd transparent #0070cd;
+    -webkit-animation: lds-dual-ring 1.5s linear infinite;
+            animation: lds-dual-ring 1.5s linear infinite; }
+
+.lds-dual-ring-s {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 4px;
+  top: 4px; }
+  .lds-dual-ring-s:after {
+    content: " ";
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #28b22e;
+    border-color: #28b22e transparent #28b22e transparent;
+    -webkit-animation: lds-dual-ring-s 1.5s linear infinite;
+            animation: lds-dual-ring-s 1.5s linear infinite; }
+
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+@-webkit-keyframes lds-dual-ring-s {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg); } }
+@keyframes lds-dual-ring-s {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg); } }
+#loaderModal .modal-dialog {
+  display: table;
+  width: 100% !important;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  max-width: 100% !important; }
+  #loaderModal .modal-dialog .loaderpop {
+    display: table-cell;
+    width: 270px;
+    vertical-align: middle; }
+
 /*********************************** RWD  STARTS here *********************************/
 @media (min-width: 320px) and (max-width: 769px) {
   .cookies-wrap {
@@ -3386,5 +3495,4 @@ button:focus {
     height: 44px; } }
 @-moz-document url-prefix() {}
 /*********************************** sidebar ENDS here *********************************/
-
 /*# sourceMappingURL=urLease.css.map */
