@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardServiceService } from './dashboard-service.service';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared/shared';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,13 +11,16 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private dashboardService:DashboardServiceService, private authService:AuthService, private router:Router) { }
+  constructor(private sharedService:SharedService, private dashboardService:DashboardServiceService, private authService:AuthService, private router:Router) { }
 
+  // loaderStatus = false;
   ngOnInit() {
+    // this.loaderStatus = true;
     let referenceKey = this.authService.currentReferenceKey;
     this.dashboardService.getLeaseData("").subscribe(data=>{
     console.log('-----lease data received-------',data);
     this.dashboardService.leaseData.next(data['responseData']);
+    // this.loaderStatus = false;
     },err=>{
       console.log('----- get lease data error-------',err);
       if(err['error']['statusCode']=='401'){
@@ -27,6 +31,8 @@ export class DashboardComponent implements OnInit {
         console.log("from dashboard",window.location.href)
         this.router.navigate(['/user/signin']);
       }
+
+      // this.loaderStatus = false;
     });
   }
 }

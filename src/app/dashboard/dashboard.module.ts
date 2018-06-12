@@ -24,6 +24,7 @@ import { AddCommaPipe, Is_Greater_Than_Current_Date } from './dashboard-pipe';
 import { EppthankComponent } from './epp/eppthank/eppthank.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EppstaticComponent } from './epp/eppstatic/eppstatic.component';
+import { OwlModule } from 'ngx-owl-carousel';
 
 const dashboardRoute: Routes = [
   { path: '', component: DashboardComponent,
@@ -41,6 +42,7 @@ const dashboardRoute: Routes = [
 
 @NgModule({
   imports: [
+    OwlModule,
     CommonModule,
     RouterModule.forChild(dashboardRoute),
     ReactiveFormsModule,

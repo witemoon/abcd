@@ -1,7 +1,8 @@
-import {Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, Input, AfterViewInit, OnChanges,ViewChild, SimpleChanges} from '@angular/core';
 import {DashboardServiceService} from '../../dashboard-service.service';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../shared/shared';
+import {OwlCarousel} from 'ngx-owl-carousel';
 declare var $;
 
 @Component({
@@ -10,6 +11,8 @@ declare var $;
   styleUrls: ['./lease-tabs.component.css']
 })
 export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
+
+  @ViewChild('owlElement') owlElement: OwlCarousel;
   
   ngOnChanges(changes: SimpleChanges): void {
    
@@ -67,46 +70,46 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
           }
       });
     }
-    eqpCarousel() {
-      $('.ca-box-wrap').not('.slick-initialized').slick(
-        {
-          dots: false,
-          speed: 500,
-          prevArrow:$('.lease-prev'),
-          nextArrow:$('.lease-next'),
-          slidesToShow:4,
-          slidesToScroll:1,
-          infinite: false,
-          variableWidth: true,
-          vertical:false,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: false,
-                dots: false
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-              }
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
-        }
-      );
-  }
+  //   eqpCarousel() {
+  //     $('.ca-box-wrap').not('.slick-initialized').slick(
+  //       {
+  //         dots: false,
+  //         speed: 500,
+  //         prevArrow:$('.lease-prev'),
+  //         nextArrow:$('.lease-next'),
+  //         slidesToShow:4,
+  //         slidesToScroll:1,
+  //         infinite: false,
+  //         variableWidth: true,
+  //         vertical:false,
+  //         responsive: [
+  //           {
+  //             breakpoint: 1024,
+  //             settings: {
+  //               slidesToShow: 3,
+  //               slidesToScroll: 3,
+  //               infinite: false,
+  //               dots: false
+  //             }
+  //           },
+  //           {
+  //             breakpoint: 600,
+  //             settings: {
+  //               slidesToShow: 2,
+  //               slidesToScroll: 2
+  //             }
+  //           },
+  //           {
+  //             breakpoint: 480,
+  //             settings: {
+  //               slidesToShow: 1,
+  //               slidesToScroll: 1
+  //             }
+  //           }
+  //         ]
+  //       }
+  //     );
+  // }
 
  
   ngOnInit() {

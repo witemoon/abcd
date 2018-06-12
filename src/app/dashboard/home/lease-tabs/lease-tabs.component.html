@@ -58,22 +58,28 @@
             </div>
 
             <div class="card-body">
-                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
+              <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                  <div class="carousel-inner" role="listbox">
 
                       <div class="carousel-item active">
                         <div class="row">
                           <div class="col-10 offset-1">
 
 
-                        <div class="row">
-                            <div class="pn-wrap">
+                        <div class="">
+                            <!-- <div class="pn-wrap">
                                 <div class="lease-prev"><img src="/assets/img/lftarrow.svg"></div>
                                 <div class="lease-next"><img src="/assets/img/rytarrow.svg"></div>
-                              </div>
-                            <div class="ca-box-wrap">
-
-                          <div class=" eqptest col-12 col-md-6 "
+                              </div>-->
+                            <!-- <div class=""> -->
+                              <owl-carousel
+                              [options]="{items: 3, dots: true, nav: true, responsive: { '0': {  items: 1, margin:2 },
+                              '480': { items: 1, margin:2 },
+            '640': { items: 2 }
+                         }, autoWidth: true, center:true}"
+                            [items]="selectedLease.equipments"
+                            [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                          <div class="item"
                                *ngFor="let item of selectedLease['equipments'];"
                           >
 
@@ -103,6 +109,7 @@
 
                             </div>
                             </div>
+                          </owl-carousel>
                           </div>
                         </div>
 
@@ -129,7 +136,7 @@
           </div>
 
 
-        </div>
+        
         <!--Payment Tab Cnt starts-->
         <div class="tab-pane container-fluid"  [ngClass]="{'active show': selectedIndex == '2' }" id="Payment">
           <div class="card">
@@ -424,12 +431,10 @@
         </div>
 
         <br><br>
-
+      </div>
       </div>
 
     </div>
 
   </div>
-</div>
-<!-- ------------------ payment-help-popup ------------------- -->
 <payment-help-popup></payment-help-popup>

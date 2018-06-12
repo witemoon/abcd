@@ -1,4 +1,14 @@
 <div class="col-12 db-inner-wrap   ">
+    <div class="loaderpop" id="" *ngIf="loaderStatus">
+        <div class="loaderpop-inner">
+          <div class="loaderpop-inner-cnt">
+            <div class="lds-dual-ring"></div>
+            <div class="lds-dual-ring-s"></div>
+          </div>
+          <p>Loading...</p>
+      
+        </div>
+      </div>
   <breadcrumb></breadcrumb>
   <lease-block></lease-block>
   <lease-detail></lease-detail>

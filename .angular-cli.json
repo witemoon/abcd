@@ -19,6 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/owl.carousel/dist/assets/owl.carousel.css",
+        "../node_modules/owl.carousel/dist/assets/owl.theme.default.css",
         "styles.css",
         "./assets/css/bootstrap.css",
         "./assets/css/resp.css",
@@ -29,7 +31,8 @@
       "scripts": [
         "script.js",
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/slick-carousel/slick/slick.min.js"
+        "../node_modules/slick-carousel/slick/slick.min.js",
+        "../node_modules/owl.carousel/dist/owl.carousel.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
