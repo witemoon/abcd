@@ -104,7 +104,16 @@ export class SignupFormComponent implements OnInit {
             this.errorResponse.incorrectMerchant = errMessage.includes("merchant dba") ? true : false;
             signUpForm.resetForm();
             this.errorToStat.emit(error.error.message);
+            
           }
+          if((error['error']['statusCode'] ==='500' && !error['error']['message'].includes("locked")) || error['error']['statusCode'] ==='501'|| error['error']['statusCode'] === '503'){
+            this.router.navigate(['/serviceerrors']);
+            }
+            
+            if(error['error']['statusCode'] ==='500' && error['error']['message'].includes("locked")){
+            this.errorToStat.emit(error.error.message);
+            }
+        
         });
     }
   }
@@ -179,6 +188,10 @@ export class SignupFormComponent implements OnInit {
    },error=>{
     this.signInError = true;
     console.log('regular signin faild',error);
+    if(error['error']['statusCode']=='500' || error['error']['statusCode']=='501'|| error['error']['statusCode']=='503'|| error['error']['statusCode']=='504'){
+      console.log('-------error code 500,501,503,504--------redirect here----')
+      this.router.navigate(['/serviceerrors']);
+    }
    });
   }
 

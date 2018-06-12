@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
         console.log('-------error code 401--------redirect here----')
         this.router.navigate(['/error401']);
       }
-        if(err['error']['statusCode']=='500'|| err['error']['statusCode']=='501' || err['error']['statusCode']=='503'){
+        if(err['error']['statusCode']=='500'|| err['error']['statusCode']=='501' || err['error']['statusCode']=='503'|| err['error']['statusCode']=='504'){
         console.log("from dashboard",window.location.href)
         this.router.navigate(['/user/signin']);
       }

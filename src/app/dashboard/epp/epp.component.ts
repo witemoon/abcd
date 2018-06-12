@@ -184,8 +184,8 @@ export class EppComponent implements OnInit {
         console.log('-------error code 401--------redirect here----')
         this.router.navigate(['/error401']);
       }
-      if(err['error']['statusCode']=='500' || err['error']['statusCode']=='501'|| err['error']['statusCode']=='503'){
-        console.log('-------error code 500,501,503--------redirect here----')
+      if(err['error']['statusCode']=='500' || err['error']['statusCode']=='501'|| err['error']['statusCode']=='503' || err['error']['statusCode']=='504'){
+        console.log('-------error code 500,501,503,504--------redirect here----')
         this.router.navigate(['/serviceerrors']);
       }
     });
