@@ -31,62 +31,75 @@ export class ChangeTempPassComponent implements OnInit {
     "newPasswordError": false,
     "confirmPasswordError": false
   };
-  email:string;
-  constructor(private router:Router, private authService:AuthService, private activatedRoute:ActivatedRoute) {
+  email: string;
+  constructor(private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute) {
     this.authService.setToken("");
-   }
- 
+  }
+
   ngOnInit() {
 
-   if(!this.authService.currentEmail){
-   
-      this.activatedRoute.queryParams.subscribe(
-        data => {this.email =data.email
-         console.log('queryParams', data['email'])
-         let encodedName = encodeURI(data['email']);       
-         let str = encodedName.replace("%20","%2B");         
-         let encodedURI = decodeURI(str);           
-        this.email= decodeURIComponent(str);
-        }); 
-      }else{      
-        this.email = this.authService.currentEmail     
-      }
+    if (!this.authService.currentEmail) {
 
-    this.passwordFC.valueChanges.subscribe(value=>{
-      if(this.hasLowerCase(value) && this.hasUpperCase(value)){
+      this.activatedRoute.queryParams.subscribe(
+        data => {
+          this.email = data.email
+          console.log('queryParams', data['email'])
+          let encodedName = encodeURI(data['email']);
+          let str = encodedName.replace("%20", "%2B");
+          let encodedURI = decodeURI(str);
+          this.email = decodeURIComponent(str);
+        });
+    } else {
+      this.email = this.authService.currentEmail
+    }
+
+    this.passwordFC.valueChanges.subscribe(value => {
+      if (this.hasLowerCase(value) && this.hasUpperCase(value)) {
         this.upperAndLowerCase = true;
-      }else{
+
+      } else {
         this.upperAndLowerCase = false;
       }
-      if(this.hasNumber(value)){
+      if (this.hasNumber(value)) {
         this.number = true;
       }
-      else{
+      else {
         this.number = false;
       }
-      if(this.hasSpecialChar(value)){
+      if (this.hasSpecialChar(value)) {
         this.splChar = true;
       }
-      else{
+      else {
         this.splChar = false;
       }
-      if(value.length>8){
+      if (value.length > 8) {
         this.eightChar = true;
-      }else{
+      } else {
         this.eightChar = false;
       }
+
+      if (this.upperAndLowerCase && this.number && this.splChar && this.eightChar) {
+        setTimeout(() => {    //<<<---    using ()=> syntax
+          this.showError = false;
+        }, 500);
+
+      } else if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
+        event) {
+        this.showError = true;
+      }
+
     });
   }
-  encryption(encryptVal){
+  encryption(encryptVal) {
     let str = btoa(encryptVal);
-    console.log("str",str)
+    console.log("str", str)
     let data = [];
-    for (var i = 0; i < str.length; i++){ 
-    data.push(str.charCodeAt(i));
+    for (var i = 0; i < str.length; i++) {
+      data.push(str.charCodeAt(i));
     }
-    console.log("data",data)
+    console.log("data", data)
     return data;
-    }
+  }
 
   onInputBlur(event) {
     this.showError = false;
@@ -101,55 +114,56 @@ export class ChangeTempPassComponent implements OnInit {
     } else {
       this.passwordValid = false;
     }
-        
-        // if (this.tmpPass.nativeElement.value.length < 8) {
-        //   this.validationError.tempPasswordError = true;
-        // }
 
-        if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
-              event && event.target.name == "passwordNew") {
-            this.validationError.newPasswordError = true;
-            this.submitted = false;
-        } else if (event && event.target.name == "passwordNew"){
-          this.validationError.newPasswordError = false;
-        }
+    // if (this.tmpPass.nativeElement.value.length < 8) {
+    //   this.validationError.tempPasswordError = true;
+    // }
 
-        if ((this.passwordFC.value != this.cPass.nativeElement.value) && 
-            (event && event.target.name == "confPassword")) {
-          this.validationError.confirmPasswordError = true;
-          this.submitted = false;
-        } else if (event && event.target.name == "confPassword") {
-          this.validationError.confirmPasswordError = false;
-        }
 
-        // if (!this.validationError.newPasswordError &&
-        //       (event && event.target.name == "confPassword") &&
-        //       event.target.value != this.passwordFC.value) {
-        //     this.validationError.confirmPasswordError = true;
-        // }
+    if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
+      event && event.target.name == "passwordNew") {
+      this.validationError.newPasswordError = true;
+      this.submitted = false;
+    } else if (event && event.target.name == "passwordNew") {
+      this.validationError.newPasswordError = false;
+    }
+
+    if ((this.passwordFC.value != this.cPass.nativeElement.value) &&
+      (event && event.target.name == "confPassword")) {
+      this.validationError.confirmPasswordError = true;
+      this.submitted = false;
+    } else if (event && event.target.name == "confPassword") {
+      this.validationError.confirmPasswordError = false;
+    }
+
+    // if (!this.validationError.newPasswordError &&
+    //       (event && event.target.name == "confPassword") &&
+    //       event.target.value != this.passwordFC.value) {
+    //     this.validationError.confirmPasswordError = true;
+    // }
   }
 
   captchaResolved() {
     this.captchaSelected = true;
     this.onInputBlur("");
   }
-  
 
-  changePassword(changePass){
 
-   var tempPass = changePass.value.tempPass;
-   var newPass = this.passwordFC.value;
-   var cnfPass = changePass.value.confPassword;
-   
-  //  if (tempPass == ""){
-  //     this.validationError.tempPasswordError = true;
-  //  } else if (!newPass && !cnfPass && !tempPass) {
-    
-  //    this.validationError.tempPasswordError = true;
-  //    this.validationError.confirmPasswordError = true;
-  //    this.validationError.newPasswordError = true;
-  //    this.captcha.reset();
-  //  } else if(newPass && cnfPass && (newPass == cnfPass)){
+  changePassword(changePass) {
+
+    var tempPass = changePass.value.tempPass;
+    var newPass = this.passwordFC.value;
+    var cnfPass = changePass.value.confPassword;
+
+    //  if (tempPass == ""){
+    //     this.validationError.tempPasswordError = true;
+    //  } else if (!newPass && !cnfPass && !tempPass) {
+
+    //    this.validationError.tempPasswordError = true;
+    //    this.validationError.confirmPasswordError = true;
+    //    this.validationError.newPasswordError = true;
+    //    this.captcha.reset();
+    //  } else if(newPass && cnfPass && (newPass == cnfPass)){
     tempPass = this.encryption(tempPass);
     newPass = this.encryption(newPass);
     cnfPass = this.encryption(cnfPass);
@@ -159,12 +173,12 @@ export class ChangeTempPassComponent implements OnInit {
       "confirmPassword": cnfPass,
       "emailId": '' + this.email,
     };
-    
-    this.authService.changePassword(payLoad).subscribe(res=>{
-      if(res['status']=='Success'){
+
+    this.authService.changePassword(payLoad).subscribe(res => {
+      if (res['status'] == 'Success') {
         this.router.navigate(['/user/signin']);
       }
-    },err=>{
+    }, err => {
       this.submitted = true;
       this.captcha.reset();
       this.captchaSelected = false;
@@ -176,20 +190,20 @@ export class ChangeTempPassComponent implements OnInit {
       if (err.error.message.includes("correct")) {
         this.validationError.tempPasswordError = true;
       }
-      
+
       this.pass.nativeElement.value = this.validationError.newPasswordError ? "" : this.passwordFC.value;
-      this.cPass.nativeElement.value =  this.validationError.confirmPasswordError ? "" : this.cPass.nativeElement.value;
-      console.log('change paswword service failed',err);
+      this.cPass.nativeElement.value = this.validationError.confirmPasswordError ? "" : this.cPass.nativeElement.value;
+      console.log('change paswword service failed', err);
     })
-  //  } else{
-      
-  //   }
-   }
-  
-  validate(event){
-    if(this.passwordNew.length > 8){
+    //  } else{
+
+    //   }
+  }
+
+  validate(event) {
+    if (this.passwordNew.length > 8) {
       this.showError = false;
-    }else{
+    } else {
       this.showError = true;
     }
     return true
@@ -199,15 +213,15 @@ export class ChangeTempPassComponent implements OnInit {
     return (/[a-z]/.test(str));
   }
 
-  hasUpperCase(str){
+  hasUpperCase(str) {
     return (/[A-Z]/.test(str));
   }
 
-  hasNumber(str){
+  hasNumber(str) {
     return (/[0-9]/.test(str));
   }
 
-  hasSpecialChar(str){
+  hasSpecialChar(str) {
     return (/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/).test(str);
   }
 }
