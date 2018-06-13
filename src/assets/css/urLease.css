@@ -886,10 +886,9 @@ input[type=text], input[type=password] {
   margin: 20px 0px 0px 0px; }
   .db-lease-tab-cnt .card {
     border-radius: 5px;
-    -webkit-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.12);
-            box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.12);
-    border: solid 1px #0072ce;
     font-weight: normal; }
+    .db-lease-tab-cnt .card ul {
+      margin: 0 5px; }
     .db-lease-tab-cnt .card .card-header {
       font-family: SimpleSans-Regular, Helvetica, sans-serif;
       color: #fff;
@@ -1064,7 +1063,7 @@ input[type=text], input[type=password] {
   background-repeat: no-repeat;
   background-size: 100% 100%; }
 #Equipment .cus-card {
-  margin: 0px 5px;
+  margin: 0px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   /* for Safari */
@@ -2946,8 +2945,72 @@ button:focus {
     width: 270px;
     vertical-align: middle; }
 
+.owl-outer-wrap {
+  padding: 0px 10%; }
+
+#Equipment .card-body {
+  padding: 45px 0px;
+  min-height: 285px; }
+#Equipment .owl-nav {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 70px;
+  margin-top: 0px !important; }
+  #Equipment .owl-nav .owl-prev {
+    text-align: left;
+    position: absolute;
+    left: -7%; }
+    #Equipment .owl-nav .owl-prev:after {
+      display: inline-block;
+      content: url("../img/lftarrow.svg");
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 0;
+      top: 0px; }
+  #Equipment .owl-nav .owl-next {
+    text-align: left;
+    position: absolute;
+    right: -7%; }
+    #Equipment .owl-nav .owl-next:after {
+      display: inline-block;
+      content: url("../img/rytarrow.svg");
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 0;
+      top: 0px; }
+#Equipment .cus-card {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  padding: 0px 37px 0px 37px; }
+  #Equipment .cus-card ul {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 193px;
+    padding: 20px; }
+
 /*********************************** RWD  STARTS here *********************************/
 @media (min-width: 320px) and (max-width: 769px) {
+  #Equipment .owl-nav .owl-prev {
+    left: -5%; }
+  #Equipment .owl-nav .owl-next {
+    right: -7%; }
+  #Equipment .cus-card {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border: none;
+    padding: 0px 13px 0px 13px; }
+    #Equipment .cus-card ul {
+      background-color: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      width: 193px;
+      padding: 20px; }
+
   .cookies-wrap {
     width: 100%;
     position: absolute;
@@ -2981,8 +3044,6 @@ button:focus {
   .cookies-wrap-box {
     border-radius: 5px;
     background-color: #fff;
-    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     margin: 0px 5px;
     padding: 40px 10px;
     margin-bottom: 30px; }
@@ -3495,4 +3556,5 @@ button:focus {
     height: 44px; } }
 @-moz-document url-prefix() {}
 /*********************************** sidebar ENDS here *********************************/
+
 /*# sourceMappingURL=urLease.css.map */

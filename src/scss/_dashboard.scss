@@ -159,6 +159,7 @@
     padding: 0px;
     margin: 0px;
     list-style-type: none;
+
   }
   ul li {
     padding: 0px;
@@ -167,6 +168,7 @@
     font-family: $font-stack-reg;
     font-size: .83rem;
     line-height: 1.25rem;
+
     span {
       font-family: $font-stack-bld;
     }
@@ -321,10 +323,8 @@
     }
 
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, .2);
     -webkit-background-clip: padding-box; /* for Safari */
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
-    background: $white;
     label {
 
       font-family: $font-stack-bld;
@@ -394,8 +394,8 @@
     -webkit-background-clip: padding-box; /* for Safari */
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
     border-radius: 5px;
-    background-color: #ffffff;
-    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.12);
+
+
     padding: 50px 0px;
     &:hover {
       background-color: $primary;

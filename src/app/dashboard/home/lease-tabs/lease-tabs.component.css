@@ -17,12 +17,5 @@
   width: 223px;
   } */
 #Equipment .cus-card{
-  min-width: 200px;
     height: 90%;
-    margin: 5px;
 }
-#Equipment .cus-card:nth-child(odd){
-
-    border:1px solid red;
-}
-
