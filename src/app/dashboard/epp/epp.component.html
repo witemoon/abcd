@@ -4,7 +4,6 @@
       <div class="lds-dual-ring"></div>
       <div class="lds-dual-ring-s"></div>
     </div>
-    <p>Loading...</p>
   </div>
 </div>
 <div *ngIf="dataReady">
@@ -67,10 +66,8 @@
                 <img src="/assets/img/alertred.svg">
               </div>
               <div class="txt">
-                You have the following leases that do not have any equipment protection coverage. Please select the
-                leases
-                for
-                which you would like to have EPP coverage.
+                You have the following leases that do not have any equipment protection coverage. Please select the leases for which you
+                would like to have EPP coverage.
               </div>
 
             </div>
@@ -84,23 +81,27 @@
             <div class="row">
               <div class="toggleWrap" *ngIf="leaseData">
                 <div class="pn-wrap">
-                  <div class="lease-prev"><img src="/assets/img/lftarrow.svg"></div>
-                  <div class="lease-next"><img src="/assets/img/rytarrow.svg"></div>
+                  <div class="lease-prev">
+                    <img src="/assets/img/lftarrow.svg">
+                  </div>
+                  <div class="lease-next">
+                    <img src="/assets/img/rytarrow.svg">
+                  </div>
                 </div>
                 <div class="epp-box-wrap">
-                  <div class="toggle-item-wrap" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }"
-                      *ngFor="let item of leaseData" >
+                  <div class="toggle-item-wrap" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }" *ngFor="let item of leaseData">
                     <div class="leftWrap">
                       <p class="">Lease #</p>
                       <p class="">{{item.leaseNo}}</p>
                     </div>
                     <div class="rightWrap">
-                      <p class=""><label class="switch">
-                        <input type="checkbox" class="togBtn" id="{{item.leaseNo}}"
-                              [formControl]="leaseFormGroup.controls[item.leaseNo]" (change)="onToggleChange($event)"
-                              value={{item.leaseNo}}>
-                        <span class="slider round en-first-checkbox"></span>
-                      </label></p>
+                      <p class="">
+                        <label class="switch">
+                          <input type="checkbox" class="togBtn" id="{{item.leaseNo}}" [formControl]="leaseFormGroup.controls[item.leaseNo]" (change)="onToggleChange($event)"
+                            value={{item.leaseNo}}>
+                          <span class="slider round en-first-checkbox"></span>
+                        </label>
+                      </p>
                       <p class="">${{leaseFormGroup.controls[item.leaseNo].value?'10':'10'}}.00</p>
                     </div>
 
@@ -130,39 +131,36 @@
             <!--Check Box Starts-->
 
             <div class="epp-cb-wrap" [ngClass]="{ 'opacity-disable' : checkbox.yes }">
-              <input type="checkbox" [checked]="yesModel" [disabled]="checkbox.yes" name="option1" id="checkbox1"
-                     class="check1" value="yes" (change)="onYesNoClicked($event)"/>
-              <label for="checkbox1" class="label1"> YES, I choose to enroll in First Data's Equipment Protection
-                Program</label>
+              <input type="checkbox" [checked]="yesModel" [disabled]="checkbox.yes" name="option1" id="checkbox1" class="check1" value="yes"
+                (change)="onYesNoClicked($event)" />
+              <label for="checkbox1" class="label1"> YES, I choose to enroll in First Data's Equipment Protection Program
+              </label>
               <div class="clearfix"></div>
 
-              <input type="checkbox" [checked]="noModel" [disabled]="checkbox.no" name="option2" id="checkbox2"
-                     class="check2" value="no" (change)="onYesNoClicked($event)"/>
-              <label for="checkbox2" class="label2"> NO, I am providing a certificate of insurance that names First Data
-                as the
-                loss payee to meet the insurance requirement of my lease agreement. The
-                insurance certificate is included with this response </label>
+              <input type="checkbox" [checked]="noModel" [disabled]="checkbox.no" name="option2" id="checkbox2" class="check2" value="no"
+                (change)="onYesNoClicked($event)" />
+              <label for="checkbox2" class="label2"> NO, I am providing a certificate of insurance that names First Data as the loss payee to meet the insurance
+                requirement of my lease agreement. The insurance certificate is included with this response </label>
             </div>
             <!--Check Box Ends-->
 
             <!--cnt Txt Starts-->
             <div class="pdivwrap">
               <p>
-                Enrollment in the First Data Equipment Protection Program relieves you of the requirement
-                to maintain insurance on your leased equipment</p>
+                Enrollment in the First Data Equipment Protection Program relieves you of the requirement to maintain insurance on your leased
+                equipment</p>
               <p>
-              <span>By checking YES above, the Lessee(s) is/are relived of their obligation to provide
-              proof
-                of insurance under the Lease Agreement.</span> Each lease that checks <span>YES</span> above pays a
-                monthly
-                charge to FDMS, determined by FBMS and included on the monthly lease payment. The
-                monthly charge includes a program fee and compensation to EDMS for program
-                administration. FDMS reserves the right to change the monthly charge. We will notify you
-                thirty (30) days prior to the effective date of charge.</p>
+                <span>By checking YES above, the Lessee(s) is/are relived of their obligation to provide proof of insurance under
+                  the Lease Agreement.</span> Each lease that checks
+                <span>YES</span> above pays a monthly charge to FDMS, determined by FBMS and included on the monthly lease payment.
+                The monthly charge includes a program fee and compensation to EDMS for program administration. FDMS reserves
+                the right to change the monthly charge. We will notify you thirty (30) days prior to the effective date of
+                charge.</p>
               <p>
-                <span>Board Protection:</span> The First Data Equipment Protection Program provides FULL REPLACEMENT
-                protection for loss due to a wide variety of perils.</p>
-              <!--cnt Txt Ends--></div>
+                <span>Board Protection:</span> The First Data Equipment Protection Program provides FULL REPLACEMENT protection
+                for loss due to a wide variety of perils.</p>
+              <!--cnt Txt Ends-->
+            </div>
 
 
           </div>
@@ -205,9 +203,7 @@
             </ul>
 
           </div>
-          <div class=" ftrtxt ">Perils shown in bold above are often not covered by standard business
-            insurance
-            policies.
+          <div class=" ftrtxt ">Perils shown in bold above are often not covered by standard business insurance policies.
           </div>
         </div>
         <!--EPP  Covers List  Ends-->
@@ -224,10 +220,10 @@
           <div class="col-sm-12 col-md-9">
             <!--Check Box Starts-->
             <div class="epp-cb-wrap" [ngClass]="{ 'opacity-disable' : checkbox.agree }">
-              <input type="checkbox" [checked]="agreeModel" [disabled]="checkbox.agree" name="option1" id="checkbox3"
-                     value="agree" class="check3" (change)="onYesNoClicked($event)"/>
-              <label for="checkbox3" class="label3"> I agree to the First Data Terms of Service and Privacy
-                Policy</label>
+              <input type="checkbox" [checked]="agreeModel" [disabled]="checkbox.agree" name="option1" id="checkbox3" value="agree" class="check3"
+                (change)="onYesNoClicked($event)" />
+              <label for="checkbox3" class="label3"> I agree to the First Data Terms of Service and Privacy Policy
+              </label>
 
             </div>
             <!--Check Box Ends-->
@@ -236,8 +232,7 @@
           </div>
 
           <div class="col-sm-12 col-md-3 ftrBtnWrap  text-md-right text-center">
-            <button type="button" [disabled]="checkbox.submit" [routerLink]="['/dashboard/eppthank']"
-                    class="btn butSec" (click)="postEpp()">
+            <button type="button" [disabled]="checkbox.submit" [routerLink]="['/dashboard/eppthank']" class="btn butSec" (click)="postEpp()">
               Submit
 
             </button>
@@ -253,9 +248,8 @@
 
     <!-- <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup"
                (closeClicked)="closePopup();"> -->
-               <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" (addClicked)="addButtonClicked();"
-               (closeClicked)="closePopup();"></epp-popup>
+    <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" (addClicked)="addButtonClicked();" (closeClicked)="closePopup();"></epp-popup>
 
-               <epp-popup *ngIf="showPopup1" [noButtonPopup1]="noButtonPopup1" (closeClicked1)="closePopup1();"></epp-popup>
+    <epp-popup *ngIf="showPopup1" [noButtonPopup1]="noButtonPopup1" (closeClicked1)="closePopup1();"></epp-popup>
   </div>
 </div>

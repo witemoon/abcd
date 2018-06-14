@@ -42,7 +42,6 @@ import { Error401Component } from './errorhandler/error401/error401.component';
 import { ServiceerrorsComponent } from './errorhandler/serviceerrors/serviceerrors.component';
 import { SharedService } from './shared/shared';
 import { CookiesDisclosureComponent } from './cookies-disclosure/cookies-disclosure.component';
-import { LoaderpopComponent } from './loaderpop/loaderpop.component';
 
 
 
@@ -83,9 +82,7 @@ import { LoaderpopComponent } from './loaderpop/loaderpop.component';
 
     ServiceerrorsComponent,
 
-    CookiesDisclosureComponent,
-
-    LoaderpopComponent
+    CookiesDisclosureComponent
 
 
 

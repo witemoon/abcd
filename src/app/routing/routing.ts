@@ -21,7 +21,6 @@ import { SignthankComponent } from '../auth/new/signthank/signthank.component';
 import { Error401Component } from '../errorhandler/error401/error401.component';
 import { ServiceerrorsComponent } from '../errorhandler/serviceerrors/serviceerrors.component';
 import { CookiesDisclosureComponent } from '../cookies-disclosure/cookies-disclosure.component';
-import { LoaderpopComponent } from '../loaderpop/loaderpop.component';
 
 const appRoutes: Routes = [
 
@@ -88,10 +87,6 @@ const appRoutes: Routes = [
   {
     path:'cookiesdisclosure',
     component: CookiesDisclosureComponent
-  },
-  {
-    path:'loader',
-    component: LoaderpopComponent
   },
   {
     path: '**',
