@@ -104,16 +104,14 @@ export class SignupFormComponent implements OnInit {
             this.errorResponse.incorrectMerchant = errMessage.includes("merchant dba") ? true : false;
             signUpForm.resetForm();
             this.errorToStat.emit(error.error.message);
-            
           }
-          if((error['error']['statusCode'] ==='500' && !error['error']['message'].includes("locked")) || error['error']['statusCode'] ==='501'|| error['error']['statusCode'] === '503'){
+          if((error['error']['statusCode'] ==='500' && !error['error']['message'].includes("locked")) || error['error']['statusCode'] ==='501'|| error['error']['statusCode'] === '503'|| error['error']['statusCode'] === '504'){
             this.router.navigate(['/serviceerrors']);
             }
             
             if(error['error']['statusCode'] ==='500' && error['error']['message'].includes("locked")){
             this.errorToStat.emit(error.error.message);
             }
-        
         });
     }
   }

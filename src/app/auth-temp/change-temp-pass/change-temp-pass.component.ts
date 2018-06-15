@@ -113,7 +113,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     //     } else {
     //       this.passwordValid = false;
     //     }
-    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value) {
+    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value && this.captchaSelected) {
       this.passwordValid = true;
     } else {
       this.passwordValid = false;
