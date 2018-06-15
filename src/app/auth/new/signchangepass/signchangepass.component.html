@@ -26,9 +26,10 @@
                     name="tempPass"
                     ngModel
                     required
-                    #tempPass="ngModel"
                     #tmpPass
+                    #tempPass="ngModel"
                     pattern="Photon123"
+                    
                     (blur)="onInputBlur($event);"
                   >
                   <!-- <div *ngIf="!tempPass.valid"> -->
@@ -49,6 +50,7 @@
                     maxlength="25"
                     minlength="8"
                     #pass
+                     (keyup)="formValid()"
                     (focus)="validate($event)"
                     [formControl]="passwordFC"
                     (blur)="onInputBlur($event);"
@@ -99,14 +101,15 @@
                 <div class="form-group">
                   <input
                     type="password"
-                    class="form-control "
+                    class="form-control"
                     placeholder="Confirm Your Password"
                     name="confPassword"
                     ngModel
                     required
                     validateEqual="passwordNew"
-                    #confPassword="ngModel"
                     #cPass
+                    #confPassword="ngModel"
+                    (keyup)="formValid()"
                     (blur)="onInputBlur($event);"
                   >
 
@@ -124,6 +127,7 @@
                       name="captcha"
                       required
                       ngModel
+                      (keyup)="formValid()"
                       (resolved)="captchaResolved()"
                       ngModel></re-captcha>
                   </div>

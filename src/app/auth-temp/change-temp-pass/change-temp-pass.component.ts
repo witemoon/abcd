@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from '../../shared/auth.service';
   templateUrl: './change-temp-pass.component.html',
   styleUrls: ['./change-temp-pass.component.css']
 })
-export class ChangeTempPassComponent implements OnInit {
+export class ChangeTempPassComponent implements OnInit, AfterViewInit {
   showError: boolean = false;
   passwordNew: string = "";
   passwordValid: boolean = false;
@@ -37,7 +37,7 @@ export class ChangeTempPassComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.showError = false;
     if (!this.authService.currentEmail) {
 
       this.activatedRoute.queryParams.subscribe(
@@ -90,6 +90,10 @@ export class ChangeTempPassComponent implements OnInit {
 
     });
   }
+
+  ngAfterViewInit(){
+    this.showError = false;
+  }
   encryption(encryptVal) {
     let str = btoa(encryptVal);
     console.log("str", str)
@@ -109,7 +113,7 @@ export class ChangeTempPassComponent implements OnInit {
     //     } else {
     //       this.passwordValid = false;
     //     }
-    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value && this.captchaSelected) {
+    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value) {
       this.passwordValid = true;
     } else {
       this.passwordValid = false;
@@ -186,6 +190,7 @@ export class ChangeTempPassComponent implements OnInit {
       this.passwordFC.setValue("");
       this.cPass.nativeElement.value = "";
       this.passwordValid = false;
+      this.showError = false;
 
       if (err.error.message.includes("correct")) {
         this.validationError.tempPasswordError = true;

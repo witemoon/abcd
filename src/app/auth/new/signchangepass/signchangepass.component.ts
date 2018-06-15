@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../../../shared/auth.service';
@@ -8,7 +8,8 @@ import { AuthService } from '../../../shared/auth.service';
   templateUrl: './signchangepass.component.html',
   styleUrls: ['./signchangepass.component.css']
 })
-export class SignchangepassComponent implements OnInit {
+export class SignchangepassComponent implements OnInit, AfterViewInit {
+
   showError: boolean = false;
   passwordNew: string = "";
 
@@ -20,6 +21,7 @@ export class SignchangepassComponent implements OnInit {
   passwordValid: boolean = false;
   submitted: boolean = false;
   passwordFC = new FormControl();
+  formValidCheck = new FormControl();
   captchaSelected: boolean = false;
   upperAndLowerCase = false;
   number = false;
@@ -35,6 +37,13 @@ export class SignchangepassComponent implements OnInit {
   constructor(private router: Router, private authservice: AuthService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.formValidCheck.valueChanges.subscribe(
+      value => {
+        alert('hello');
+      }
+    );
+
     if (!this.authservice.currentEmail) {
 
       this.activatedRoute.queryParams.subscribe(
@@ -50,6 +59,8 @@ export class SignchangepassComponent implements OnInit {
       this.email = this.authservice.currentEmail
     }
     this.passwordFC.valueChanges.subscribe(value => {
+      // alert('hellow');
+
       if (this.hasLowerCase(value) && this.hasUpperCase(value)) {
         this.upperAndLowerCase = true;
       } else {
@@ -82,7 +93,14 @@ export class SignchangepassComponent implements OnInit {
         event) {
         this.showError = true;
       }
+
+
+
     });
+  }
+  ngAfterViewInit() {
+    this.showError = false;
+
   }
   encryption(encryptVal) {
     let str = btoa(encryptVal);
@@ -95,7 +113,13 @@ export class SignchangepassComponent implements OnInit {
     return data;
   }
 
-
+  formValid() {
+    if ((this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value) && (this.tmpPass.nativeElement.value === this.cPass.nativeElement.value)) {
+      this.passwordValid = true;
+    } else {
+      this.passwordValid = false;
+    }
+  }
   onInputBlur(event) {
 
     this.showError = false;
@@ -105,7 +129,7 @@ export class SignchangepassComponent implements OnInit {
     //     } else {
     //       this.passwordValid = false;
     //     }
-    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value && this.captchaSelected) {
+    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value) {
       this.passwordValid = true;
     } else {
       this.passwordValid = false;
@@ -183,10 +207,14 @@ export class SignchangepassComponent implements OnInit {
       this.passwordFC.setValue("");
       this.cPass.nativeElement.value = "";
       this.passwordValid = false;
+      this.showError = false;
 
-      if (err.error.message.includes("correct")) {
-        this.validationError.tempPasswordError = true;
+      if (err.error) {
+        if (err.error.message.includes("correct")) {
+          this.validationError.tempPasswordError = true;
+        }
       }
+
 
       this.pass.nativeElement.value = this.validationError.newPasswordError ? "" : this.passwordFC.value;
       this.cPass.nativeElement.value = this.validationError.confirmPasswordError ? "" : this.cPass.nativeElement.value;
