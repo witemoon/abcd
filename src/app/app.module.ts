@@ -16,7 +16,6 @@ import { LandCnt02Component } from './landing-page/land-cnt-02/land-cnt-02.compo
 
 import { LandingComponent } from './landing-page/landing/landing.component';
 import { NotFoundComponent } from './errorhandler/not-found/not-found.component';
-import { SignInComponent } from './auth/sign-in/sign-in.component';
 
 import { SignupStatComponent } from './auth/sign-up/signup-stat/signup-stat.component';
 import { SignupMainComponent } from './auth/sign-up/signup-main/signup-main.component';
@@ -33,7 +32,6 @@ import { TempSigninComponent } from './auth-temp/temp-signin/temp-signin.compone
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add the imports!
-import { SigninComponent } from './auth-temp/signin/signin.component';
 import { SignthankComponent } from './auth/new/signthank/signthank.component';
 import { SignchangepassComponent } from './auth/new/signchangepass/signchangepass.component';
 import { BackEndInterceptorService } from './shared/back-end-interceptor.service';
@@ -53,7 +51,7 @@ import { CookiesDisclosureComponent } from './cookies-disclosure/cookies-disclos
     LandCnt01Component,
     LandCnt02Component,
 
-    SignInComponent,
+  
     LandingComponent,
     NotFoundComponent,
     SignupFormComponent,
@@ -68,9 +66,6 @@ import { CookiesDisclosureComponent } from './cookies-disclosure/cookies-disclos
 
 
     EqualValidator,
-
-
-    SigninComponent,
 
     TempSigninComponent,
 

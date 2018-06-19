@@ -9,7 +9,7 @@ import {LandCnt02Component} from '../landing-page/land-cnt-02/land-cnt-02.compon
 
 import {LandingComponent} from '../landing-page/landing/landing.component';
 import {NotFoundComponent} from '../errorhandler/not-found/not-found.component';
-import {SignInComponent} from '../auth/sign-in/sign-in.component';
+
 import {SignupMainComponent} from '../auth/sign-up/signup-main/signup-main.component';
 import {ThankComponent} from '../thank/thank.component';
 
@@ -44,11 +44,6 @@ const appRoutes: Routes = [
   {
     path: 'temp',
     component: TempSigninComponent
-  },
-  {
-    path: 'login',
-    component: SignInComponent
-
   },
   {
     path: 'signchangepass',
