@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -25,7 +25,7 @@ import { EppthankComponent } from './epp/eppthank/eppthank.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EppstaticComponent } from './epp/eppstatic/eppstatic.component';
 import { OwlModule } from 'ngx-owl-carousel';
-
+import { FormsModule } from '@angular/forms';
 const dashboardRoute: Routes = [
   { path: '', component: DashboardComponent,
     children: [
@@ -44,6 +44,7 @@ const dashboardRoute: Routes = [
   imports: [
     OwlModule,
     CommonModule,
+    FormsModule,
     RouterModule.forChild(dashboardRoute),
     ReactiveFormsModule,
     NgbModule.forRoot()
@@ -70,6 +71,9 @@ const dashboardRoute: Routes = [
                   EppthankComponent,
                   EppstaticComponent,
                   Is_Greater_Than_Current_Date
+              ],
+              schemas:[
+                CUSTOM_ELEMENTS_SCHEMA
               ],
   providers: [
     DashboardServiceService

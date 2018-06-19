@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { routing } from './routing/routing';
 
 import { RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
@@ -40,7 +40,6 @@ import { Error401Component } from './errorhandler/error401/error401.component';
 import { ServiceerrorsComponent } from './errorhandler/serviceerrors/serviceerrors.component';
 import { SharedService } from './shared/shared';
 import { CookiesDisclosureComponent } from './cookies-disclosure/cookies-disclosure.component';
-
 
 
 @NgModule({
@@ -95,7 +94,11 @@ import { CookiesDisclosureComponent } from './cookies-disclosure/cookies-disclos
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     NgbModule.forRoot()
+  ],
+  schemas:[
+    CUSTOM_ELEMENTS_SCHEMA
   ],
 providers: [AuthService,{
   provide: RECAPTCHA_SETTINGS,

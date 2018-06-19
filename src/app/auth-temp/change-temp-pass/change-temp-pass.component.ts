@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-change-temp-pass',
@@ -14,7 +15,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
   passwordValid: boolean = false;
   captchaSelected: boolean = false;
   submitted: boolean = false;
-
+  
   @ViewChild("tmpPass") tmpPass: ElementRef;
   @ViewChild("cPass") cPass: ElementRef;
   @ViewChild("pass") pass: ElementRef;
@@ -153,7 +154,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
   }
 
 
-  changePassword(changePass) {
+  changePassword(changePass: NgForm) {
 
     var tempPass = changePass.value.tempPass;
     var newPass = this.passwordFC.value;
