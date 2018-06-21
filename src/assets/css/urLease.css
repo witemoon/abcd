@@ -2990,6 +2990,11 @@ button:focus {
     width: 223px;
     padding: 20px; }
 
+.cookies-wrap.signup-wrap {
+  margin: 0px;
+  left: 0px;
+  bottom: 30px; }
+
 /*********************************** RWD  STARTS here *********************************/
 @media (min-width: 320px) and (max-width: 769px) {
   #Equipment .owl-nav .owl-prev {
@@ -3008,14 +3013,18 @@ button:focus {
       width: 223px;
       padding: 20px; }
 
+  .cookies-wrap.newUser {
+    position: relative;
+    margin-top: 30px; }
+
   .cookies-wrap {
     width: 100%;
     position: absolute;
-    bottom: 0px;
     padding: 0px 15px;
-    margin-bottom: 30px;
+    margin-bottom: -30px;
     margin-top: 20px;
-    text-align: center; }
+    text-align: center;
+    bottom: 0px; }
     .cookies-wrap p {
       font-family: SimpleSans-Regular, Helvetica, sans-serif;
       color: #000000;
@@ -3553,5 +3562,4 @@ button:focus {
     height: 44px; } }
 @-moz-document url-prefix() {}
 /*********************************** sidebar ENDS here *********************************/
-
 /*# sourceMappingURL=urLease.css.map */
