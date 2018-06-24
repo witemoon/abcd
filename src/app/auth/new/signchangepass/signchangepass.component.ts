@@ -101,6 +101,21 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
   }
 
 
+  hidePasswordError(){
+    this.showError = true;
+    this.pass.nativeElement.focus();
+    this.validationError.newPasswordError = false;
+  }
+  hideConfPasswordError(){
+    this.cPass.nativeElement.focus();
+    this.validationError.confirmPasswordError = false;
+  }
+  hideTempPasswordError(){
+    this.tmpPass.nativeElement.focus();
+    this.validationError.confirmPasswordError = false;
+  }
+
+
   onInputBlur(event) {
 
     this.showError = false;

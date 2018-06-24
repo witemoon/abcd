@@ -31,7 +31,7 @@
                     (blur)="onInputBlur($event);"
                   >
 
-                    <div class="fd-error" (click)="validationError.tempPasswordError = false"
+                    <div class="fd-error" (click)="hideTempPasswordError()"
                          *ngIf="validationError.tempPasswordError && submitted">Incorrect temporary password
                     </div>
 
@@ -88,7 +88,7 @@
 
 
                   <div *ngIf="validationError.newPasswordError">
-                    <div class="fd-error" (click)="validationError.newPasswordError = false"
+                    <div class="fd-error" (click)="hidePasswordError()"
                          *ngIf="validationError.newPasswordError && submitted">Incorrect password format
                     </div>
                   </div>
@@ -109,7 +109,7 @@
                   >
 
                   <div *ngIf="validationError.confirmPasswordError">
-                    <div class="fd-error" (click)="validationError.confirmPasswordError = false"
+                    <div class="fd-error" (click)="hideConfPasswordError()"
                          *ngIf="validationError.confirmPasswordError  && submitted">Passwords do not match
                     </div>
                   </div>

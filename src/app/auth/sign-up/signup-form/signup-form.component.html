@@ -115,7 +115,7 @@
 
             <div
             class="fd-error"
-            (click)="errorResponse.incorrectRefKey =false"
+            (click)="hideRef()"
             *ngIf="errorResponse.incorrectRefKey">
           Incorrect Reference Key!</div>
           </div>
@@ -146,7 +146,7 @@
               (keyup)="onInputKeyUp($event)"
               >
             <div class="fd-error"
-            (click)="errorResponse.incorrectLeaseNo = false"
+            (click)="hideLeaseError()"
             *ngIf="errorResponse.incorrectLeaseNo"
             >Incorrect Lease Number!</div>
           </div>
@@ -172,10 +172,11 @@
               name = "merchantDBA"
               ngModel
               required
+              #merchantDBA
               #merchantDBA="ngModel"
               >
             <div class="fd-error"
-            (click)="errorResponse.incorrectMerchant = false"
+            (click)="hideMerchantdError()"
             *ngIf="errorResponse.incorrectMerchant"
             >Incorrect Merchant DBA!</div>
 

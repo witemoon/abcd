@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {NgForm, FormControl} from "@angular/forms";
 import 'rxjs/add/operator/filter';
@@ -20,6 +20,12 @@ export class SignupFormComponent implements OnInit {
     "incorrectLeaseNo": false,
     "incorrectMerchant": false
   };
+
+  
+  @ViewChild("merchantDBA") merchantDBA: ElementRef;
+  @ViewChild("leaseNumber") leaseNumber: ElementRef;
+  @ViewChild("referenceKey") referenceKey: ElementRef;
+
   currentTab = 'signup';
   referenceKeyFC = new FormControl();
   leaseNumberFC = new FormControl();
@@ -124,6 +130,19 @@ export class SignupFormComponent implements OnInit {
     }
     
     return true;
+  }
+  hideRef(){
+    this.errorResponse = true;
+    this.referenceKey.nativeElement.focus();
+    this.errorResponse.incorrectRefKey =false;
+  }
+  hideLeaseError(){
+    this.leaseNumber.nativeElement.focus();
+    this.errorResponse.incorrectLeaseNo = false;
+  }
+  hideMerchantdError(){
+    this.merchantDBA.nativeElement.focus();
+    this.errorResponse.incorrectMerchant = false
   }
 
   onInputKeyUp(event) {
