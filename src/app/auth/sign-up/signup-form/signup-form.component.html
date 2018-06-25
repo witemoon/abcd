@@ -1,16 +1,18 @@
 <h1 id="brandLogo" class="text-center">
-  <a (click)="backToLandingPage()"><img class="img-ctrl" src="./assets/img/firstdata_logo.svg"></a>
+  <a (click)="backToLandingPage()">
+    <img class="img-ctrl" src="./assets/img/firstdata_logo.svg">
+  </a>
 </h1>
 <div class="formWrap ">
   <div class="formWrapInner exSpacer">
     <ul class="nav nav-tabs" id="signin-tab" role="tablist">
       <li class="nav-item w-50 text-right">
-        <a class="nav-link " id="home-tab" data-toggle="tab" [routerLink]="['/user/signin']" role="tab"
-           aria-controls="home" aria-selected="true" [ngClass]="{'active show':currentTab=='signin'}" >Sign In</a>
+        <a class="nav-link " id="home-tab" data-toggle="tab" [routerLink]="['/user/signin']" role="tab" aria-controls="home" aria-selected="true"
+          [ngClass]="{'active show':currentTab=='signin'}">Sign In</a>
       </li>
       <li class="nav-item w-50">
-        <a class="nav-link active" id="profile-tab" data-toggle="tab" [routerLink]="['/user/signup']" role="tab"
-           aria-controls="profile" aria-selected="false" [ngClass]="{'active show':currentTab!='signin'}">Sign Up</a>
+        <a class="nav-link active" id="profile-tab" data-toggle="tab" [routerLink]="['/user/signup']" role="tab" aria-controls="profile"
+          aria-selected="false" [ngClass]="{'active show':currentTab!='signin'}">Sign Up</a>
       </li>
 
     </ul>
@@ -25,46 +27,32 @@
         <form #signInReg="ngForm" (ngSubmit)="signInRegular(signInReg)">
 
           <div *ngIf="signInError">
-             <p  class="loginDesc fd-bld">Your email or password is incorrect!</p>
+            <p class="loginDesc fd-bld">Your email or password is incorrect!</p>
           </div>
 
           <div *ngIf="!signInError && singInSuccess">
-           <p class="loginDesc ">  Please complete all fields below</p>
+            <p class="loginDesc "> Please complete all fields below</p>
           </div>
 
           <div class="form-group emailWrap">
-            <input
-              type="text"
-              class="form-control "
-              placeholder="Email"
-              name="email"
-              ngModel
-              #email="ngModel"
-            >
+            <input type="text" class="form-control " placeholder="Email" name="email" ngModel #email="ngModel">
 
 
           </div>
           <div class="form-group passwordWrap">
-            <input
-              type="password"
-              class="form-control"
-              placeholder="Password"
-              name="password"
-              ngModel
-              #password="ngModel"
-            >
+            <input type="password" class="form-control" placeholder="Password" name="password" ngModel #password="ngModel">
 
           </div>
 
 
-          <button type="submit"
-                  class="btnSubmit btn btn-primary btn-lg btn-block">
-                  Sign In
+          <button type="submit" class="btnSubmit btn btn-primary btn-lg btn-block">
+            Sign In
           </button>
 
 
         </form>
-        <p class="text-center footerTxt ">Forgot Password? <a (click)="resetRegPassword()" class="link-style">Reset </a>
+        <p class="text-center footerTxt ">Forgot Password?
+          <a (click)="resetRegPassword()" class="link-style">Reset </a>
         </p>
 
         <!-- end of sign IN form-->
@@ -76,8 +64,7 @@
 
       <!--Sign UP Tab Starts-->
 
-      <div class="tab-pane fade " [ngClass]="{'active show':currentTab!='signin'}" id="signup" role="tabpanel"
-           aria-labelledby="signup-tab">
+      <div class="tab-pane fade " [ngClass]="{'active show':currentTab!='signin'}" id="signup" role="tabpanel" aria-labelledby="signup-tab">
         <p class="loginDesc">Please complete all fields below</p>
 
         <!-- start of sign UP form -->
@@ -101,23 +88,14 @@
             <div class="fd-error" (click)="errorResponse.incorrectRefKey = false" *ngIf="errorResponse.incorrectRefKey">Incorrect Reference Key!</div>
           </div> -->
           <div class="form-group">
-            <input
-              type="number"
-              class=" form-control"
-              placeholder="Reference Key"
-              name="referenceKey"
-              ngModel
-              required
-              #refrenceNumber="ngModel"
-              (keypress)="onInputKeyUp($event)"
-              (paste)="onInputKeyUp($event)"
-              >
+            <input type="number" class=" form-control" placeholder="Reference Key" name="referenceKey" ngModel required #refrenceNumber="ngModel"
+            (keyup)="onInputKeyUp($event)" (paste)="onInputKeyUp($event)" #referenceKey>
 
-            <div
-            class="fd-error"
-            (click)="hideRef()"
-            *ngIf="errorResponse.incorrectRefKey">
-          Incorrect Reference Key!</div>
+              <div  *ngIf="errorResponse.incorrectRefKey">
+            <div class="fd-error" (click)="hideRef()">
+              Incorrect Reference Key!</div>
+            </div>
+
           </div>
 
 
@@ -135,22 +113,13 @@
             <div class="fd-error"  (click)="errorResponse.incorrectLeaseNo = false" *ngIf="errorResponse.incorrectLeaseNo">Incorrect Lease Number!</div>
           </div> -->
           <div class="form-group">
-            <input
-              type="text"
-              class="form-control "
-              placeholder="Lease Number"
-              name="leaseNumber"
-              #leaseNumber="ngModel"
-              ngModel
-              required
-              (keyup)="onInputKeyUp($event)"
-              >
-            <div class="fd-error"
-            (click)="hideLeaseError()"
-            *ngIf="errorResponse.incorrectLeaseNo"
-            >Incorrect Lease Number!</div>
+            <input type="text" class="form-control " placeholder="Lease Number" name="leaseNumber" #leaseNumber="ngModel" #leaseNumber
+              ngModel required (keyup)="onInputKeyUp($event)">
+            <div *ngIf="errorResponse.incorrectLeaseNo">
+              <div class="fd-error" (click)="hideLeaseError()">Incorrect Lease Number!</div>
+            </div>
           </div>
-<!--
+          <!--
           <div class="form-group">
             <input
               type="text"
@@ -165,44 +134,30 @@
 
           </div> -->
           <div class="form-group">
-            <input
-              type="text"
-              class="form-control "
-              placeholder="Merchant DBA"
-              name = "merchantDBA"
-              ngModel
-              required
-              #merchantDBA
-              #merchantDBA="ngModel"
-              >
-            <div class="fd-error"
-            (click)="hideMerchantdError()"
-            *ngIf="errorResponse.incorrectMerchant"
-            >Incorrect Merchant DBA!</div>
+            <input type="text" class="form-control " placeholder="Merchant DBA" name="merchantDBA" ngModel required #merchantDBA #merchantDBA="ngModel" (keyup)="onInputKeyUp($event)">
+            <div *ngIf="errorResponse.incorrectMerchant">
+              <div class="fd-error" (click)="hideMerchantdError()">Incorrect Merchant DBA!</div>
+            </div>
+
 
           </div>
           <!-- Recaptch -->
           <div class="form-group cWrap">
-            <re-captcha
-              #captchaRef
-              name="captcha"
-              required
-              ngModel
-              (resolved)="captchaResolved($event)"
-            ></re-captcha>
+            <re-captcha #captchaRef name="captcha" required ngModel (resolved)="captchaResolved($event)"></re-captcha>
           </div>
 
 
-          <button type="submit"
-                  class="btnSubmit btn btn-primary btn-lg btn-block"
-                  [disabled]="!signUpForm.valid">
+          <button type="submit" class="btnSubmit btn btn-primary btn-lg btn-block" [disabled]="!signUpForm.valid">
             Submit
           </button>
 
 
         </form>
 
-        <p class="text-center footerTxt ">Already have an account? <a (click)="signInPageReg()" class=""><b>Sign In</b></a>
+        <p class="text-center footerTxt ">Already have an account?
+          <a (click)="signInPageReg()" class="">
+            <b>Sign In</b>
+          </a>
         </p>
 
 
@@ -217,4 +172,3 @@
   </div>
 
 </div>
-

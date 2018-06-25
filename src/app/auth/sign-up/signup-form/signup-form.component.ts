@@ -132,9 +132,8 @@ export class SignupFormComponent implements OnInit {
     return true;
   }
   hideRef(){
-    this.errorResponse = true;
     this.referenceKey.nativeElement.focus();
-    this.errorResponse.incorrectRefKey =false;
+    this.errorResponse.incorrectRefKey = false;
   }
   hideLeaseError(){
     this.leaseNumber.nativeElement.focus();
@@ -142,12 +141,14 @@ export class SignupFormComponent implements OnInit {
   }
   hideMerchantdError(){
     this.merchantDBA.nativeElement.focus();
-    this.errorResponse.incorrectMerchant = false
+    this.errorResponse.incorrectMerchant = false;
   }
 
   onInputKeyUp(event) {
     if (event) {
       if (event.target.name == "referenceKey") {
+        this.errorResponse.incorrectRefKey = false;
+
         // if(!(/^[-+]?\d+$/g).test(event.target.value)) {
         if(event.target.value.length > 8) {
           event.target.value = event.target.value.substr(0, 8);
@@ -155,6 +156,8 @@ export class SignupFormComponent implements OnInit {
           this.errorResponse.incorrectRefKey = false;
         }
       } else if (event.target.name == "leaseNumber") {
+        this.errorResponse.incorrectLeaseNo = false;
+
         let value = event.target.value;
 
         if(value.length == 3 || value.length == 11) {
@@ -162,7 +165,11 @@ export class SignupFormComponent implements OnInit {
         }
 
         event.target.value = value;
+      } else if(event.target.name == "merchantDBA"){
+        this.errorResponse.incorrectMerchant = false;
       }
+
+      
     }
   }
 
