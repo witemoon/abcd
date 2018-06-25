@@ -219,6 +219,7 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
   }
 
   validate(event) {
+    this.hidePasswordError();
     if (this.passwordNew.length > 8) {
       this.showError = false;
     } else {
