@@ -105,6 +105,20 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     return data;
   }
 
+  hidePasswordError(){
+    this.showError = true;
+    this.pass.nativeElement.focus();
+    this.validationError.newPasswordError = false;
+  }
+  hideConfPasswordError(){
+    this.cPass.nativeElement.focus();
+    this.validationError.confirmPasswordError = false;
+  }
+  hideTempPasswordError(){
+    this.tmpPass.nativeElement.focus();
+    this.validationError.tempPasswordError = false;
+  }
+
   onInputBlur(event) {
     this.showError = false;
     // if ((this.upperAndLowerCase && this.number && this.splChar && this.eightChar) &&
@@ -206,6 +220,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
   }
 
   validate(event) {
+    this.hidePasswordError();
     if (this.passwordNew.length > 8) {
       this.showError = false;
     } else {

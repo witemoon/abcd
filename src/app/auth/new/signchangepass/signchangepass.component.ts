@@ -99,7 +99,19 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
     console.log("data", data)
     return data;
   }
-
+  hidePasswordError(){
+    this.showError = true;
+    this.pass.nativeElement.focus();
+    this.validationError.newPasswordError = false;
+  }
+  hideConfPasswordError(){
+    this.cPass.nativeElement.focus();
+    this.validationError.confirmPasswordError = false;
+  }
+  hideTempPasswordError(){
+    this.tmpPass.nativeElement.focus();
+    this.validationError.tempPasswordError = false;
+  }
 
   onInputBlur(event) {
 
@@ -204,6 +216,7 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
   }
 
   validate(event) {
+    this.hidePasswordError();
     if (this.passwordNew.length > 8) {
       this.showError = false;
     } else {

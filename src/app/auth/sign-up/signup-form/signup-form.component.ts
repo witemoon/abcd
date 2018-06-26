@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {NgForm, FormControl} from "@angular/forms";
 import 'rxjs/add/operator/filter';
@@ -20,6 +20,11 @@ export class SignupFormComponent implements OnInit {
     "incorrectLeaseNo": false,
     "incorrectMerchant": false
   };
+
+@ViewChild("merchantDBA") merchantDBA: ElementRef;
+@ViewChild("leaseNumber") leaseNumber:ElementRef;
+@ViewChild("referenceKey") referenceKey:ElementRef;
+
   currentTab = 'signup';
   referenceKeyFC = new FormControl();
   leaseNumberFC = new FormControl();
@@ -128,9 +133,23 @@ export class SignupFormComponent implements OnInit {
     return true;
   }
 
+  hideRef(){
+    this.referenceKey.nativeElement.focus();
+    this.errorResponse.incorrectRefKey = false;
+  }
+  hideLeaseError(){
+    this.leaseNumber.nativeElement.focus();
+    this.errorResponse.incorrectLeaseNo = false;
+  }
+  hideMerchantdError(){
+    this.merchantDBA.nativeElement.focus();
+    this.errorResponse.incorrectMerchant = false;
+  }
+
   onInputKeyUp(event) {
     if (event) {
       if (event.target.name == "referenceKey") {
+        this.errorResponse.incorrectRefKey = false;
         // if(!(/^[-+]?\d+$/g).test(event.target.value)) {
         if(event.target.value.length > 8) {
           event.target.value = event.target.value.substr(0, 8);
@@ -138,6 +157,7 @@ export class SignupFormComponent implements OnInit {
           this.errorResponse.incorrectRefKey = false;
         }
       } else if (event.target.name == "leaseNumber") {
+        this.errorResponse.incorrectLeaseNo = false;
         let value = event.target.value;
 
         if(value.length == 3 || value.length == 11) {
@@ -145,6 +165,8 @@ export class SignupFormComponent implements OnInit {
         }
 
         event.target.value = value;
+      } else if(event.target.name == "merchantDBA"){
+        this.errorResponse.incorrectMerchant = false;
       }
     }
   }
