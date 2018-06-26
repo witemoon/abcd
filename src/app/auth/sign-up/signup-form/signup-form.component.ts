@@ -150,10 +150,6 @@ export class SignupFormComponent implements OnInit {
     if (event) {
       if (event.target.name == "referenceKey") {
         this.errorResponse.incorrectRefKey = false;
-<<<<<<< HEAD
-=======
-
->>>>>>> 2d2aa58c00a0e4a653190733020d933f0e09fa1a
         // if(!(/^[-+]?\d+$/g).test(event.target.value)) {
         if(event.target.value.length > 8) {
           event.target.value = event.target.value.substr(0, 8);
@@ -162,10 +158,6 @@ export class SignupFormComponent implements OnInit {
         }
       } else if (event.target.name == "leaseNumber") {
         this.errorResponse.incorrectLeaseNo = false;
-<<<<<<< HEAD
-=======
-
->>>>>>> 2d2aa58c00a0e4a653190733020d933f0e09fa1a
         let value = event.target.value;
 
         if(value.length == 3 || value.length == 11) {
@@ -176,8 +168,6 @@ export class SignupFormComponent implements OnInit {
       } else if(event.target.name == "merchantDBA"){
         this.errorResponse.incorrectMerchant = false;
       }
-
-      
     }
   }
 
