@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../../../shared/auth.service';
+import { SharedService } from '../../../shared/shared';
 
 @Component({
   selector: 'signchangepass',
@@ -9,7 +10,7 @@ import { AuthService } from '../../../shared/auth.service';
   styleUrls: ['./signchangepass.component.css']
 })
 export class SignchangepassComponent implements OnInit, AfterViewInit {
- 
+  loaderStatus = false;
   showError: boolean = false;
   passwordNew: string = "";
 
@@ -163,6 +164,7 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
 
 
   changePassword(changePass) {
+    this.loaderStatus=true;
 
     var tempPass = changePass.value.tempPass;
     var newPass = this.passwordFC.value;
@@ -189,10 +191,12 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
     };
 
     this.authservice.changePassword(payLoad).subscribe(res => {
+      this.loaderStatus=false;
       if (res['status'] == 'Success') {
         this.router.navigate(['/dashboard/home']);
       }
     }, err => {
+      this.loaderStatus=false;
       this.submitted = true;
       this.captcha.reset();
       this.captchaSelected = false;
@@ -216,15 +220,20 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
   }
 
   validate(event) {
-    this.hidePasswordError();
-    if (this.passwordNew.length > 8) {
-      this.showError = false;
-    } else {
-      this.showError = true;
+    if(event.target.name == "passwordNew"){
+      this.hidePasswordError();
+      if (this.passwordNew.length > 8) {
+        this.showError = false;
+      } 
+      else {
+        this.showError = true;
+      }
     }
-    return true
-  }
 
+    if(event.target.name == "confPassword"){
+      this.hideConfPasswordError();
+    }
+  }
   hasLowerCase(str) {
     return (/[a-z]/.test(str));
   }

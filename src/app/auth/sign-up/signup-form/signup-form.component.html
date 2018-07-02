@@ -1,3 +1,12 @@
+<div class="loaderpop" *ngIf="loaderStatus">
+  <div class="loaderpop-inner">
+    <div class="loaderpop-inner-cnt">
+      <div class="lds-dual-ring"></div>
+      <div class="lds-dual-ring-s"></div>
+    </div>
+  </div>
+</div>
+
 <h1 id="brandLogo" class="text-center">
   <a (click)="backToLandingPage()">
     <img class="img-ctrl" src="./assets/img/firstdata_logo.svg">
