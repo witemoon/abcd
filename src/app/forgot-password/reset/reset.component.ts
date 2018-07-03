@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup ,FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
-
+import { SharedService } from '../../shared/shared';
 
 @Component({
   selector: 'app-reset',
@@ -10,7 +10,7 @@ import { AuthService } from '../../shared/auth.service';
   styleUrls: ['./reset.component.css']
 })
 export class ResetComponent implements OnInit {
-
+  loaderStatus = false;
   showError = false;
   validEmail: boolean = false;
 
@@ -20,15 +20,17 @@ export class ResetComponent implements OnInit {
     
   }
   forgotPass(resetPass){
-    
+    this.loaderStatus=true;
     this.showError = false;
     var email=resetPass.value.email.toLowerCase();
     this.authService.currentEmail = email;
     this.authService.forgetPassword({emailId:email}).subscribe(res=>{
+      this.loaderStatus=false;
       if(res['status']=='Success'){
         this.router.navigate(['/thankyou']);
       }
     },error=>{
+      this.loaderStatus=false;
       this.showError = true;
       console.log('change password fail',error);
     });

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
 import { SharedService } from '../../shared/shared';
+
 @Component({
   selector: 'app-change-temp-pass',
   templateUrl: './change-temp-pass.component.html',
@@ -15,7 +16,6 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
   passwordValid: boolean = false;
   captchaSelected: boolean = false;
   submitted: boolean = false;
-  
 
   @ViewChild("tmpPass") tmpPass: ElementRef;
   @ViewChild("cPass") cPass: ElementRef;
@@ -144,7 +144,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
       event && event.target.name == "passwordNew") {
       this.validationError.newPasswordError = true;
       this.submitted = false;
-    } else if (event && event.target.name == "passwordNew" ) {
+    } else if (event && event.target.name == "passwordNew") {
       this.validationError.newPasswordError = false;
     }
 
@@ -171,6 +171,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
 
   changePassword(changePass) {
     this.loaderStatus=true;
+
     var tempPass = changePass.value.tempPass;
     var newPass = this.passwordFC.value;
     var cnfPass = changePass.value.confPassword;
@@ -209,7 +210,6 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
       this.cPass.nativeElement.value = "";
       this.passwordValid = false;
       this.showError = false;
-      
 
       if (err.error.message.includes("correct")) {
         this.validationError.tempPasswordError = true;

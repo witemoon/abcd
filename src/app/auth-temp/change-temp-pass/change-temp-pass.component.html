@@ -114,7 +114,8 @@
                     validateEqual="passwordNew"
                     #confPassword="ngModel"
                     #cPass
-                    (blur)="onInputBlur($event);" (focus)="validate($event)"
+                    (focus)="validate($event)"
+                    (blur)="onInputBlur($event);"
                   >
 
                   <div *ngIf="validationError.confirmPasswordError">

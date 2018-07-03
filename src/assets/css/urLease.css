@@ -2459,10 +2459,12 @@ button:focus {
 
 #Buyout-tooltip.tooltip2 {
   left: 21px;
-  top: 28px; }
+  top: 28px;
+  height: 100px; }
 
 .Buyout.arrowwrap {
-  left: 61px; }
+  left: 61px;
+  top: -15px; }
 
 .arrowwrap {
   width: 28px;
@@ -2622,7 +2624,7 @@ button:focus {
     #alertspop .cntWrap .txt span {
       margin-left: 6px;
       font-family: SimpleSans-Regular, Helvetica, sans-serif;
-      color: #3e3e3e;
+      /* color: #3e3e3e; */
       font-size: 14px;
       font-weight: normal;
       line-height: normal;

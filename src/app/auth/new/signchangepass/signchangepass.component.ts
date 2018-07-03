@@ -234,6 +234,7 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
       this.hideConfPasswordError();
     }
   }
+
   hasLowerCase(str) {
     return (/[a-z]/.test(str));
   }

@@ -5,7 +5,6 @@ import 'rxjs/add/operator/filter';
 import { AuthService } from '../../../shared/auth.service';
 import { SharedService } from '../../../shared/shared';
 
-
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
@@ -51,7 +50,7 @@ export class SignupFormComponent implements OnInit {
       }
     });
   }
-
+  
   leaseNumberFirstTime = true;
   ngOnInit() {
     console.log('---------- came to sign in page-------')
@@ -79,6 +78,7 @@ export class SignupFormComponent implements OnInit {
 
   signUpUser(signUpForm){
     this.loaderStatus= true;
+
     let valid = this.validateForm(signUpForm);
 
     if (valid) {
@@ -121,7 +121,7 @@ export class SignupFormComponent implements OnInit {
             if(error['error']['statusCode'] ==='500' && error['error']['message'].includes("locked")){
             this.errorToStat.emit(error.error.message);
             }
-        
+            
         });
     }
   }
@@ -154,8 +154,8 @@ export class SignupFormComponent implements OnInit {
       if (event.target.name == "referenceKey") {
         this.errorResponse.incorrectRefKey = false;
         // if(!(/^[-+]?\d+$/g).test(event.target.value)) {
-        if(event.target.value.length > 8) {
-          event.target.value = event.target.value.substr(0, 8);
+        if(event.target.value.length > 30) {
+          event.target.value = event.target.value.substr(0, 30);
         } else {
           this.errorResponse.incorrectRefKey = false;
         }
@@ -178,7 +178,7 @@ export class SignupFormComponent implements OnInit {
   singInSuccess = true;
 
   signInRegular(signInReg){
-    this.loaderStatus= true;
+    this.loaderStatus=true;
 
    var email=signInReg.value.email.toLowerCase();
    var passwordReg=signInReg.value.password;

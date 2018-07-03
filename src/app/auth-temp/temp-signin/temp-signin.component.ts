@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router,ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
+import { SharedService } from '../../shared/shared';
 
 @Component({
   selector: 'app-temp-signin',
@@ -8,6 +9,7 @@ import { AuthService } from '../../shared/auth.service';
   styleUrls: ['./temp-signin.component.css']
 })
 export class TempSigninComponent implements OnInit {
+  loaderStatus = false;
   email:string;
   constructor(private router:Router,  private authService:AuthService, private activatedRoute:ActivatedRoute) {
    
@@ -28,6 +30,7 @@ export class TempSigninComponent implements OnInit {
        });
         }
   tempSignInUser(tempSignIn){
+    this.loaderStatus=true;
     var email=tempSignIn.value.email;
     var tempPass=tempSignIn.value.tempPass;
     let str = btoa(tempPass);
@@ -49,6 +52,7 @@ export class TempSigninComponent implements OnInit {
      "password":  tempPass
       }
     this.authService.signIn(payLoad).subscribe(res=>{
+      this.loaderStatus=false;
       if(res['status']=='Success'){
         try{
           // this.authService.currentMerchantId = res['responseData'].merchantId;
@@ -73,6 +77,7 @@ export class TempSigninComponent implements OnInit {
         console.log('temp login faild',res);
       }
      },error=>{
+      this.loaderStatus=false;
       this.showError = true;
       console.log('temp login faild',error);
      });
