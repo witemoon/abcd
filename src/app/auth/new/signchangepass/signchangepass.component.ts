@@ -10,7 +10,7 @@ import { SharedService } from '../../../shared/shared';
   styleUrls: ['./signchangepass.component.css']
 })
 export class SignchangepassComponent implements OnInit, AfterViewInit {
-  loaderStatus = false;
+  // loaderStatus = false;
   showError: boolean = false;
   passwordNew: string = "";
 
@@ -34,7 +34,7 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
     "confirmPasswordError": false
   };
 
-  constructor(private router: Router, private authservice: AuthService, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private authservice: AuthService, private activatedRoute: ActivatedRoute, public loader: SharedService) { }
 
   ngOnInit() {
     this.showError = false;
@@ -164,7 +164,8 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
 
 
   changePassword(changePass) {
-    this.loaderStatus=true;
+    // this.loaderStatus=true;
+    this.loader.loaderStatus.next(true);
 
     var tempPass = changePass.value.tempPass;
     var newPass = this.passwordFC.value;
@@ -191,12 +192,14 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
     };
 
     this.authservice.changePassword(payLoad).subscribe(res => {
-      this.loaderStatus=false;
+      // this.loaderStatus=false;
+      this.loader.loaderStatus.next(false);
       if (res['status'] == 'Success') {
         this.router.navigate(['/dashboard/home']);
       }
     }, err => {
-      this.loaderStatus=false;
+      // this.loaderStatus=false;
+      this.loader.loaderStatus.next(false);
       this.submitted = true;
       this.captcha.reset();
       this.captchaSelected = false;

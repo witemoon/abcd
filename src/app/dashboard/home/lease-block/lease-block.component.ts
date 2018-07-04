@@ -29,6 +29,9 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         let arrayThree = [];
         let arrayFour = [];
         let arrayFive = [];
+        let arraySix = [];
+        let arraySeven = [];
+        let arrayEight = [];
 
         // this.leaseArray = data['leaseArray'];
         data['leaseArray'].forEach(item => {
@@ -39,10 +42,16 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
             arrayTwo.push(item);
           } else if (item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] != "Default") {
             arrayThree.push(item);
-          } else if (item['legalStatus'] == "Upgrade Lease") {
+          } else if (item['legalStatus'] == "Current") {
             arrayFour.push(item);
-          } else {
+          } else if (item['legalStatus'] == "Upgrade Lease") {
             arrayFive.push(item);
+          } else if (item['legalStatus'] == "Paid In Full") {
+            arraySix.push(item);
+          } else if (item['legalStatus'] == "Closed") {
+            arraySeven.push(item);
+          } else {
+            arrayEight.push(item);
           }
             
           
@@ -53,8 +62,11 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         arrayThree = this.sortByleaseNo(arrayThree);
         arrayFour = this.sortByleaseNo(arrayFour);
         arrayFive = this.sortByleaseNo(arrayFive);
+        arraySix = this.sortByleaseNo(arraySix);
+        arraySeven = this.sortByleaseNo(arraySeven);
+        arrayEight = this.sortByleaseNo(arrayEight);
 
-        this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour,arrayFive);
+        this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour,arrayFive,arraySix,arraySeven,arrayEight);
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
       $(document).ready(function(){

@@ -10,7 +10,7 @@ import { SharedService } from '../../shared/shared';
   styleUrls: ['./change-temp-pass.component.css']
 })
 export class ChangeTempPassComponent implements OnInit, AfterViewInit {
-  loaderStatus = false;
+  // loaderStatus = false;
   showError: boolean = false;
   passwordNew: string = "";
   passwordValid: boolean = false;
@@ -34,7 +34,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     "confirmPasswordError": false
   };
   email: string;
-  constructor(private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute, public loader: SharedService) {
     this.authService.setToken("");
   }
 
@@ -170,7 +170,8 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
 
 
   changePassword(changePass) {
-    this.loaderStatus=true;
+    // this.loaderStatus=true;
+    this.loader.loaderStatus.next(true);
 
     var tempPass = changePass.value.tempPass;
     var newPass = this.passwordFC.value;
@@ -196,12 +197,14 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     };
 
     this.authService.changePassword(payLoad).subscribe(res => {
-      this.loaderStatus=false;
+      // this.loaderStatus=false;
+      this.loader.loaderStatus.next(false);
       if (res['status'] == 'Success') {
         this.router.navigate(['/user/signin']);
       }
     }, err => {
-      this.loaderStatus=false;
+      // this.loaderStatus=false;
+      this.loader.loaderStatus.next(false);
       this.submitted = true;
       this.captcha.reset();
       this.captchaSelected = false;

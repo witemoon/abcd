@@ -9,9 +9,9 @@ import { SharedService } from '../../shared/shared';
   styleUrls: ['./temp-signin.component.css']
 })
 export class TempSigninComponent implements OnInit {
-  loaderStatus = false;
+  // loaderStatus = false;
   email:string;
-  constructor(private router:Router,  private authService:AuthService, private activatedRoute:ActivatedRoute) {
+  constructor(private router:Router,  private authService:AuthService, private activatedRoute:ActivatedRoute,  public loader: SharedService) {
    
   }
   showError = false; 
@@ -30,7 +30,8 @@ export class TempSigninComponent implements OnInit {
        });
         }
   tempSignInUser(tempSignIn){
-    this.loaderStatus=true;
+    // this.loaderStatus=true;
+    this.loader.loaderStatus.next(true);
     var email=tempSignIn.value.email;
     var tempPass=tempSignIn.value.tempPass;
     let str = btoa(tempPass);
@@ -52,7 +53,8 @@ export class TempSigninComponent implements OnInit {
      "password":  tempPass
       }
     this.authService.signIn(payLoad).subscribe(res=>{
-      this.loaderStatus=false;
+      // this.loaderStatus=false;
+      this.loader.loaderStatus.next(false);
       if(res['status']=='Success'){
         try{
           // this.authService.currentMerchantId = res['responseData'].merchantId;
@@ -77,7 +79,8 @@ export class TempSigninComponent implements OnInit {
         console.log('temp login faild',res);
       }
      },error=>{
-      this.loaderStatus=false;
+      // this.loaderStatus=false;
+      this.loader.loaderStatus.next(false);
       this.showError = true;
       console.log('temp login faild',error);
      });
