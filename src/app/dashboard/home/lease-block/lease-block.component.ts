@@ -28,26 +28,33 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         let arrayTwo = [];
         let arrayThree = [];
         let arrayFour = [];
+        let arrayFive = [];
 
         // this.leaseArray = data['leaseArray'];
         data['leaseArray'].forEach(item => {
+          // console.log(parseInt(item.leaseNo.split("-")[1]));
           if(item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] == "Default") {
             arrayOne.push(item);
           } else if (item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage != "No" && item['legalStatus'] == "Default") {
             arrayTwo.push(item);
           } else if (item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] != "Default") {
             arrayThree.push(item);
-          } else {
+          } else if (item['legalStatus'] == "Upgrade Lease") {
             arrayFour.push(item);
+          } else {
+            arrayFive.push(item);
           }
+            
+          
         });
 
         arrayOne = this.sortByleaseNo(arrayOne);
         arrayTwo = this.sortByleaseNo(arrayTwo);
         arrayThree = this.sortByleaseNo(arrayThree);
         arrayFour = this.sortByleaseNo(arrayFour);
+        arrayFive = this.sortByleaseNo(arrayFive);
 
-        this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour);
+        this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour,arrayFive);
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
       $(document).ready(function(){
@@ -96,9 +103,11 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
   sortByleaseNo(array) {
 
     array.sort((a, b)=> {
-      return a.leaseNo.split("-")[1] > b.leaseNo.split("-")[1]
+      console.log(parseInt(a.leaseNo.split("-")[1]));
+      console.log(parseInt(b.leaseNo.split("-")[1]));
+      return parseInt(a.leaseNo.split("-")[1]) > parseInt(b.leaseNo.split("-")[1])
     });
-
+    console.log(array);
     return array;
   }
 

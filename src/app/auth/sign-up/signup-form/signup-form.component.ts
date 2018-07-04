@@ -11,7 +11,7 @@ import { SharedService } from '../../../shared/shared';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent implements OnInit {
-  loaderStatus = false;
+  // loaderStatus = false;
 /*TEst*/
 
   captchaSelected: boolean = false;
@@ -34,7 +34,7 @@ export class SignupFormComponent implements OnInit {
 
   @ViewChild("captchaRef") captcha;
 
-  constructor(private router:Router, private authService:AuthService) {
+  constructor(private router:Router, private authService:AuthService, public loader: SharedService) {
     this.router.events
     .filter(event => event instanceof NavigationEnd)
     .subscribe((event:NavigationEnd) => {
@@ -77,7 +77,8 @@ export class SignupFormComponent implements OnInit {
   }
 
   signUpUser(signUpForm){
-    this.loaderStatus= true;
+    // this.loaderStatus= true;
+    this.loader.loaderStatus.next(true);
 
     let valid = this.validateForm(signUpForm);
 
@@ -94,13 +95,15 @@ export class SignupFormComponent implements OnInit {
 
         this.authService.register(payLoad).subscribe(res=>{
           console.log('register Response:',res);
-          this.loaderStatus=false;
+          // this.loaderStatus=false;
+          this.loader.loaderStatus.next(false);
           this.router.navigate(['/signthank']);
         },error=>{
           console.log('signup error',error);
           this.captcha.reset();
           this.captchaSelected = false;
-          this.loaderStatus=false;
+         // this.loaderStatus=false;
+         this.loader.loaderStatus.next(false);
           
           if (error.error && error.error.message) {
             let errMessage = error.error.message;
@@ -178,8 +181,9 @@ export class SignupFormComponent implements OnInit {
   singInSuccess = true;
 
   signInRegular(signInReg){
-    this.loaderStatus=true;
-
+    // this.loaderStatus=true;
+    //this.loader.loaderStatus = true;
+    this.loader.loaderStatus.next(true);
    var email=signInReg.value.email.toLowerCase();
    var passwordReg=signInReg.value.password;
    let str = btoa(passwordReg);
@@ -205,7 +209,9 @@ export class SignupFormComponent implements OnInit {
        localStorage.setItem("referenceKey", res['responseData'].referenceKey);
        localStorage.setItem("token", res['responseData'].token);
        localStorage.setItem("merchantId",res['responseData'].merchantId);
-       this.loaderStatus=false;
+      //  this.loaderStatus=false;
+       //this.loader.loaderStatus = false;
+       this.loader.loaderStatus.next(false);
       this.router.navigate(['/dashboard/home']);
     }
     else{
@@ -214,7 +220,9 @@ export class SignupFormComponent implements OnInit {
     }
    },error=>{
     this.signInError = true;
-    this.loaderStatus=false;
+    // this.loaderStatus=false;
+//    this.loader.loaderStatus = false;
+    this.loader.loaderStatus.next(false);
     console.log('regular signin faild',error);
     if(error['error']['statusCode']=='500' || error['error']['statusCode']=='501'|| error['error']['statusCode']=='503'|| error['error']['statusCode']=='504'){
       console.log('-------error code 500,501,503,504--------redirect here----')
