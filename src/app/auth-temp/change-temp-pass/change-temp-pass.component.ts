@@ -170,7 +170,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
 
 
   changePassword(changePass) {
-    // this.loaderStatus=true;
+    // this.loaderStatus= true;
     this.loader.loaderStatus.next(true);
 
     var tempPass = changePass.value.tempPass;
@@ -197,13 +197,13 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     };
 
     this.authService.changePassword(payLoad).subscribe(res => {
-      // this.loaderStatus=false;
+      // this.loaderStatus= false;
       this.loader.loaderStatus.next(false);
       if (res['status'] == 'Success') {
         this.router.navigate(['/user/signin']);
       }
     }, err => {
-      // this.loaderStatus=false;
+      // this.loaderStatus= false;
       this.loader.loaderStatus.next(false);
       this.submitted = true;
       this.captcha.reset();

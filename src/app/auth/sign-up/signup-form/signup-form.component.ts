@@ -95,15 +95,15 @@ export class SignupFormComponent implements OnInit {
 
         this.authService.register(payLoad).subscribe(res=>{
           console.log('register Response:',res);
-          // this.loaderStatus=false;
+          // this.loaderStatus= false;
           this.loader.loaderStatus.next(false);
           this.router.navigate(['/signthank']);
         },error=>{
           console.log('signup error',error);
           this.captcha.reset();
           this.captchaSelected = false;
-         // this.loaderStatus=false;
-         this.loader.loaderStatus.next(false);
+          // this.loaderStatus= false;
+          this.loader.loaderStatus.next(false);
           
           if (error.error && error.error.message) {
             let errMessage = error.error.message;
@@ -181,9 +181,9 @@ export class SignupFormComponent implements OnInit {
   singInSuccess = true;
 
   signInRegular(signInReg){
-    // this.loaderStatus=true;
-    //this.loader.loaderStatus = true;
+    // this.loaderStatus= true;
     this.loader.loaderStatus.next(true);
+
    var email=signInReg.value.email.toLowerCase();
    var passwordReg=signInReg.value.password;
    let str = btoa(passwordReg);
@@ -209,9 +209,8 @@ export class SignupFormComponent implements OnInit {
        localStorage.setItem("referenceKey", res['responseData'].referenceKey);
        localStorage.setItem("token", res['responseData'].token);
        localStorage.setItem("merchantId",res['responseData'].merchantId);
-      //  this.loaderStatus=false;
-       //this.loader.loaderStatus = false;
-       this.loader.loaderStatus.next(false);
+      //  this.loaderStatus= false;
+      this.loader.loaderStatus.next(false);
       this.router.navigate(['/dashboard/home']);
     }
     else{
@@ -220,8 +219,7 @@ export class SignupFormComponent implements OnInit {
     }
    },error=>{
     this.signInError = true;
-    // this.loaderStatus=false;
-//    this.loader.loaderStatus = false;
+    // this.loaderStatus= false;
     this.loader.loaderStatus.next(false);
     console.log('regular signin faild',error);
     if(error['error']['statusCode']=='500' || error['error']['statusCode']=='501'|| error['error']['statusCode']=='503'|| error['error']['statusCode']=='504'){

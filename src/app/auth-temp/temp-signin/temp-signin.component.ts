@@ -11,7 +11,7 @@ import { SharedService } from '../../shared/shared';
 export class TempSigninComponent implements OnInit {
   // loaderStatus = false;
   email:string;
-  constructor(private router:Router,  private authService:AuthService, private activatedRoute:ActivatedRoute,  public loader: SharedService) {
+  constructor(private router:Router,  private authService:AuthService, private activatedRoute:ActivatedRoute, public loader: SharedService) {
    
   }
   showError = false; 

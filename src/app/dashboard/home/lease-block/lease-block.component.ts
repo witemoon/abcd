@@ -35,7 +35,6 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
 
         // this.leaseArray = data['leaseArray'];
         data['leaseArray'].forEach(item => {
-          // console.log(parseInt(item.leaseNo.split("-")[1]));
           if(item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] == "Default") {
             arrayOne.push(item);
           } else if (item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage != "No" && item['legalStatus'] == "Default") {
@@ -53,8 +52,6 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
           } else {
             arrayEight.push(item);
           }
-            
-          
         });
 
         arrayOne = this.sortByleaseNo(arrayOne);
@@ -66,7 +63,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         arraySeven = this.sortByleaseNo(arraySeven);
         arrayEight = this.sortByleaseNo(arrayEight);
 
-        this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour,arrayFive,arraySix,arraySeven,arrayEight);
+        this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour, arrayFive, arraySix, arraySeven, arrayEight);
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
       $(document).ready(function(){
@@ -115,11 +112,9 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
   sortByleaseNo(array) {
 
     array.sort((a, b)=> {
-      console.log(parseInt(a.leaseNo.split("-")[1]));
-      console.log(parseInt(b.leaseNo.split("-")[1]));
       return parseInt(a.leaseNo.split("-")[1]) > parseInt(b.leaseNo.split("-")[1])
     });
-    console.log(array);
+
     return array;
   }
 
