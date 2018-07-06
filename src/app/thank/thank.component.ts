@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class ThankComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-  temp(){
+  temp() {
     console.log('signUp');
     this.router.navigate(['/changeTempPass']);
   }

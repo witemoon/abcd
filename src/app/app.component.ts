@@ -6,18 +6,18 @@ import { SharedService } from './shared/shared';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'app';
   loader: boolean;
-  constructor(public sharedLoader:SharedService){
-    
+  constructor(public sharedLoader: SharedService) {
+
   }
 
-ngOnInit(){
-  this.sharedLoader.loaderStatus.asObservable().subscribe(
-    res => {
-      this.loader = res;
-    }
-  )
-}
+  ngOnInit() {
+    this.sharedLoader.loaderStatus.asObservable().subscribe(
+      res => {
+        this.loader = res;
+      }
+    )
+  }
 }

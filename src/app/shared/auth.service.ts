@@ -11,33 +11,33 @@ export class AuthService {
 
   constructor(private backEndInterceptorService: BackEndInterceptorService) {
 
-   }
+  }
 
-  setToken(token){
+  setToken(token) {
     this.backEndInterceptorService.setToken(token);
   }
 
-  signIn(payLoad:any){
+  signIn(payLoad: any) {
     let url = API.login;
-    return this.backEndInterceptorService.postUrl(url,payLoad);
+    return this.backEndInterceptorService.postUrl(url, payLoad);
   }
 
-  register(payLoad:any){
+  register(payLoad: any) {
     let url = API.merchant_register;
-    return this.backEndInterceptorService.postUrl(url,payLoad);
+    return this.backEndInterceptorService.postUrl(url, payLoad);
   }
 
-  forgetPassword(payLoad:any){
+  forgetPassword(payLoad: any) {
     let url = API.forget_password;
-    return this.backEndInterceptorService.postUrl(url,payLoad);
+    return this.backEndInterceptorService.postUrl(url, payLoad);
   }
 
-  changePassword(payLoad:any){
+  changePassword(payLoad: any) {
     let url = API.change_password;
-    return this.backEndInterceptorService.postUrl(url,payLoad);
+    return this.backEndInterceptorService.postUrl(url, payLoad);
   }
 
-  logOut(){
+  logOut() {
     let url = API.merchant_logout;
     return this.backEndInterceptorService.getUrl(url);
   }

@@ -13,7 +13,7 @@ export class PaymentHelpPopupComponent implements OnInit {
   ngOnInit() {
   }
 
-  closeButtonClicked(){
+  closeButtonClicked() {
     this.showPopup = false;
   }
 

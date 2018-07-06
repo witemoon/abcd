@@ -8,11 +8,11 @@ import { SharedService } from '../../shared/shared';
 })
 export class BreadcrumbComponent implements OnInit {
   breadCrumb: any;
-  constructor(private sharedService:SharedService) { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
     this.sharedService.braedValue.asObservable().subscribe(
-      (data:any) => {
+      (data: any) => {
         console.log(data);
         this.breadCrumb = data;
       }

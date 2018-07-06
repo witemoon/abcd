@@ -100,16 +100,16 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
     console.log("data", data)
     return data;
   }
-  hidePasswordError(){
+  hidePasswordError() {
     this.showError = true;
     this.pass.nativeElement.focus();
     this.validationError.newPasswordError = false;
   }
-  hideConfPasswordError(){
+  hideConfPasswordError() {
     this.cPass.nativeElement.focus();
     this.validationError.confirmPasswordError = false;
   }
-  hideTempPasswordError(){
+  hideTempPasswordError() {
     this.tmpPass.nativeElement.focus();
     this.validationError.tempPasswordError = false;
   }
@@ -223,17 +223,17 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
   }
 
   validate(event) {
-    if(event.target.name == "passwordNew"){
+    if (event.target.name == "passwordNew") {
       this.hidePasswordError();
       if (this.passwordNew.length > 8) {
         this.showError = false;
-      } 
+      }
       else {
         this.showError = true;
       }
     }
 
-    if(event.target.name == "confPassword"){
+    if (event.target.name == "confPassword") {
       this.hideConfPasswordError();
     }
   }

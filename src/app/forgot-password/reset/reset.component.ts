@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup ,FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/auth.service';
 import { SharedService } from '../../shared/shared';
 
@@ -14,28 +14,28 @@ export class ResetComponent implements OnInit {
   showError = false;
   validEmail: boolean = false;
 
-  constructor(private router:Router, private authService:AuthService, public loader: SharedService) { }
+  constructor(private router: Router, private authService: AuthService, public loader: SharedService) { }
 
   ngOnInit() {
-    
+
   }
-  forgotPass(resetPass){
+  forgotPass(resetPass) {
     // this.loaderStatus=true;
     this.loader.loaderStatus.next(true);
     this.showError = false;
-    var email=resetPass.value.email.toLowerCase();
+    var email = resetPass.value.email.toLowerCase();
     this.authService.currentEmail = email;
-    this.authService.forgetPassword({emailId:email}).subscribe(res=>{
+    this.authService.forgetPassword({ emailId: email }).subscribe(res => {
       // this.loaderStatus=false;
       this.loader.loaderStatus.next(false);
-      if(res['status']=='Success'){
+      if (res['status'] == 'Success') {
         this.router.navigate(['/thankyou']);
       }
-    },error=>{
+    }, error => {
       // this.loaderStatus=false;
       this.loader.loaderStatus.next(false);
       this.showError = true;
-      console.log('change password fail',error);
+      console.log('change password fail', error);
     });
 
     // if(email=="demo2@test.com"){
@@ -55,5 +55,5 @@ export class ResetComponent implements OnInit {
       this.validEmail = true;
     }
   }
-  
+
 }

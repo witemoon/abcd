@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 })
 export class Error401Component implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     console.log('----came to 401 error page----')
   }
-  loginclick(){
+  loginclick() {
     this.router.navigate(['user/signin']);
   }
 

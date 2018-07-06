@@ -14,7 +14,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
   selectedLease = 0;
   leaseArray = [];
 
-  constructor(private dashboardService:DashboardServiceService, private sharedService:SharedService) {
+  constructor(private dashboardService: DashboardServiceService, private sharedService: SharedService) {
   }
 
   ngAfterViewInit(): void {
@@ -22,7 +22,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.dashboardService.changeObject.subscribe(data=>{
+    this.dashboardService.changeObject.subscribe(data => {
       if (data && data['leaseArray']) {
         let arrayOne = [];
         let arrayTwo = [];
@@ -35,7 +35,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
 
         // this.leaseArray = data['leaseArray'];
         data['leaseArray'].forEach(item => {
-          if(item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] == "Default") {
+          if (item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage == "No" && item['legalStatus'] == "Default") {
             arrayOne.push(item);
           } else if (item.equipmentCoverage && item.equipmentCoverage.equipmentCoverage && item.equipmentCoverage.equipmentCoverage != "No" && item['legalStatus'] == "Default") {
             arrayTwo.push(item);
@@ -66,18 +66,18 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour, arrayFive, arraySix, arraySeven, arrayEight);
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
-      $(document).ready(function(){
+      $(document).ready(function () {
         $('.ca-box-wrap').not('.slick-initialized').slick(
           {
             dots: false,
             speed: 500,
-            prevArrow:$('.lease-prev'),
-            nextArrow:$('.lease-next'),
-            slidesToShow:4,
-            slidesToScroll:1,
+            prevArrow: $('.lease-prev'),
+            nextArrow: $('.lease-next'),
+            slidesToShow: 4,
+            slidesToScroll: 1,
             infinite: false,
             variableWidth: true,
-            vertical:false,
+            vertical: false,
             responsive: [
               {
                 breakpoint: 1024,
@@ -111,7 +111,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
 
   sortByleaseNo(array) {
 
-    array.sort((a, b)=> {
+    array.sort((a, b) => {
       return parseInt(a.leaseNo.split("-")[1]) > parseInt(b.leaseNo.split("-")[1])
     });
 
@@ -122,7 +122,7 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
     console.log(selectedLease);
     this.dashboardService.selectedLeaseObj.next(selectedLease);
   }
-  getPage(value){
+  getPage(value) {
     this.sharedService.braedValue.next(value);
   }
 }

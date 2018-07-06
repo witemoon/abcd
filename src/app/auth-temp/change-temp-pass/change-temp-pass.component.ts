@@ -93,7 +93,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.showError = false;
   }
   encryption(encryptVal) {
@@ -107,16 +107,16 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     return data;
   }
 
-  hidePasswordError(){
+  hidePasswordError() {
     this.showError = true;
     this.pass.nativeElement.focus();
     this.validationError.newPasswordError = false;
   }
-  hideConfPasswordError(){
+  hideConfPasswordError() {
     this.cPass.nativeElement.focus();
     this.validationError.confirmPasswordError = false;
   }
-  hideTempPasswordError(){
+  hideTempPasswordError() {
     this.tmpPass.nativeElement.focus();
     this.validationError.tempPasswordError = false;
   }
@@ -228,22 +228,22 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
   }
 
   validate(event) {
-    if(event.target.name == "passwordNew"){
+    if (event.target.name == "passwordNew") {
       this.hidePasswordError();
       if (this.passwordNew.length > 8) {
         this.showError = false;
-      } 
+      }
       else {
         this.showError = true;
       }
     }
 
-    if(event.target.name == "confPassword"){
+    if (event.target.name == "confPassword") {
       this.hideConfPasswordError();
     }
-    
 
-   // return true
+
+    // return true
   }
 
   hasLowerCase(str) {

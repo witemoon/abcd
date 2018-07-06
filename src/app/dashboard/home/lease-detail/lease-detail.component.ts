@@ -10,13 +10,13 @@ export class LeaseDetailComponent implements OnInit {
 
   leaseData = {};
   selectedLease = {};
-  constructor(private dashboardService:DashboardServiceService) { }
+  constructor(private dashboardService: DashboardServiceService) { }
 
   ngOnInit() {
-    this.dashboardService.leaseData.subscribe(data=>{
+    this.dashboardService.leaseData.subscribe(data => {
       this.leaseData = data;
     });
-    this.dashboardService.selectedLeaseObj.subscribe(data=>{
+    this.dashboardService.selectedLeaseObj.subscribe(data => {
       this.selectedLease = data;
     })
   }

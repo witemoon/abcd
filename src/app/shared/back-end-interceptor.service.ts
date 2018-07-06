@@ -8,55 +8,55 @@ import { Router } from '@angular/router';
 @Injectable()
 export class BackEndInterceptorService {
 
-  constructor(private http:HttpClient, private router:Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   private token = '';
 
-  private getEnvironmentUrl(){
+  private getEnvironmentUrl() {
     let protocol = window.location.protocol;
     let host = window.location.host;
     // host = host.indexOf('localhost')>-1? API_DEV_HOST : host;
-    host = host.indexOf('localhost')>-1? "localhost:8080" : API_DEV_HOST;
+    host = host.indexOf('localhost') > -1 ? "localhost:8080" : API_DEV_HOST;
     return protocol + '//' + host;
   }
 
-  private getHeaders(){
+  private getHeaders() {
     this.token = localStorage.getItem("token") ? localStorage.getItem("token") : "";
     let headers = new HttpHeaders();
     headers = headers
-              .set('X-App-Client', api_header.X_App_Client)
-              .set('token', this.token)
-              .set('Content-Type','application/json');
+      .set('X-App-Client', api_header.X_App_Client)
+      .set('token', this.token)
+      .set('Content-Type', 'application/json');
     return headers;
   }
 
-  setToken(token){
+  setToken(token) {
     this.token = token;
   }
 
-  getUrl(url:String){
+  getUrl(url: String) {
     //concatinating actual url by window url + parameter
     let finalUrl = this.getEnvironmentUrl() + url;
-    return this.http.get(finalUrl,{ headers: this.getHeaders() }).do(res=>{
-      if(res && res['status']!='Success'){
+    return this.http.get(finalUrl, { headers: this.getHeaders() }).do(res => {
+      if (res && res['status'] != 'Success') {
         this.router.navigate(['/user/signin']);
       }
     });;
   }
 
-  postUrl(url:String, payLoad:any){
+  postUrl(url: String, payLoad: any) {
     let finalUrl = this.getEnvironmentUrl() + url;
-    return this.http.post(finalUrl, payLoad, { headers: this.getHeaders() }).do(res=>{
-      if(res && res['status']!='Success'){
+    return this.http.post(finalUrl, payLoad, { headers: this.getHeaders() }).do(res => {
+      if (res && res['status'] != 'Success') {
         this.router.navigate(['/user/signin']);
       }
     });
   }
 
-  putUrl(url:String, payLoad:any){
+  putUrl(url: String, payLoad: any) {
     let finalUrl = this.getEnvironmentUrl() + url;
-    return this.http.put(finalUrl, payLoad, { headers: this.getHeaders() }).do(res=>{
-      if(res && res['status']!='Success'){
+    return this.http.put(finalUrl, payLoad, { headers: this.getHeaders() }).do(res => {
+      if (res && res['status'] != 'Success') {
         this.router.navigate(['/user/signin']);
       }
     });;

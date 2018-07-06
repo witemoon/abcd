@@ -22,6 +22,6 @@ export class RightSideBarComponent implements OnInit {
     // rytSideBut.classList.toggle("ctrlWidthRytR");
     this.rytSide = !this.rytSide;
     this.rytSideBut = !this.rytSideBut;
-}
+  }
 
 }

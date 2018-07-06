@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { routing } from './routing/routing';
 
 import { RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
-import {RecaptchaFormsModule} from 'ng-recaptcha/forms';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 
 import { AppComponent } from './app.component';
@@ -36,7 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <== add th
 import { SignthankComponent } from './auth/new/signthank/signthank.component';
 import { SignchangepassComponent } from './auth/new/signchangepass/signchangepass.component';
 import { BackEndInterceptorService } from './shared/back-end-interceptor.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Error401Component } from './errorhandler/error401/error401.component';
 import { ServiceerrorsComponent } from './errorhandler/serviceerrors/serviceerrors.component';
 import { SharedService } from './shared/shared';
@@ -96,15 +96,15 @@ import { CookiesDisclosureComponent } from './cookies-disclosure/cookies-disclos
     HttpClientModule,
     NgbModule.forRoot()
   ],
-providers: [AuthService,{
-  provide: RECAPTCHA_SETTINGS,
-  useValue: {
-    siteKey: '6LeAyiAUAAAAAFBfMpYA4iGyFQssmt99CpCLr8Ru',
-  } as RecaptchaSettings,
-},
-BackEndInterceptorService,
-SharedService
-],
+  providers: [AuthService, {
+    provide: RECAPTCHA_SETTINGS,
+    useValue: {
+      siteKey: '6LeAyiAUAAAAAFBfMpYA4iGyFQssmt99CpCLr8Ru',
+    } as RecaptchaSettings,
+  },
+    BackEndInterceptorService,
+    SharedService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

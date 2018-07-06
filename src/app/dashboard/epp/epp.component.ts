@@ -184,7 +184,7 @@ export class EppComponent implements OnInit {
       res => {
 
         console.log('------post epp data success-----', res)
-        this.loaderStatus=false;
+        this.loaderStatus = false;
       },
       err => {
         console.log('----- get lease data error-------', err);
@@ -196,7 +196,7 @@ export class EppComponent implements OnInit {
           console.log('-------error code 500,501,503,504--------redirect here----')
           this.router.navigate(['/serviceerrors']);
         }
-        this.loaderStatus=false;
+        this.loaderStatus = false;
       });
   }
   onYesNoClicked(event) {

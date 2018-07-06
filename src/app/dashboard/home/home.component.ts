@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   defaultLeaseBadgeCount = 0;
   loaderStatus = false;
   // breadCrumb: any;
-  constructor(private sharedservice:SharedService, private dashboardService: DashboardServiceService, private router:Router) { }
+  constructor(private sharedservice: SharedService, private dashboardService: DashboardServiceService, private router: Router) { }
 
   ngOnInit() {
     // this.sharedService.braedValue.asObservable().subscribe(
@@ -24,10 +24,10 @@ export class HomeComponent implements OnInit {
     //     this.breadCrumb = data;
     //   }
     // );
-this.loaderStatus = true;
+    this.loaderStatus = true;
     let leaseArray = [];
-    this.dashboardService.getLeaseData("").subscribe(data=>{
-     
+    this.dashboardService.getLeaseData("").subscribe(data => {
+
       if (data && data['responseData']) {
         // let data = dashboardData;
         let totalBadgeCount = 0;
@@ -38,7 +38,7 @@ this.loaderStatus = true;
         // this.selectLeaseObject = this.leaseArray[0];
         // this.emitSelectedLeaseObj(this.selectLeaseObject);
 
-        leaseArray.forEach(item=>{
+        leaseArray.forEach(item => {
           this.equipmentBadgeCount = 0;
           this.defaultLeaseBadgeCount = 0;
 
@@ -57,17 +57,17 @@ this.loaderStatus = true;
         });
 
         // this.dashboardService.selectedLeaseObj.emit()
-        this.dashboardService.changeObj({"totalBadgeCount": totalBadgeCount, "totalEquipmentBadgeCount": totalEquipmentBadgeCount, "totalDefaultLeaseBadgeCount": totalDefaultLeaseBadgeCount, "leaseArray": leaseArray });
+        this.dashboardService.changeObj({ "totalBadgeCount": totalBadgeCount, "totalEquipmentBadgeCount": totalEquipmentBadgeCount, "totalDefaultLeaseBadgeCount": totalDefaultLeaseBadgeCount, "leaseArray": leaseArray });
         this.dashboardService.leaseData.next(data['responseData']);
         this.loaderStatus = false;
       }
-    },err=>{
-      console.log('----- get lease data error-------',err);
-      if(err['error']['statusCode']=='401'){
+    }, err => {
+      console.log('----- get lease data error-------', err);
+      if (err['error']['statusCode'] == '401') {
         console.log('-------error code 401--------redirect here----')
         this.router.navigate(['/error401']);
       }
-      if(err['error']['statusCode']=='500' || err['error']['statusCode']=='501'|| err['error']['statusCode']=='503'|| err['error']['statusCode']=='504'){
+      if (err['error']['statusCode'] == '500' || err['error']['statusCode'] == '501' || err['error']['statusCode'] == '503' || err['error']['statusCode'] == '504') {
         console.log('-------error code 500,501,503,504--------redirect here----')
         this.router.navigate(['/serviceerrors']);
       }

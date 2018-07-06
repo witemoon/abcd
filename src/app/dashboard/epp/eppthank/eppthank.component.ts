@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class EppthankComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-  dboard(){
+  dboard() {
     console.log('dashboard/home');
     this.router.navigate(['/dashboard/home']);
   }
