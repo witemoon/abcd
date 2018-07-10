@@ -4,7 +4,7 @@ import { NgForm, FormControl } from "@angular/forms";
 import 'rxjs/add/operator/filter';
 import { AuthService } from '../../../shared/auth.service';
 import { SharedService } from '../../../shared/shared';
-
+declare var $: any
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
@@ -78,6 +78,7 @@ export class SignupFormComponent implements OnInit {
 
   signUpUser(signUpForm) {
     // this.loaderStatus= true;
+    $('html, body').css({ 'overflow': 'hidden', 'height': '100%' })
     this.loader.loaderStatus.next(true);
 
     let valid = this.validateForm(signUpForm);
@@ -103,8 +104,9 @@ export class SignupFormComponent implements OnInit {
         this.captcha.reset();
         this.captchaSelected = false;
         // this.loaderStatus= false;
-        this.loader.loaderStatus.next(false);
 
+        this.loader.loaderStatus.next(false);
+  $('html, body').css({ 'overflow': 'auto', 'height': '100%' })
         if (error.error && error.error.message) {
           let errMessage = error.error.message;
 
