@@ -26,6 +26,8 @@ export class BackEndInterceptorService {
     headers = headers
       .set('X-App-Client', api_header.X_App_Client)
       .set('token', this.token)
+      .set('X-Content-Type-Options', api_header.X_Content_Type_Options)
+      .set('X-XSS-Protection', api_header.X_XSS_Protection)
       .set('Content-Type', 'application/json');
     return headers;
   }

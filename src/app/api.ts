@@ -2,8 +2,8 @@
 
 var api_Base = '/api'
 
-  export var API_DEV_HOST = 'dev-urlease.firstdata.com';
-//   export var API_DEV_HOST = 'localhost:8080';
+ export var API_DEV_HOST = 'dev-urlease.firstdata.com';
+// export var API_DEV_HOST = 'localhost:8080';
 
 
 export var API = {
@@ -21,5 +21,7 @@ export var API = {
 
 export var api_header = {
     X_App_Client: '0',
-    token: ''
+    token: '',
+    X_Content_Type_Options: "nosniff",
+    X_XSS_Protection:'1'
 };

@@ -16,18 +16,18 @@ export class DashboardServiceService {
 
   }
 
-  getLeaseData(merchantId){
-    let observable = this.http.get('https://api.myjson.com/bins/prt8s');
-    return observable;
-  }
+  // getLeaseData(merchantId){
+  //   let observable = this.http.get('https://api.myjson.com/bins/rpnt7');
+  //   return observable;
+  // }
 
   //.replace(/{(groupID)}/,id)
 
-  // getLeaseData(referenceKey){
-  //   referenceKey = localStorage.getItem("referenceKey");
-  //   let url = API.merchant_leases.replace(/{(referenceKey)}/,referenceKey);
-  //   return this.backEndInterceptorService.getUrl(url);
-  // }
+  getLeaseData(referenceKey){
+    referenceKey = localStorage.getItem("referenceKey");
+    let url = API.merchant_leases.replace(/{(referenceKey)}/,referenceKey);
+    return this.backEndInterceptorService.getUrl(url);
+  }
 
   getEppData(startDate,endDate){
     let url = API.get_epp.replace(/{(startDate)}/,startDate).replace(/{(endDate)}/,endDate);

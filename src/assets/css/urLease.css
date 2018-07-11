@@ -2455,12 +2455,17 @@ button:focus {
   left: 0px;
   top: 27px; }
   #currentbala-tooltip.tooltip2 .arrowwrap {
-    left: 89px; }
+    left: 89px;top: -14px; }
 
 #Buyout-tooltip.tooltip2 {
   left: 21px;
   top: 28px;
   height: 100px; }
+  #Buyout-tooltip.tooltip2 a {
+    background-image: none;
+    display: inline-block;
+    width: auto;
+  }
 
 .Buyout.arrowwrap {
   left: 61px;
@@ -2633,7 +2638,7 @@ button:focus {
       letter-spacing: normal; }
       #alertspop .cntWrap .txt span span.cntnum {
         font-family: SimpleSans-Bold, Helvetica, sans-serif;
-        color: #3e3e3e;
+        color: #3e3e3e!important;
         font-size: 14px;
         font-weight: bold;
         line-height: normal;
@@ -2999,6 +3004,19 @@ button:focus {
 
 /*********************************** RWD  STARTS here *********************************/
 @media (min-width: 320px) and (max-width: 769px) {
+  .btnSubmit.thankwrap{margin-bottom: 30px;}
+
+
+  #currentbala-tooltip.tooltip2 {
+    left: -31px;
+    top: 27px; }
+    #currentbala-tooltip.tooltip2 .arrowwrap {
+      left: 118px; }
+
+
+      .cookies-wrap,.cookies-wrap.signup-wrap{position:static; margin-bottom:30px;}
+
+  #signWrap button.btn.thankwrap{max-width: 100%!important;}
   #Equipment .owl-nav .owl-prev {
     left: -5%; }
   #Equipment .owl-nav .owl-next {
@@ -3023,7 +3041,7 @@ button:focus {
     width: 100%;
     position: absolute;
     padding: 0px 15px;
-    margin-bottom: -30px;
+    /* margin-bottom: -30px; */
     margin-top: 20px;
     text-align: center;
     bottom: 0px; }
@@ -3139,6 +3157,17 @@ button:focus {
 
   #Contract ul li {
     width: 50%; }
+    
+    .contracttest ul li:nth-child(even) #Buyout-tooltip.tooltip2 {left:-147px}
+    .contracttest ul li:nth-child(even) #Buyout-tooltip.tooltip2 .Buyout.arrowwrap {left:227px}
+
+
+    
+
+    /* .contracttest ul li:nth-child(odd) #Buyout-tooltip.tooltip2{background: red} */
+
+
+    /* .contracttest ul li:nth-child(odd) #Buyout-tooltip.tooltip2{border:2px solid yellow;left:-147px} */
 
   #land-wrap .landStyle p {
     font-family: SimpleSans-Regular, Helvetica, sans-serif;

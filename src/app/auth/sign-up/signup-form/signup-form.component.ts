@@ -5,6 +5,7 @@ import 'rxjs/add/operator/filter';
 import { AuthService } from '../../../shared/auth.service';
 import { SharedService } from '../../../shared/shared';
 declare var $: any
+
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
@@ -104,9 +105,9 @@ export class SignupFormComponent implements OnInit {
         this.captcha.reset();
         this.captchaSelected = false;
         // this.loaderStatus= false;
-
         this.loader.loaderStatus.next(false);
-  $('html, body').css({ 'overflow': 'auto', 'height': '100%' })
+        $('html, body').css({ 'overflow': 'auto', 'height': '100%' })
+
         if (error.error && error.error.message) {
           let errMessage = error.error.message;
 
