@@ -21,4 +21,7 @@ export class AlertsPopupComponent implements OnInit {
     this.showPopup = false;
     // this.router.navigate(['/dashboard/home']);
   }
+  pageReload(){
+    location.reload();
+  }
 }

@@ -25,14 +25,26 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() attrindex;
 
   constructor(private router: Router, private renderer: Renderer2, private dashboardService: DashboardServiceService, private sharedService: SharedService) {
-    renderer.listen('document', 'click touch', (evt) => {
+    renderer.listen('document', 'click', (evt) => {
+     // $('#leaseCaed1').trigger("click");
       let id = evt.target.id;
-      if (id != '#currentbala-trigger') {
-        $('#currentbala-tooltip').hide(); // add hiding code here
+      if ( id == "currentbala-trigger") {
+        $('#currentbala-tooltip').show(); // add hiding code here
       }
-      if (id != '#Buyout-trigger') {
-        $('#Buyout-tooltip').hide(); // add hiding code here
+
+      if ( (id !== "currentbala-trigger") && (id !== "currentbala-tooltip") )  {
+        $('#currentbala-tooltip').hide(); 
       }
+      if ( id == "Buyout-trigger") {
+        $('#Buyout-tooltip').show(); // add hiding code here
+      }
+
+      if ( (id !== "Buyout-trigger") && (id !== "Buyout-tooltip") && (id !== "teleLink"))  {
+        $('#Buyout-tooltip').hide(); 
+      }
+      // if ( id && (id !== "Buyout-tooltip")) {
+      //   $('#Buyout-tooltip').hide(); // add hiding code here
+      // }
     });
   }
   onNavItemClicked(event) {
@@ -57,28 +69,28 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     console.log('----- going to set jquery on currentbala-trigger -----------')
-    $('#currentbala-trigger').on('click touch', function () {
-      $('#currentbala-tooltip').show();
-      console.log("--- $('#currentbala-tooltip').show(); ------");
-    });
-    $('#Buyout-trigger').on('click touch', function () {
-      $('#Buyout-tooltip').show();
-    });
-    $('#currentbala-tooltip').on('click touch', function (event) {
-      event.stopPropagation();
-    });
-    $('#Buyout-tooltip').on('click touch', function (event) {
-      event.stopPropagation();
-    });
-    $(document).on('click touch', function (event) {
+    // $('#currentbala-trigger').on('click touch', function () {
+    //   $('#currentbala-tooltip').show();
+    //   console.log("--- $('#currentbala-tooltip').show(); ------");
+    // });
+    // $('#Buyout-trigger').on('click touch', function () {
+    //   $('#Buyout-tooltip').show();
+    // });
+    // $('#currentbala-tooltip').on('click touch', function (event) {
+    //   event.stopPropagation();
+    // });
+    // $('#Buyout-tooltip').on('click touch', function (event) {
+    //   event.stopPropagation();
+    // });
+    // $(document).on('click touch', function (event) {
 
-      if (!$(event.target).parents().addBack().is('#currentbala-trigger')) {
-        $('#currentbala-tooltip').hide();
-      }
-      if (!$(event.target).parents().addBack().is('#Buyout-trigger')) {
-        $('#Buyout-tooltip').hide();
-      }
-    });
+    //   if (!$(event.target).parents().addBack().is('#currentbala-trigger')) {
+    //     $('#currentbala-tooltip').hide();
+    //   }
+    //   if (!$(event.target).parents().addBack().is('#Buyout-trigger')) {
+    //     $('#Buyout-tooltip').hide();
+    //   }
+    // });
   }
   //   eqpCarousel() {
   //     $('.ca-box-wrap').not('.slick-initialized').slick(
