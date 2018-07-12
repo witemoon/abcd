@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges, Renderer2, ViewChild, SimpleChanges } from '@angular/core';
 import { DashboardServiceService } from '../../dashboard-service.service';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../shared/shared';
@@ -24,7 +24,16 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() selectedIndex;
   @Input() attrindex;
 
-  constructor(private router: Router, private dashboardService: DashboardServiceService, private sharedService: SharedService) {
+  constructor(private router: Router, private renderer: Renderer2, private dashboardService: DashboardServiceService, private sharedService: SharedService) {
+    renderer.listen('document', 'click touch', (evt) => {
+      let id = evt.target.id;
+      if (id != '#currentbala-trigger') {
+        $('#currentbala-tooltip').hide(); // add hiding code here
+      }
+      if (id != '#Buyout-trigger') {
+        $('#Buyout-tooltip').hide(); // add hiding code here
+      }
+    });
   }
   onNavItemClicked(event) {
     this.selectedIndex = event.target.getAttribute("index");
@@ -62,6 +71,7 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
       event.stopPropagation();
     });
     $(document).on('click touch', function (event) {
+
       if (!$(event.target).parents().addBack().is('#currentbala-trigger')) {
         $('#currentbala-tooltip').hide();
       }
