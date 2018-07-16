@@ -24,4 +24,8 @@ export class AlertsPopupComponent implements OnInit {
   pageReload(){
     location.reload();
   }
+  changeRoute(url) {
+    this.router.navigateByUrl('/dashboard/epp', { skipLocationChange: true });
+    setTimeout(() => this.router.navigate(url));
+  }
 }
