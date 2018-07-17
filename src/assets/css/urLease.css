@@ -150,6 +150,23 @@ body, html {
   font-weight: normal; }
 
 /*** Styles added to fix the issue with zoom in on iphone ***/
+@media only screen and (device-width: 768px) {
+  /* For general iPad layouts */
+  body, html {
+  cursor: pointer; }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+  body, html {
+    cursor: pointer; }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* For landscape layouts only */
+  body, html {
+    cursor: pointer; }
+}
 /* iPhone < 5: */
 @media screen and (device-aspect-ratio: 2 / 3) {
   select, textarea, input[type="text"], input[type="password"],
@@ -3004,6 +3021,10 @@ button:focus {
 
 /*********************************** RWD  STARTS here *********************************/
 @media (min-width: 320px) and (max-width: 769px) {
+
+  body, html {
+    cursor: pointer; }
+
   .btnSubmit.thankwrap{margin-bottom: 30px;}
 
 

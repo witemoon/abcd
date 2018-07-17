@@ -22,22 +22,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EppPopupComponent } from './epp/epp-popup/epp-popup.component';
 import { AddCommaPipe, Is_Greater_Than_Current_Date } from './dashboard-pipe';
 import { EppthankComponent } from './epp/eppthank/eppthank.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EppstaticComponent } from './epp/eppstatic/eppstatic.component';
 import { OwlModule } from 'ngx-owl-carousel';
 
 const dashboardRoute: Routes = [
-  { path: '', component: DashboardComponent,
+  {
+    path: '', component: DashboardComponent,
     children: [
-      { path:'home', component: HomeComponent },
-      { path:'epp', component: EppComponent },
-      { path:'claims', component: ClaimsComponent },
-      { path:'eol', component: EolComponent },
-      { path:'faq', component: FaqComponent },
-      { path:'contact', component: ContactComponent },
-      { path:'eppthank', component: EppthankComponent},
+      { path: 'home', component: HomeComponent },
+      { path: 'epp', component: EppComponent },
+      { path: 'claims', component: ClaimsComponent },
+      { path: 'eol', component: EolComponent },
+      { path: 'faq', component: FaqComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'eppthank', component: EppthankComponent },
     ]
- },
+  },
 ];
 
 @NgModule({
@@ -49,28 +50,28 @@ const dashboardRoute: Routes = [
     NgbModule.forRoot()
   ],
   declarations: [
-                  DashboardComponent, 
-                  LeftSideBarComponent,
-                  RightSideBarComponent,
-                  HeaderComponent,
-                  BreadcrumbComponent,
-                  HomeComponent,
-                  LeaseBlockComponent,
-                  LeaseDetailComponent,
-                  LeaseTabsComponent,
-                  EppComponent,
-                  ClaimsComponent,
-                  EolComponent,
-                  FaqComponent,
-                  ContactComponent,
-                  AlertsPopupComponent,
-                  PaymentHelpPopupComponent,
-                  EppPopupComponent,
-                  AddCommaPipe,
-                  EppthankComponent,
-                  EppstaticComponent,
-                  Is_Greater_Than_Current_Date
-              ],
+    DashboardComponent,
+    LeftSideBarComponent,
+    RightSideBarComponent,
+    HeaderComponent,
+    BreadcrumbComponent,
+    HomeComponent,
+    LeaseBlockComponent,
+    LeaseDetailComponent,
+    LeaseTabsComponent,
+    EppComponent,
+    ClaimsComponent,
+    EolComponent,
+    FaqComponent,
+    ContactComponent,
+    AlertsPopupComponent,
+    PaymentHelpPopupComponent,
+    EppPopupComponent,
+    AddCommaPipe,
+    EppthankComponent,
+    EppstaticComponent,
+    Is_Greater_Than_Current_Date
+  ],
   providers: [
     DashboardServiceService
   ]

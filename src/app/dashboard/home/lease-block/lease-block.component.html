@@ -7,10 +7,10 @@
 <div class="ca-box-wrap">
 
 
-  <div class="  " 
+  <div class="  "
        *ngFor="let item of leaseArray; let i=index;"
        [ngClass]="{'leaseCardSelected':selectedLease==i}"
-       (click)="selectedLease=i;emitSelectedLeaseObj(item)" id="leaseCard{{ i }}"
+       (click)="selectedLease=i;emitSelectedLeaseObj(item)"
   >
     <div class="" [ngClass]="{'leaseCardSelected':selectedLease==i}">
       <span class="" *ngIf="item['cardAlert']">{{item['cardAlert']}}</span>

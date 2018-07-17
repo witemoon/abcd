@@ -25,26 +25,22 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() attrindex;
 
   constructor(private router: Router, private renderer: Renderer2, private dashboardService: DashboardServiceService, private sharedService: SharedService) {
-    renderer.listen('document', 'click', (evt) => {
-     // $('#leaseCaed1').trigger("click");
+    renderer.listen('body', 'click', (evt) => {
       let id = evt.target.id;
-      if ( id == "currentbala-trigger") {
-        $('#currentbala-tooltip').show(); // add hiding code here
+      if (id == "currentbala-trigger") {
+        $('#currentbala-tooltip').show();
       }
 
-      if ( (id !== "currentbala-trigger") && (id !== "currentbala-tooltip") )  {
-        $('#currentbala-tooltip').hide(); 
+      if ((id !== "currentbala-trigger") && (id !== "currentbala-tooltip")) {
+        $('#currentbala-tooltip').hide();// tooltip hiding code here
       }
-      if ( id == "Buyout-trigger") {
-        $('#Buyout-tooltip').show(); // add hiding code here
+      if (id == "Buyout-trigger") {
+        $('#Buyout-tooltip').show();
       }
 
-      if ( (id !== "Buyout-trigger") && (id !== "Buyout-tooltip") && (id !== "teleLink"))  {
-        $('#Buyout-tooltip').hide(); 
+      if ((id !== "Buyout-trigger") && (id !== "Buyout-tooltip") && (id !== "teleLink")) {
+        $('#Buyout-tooltip').hide();// tooltip hiding code here
       }
-      // if ( id && (id !== "Buyout-tooltip")) {
-      //   $('#Buyout-tooltip').hide(); // add hiding code here
-      // }
     });
   }
   onNavItemClicked(event) {
@@ -68,21 +64,21 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
       $('.tab-content > .tab-pane:nth-child(2)').addClass('active show');
     }
 
-    console.log('----- going to set jquery on currentbala-trigger -----------')
-    // $('#currentbala-trigger').on('click touch', function () {
+    // console.log('----- going to set jquery on currentbala-trigger -----------')
+    // $('#currentbala-trigger').on('click touch focus', function () {
     //   $('#currentbala-tooltip').show();
     //   console.log("--- $('#currentbala-tooltip').show(); ------");
     // });
-    // $('#Buyout-trigger').on('click touch', function () {
+    // $('#Buyout-trigger').on('click touch focus', function () {
     //   $('#Buyout-tooltip').show();
     // });
-    // $('#currentbala-tooltip').on('click touch', function (event) {
+    // $('#currentbala-tooltip').on('click touch focus', function (event) {
     //   event.stopPropagation();
     // });
-    // $('#Buyout-tooltip').on('click touch', function (event) {
+    // $('#Buyout-tooltip').on('click touch focus', function (event) {
     //   event.stopPropagation();
     // });
-    // $(document).on('click touch', function (event) {
+    // $(document).on('click touch focus', function (event) {
 
     //   if (!$(event.target).parents().addBack().is('#currentbala-trigger')) {
     //     $('#currentbala-tooltip').hide();
