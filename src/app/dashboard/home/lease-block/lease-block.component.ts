@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer, ViewChild, ElementRef } from '@angular/core';
 import { DashboardServiceService } from '../../dashboard-service.service';
 import { SharedService } from '../../../shared/shared';
 // import { dashboardData } from '../dashboard-model';
@@ -10,18 +10,19 @@ declare var $;
   styleUrls: ['./lease-block.component.css']
 })
 export class LeaseBlockComponent implements OnInit, AfterViewInit {
-
+@ViewChild(' ')  fileInput: ElementRef;
   selectedLease = 0;
   leaseArray = [];
 
-  constructor(private dashboardService: DashboardServiceService, private sharedService: SharedService) {
+  constructor(private dashboardService: DashboardServiceService, private sharedService: SharedService, private renderer: Renderer) {
   }
 
-  ngAfterViewInit(): void {
-
+  ngAfterViewInit() {
   }
 
   ngOnInit() {
+    
+
     this.dashboardService.changeObject.subscribe(data => {
       if (data && data['leaseArray']) {
         let arrayOne = [];
@@ -107,6 +108,18 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         );
       });
     });
+    setTimeout(
+      () => {
+        this.sharedService.DefaultClick.asObservable().subscribe(
+          (status: any) => {
+            if(status == true){
+              let event: HTMLElement = document.getElementById("leaseCard0") as HTMLElement;
+            event.click();
+            }
+          }
+        );
+      }, 3000
+    )
   }
 
   sortByleaseNo(array) {
@@ -124,5 +137,9 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
   }
   getPage(value) {
     this.sharedService.braedValue.next(value);
+  }
+
+  autoTrigger(){
+   
   }
 }

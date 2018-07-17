@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedService } from '../../shared/shared'
 
 @Component({
   selector: 'alerts-popup',
@@ -12,7 +13,7 @@ export class AlertsPopupComponent implements OnInit {
   @Input() defaultLeaseCount: number = 0;
   @Input() equipmentLeaseCount: number = 0;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
   }
@@ -22,7 +23,8 @@ export class AlertsPopupComponent implements OnInit {
     // this.router.navigate(['/dashboard/home']);
   }
   changeRoute(url) {
-    this.router.navigateByUrl('/dashboard/epp', { skipLocationChange: true });
-    setTimeout(() => this.router.navigate(url));
+    // this.router.navigateByUrl('/dashboard/epp', { skipLocationChange: true });
+    // setTimeout(() => this.router.navigate(url));
+    this.sharedService.DefaultClick.next(true);
   }
 }

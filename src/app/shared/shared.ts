@@ -5,4 +5,5 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class SharedService {
     public braedValue = new BehaviorSubject<any>(null);
     public loaderStatus = new BehaviorSubject<boolean>(false);
+    public DefaultClick = new BehaviorSubject<boolean>(false);
 }
