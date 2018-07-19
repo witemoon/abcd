@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, Renderer, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { DashboardServiceService } from '../../dashboard-service.service';
 import { SharedService } from '../../../shared/shared';
+import { ActivatedRoute } from '@angular/router';
 // import { dashboardData } from '../dashboard-model';
 declare var $;
 
@@ -9,20 +10,29 @@ declare var $;
   templateUrl: './lease-block.component.html',
   styleUrls: ['./lease-block.component.css']
 })
-export class LeaseBlockComponent implements OnInit, AfterViewInit {
+export class LeaseBlockComponent implements OnInit, AfterViewInit, OnDestroy {
 @ViewChild(' ')  fileInput: ElementRef;
   selectedLease = 0;
   leaseArray = [];
 
-  constructor(private dashboardService: DashboardServiceService, private sharedService: SharedService, private renderer: Renderer) {
+  constructor(private route:ActivatedRoute, private dashboardService: DashboardServiceService, private sharedService: SharedService, private renderer: Renderer) {
+    this.route.params.subscribe(val => {
+      
+      
+      // put the code from `ngOnInit` here
+    });
   }
 
   ngAfterViewInit() {
+    
+  }
+  ngOnDestroy(){
+    this.leaseArray = [];
   }
 
   ngOnInit() {
     
-
+console.log(this.leaseArray.length);
     this.dashboardService.changeObject.subscribe(data => {
       if (data && data['leaseArray']) {
         let arrayOne = [];
@@ -108,18 +118,23 @@ export class LeaseBlockComponent implements OnInit, AfterViewInit {
         );
       });
     });
-    setTimeout(
-      () => {
+    // setTimeout(
+    //   () => {
         this.sharedService.DefaultClick.asObservable().subscribe(
           (status: any) => {
             if(status == true){
               let event: HTMLElement = document.getElementById("leaseCard0") as HTMLElement;
-            event.click();
+              if(event){
+              event.click();
+              }
             }
           }
         );
-      }, 3000
-    )
+    //        }, 3000
+    // )
+        
+        
+   
   }
 
   sortByleaseNo(array) {
