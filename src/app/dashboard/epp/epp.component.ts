@@ -24,6 +24,7 @@ export class EppComponent implements OnInit {
   coverageRate = 10;
   totalAmt = 0;
   showPopup = false;
+  changePriceColor = false;
   showPopup1 = false;
   allLeaseSelected = false;
   noButtonPopup = false;
@@ -96,6 +97,15 @@ export class EppComponent implements OnInit {
       this.loaderStatus = false;
     }, err => {
       console.log('----- get lease data error-------', err);
+      if (err['error']['statusCode'] == '401') {
+        alert('error alert');
+        console.log('-------error code 401--------redirect here----')
+        this.router.navigate(['/error401']);
+      }
+      if (err['error']['statusCode'] == '500' || err['error']['statusCode'] == '501' || err['error']['statusCode'] == '503' || err['error']['statusCode'] == '504') {
+        console.log('-------error code 500,501,503,504--------redirect here----')
+        this.router.navigate(['/serviceerrors']);
+      }
       this.loaderStatus = false;
     });
 
@@ -185,6 +195,7 @@ export class EppComponent implements OnInit {
 
         console.log('------post epp data success-----', res)
         this.loaderStatus = false;
+        this.router.navigate(['/dashboard/eppthank']);
       },
       err => {
         console.log('----- get lease data error-------', err);
@@ -306,6 +317,9 @@ export class EppComponent implements OnInit {
       console.log("event.....", event.target.value);
       this.selectedLease = event.target.value;
       this.showPopup = true;
+      this.changePriceColor = true;
+    } else {
+      this.changePriceColor = false;
     }
   }
 

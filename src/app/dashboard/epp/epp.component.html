@@ -40,9 +40,8 @@
               </div>
               <div class="details-inner">
                 <label>Total Monthly EPP:</label>
-                <span class="activeBg">${{totalAmt}}.00</span>
+                <span class="" [ngClass]="{'activeBg':changePriceColor}">${{totalAmt}}.00</span>
               </div>
-
             </div>
 
 
@@ -77,7 +76,6 @@
 
 
             <!--Epp Lease toggles Starts-->
-
             <div class="row">
               <div class="toggleWrap" *ngIf="leaseData">
                 <div class="pn-wrap">
@@ -232,7 +230,7 @@
           </div>
 
           <div class="col-sm-12 col-md-3 ftrBtnWrap  text-md-right text-center">
-            <button type="button" [disabled]="checkbox.submit" [routerLink]="['/dashboard/eppthank']" class="btn butSec" (click)="postEpp()">
+            <button type="button" [disabled]="checkbox.submit" class="btn butSec" (click)="postEpp()">
               Submit
 
             </button>
