@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Renderer, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer, ViewChild, ElementRef } from '@angular/core';
 import { DashboardServiceService } from '../../dashboard-service.service';
 import { SharedService } from '../../../shared/shared';
 import { ActivatedRoute } from '@angular/router';
@@ -10,30 +10,29 @@ declare var $;
   templateUrl: './lease-block.component.html',
   styleUrls: ['./lease-block.component.css']
 })
-export class LeaseBlockComponent implements OnInit, AfterViewInit, OnDestroy {
-@ViewChild(' ')  fileInput: ElementRef;
+export class LeaseBlockComponent implements OnInit, AfterViewInit {
+  @ViewChild(' ') fileInput: ElementRef;
   selectedLease = 0;
   leaseArray = [];
 
-  constructor(private route:ActivatedRoute, private dashboardService: DashboardServiceService, private sharedService: SharedService, private renderer: Renderer) {
+  constructor(private route: ActivatedRoute, private dashboardService: DashboardServiceService, private sharedService: SharedService, private renderer: Renderer) {
     this.route.params.subscribe(val => {
-      
-      
-      // put the code from `ngOnInit` here
+
+
+
     });
   }
 
   ngAfterViewInit() {
-    
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.leaseArray = [];
   }
 
   ngOnInit() {
-    
-console.log(this.leaseArray.length);
-    this.dashboardService.changeObject.subscribe(data => {
+
+
+    this.dashboardService.changeObject.subscribe(data => { // lease card order...
       if (data && data['leaseArray']) {
         let arrayOne = [];
         let arrayTwo = [];
@@ -77,7 +76,7 @@ console.log(this.leaseArray.length);
         this.leaseArray = arrayOne.concat(arrayTwo, arrayThree, arrayFour, arrayFive, arraySix, arraySeven, arrayEight);
         this.dashboardService.selectedLeaseObj.next(this.leaseArray[0]);
       }
-      $(document).ready(function () {
+      $(document).ready(function () { // lease card carousel
         $('.ca-box-wrap').not('.slick-initialized').slick(
           {
             dots: false,
@@ -118,26 +117,23 @@ console.log(this.leaseArray.length);
         );
       });
     });
-    // setTimeout(
+    // setTimeout( // when i click the default lease option from alert popup it will navigate the first leasecard from dashboard.
     //   () => {
-        this.sharedService.DefaultClick.asObservable().subscribe(
-          (status: any) => {
-            if(status == true){
-              let event: HTMLElement = document.getElementById("leaseCard0") as HTMLElement;
-              if(event){
-              event.click();
-              }
-            }
+    this.sharedService.DefaultClick.asObservable().subscribe(
+      (status: any) => {
+        if (status == true) {
+          let event: HTMLElement = document.getElementById("leaseCard0") as HTMLElement;
+          if (event) {
+            event.click();
           }
-        );
-    //        }, 3000
+        }
+      }
+    );
+    //   }, 3000
     // )
-        
-        
-   
   }
 
-  sortByleaseNo(array) {
+  sortByleaseNo(array) { // lease card sorting order
 
     array.sort((a, b) => {
       return parseInt(a.leaseNo.split("-")[1]) > parseInt(b.leaseNo.split("-")[1])
@@ -146,15 +142,11 @@ console.log(this.leaseArray.length);
     return array;
   }
 
-  emitSelectedLeaseObj(selectedLease) {
+  emitSelectedLeaseObj(selectedLease) { // lease card selecting
     console.log(selectedLease);
     this.dashboardService.selectedLeaseObj.next(selectedLease);
   }
-  getPage(value) {
+  getPage(value) { // breadcrum
     this.sharedService.braedValue.next(value);
-  }
-
-  autoTrigger(){
-   
   }
 }

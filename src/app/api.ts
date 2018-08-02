@@ -22,6 +22,8 @@ export var API = {
 export var api_header = {
     X_App_Client: '0',
     token: '',
+    Content_Security_Policy: "script-src 'strict-dynamic'; frame-ancestors 'none'",
+    X_Frame_Options: 'SAMEORIGIN',
     X_Content_Type_Options: "nosniff",
     X_XSS_Protection:'1'
 };

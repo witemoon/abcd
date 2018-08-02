@@ -11,6 +11,7 @@ export class BackEndInterceptorService {
   constructor(private http: HttpClient, private router: Router) { }
 
   private token = '';
+  // private sampleObject = '';
 
   private getEnvironmentUrl() {
     let protocol = window.location.protocol;
@@ -26,12 +27,26 @@ export class BackEndInterceptorService {
     headers = headers
       .set('X-App-Client', api_header.X_App_Client)
       .set('token', this.token)
+      .set('Content-Security-Policy',api_header.Content_Security_Policy)
+      .set('X-Frame-Options',api_header.X_Frame_Options)
       .set('X-Content-Type-Options', api_header.X_Content_Type_Options)
       .set('X-XSS-Protection', api_header.X_XSS_Protection)
       .set('Content-Type', 'application/json');
     return headers;
   }
-
+//   sampleFunc(incomingString: string)
+//   {
+//   var headers = new Headers();
+//   headers.append('Content-Type', 'application/json');
+  
+//   this.sampleObject.sampleText = incomingString;
+//   var sampleJSON = JSON.stringify(this.sampleObject);
+  
+//    this.http.post('http://localhost:8080/targetRoute', sampleJSON, {headers:headers})
+//    .subscribe((res) => {
+//      alert(res);
+//   });
+// }
   setToken(token) {
     this.token = token;
   }

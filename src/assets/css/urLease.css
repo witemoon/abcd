@@ -1549,7 +1549,7 @@ input[type=text], input[type=password] {
   margin-top: 10px; }
 
 #myModal, #myModal1 {
-  background: rgba(0, 0, 0, 0.75); }
+  background: rgba(0, 0, 0, 0.45); }
 
 .opacity-disable {
   opacity: 0.5; }
