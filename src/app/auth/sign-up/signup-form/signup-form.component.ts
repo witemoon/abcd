@@ -203,7 +203,8 @@ export class SignupFormComponent implements OnInit {
     }
 
     this.authService.signIn(payLoad).subscribe(res => {
-      if (res['status'] == 'Success') {
+      console.log('response coming....................',res);
+      if (res['status'] = "Success") {
         this.signInError = false;
         this.singInSuccess = false;
         // this.authService.setToken(res['responseData'].token);
@@ -214,21 +215,25 @@ export class SignupFormComponent implements OnInit {
         localStorage.setItem("merchantId", res['responseData'].merchantId);
         //  this.loaderStatus= false;
         this.loader.loaderStatus.next(false);
+        // window.location.href = '#/dashboard/home';
         this.router.navigate(['/dashboard/home']);
       }
       else {
         this.signInError = true;
-        console.log('regular signin faild', res);
+        console.log('regular signin failed.........', res['status']);
       }
     }, error => {
       this.signInError = true;
       // this.loaderStatus= false;
       this.loader.loaderStatus.next(false);
-      console.log('regular signin faild', error);
+      console.log('regular signin faild 301', error['status']);
       if (error['error']['statusCode'] == '500' || error['error']['statusCode'] == '501' || error['error']['statusCode'] == '503' || error['error']['statusCode'] == '504') {
         console.log('-------error code 500,501,503,504--------redirect here----')
         this.router.navigate(['/serviceerrors']);
       }
+      // else if(error['status'] == '301'){
+      //  // this.router.navigate(['/dashboard/home']);
+      //   }
     });
   }
 
