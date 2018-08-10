@@ -54,6 +54,7 @@ export class BackEndInterceptorService {
     console.log("urlres....", url);
     console.log("finalres.....", finalUrl);
     return this.http.post(finalUrl, payLoad, { headers: this.getHeaders() });
+    //.subscribe(res=>{ console.log(res)});
     // .do(res => {
     //   if (res && res['status'] != 'Success') {
     //     this.router.navigate(['/user/signin']);
@@ -68,5 +69,27 @@ export class BackEndInterceptorService {
         this.router.navigate(['/user/signin']);
       }
     });;
+  }
+
+
+  //temp
+  tempApiCall(url: String, payLoad: any) {
+    let finalUrl = this.getEnvironmentUrl() + url;
+    console.log("urlres....", url);
+    console.log("finalres.....", finalUrl);
+    this.http.post(finalUrl, payLoad, { headers: this.getHeaders() })
+    .subscribe(
+      res=>{ 
+        console.log('TempApiResponse')
+        console.log(res)},
+    err => {
+      console.log('TempApiError')
+      console.log(err);
+    });
+    // .do(res => {
+    //   if (res && res['status'] != 'Success') {
+    //     this.router.navigate(['/user/signin']);
+    //   }
+    // });
   }
 }

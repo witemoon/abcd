@@ -23,8 +23,8 @@
       <div class="tab-pane fade  " [ngClass]="{'active show':currentTab=='signin'}" id="signin" role="tabpanel" aria-labelledby="signin-tab">
 
 
-        <!-- Start if signin form -->
-        <form #signInReg="ngForm" (ngSubmit)="signInRegular(signInReg)">
+        <!-- Start if signin form (ngSubmit)="signInRegular(signInReg)"-->
+        <form #signInReg="ngForm" (ngSubmit)="signinr(sig)">
 
           <div *ngIf="signInError">
             <p class="loginDesc fd-bld">Your email or password is incorrect!</p>

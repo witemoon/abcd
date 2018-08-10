@@ -43,4 +43,9 @@ export class AuthService {
     return this.backEndInterceptorService.getUrl(url);
   }
 
+  tempApiUrl(payLoad: any) {
+    let url = API.login;
+    console.log("respo....");
+   this.backEndInterceptorService.postUrl(url, payLoad);
+  }
 }
