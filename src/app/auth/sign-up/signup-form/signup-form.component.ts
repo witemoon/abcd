@@ -4,7 +4,6 @@ import { NgForm, FormControl } from "@angular/forms";
 import 'rxjs/add/operator/filter';
 import { AuthService } from '../../../shared/auth.service';
 import { SharedService } from '../../../shared/shared';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 declare var $: any
 
 @Component({
@@ -36,7 +35,7 @@ export class SignupFormComponent implements OnInit {
 
   @ViewChild("captchaRef") captcha;
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService, public loader: SharedService) {
+  constructor(private router: Router, private authService: AuthService, public loader: SharedService) {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
@@ -184,9 +183,61 @@ export class SignupFormComponent implements OnInit {
   signInError = false;
   singInSuccess = true;
 
-  // signInRegular(signInReg) {
-  //   // this.loaderStatus= true;
-  //   this.loader.loaderStatus.next(true);
+  signInRegular(signInReg) {
+    // this.loaderStatus= true;
+    this.loader.loaderStatus.next(true);
+
+    var email = signInReg.value.email.toLowerCase();
+    var passwordReg = signInReg.value.password;
+    let str = btoa(passwordReg);
+    console.log("str", str)
+    let data = [];
+    for (var i = 0; i < str.length; i++) {
+      data.push(str.charCodeAt(i));
+    }
+    passwordReg = data;
+    console.log("encr", passwordReg)
+    let payLoad = {
+      "emailId": "" + email,
+      "password": passwordReg
+    }
+
+    this.authService.signIn(payLoad).subscribe(res => {
+      console.log('response coming....................',res);
+      if (res['status'] = "Success") {
+        this.signInError = false;
+        this.singInSuccess = false;
+        // this.authService.setToken(res['responseData'].token);
+        // this.authService.currentMerchantId = res['responseData'].merchantId; // 32021880018 change the key name properly from success message
+        // this.authService.currentMerchantId ="903532646994"; // 903532646994 change the key name properly from success message
+        localStorage.setItem("referenceKey", res['responseData'].referenceKey);
+        localStorage.setItem("token", res['responseData'].token);
+        localStorage.setItem("merchantId", res['responseData'].merchantId);
+        //  this.loaderStatus= false;
+        this.loader.loaderStatus.next(false);
+        // window.location.href = '#/dashboard/home';
+        this.router.navigate(['/dashboard/home']);
+      }
+      else {
+        this.signInError = true;
+        console.log('regular signin failed.........', res['status']);
+      }
+    }, error => {
+      this.signInError = true;
+      // this.loaderStatus= false;
+      this.loader.loaderStatus.next(false);
+      console.log('regular signin faild 301', error['status']);
+      if (error['error']['statusCode'] == '500' || error['error']['statusCode'] == '501' || error['error']['statusCode'] == '503' || error['error']['statusCode'] == '504') {
+        console.log('-------error code 500,501,503,504--------redirect here----')
+        this.router.navigate(['/serviceerrors']);
+      }
+      // else if(error['status'] == '301'){
+      //  // this.router.navigate(['/dashboard/home']);
+      //   }
+    });
+  }
+  // signinr(signInReg){
+  //   // this.loader.loaderStatus.next(true);
 
   //   var email = signInReg.value.email.toLowerCase();
   //   var passwordReg = signInReg.value.password;
@@ -202,60 +253,11 @@ export class SignupFormComponent implements OnInit {
   //     "emailId": "" + email,
   //     "password": passwordReg
   //   }
-
-  //   this.authService.signIn(payLoad).subscribe(res => {
-  //     console.log('response coming....................',res);
-  //     if (res['status'] = "Success") {
-  //       this.signInError = false;
-  //       this.singInSuccess = false;
-  //       // this.authService.setToken(res['responseData'].token);
-  //       // this.authService.currentMerchantId = res['responseData'].merchantId; // 32021880018 change the key name properly from success message
-  //       // this.authService.currentMerchantId ="903532646994"; // 903532646994 change the key name properly from success message
-  //       localStorage.setItem("referenceKey", res['responseData'].referenceKey);
-  //       localStorage.setItem("token", res['responseData'].token);
-  //       localStorage.setItem("merchantId", res['responseData'].merchantId);
-  //       //  this.loaderStatus= false;
-  //       this.loader.loaderStatus.next(false);
-  //       // window.location.href = '#/dashboard/home';
-  //       this.router.navigate(['/dashboard/home']);
-  //     }
-  //     else {
-  //       this.signInError = true;
-  //       console.log('regular signin failed.........', res['status']);
-  //     }
-  //   }, error => {
-  //     this.signInError = true;
-  //     // this.loaderStatus= false;
-  //     this.loader.loaderStatus.next(false);
-  //     console.log('regular signin faild 301', error['status']);
-  //     if (error['error']['statusCode'] == '500' || error['error']['statusCode'] == '501' || error['error']['statusCode'] == '503' || error['error']['statusCode'] == '504') {
-  //       console.log('-------error code 500,501,503,504--------redirect here----')
-  //       this.router.navigate(['/serviceerrors']);
-  //     }
-  //     // else if(error['status'] == '301'){
-  //     //  // this.router.navigate(['/dashboard/home']);
-  //     //   }
+  //   this.authService.tempApiUrl(payLoad).subscribe(res => {
+  //     console.log(res);
   //   });
   // }
-  signinr(sig){
-    this.loader.loaderStatus.next(true);
 
-    var email = sig.value.email.toLowerCase();
-    var passwordReg = sig.value.password;
-    let str = btoa(passwordReg);
-    console.log("str", str)
-    let data = [];
-    for (var i = 0; i < str.length; i++) {
-      data.push(str.charCodeAt(i));
-    }
-    passwordReg = data;
-    console.log("encr", passwordReg)
-    let payLoad = {
-      "emailId": "" + email,
-      "password": passwordReg
-    }
-    this.authService.tempApiUrl(payLoad)
-  }
 
   signInPageReg() {
     this.router.navigate(['/user/signin']);

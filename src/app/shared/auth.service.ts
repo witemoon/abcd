@@ -42,10 +42,10 @@ export class AuthService {
     let url = API.merchant_logout;
     return this.backEndInterceptorService.getUrl(url);
   }
+  // tempApiUrl(payLoad: any) {
+  //   let url = API.login;
+  //   console.log("respo123....");
+  //  return this.backEndInterceptorService.tempApiCall(url, payLoad);
+  // }
 
-  tempApiUrl(payLoad: any) {
-    let url = API.login;
-    console.log("respo....");
-   this.backEndInterceptorService.postUrl(url, payLoad);
-  }
 }

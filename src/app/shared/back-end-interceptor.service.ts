@@ -27,10 +27,10 @@ export class BackEndInterceptorService {
     headers = headers
       .set('X-App-Client', api_header.X_App_Client)
       .set('token', this.token)
-      .set('Content-Security-Policy',api_header.Content_Security_Policy)
-      .set('X-Frame-Options',api_header.X_Frame_Options)
-      .set('X-Content-Type-Options', api_header.X_Content_Type_Options)
-      .set('X-XSS-Protection', api_header.X_XSS_Protection)
+      // .set('Content-Security-Policy',api_header.Content_Security_Policy)
+      // .set('X-Frame-Options',api_header.X_Frame_Options)
+      // .set('X-Content-Type-Options', api_header.X_Content_Type_Options)
+      // .set('X-XSS-Protection', api_header.X_XSS_Protection)
       .set('Content-Type', 'application/json');
     return headers;
   }
@@ -54,7 +54,6 @@ export class BackEndInterceptorService {
     console.log("urlres....", url);
     console.log("finalres.....", finalUrl);
     return this.http.post(finalUrl, payLoad, { headers: this.getHeaders() });
-    //.subscribe(res=>{ console.log(res)});
     // .do(res => {
     //   if (res && res['status'] != 'Success') {
     //     this.router.navigate(['/user/signin']);
@@ -70,26 +69,18 @@ export class BackEndInterceptorService {
       }
     });;
   }
-
-
-  //temp
-  tempApiCall(url: String, payLoad: any) {
-    let finalUrl = this.getEnvironmentUrl() + url;
-    console.log("urlres....", url);
-    console.log("finalres.....", finalUrl);
-    this.http.post(finalUrl, payLoad, { headers: this.getHeaders() })
-    .subscribe(
-      res=>{ 
-        console.log('TempApiResponse')
-        console.log(res)},
-    err => {
-      console.log('TempApiError')
-      console.log(err);
-    });
-    // .do(res => {
-    //   if (res && res['status'] != 'Success') {
-    //     this.router.navigate(['/user/signin']);
-    //   }
-    // });
-  }
+  // tempApiCall(url: String, payLoad: any) {
+  //   let finalUrl = this.getEnvironmentUrl() + url;
+  //   console.log("urlres12333....", url);
+  //   console.log("finalres32111.....", finalUrl);
+  //   return this.http.post(finalUrl, payLoad, { headers: this.getHeaders() });
+  // //   // .subscribe(
+  // //   //   res=>{ 
+  // //   //     console.log('TempApiResponse')
+  // //   //     console.log(res)},
+  // //   // err => {
+  // //   //   console.log('TempApiError')
+  // //   //   console.log(err);
+  // //   // });
+  // }
 }
