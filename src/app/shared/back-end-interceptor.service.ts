@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { api_header, API_DEV_HOST } from '../api';
+import { api_header, API_DEV_HOST, API } from '../api';
+// import { API } from '../api';
 import 'rxjs/add/operator/do';
 import { Router } from '@angular/router';
 
@@ -69,18 +70,18 @@ export class BackEndInterceptorService {
       }
     });;
   }
-  // tempApiCall(url: String, payLoad: any) {
-  //   let finalUrl = this.getEnvironmentUrl() + url;
-  //   console.log("urlres12333....", url);
-  //   console.log("finalres32111.....", finalUrl);
-  //   return this.http.post(finalUrl, payLoad, { headers: this.getHeaders() });
-  // //   // .subscribe(
-  // //   //   res=>{ 
-  // //   //     console.log('TempApiResponse')
-  // //   //     console.log(res)},
-  // //   // err => {
-  // //   //   console.log('TempApiError')
-  // //   //   console.log(err);
-  // //   // });
-  // }
+  tempApiCall(payLoad: any) {
+    let finalUrl = this.getEnvironmentUrl() + API.login;
+    console.log("urlres12333....", API.login);
+    console.log("finalres32111.....", finalUrl);
+    return this.http.post(finalUrl, payLoad, { headers: this.getHeaders() });
+  //   // .subscribe(
+  //   //   res=>{ 
+  //   //     console.log('TempApiResponse')
+  //   //     console.log(res)},
+  //   // err => {
+  //   //   console.log('TempApiError')
+  //   //   console.log(err);
+  //   // });
+  }
 }
