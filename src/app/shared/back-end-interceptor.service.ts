@@ -74,7 +74,7 @@ export class BackEndInterceptorService {
     let finalUrl = this.getEnvironmentUrl() + API.login;
     console.log("urlres12333....", API.login);
     console.log("finalres32111.....", finalUrl);
-    return this.http.post(finalUrl, payLoad, { headers: this.getHeaders() });
+    return this.http.post(finalUrl, payLoad, { headers: this.getHeaders(), observe: 'response' });
   //   // .subscribe(
   //   //   res=>{ 
   //   //     console.log('TempApiResponse')
