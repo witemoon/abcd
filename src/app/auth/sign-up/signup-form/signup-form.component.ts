@@ -184,61 +184,9 @@ export class SignupFormComponent implements OnInit {
   signInError = false;
   singInSuccess = true;
 
-  // signInRegular(signInReg) {
-  //   // this.loaderStatus= true;
-  //   this.loader.loaderStatus.next(true);
-
-  //   var email = signInReg.value.email.toLowerCase();
-  //   var passwordReg = signInReg.value.password;
-  //   let str = btoa(passwordReg);
-  //   console.log("str", str)
-  //   let data = [];
-  //   for (var i = 0; i < str.length; i++) {
-  //     data.push(str.charCodeAt(i));
-  //   }
-  //   passwordReg = data;
-  //   console.log("encr", passwordReg)
-  //   let payLoad = {
-  //     "emailId": "" + email,
-  //     "password": passwordReg
-  //   }
-
-  //   this.authService.signIn(payLoad).subscribe(res => {
-  //     console.log('response coming....................',res);
-  //     if (res['status'] = "Success") {
-  //       this.signInError = false;
-  //       this.singInSuccess = false;
-  //       // this.authService.setToken(res['responseData'].token);
-  //       // this.authService.currentMerchantId = res['responseData'].merchantId; // 32021880018 change the key name properly from success message
-  //       // this.authService.currentMerchantId ="903532646994"; // 903532646994 change the key name properly from success message
-  //       localStorage.setItem("referenceKey", res['responseData'].referenceKey);
-  //       localStorage.setItem("token", res['responseData'].token);
-  //       localStorage.setItem("merchantId", res['responseData'].merchantId);
-  //       //  this.loaderStatus= false;
-  //       this.loader.loaderStatus.next(false);
-  //       // window.location.href = '#/dashboard/home';
-  //       this.router.navigate(['/dashboard/home']);
-  //     }
-  //     else {
-  //       this.signInError = true;
-  //       console.log('regular signin failed.........', res['status']);
-  //     }
-  //   }, error => {
-  //     this.signInError = true;
-  //     // this.loaderStatus= false;
-  //     this.loader.loaderStatus.next(false);
-  //     console.log('regular signin faild 301', error['status']);
-  //     if (error['error']['statusCode'] == '500' || error['error']['statusCode'] == '501' || error['error']['statusCode'] == '503' || error['error']['statusCode'] == '504') {
-  //       console.log('-------error code 500,501,503,504--------redirect here----')
-  //       this.router.navigate(['/serviceerrors']);
-  //     }
-  //     // else if(error['status'] == '301'){
-  //     //  // this.router.navigate(['/dashboard/home']);
-  //     //   }
-  //   });
-  // }
-  signinr(signInReg){
-    // this.loader.loaderStatus.next(true);
+  signInRegular(signInReg) {
+    // this.loaderStatus= true;
+    this.loader.loaderStatus.next(true);
 
     var email = signInReg.value.email.toLowerCase();
     var passwordReg = signInReg.value.password;
@@ -254,10 +202,73 @@ export class SignupFormComponent implements OnInit {
       "emailId": "" + email,
       "password": passwordReg
     }
+
     this.backEndInterceptorService.tempApiCall(payLoad).subscribe(res => {
-      console.log(res);
+      console.log('response coming....................',res);
+      if (res['statusCode'] == '302') {
+        this.signInError = false;
+        this.singInSuccess = false;
+        // this.authService.setToken(res['responseData'].token);
+        // this.authService.currentMerchantId = res['responseData'].merchantId; // 32021880018 change the key name properly from success message
+        // this.authService.currentMerchantId ="903532646994"; // 903532646994 change the key name properly from success message
+        localStorage.setItem("referenceKey", res['responseData'].referenceKey);
+        localStorage.setItem("token", res['responseData'].token);
+        localStorage.setItem("merchantId", res['responseData'].merchantId);
+        this.loader.loaderStatus.next(false);
+        this.router.navigate(['/dashboard/home']);
+      }
+      else {
+        this.signInError = true;
+        console.log('regular signin failed.........', res['status']);
+      }
+    }, error => {
+      this.signInError = true;
+      // this.loaderStatus= false;
+      this.loader.loaderStatus.next(false);
+      console.log('regular signin faild 302', error);
+      if (error['error']['statusCode'] == '500' || error['error']['statusCode'] == '501' || error['error']['statusCode'] == '503' || error['error']['statusCode'] == '504') {
+        console.log('-------error code 500,501,503,504--------redirect here----')
+        this.router.navigate(['/serviceerrors']);
+      }
+      else if(error['statusCode'] == '302'){
+        this.backEndInterceptorService.tempApiCall(payLoad).subscribe(res => {
+          console.log('from error passing 301 response');
+          this.signInError = false;
+          this.singInSuccess = false;
+          localStorage.setItem("referenceKey", res['responseData'].referenceKey);
+          localStorage.setItem("token", res['responseData'].token);
+          localStorage.setItem("merchantId", res['responseData'].merchantId);
+          this.loader.loaderStatus.next(false);
+          this.router.navigate(['/dashboard/home']);
+        });
+      }
+      else {
+        this.signInError = true;
+        console.log('regular signin passing for 301 failed.........');
+      }
     });
   }
+  // signinr(signInReg){
+  //   // this.loader.loaderStatus.next(true);
+
+  //   var email = signInReg.value.email.toLowerCase();
+  //   var passwordReg = signInReg.value.password;
+  //   let str = btoa(passwordReg);
+  //   console.log("str", str)
+  //   let data = [];
+  //   for (var i = 0; i < str.length; i++) {
+  //     data.push(str.charCodeAt(i));
+  //   }
+  //   passwordReg = data;
+  //   console.log("encr", passwordReg)
+  //   let payLoad = {
+  //     "emailId": "" + email,
+  //     "password": passwordReg
+  //   }
+  //   this.backEndInterceptorService.tempApiCall(payLoad).subscribe(res => {
+  //     console.log(res);
+  //   });
+  // }
 
 
   signInPageReg() {

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { api_header, API_DEV_HOST, API } from '../api';
-// import { API } from '../api';
 import 'rxjs/add/operator/do';
 import { Router } from '@angular/router';
 
@@ -43,11 +42,12 @@ export class BackEndInterceptorService {
   getUrl(url: String) {
     //concatinating actual url by window url + parameter
     let finalUrl = this.getEnvironmentUrl() + url;
-    return this.http.get(finalUrl, { headers: this.getHeaders() }).do(res => {
-      if (res && res['status'] != 'Success') {
-        this.router.navigate(['/user/signin']);
-      }
-    });;
+    return this.http.get(finalUrl, { headers: this.getHeaders() });
+    // .do(res => {
+    //   if (res && res['status'] != 'Success') {
+    //     this.router.navigate(['/user/signin']);
+    //   }
+    // });;
   }
 
   postUrl(url: String, payLoad: any) {
@@ -64,24 +64,25 @@ export class BackEndInterceptorService {
 
   putUrl(url: String, payLoad: any) {
     let finalUrl = this.getEnvironmentUrl() + url;
-    return this.http.put(finalUrl, payLoad, { headers: this.getHeaders() }).do(res => {
-      if (res && res['status'] != 'Success') {
-        this.router.navigate(['/user/signin']);
-      }
-    });;
+    return this.http.put(finalUrl, payLoad, { headers: this.getHeaders() });
+    // .do(res => {
+    //   if (res && res['status'] != 'Success') {
+    //     this.router.navigate(['/user/signin']);
+    //   }
+    // });;
   }
   tempApiCall(payLoad: any) {
     let finalUrl = this.getEnvironmentUrl() + API.login;
     console.log("urlres12333....", API.login);
     console.log("finalres32111.....", finalUrl);
     return this.http.post(finalUrl, payLoad, { headers: this.getHeaders(), observe: 'response' });
-  //   // .subscribe(
-  //   //   res=>{ 
-  //   //     console.log('TempApiResponse')
-  //   //     console.log(res)},
-  //   // err => {
-  //   //   console.log('TempApiError')
-  //   //   console.log(err);
-  //   // });
+    // .subscribe(
+    //   res=>{ 
+    //     console.log('TempApiResponse')
+    //     console.log(res)},
+    // err => {
+    //   console.log('TempApiError')
+    //   console.log(err);
+    // });
   }
 }
