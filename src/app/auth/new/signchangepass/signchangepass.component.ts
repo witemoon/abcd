@@ -9,7 +9,7 @@ import { SharedService } from '../../../shared/shared';
   templateUrl: './signchangepass.component.html',
   styleUrls: ['./signchangepass.component.css']
 })
-export class SignchangepassComponent implements OnInit, AfterViewInit {
+export class SignchangepassComponent implements OnInit {
   // loaderStatus = false;
   showError: boolean = false;
   passwordNew: string = "";
@@ -81,15 +81,16 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
           this.showError = false;
         }, 500);
 
-      } else if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
-        event) {
-        this.showError = true;
-      }
+      } 
+      // else if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
+      //   event) {
+      //   this.showError = true;
+      // }
     });
   }
-  ngAfterViewInit() {
-    this.showError = false;
-  }
+  // ngAfterViewInit() {
+  //   this.showError = false;
+  // }
   encryption(encryptVal) {
     let str = btoa(encryptVal);
     console.log("str", str)
@@ -136,6 +137,7 @@ export class SignchangepassComponent implements OnInit, AfterViewInit {
     if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
       event && event.target.name == "passwordNew") {
       this.validationError.newPasswordError = true;
+      this.showError= true;
       this.submitted = false;
     } else if (event && event.target.name == "passwordNew") {
       this.validationError.newPasswordError = false;

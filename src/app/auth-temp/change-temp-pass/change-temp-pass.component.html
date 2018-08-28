@@ -28,7 +28,8 @@
                     required
                     #tempPass="ngModel"
                     #tmpPass
-                    (blur)="onInputBlur($event)"
+                    
+                    (keyup)="onInputBlur($event);"
                   >
 
                     <div class="fd-error" (click)="hideTempPasswordError()"
@@ -47,7 +48,8 @@
                     maxlength="25"
                     minlength="8"
                     #pass
-                    (focus)="validate($event)" (input)="onInputBlur($event)"
+                    (blur)="onInputBlur($event.target.value);"
+                    (input)="onInputBlur($event);" (focus)="validate($event)"
                     [formControl]="passwordFC"
                   >
 
