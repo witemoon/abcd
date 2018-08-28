@@ -9,7 +9,7 @@ import { SharedService } from '../../shared/shared';
   templateUrl: './change-temp-pass.component.html',
   styleUrls: ['./change-temp-pass.component.css']
 })
-export class ChangeTempPassComponent implements OnInit, AfterViewInit {
+export class ChangeTempPassComponent implements OnInit {
   // loaderStatus = false;
   showError: boolean = false;
   passwordNew: string = "";
@@ -56,6 +56,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     }
 
     this.passwordFC.valueChanges.subscribe(value => {
+      console.log(value);
       if (this.hasLowerCase(value) && this.hasUpperCase(value)) {
         this.upperAndLowerCase = true;
 
@@ -85,17 +86,12 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
           this.showError = false;
         }, 500);
 
-      } else if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
-        event) {
-        this.showError = true;
-      }
+      } 
 
     });
   }
 
-  ngAfterViewInit() {
-    this.showError = false;
-  }
+ 
   encryption(encryptVal) {
     let str = btoa(encryptVal);
     console.log("str", str)
@@ -143,6 +139,7 @@ export class ChangeTempPassComponent implements OnInit, AfterViewInit {
     if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
       event && event.target.name == "passwordNew") {
       this.validationError.newPasswordError = true;
+      this.showError= true;
       this.submitted = false;
     } else if (event && event.target.name == "passwordNew") {
       this.validationError.newPasswordError = false;
