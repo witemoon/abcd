@@ -157,6 +157,7 @@ export class ChangeTempPassComponent implements OnInit{
       this.submitted = false;
     } else if (event && event.target.name == "confPassword") {
       this.validationError.confirmPasswordError = false;
+      
     }
 
     // if (!this.validationError.newPasswordError &&
@@ -164,9 +165,17 @@ export class ChangeTempPassComponent implements OnInit{
     //       event.target.value != this.passwordFC.value) {
     //     this.validationError.confirmPasswordError = true;
     // }
+    
+  }
+
+  onblurevent(event){
+    if(event.target.value == this.passwordFC.value){
+      this.showError = false;
+    }
   }
 
   captchaResolved() {
+    
     this.captchaSelected = true;
     this.onInputBlur("");
   }
