@@ -13,10 +13,12 @@ export class PushNotificationComponent implements OnInit {
   constructor( private _notificationService: PushNotifService ) {
     this._notificationService.requestPermission();
    }
+//    https://webpushdemo.azurewebsites.net/
 
   ngOnInit() {
   }
   notify() {
+      console.log("hitting notification");
     let data: Array < any >= [];
     data.push({
         'title': 'Approval',
