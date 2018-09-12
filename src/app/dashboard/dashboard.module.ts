@@ -25,6 +25,7 @@ import { EppthankComponent } from './epp/eppthank/eppthank.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EppstaticComponent } from './epp/eppstatic/eppstatic.component';
 import { OwlModule } from 'ngx-owl-carousel';
+import { PushNotificationComponent } from '../landing-page/push-notification/push-notification.component';
 
 const dashboardRoute: Routes = [
   {
@@ -70,6 +71,7 @@ const dashboardRoute: Routes = [
     AddCommaPipe,
     EppthankComponent,
     EppstaticComponent,
+    PushNotificationComponent,
     Is_Greater_Than_Current_Date
   ],
   providers: [
