@@ -9,8 +9,7 @@ import { SharedService } from '../../shared/shared';
   templateUrl: './change-temp-pass.component.html',
   styleUrls: ['./change-temp-pass.component.css']
 })
-export class ChangeTempPassComponent implements OnInit{
-  // loaderStatus = false;
+export class ChangeTempPassComponent implements OnInit {
   showError: boolean = false;
   passwordNew: string = "";
   passwordValid: boolean = false;
@@ -58,7 +57,6 @@ export class ChangeTempPassComponent implements OnInit{
     this.passwordFC.valueChanges.subscribe(value => {
       if (this.hasLowerCase(value) && this.hasUpperCase(value)) {
         this.upperAndLowerCase = true;
-
       } else {
         this.upperAndLowerCase = false;
       }
@@ -81,14 +79,13 @@ export class ChangeTempPassComponent implements OnInit{
       }
 
       if (this.upperAndLowerCase && this.number && this.splChar && this.eightChar) {
-        setTimeout(() => {    //<<<---    using ()=> syntax
+        setTimeout(() => {    ///<<<---    using ()=> syntax
           this.showError = false;
         }, 500);
 
       }
-      //  else if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
+      // else if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
       //   event) {
-      //     console.log("showerror true");
       //   this.showError = true;
       // }
 
@@ -131,7 +128,7 @@ export class ChangeTempPassComponent implements OnInit{
     //     } else {
     //       this.passwordValid = false;
     //     }
-    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value && this.captchaSelected) {
+    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value) {
       this.passwordValid = true;
     } else {
       this.passwordValid = false;
@@ -145,7 +142,7 @@ export class ChangeTempPassComponent implements OnInit{
     if ((!this.upperAndLowerCase || !this.number || !this.splChar || !this.eightChar) &&
       event && event.target.name == "passwordNew") {
       this.validationError.newPasswordError = true;
-      this.showError= true;
+      this.showError = true;
       this.submitted = false;
     } else if (event && event.target.name == "passwordNew") {
       this.validationError.newPasswordError = false;
@@ -157,7 +154,6 @@ export class ChangeTempPassComponent implements OnInit{
       this.submitted = false;
     } else if (event && event.target.name == "confPassword") {
       this.validationError.confirmPasswordError = false;
-      
     }
 
     // if (!this.validationError.newPasswordError &&
@@ -165,24 +161,21 @@ export class ChangeTempPassComponent implements OnInit{
     //       event.target.value != this.passwordFC.value) {
     //     this.validationError.confirmPasswordError = true;
     // }
-    
   }
-
-  onblurevent(event){
-    if(event.target.value == this.passwordFC.value){
+  //This done for tapping outside 
+  onblurevent(event) {
+    if (event.target.value == this.passwordFC.value) {
       this.showError = false;
     }
   }
 
   captchaResolved() {
-    
     this.captchaSelected = true;
     this.onInputBlur("");
   }
 
 
   changePassword(changePass) {
-    // this.loaderStatus= true;
     this.loader.loaderStatus.next(true);
 
     var tempPass = changePass.value.tempPass;
@@ -209,13 +202,11 @@ export class ChangeTempPassComponent implements OnInit{
     };
 
     this.authService.changePassword(payLoad).subscribe(res => {
-      // this.loaderStatus= false;
       this.loader.loaderStatus.next(false);
       if (res['status'] == 'Success') {
         this.router.navigate(['/user/signin']);
       }
     }, err => {
-      // this.loaderStatus= false;
       this.loader.loaderStatus.next(false);
       this.submitted = true;
       this.captcha.reset();
@@ -253,17 +244,16 @@ export class ChangeTempPassComponent implements OnInit{
     if (event.target.name == "confPassword") {
       this.hideConfPasswordError();
     }
-
-
-    // return true
   }
 
   hasLowerCase(str) {
     return (/[a-z]/.test(str));
+
   }
 
   hasUpperCase(str) {
     return (/[A-Z]/.test(str));
+
   }
 
   hasNumber(str) {

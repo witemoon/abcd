@@ -24,7 +24,6 @@ export class EppComponent implements OnInit {
   coverageRate = 10;
   totalAmt = 0;
   showPopup = false;
-  changePriceColor = false;
   showPopup1 = false;
   allLeaseSelected = false;
   noButtonPopup = false;
@@ -98,7 +97,6 @@ export class EppComponent implements OnInit {
     }, err => {
       console.log('----- get lease data error-------', err);
       if (err['error']['statusCode'] == '401') {
-        alert('error alert');
         console.log('-------error code 401--------redirect here----')
         this.router.navigate(['/error401']);
       }
@@ -317,9 +315,6 @@ export class EppComponent implements OnInit {
       console.log("event.....", event.target.value);
       this.selectedLease = event.target.value;
       this.showPopup = true;
-      this.changePriceColor = true;
-    } else {
-      this.changePriceColor = false;
     }
   }
 

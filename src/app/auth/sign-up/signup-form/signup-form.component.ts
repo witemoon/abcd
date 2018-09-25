@@ -4,7 +4,6 @@ import { NgForm, FormControl } from "@angular/forms";
 import 'rxjs/add/operator/filter';
 import { AuthService } from '../../../shared/auth.service';
 import { SharedService } from '../../../shared/shared';
-import { BackEndInterceptorService } from './../../../shared/back-end-interceptor.service';
 declare var $: any
 
 @Component({
@@ -13,7 +12,7 @@ declare var $: any
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent implements OnInit {
-  // loaderStatus = false;
+
   /*TEst*/
 
   captchaSelected: boolean = false;
@@ -27,6 +26,7 @@ export class SignupFormComponent implements OnInit {
   @ViewChild("leaseNumber") leaseNumber: ElementRef;
   @ViewChild("referenceKey") referenceKey: ElementRef;
 
+
   currentTab = 'signup';
   referenceKeyFC = new FormControl();
   leaseNumberFC = new FormControl();
@@ -36,7 +36,7 @@ export class SignupFormComponent implements OnInit {
 
   @ViewChild("captchaRef") captcha;
 
-  constructor(private router: Router, private authService: AuthService, public loader: SharedService, private backEndInterceptorService: BackEndInterceptorService) {
+  constructor(private router: Router, private authService: AuthService, public loader: SharedService) {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
@@ -79,7 +79,6 @@ export class SignupFormComponent implements OnInit {
   }
 
   signUpUser(signUpForm) {
-    // this.loaderStatus= true;
     $('html, body').css({ 'overflow': 'hidden', 'height': '100%' })
     this.loader.loaderStatus.next(true);
 
@@ -98,14 +97,12 @@ export class SignupFormComponent implements OnInit {
 
       this.authService.register(payLoad).subscribe(res => {
         console.log('register Response:', res);
-        // this.loaderStatus= false;
         this.loader.loaderStatus.next(false);
         this.router.navigate(['/signthank']);
       }, error => {
         console.log('signup error', error);
         this.captcha.reset();
         this.captchaSelected = false;
-        // this.loaderStatus= false;
         this.loader.loaderStatus.next(false);
         $('html, body').css({ 'overflow': 'auto', 'height': '100%' })
 
@@ -119,7 +116,6 @@ export class SignupFormComponent implements OnInit {
           this.errorResponse.incorrectMerchant = errMessage.includes("merchant dba") ? true : false;
           signUpForm.resetForm();
           this.errorToStat.emit(error.error.message);
-
         }
         if ((error['error']['statusCode'] === '500' && !error['error']['message'].includes("locked")) || error['error']['statusCode'] === '501' || error['error']['statusCode'] === '503' || error['error']['statusCode'] === '504') {
           this.router.navigate(['/serviceerrors']);
@@ -128,13 +124,12 @@ export class SignupFormComponent implements OnInit {
         if (error['error']['statusCode'] === '500' && error['error']['message'].includes("locked")) {
           this.errorToStat.emit(error.error.message);
         }
-
       });
     }
   }
 
   validateForm(signUpForm): boolean {
-    if (!signUpForm.value.referenceKey || !signUpForm.value.leaseNumber || !signUpForm.value.merchantDBA || !this.captchaSelected) {
+    if (!signUpForm.value.referenceKey || !signUpForm.value.leaseNumber || !signUpForm.value.merchantDBA) {
       this.captcha.reset();
       this.captchaSelected = false;
       return false;
@@ -185,7 +180,6 @@ export class SignupFormComponent implements OnInit {
   singInSuccess = true;
 
   signInRegular(signInReg) {
-    // this.loaderStatus= true;
     this.loader.loaderStatus.next(true);
 
     var email = signInReg.value.email.toLowerCase();
@@ -203,9 +197,8 @@ export class SignupFormComponent implements OnInit {
       "password": passwordReg
     }
 
-    this.backEndInterceptorService.tempApiCall(payLoad).subscribe(res => {
-      console.log('response coming....................',res);
-      if (res['statusCode'] == '302') {
+    this.authService.signIn(payLoad).subscribe(res => {
+      if (res['status'] == 'Success') {
         this.signInError = false;
         this.singInSuccess = false;
         // this.authService.setToken(res['responseData'].token);
@@ -219,57 +212,18 @@ export class SignupFormComponent implements OnInit {
       }
       else {
         this.signInError = true;
-        console.log('regular signin failed.........', res['status']);
+        console.log('regular signin faild', res);
       }
     }, error => {
       this.signInError = true;
-      // this.loaderStatus= false;
       this.loader.loaderStatus.next(false);
-      console.log('regular signin faild 302', error);
+      console.log('regular signin faild', error);
       if (error['error']['statusCode'] == '500' || error['error']['statusCode'] == '501' || error['error']['statusCode'] == '503' || error['error']['statusCode'] == '504') {
         console.log('-------error code 500,501,503,504--------redirect here----')
         this.router.navigate(['/serviceerrors']);
       }
-      else if(error['statusCode'] == '302'){
-        this.backEndInterceptorService.tempApiCall(payLoad).subscribe(res => {
-          console.log('from error passing 301 response');
-          this.signInError = false;
-          this.singInSuccess = false;
-          localStorage.setItem("referenceKey", res['responseData'].referenceKey);
-          localStorage.setItem("token", res['responseData'].token);
-          localStorage.setItem("merchantId", res['responseData'].merchantId);
-          this.loader.loaderStatus.next(false);
-          this.router.navigate(['/dashboard/home']);
-        });
-      }
-      else {
-        this.signInError = true;
-        console.log('regular signin passing for 301 failed.........');
-      }
     });
   }
-  // signinr(signInReg){
-  //   // this.loader.loaderStatus.next(true);
-
-  //   var email = signInReg.value.email.toLowerCase();
-  //   var passwordReg = signInReg.value.password;
-  //   let str = btoa(passwordReg);
-  //   console.log("str", str)
-  //   let data = [];
-  //   for (var i = 0; i < str.length; i++) {
-  //     data.push(str.charCodeAt(i));
-  //   }
-  //   passwordReg = data;
-  //   console.log("encr", passwordReg)
-  //   let payLoad = {
-  //     "emailId": "" + email,
-  //     "password": passwordReg
-  //   }
-  //   this.backEndInterceptorService.tempApiCall(payLoad).subscribe(res => {
-  //     console.log(res);
-  //   });
-  // }
-
 
   signInPageReg() {
     this.router.navigate(['/user/signin']);

@@ -23,8 +23,8 @@
       <div class="tab-pane fade  " [ngClass]="{'active show':currentTab=='signin'}" id="signin" role="tabpanel" aria-labelledby="signin-tab">
 
 
-        <!-- Start if signin form (ngSubmit)="signInRegular(signInReg)" -->
-        <form #signInReg="ngForm" (ngSubmit)="signinr(signInReg)">
+        <!-- Start if signin form -->
+        <form #signInReg="ngForm" (ngSubmit)="signInRegular(signInReg)">
 
           <div *ngIf="signInError">
             <p class="loginDesc fd-bld">Your email or password is incorrect!</p>
@@ -140,7 +140,7 @@
           </div>
           <!-- Recaptch -->
           <div class="form-group cWrap">
-            <re-captcha #captchaRef name="captcha" required ngModel (resolved)="captchaResolved($event)"></re-captcha>
+            <re-captcha #captchaRef name="captcha" required  (resolved)="captchaResolved($event)"></re-captcha>
           </div>
 
 

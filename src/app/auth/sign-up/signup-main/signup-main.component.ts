@@ -15,9 +15,9 @@ export class SignupMainComponent implements OnInit {
   ngOnInit() {
   }
 
-  ctab(s){
+  ctab(s) {
     this.showstat = s == 'signin' ? true : false;
-    console.log("inside main----",this.showstat)
+    console.log("inside main----", this.showstat)
   }
 
   updateStatDescription(obj) {
@@ -28,7 +28,7 @@ export class SignupMainComponent implements OnInit {
     } else if (obj.includes("registered")) {
       this.heading = "You already have an account with us.";
       this.description = "Please Sign In or tap on <b>Forgot Password</b> from the sign in page";
-    } else { 
+    } else {
       this.heading = "";
       this.description = "";
     }

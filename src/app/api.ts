@@ -9,7 +9,7 @@ export var API_DEV_HOST = 'localhost:8080';
 export var API = {
     getLease: 'https://api.myjson.com/bins/18wefb',
     merchant_register: api_Base + '/merchants',
-    merchant_logout: api_Base + '/logout',
+    merchant_logout: api_Base + '/logouts',
     login: api_Base + '/login',
     merchant_leases: api_Base + '/merchants/{referenceKey}/leases',
     forget_password: api_Base + '/merchants/password',

@@ -28,7 +28,6 @@
                     required
                     #tempPass="ngModel"
                     #tmpPass
-                    
                     (blur)="onInputBlur($event);"
                   >
 
@@ -54,7 +53,7 @@
                   >
 
 
-                  <div class="toolWrap" *ngIf="showError == true">
+                  <div class="toolWrap " *ngIf="showError == true">
                     <div class="toolInnerWrap">
                       <div class="toolArrow"></div>
 
@@ -130,7 +129,7 @@
                     (resolved)="captchaResolved()"
                     ngModel></re-captcha>
                 </div>
-                <button type="submit" [disabled]="!passwordValid"
+                <button type="submit" 
                         class="btnSubmit btn btn-primary btn-lg btn-block"
                 >Submit
                 </button>

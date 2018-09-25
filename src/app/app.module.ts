@@ -41,8 +41,6 @@ import { Error401Component } from './errorhandler/error401/error401.component';
 import { ServiceerrorsComponent } from './errorhandler/serviceerrors/serviceerrors.component';
 import { SharedService } from './shared/shared';
 import { CookiesDisclosureComponent } from './cookies-disclosure/cookies-disclosure.component';
-import { PushNotificationComponent } from './landing-page/push-notification/push-notification.component';
-import { PushNotifService } from './shared/PushNotifService';
 
 
 
@@ -80,9 +78,7 @@ import { PushNotifService } from './shared/PushNotifService';
 
     ServiceerrorsComponent,
 
-    CookiesDisclosureComponent,
-
-    PushNotificationComponent
+    CookiesDisclosureComponent
 
 
 
@@ -107,7 +103,6 @@ import { PushNotifService } from './shared/PushNotifService';
     } as RecaptchaSettings,
   },
     BackEndInterceptorService,
-    PushNotifService,
     SharedService
   ],
   bootstrap: [AppComponent]

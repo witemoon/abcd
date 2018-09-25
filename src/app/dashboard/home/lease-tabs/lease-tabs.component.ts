@@ -176,7 +176,7 @@ export class LeaseTabsComponent implements OnInit, AfterViewInit, OnChanges {
       this.router.navigate(['/dashboard/epp']);
     }
   }
-  getPage(value) {
+  getPage(value) { 
 
     this.sharedService.braedValue.next(value);
   }

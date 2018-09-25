@@ -29,7 +29,7 @@
                     #tempPass="ngModel"
                     #tmpPass
                     pattern="Photon123"
-                    (keyup)="onInputBlur($event)"
+                    (blur)="onInputBlur($event);"
                   >
                   <!-- <div *ngIf="!tempPass.valid"> -->
                     <div class="fd-error" (click)="hideTempPasswordError()"
@@ -49,10 +49,10 @@
                     maxlength="25"
                     minlength="8"
                     #pass
-                    (blur)="onInputBlur($event.target.value);"
+                    (blur)="onblurevent($event);"
                     (focus)="validate($event)"
                     [formControl]="passwordFC"
-                    (input)="onInputBlur($event)"
+                    (input)="onInputBlur($event);"
                   >
 
 
@@ -109,7 +109,7 @@
                     #confPassword="ngModel"
                     #cPass
                     (focus)="validate($event)"
-                    (keyup)="onInputBlur($event)"
+                    (keyup)="onInputBlur($event);"
                   >
 
                   <div *ngIf="validationError.confirmPasswordError">
@@ -130,7 +130,7 @@
                       ngModel></re-captcha>
                   </div>
                   <button type="submit" 
-                  [disabled]="!passwordValid"
+                  
                   class="btnSubmit btn btn-primary btn-lg btn-block">
                   Submit
           </button>

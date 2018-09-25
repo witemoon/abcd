@@ -55,7 +55,8 @@ export class SignchangepassComponent implements OnInit {
     this.passwordFC.valueChanges.subscribe(value => {
       if (this.hasLowerCase(value) && this.hasUpperCase(value)) {
         this.upperAndLowerCase = true;
-      } else {
+      } 
+      else {
         this.upperAndLowerCase = false;
       }
       if (this.hasNumber(value)) {
@@ -77,7 +78,7 @@ export class SignchangepassComponent implements OnInit {
       }
 
       if (this.upperAndLowerCase && this.number && this.splChar && this.eightChar) {
-        setTimeout(() => {    //<<<---    using ()=> syntax
+        setTimeout(() => {    ///<<<---    using ()=> syntax
           this.showError = false;
         }, 500);
 
@@ -124,7 +125,7 @@ export class SignchangepassComponent implements OnInit {
     //     } else {
     //       this.passwordValid = false;
     //     }
-    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value && this.captchaSelected) {
+    if (this.passwordFC.value && this.tmpPass.nativeElement.value && this.cPass.nativeElement.value) {
       this.passwordValid = true;
     } else {
       this.passwordValid = false;
@@ -157,7 +158,12 @@ export class SignchangepassComponent implements OnInit {
     //     this.validationError.confirmPasswordError = true;
     // }
   }
-
+  //This done for tapping outside
+  onblurevent(event){
+    if(event.target.value == this.passwordFC.value){
+      this.showError = false;
+    }
+  }
   captchaResolved() {
     this.captchaSelected = true;
     this.onInputBlur("");

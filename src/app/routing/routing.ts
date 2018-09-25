@@ -39,10 +39,12 @@ const appRoutes: Routes = [
     path: 'user/signin',
     component: SignupMainComponent
   },
+
   {
     path: 'temp',
     component: TempSigninComponent
   },
+
   {
     path: 'signchangepass',
     component: SignchangepassComponent
@@ -55,10 +57,12 @@ const appRoutes: Routes = [
     path: 'resetPassword',
     component: ResetComponent
   },
+
   {
     path: 'thankyou',
     component: ThankComponent
   },
+
   {
     path: 'changeTempPass',
     component: ChangeTempPassComponent
