@@ -16,7 +16,7 @@ export class BackEndInterceptorService {
     let protocol = window.location.protocol;
     let host = window.location.host;
     // host = host.indexOf('localhost')>-1? API_DEV_HOST : host;
-    host = host.indexOf('localhost') > -1 ? "localhost:8080" : API_DEV_HOST;
+    // host = host.indexOf('localhost') > -1 ? "localhost:8080" : API_DEV_HOST;
     return protocol + '//' + host;
   }
 
@@ -26,8 +26,8 @@ export class BackEndInterceptorService {
     headers = headers
       .set('X-App-Client', api_header.X_App_Client)
       .set('token', this.token)
-      // .set('X-Content-Type-Options', api_header.X_Content_Type_Options)
-      // .set('X-XSS-Protection', api_header.X_XSS_Protection)
+      .set('X-Content-Type-Options', api_header.X_Content_Type_Options)
+      .set('X-XSS-Protection', api_header.X_XSS_Protection)
       .set('Content-Type', 'application/json');
     return headers;
   }
